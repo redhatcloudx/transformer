@@ -4,7 +4,7 @@ from __future__ import annotations
 import boto3
 
 
-def get_aws_regions() -> list:
+def get_aws_regions() -> list[str]:
     """Get the latest list of AWS regions.
 
     Returns:
