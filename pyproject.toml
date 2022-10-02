@@ -66,6 +66,7 @@ namespace_packages = true
 explicit_package_bases = true
 show_error_codes = true
 strict = true
+ignore_missing_imports = true
 enable_error_code = [
     "ignore-without-code",
     "redundant-expr",
