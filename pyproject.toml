@@ -1,0 +1,78 @@
+[tool.poetry]
+name = "rhelocator"
+version = "0.1.0"
+description = "Locate RHEL images in public clouds"
+authors = [
+    "Felix Kolwa <felix@redhat.com>",
+    "Major Hayden <major@redhat.com>"
+]
+maintainers = [
+    "Felix Kolwa <felix@redhat.com>",
+    "Major Hayden <major@redhat.com>"
+]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [
+    {include = "rhelocator", from = "src"}
+]
+include = [
+    { path = "tests", format = "sdist" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.1.3"
+pytest-cov = "^4.0.0"
+pytest-mock = "^3.9.0"
+pytest-randomly = "^3.12.0"
+pytest-sugar = "^0.9.5"
+pytest-xdist = {version = "^2.5.0", extras = ["psutil"]}
+mypy = "^0.981"
+pre-commit = "^2.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Much of what is below this line is borrowed from poetry's pyproject.yaml.
+# https://github.com/python-poetry/poetry/blob/master/pyproject.toml
+[tool.isort]
+py_version = 37
+profile = "black"
+force_single_line = true
+combine_as_imports = true
+lines_between_types = 1
+lines_after_imports = 2
+src_paths = ["src", "tests"]
+extend_skip = ["setup.py"]
+known_third_party = ["poetry.core"]
+
+
+[tool.black]
+target-version = ['py37']
+preview = true
+force-exclude = '''
+.*/setup\.py$
+'''
+
+
+[tool.mypy]
+files = "src"
+mypy_path = "src"
+namespace_packages = true
+explicit_package_bases = true
+show_error_codes = true
+strict = true
+enable_error_code = [
+    "ignore-without-code",
+    "redundant-expr",
+    "truthy-bool",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:"
+]
