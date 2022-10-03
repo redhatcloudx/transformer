@@ -6,7 +6,7 @@ from unittest.mock import patch
 from src.rhelocator import update_images
 
 
-def test_get_aws_regions():
+def test_get_aws_regions() -> None:
     """Test AWS region request."""
     with patch("botocore.client.BaseClient._make_api_call") as boto:
         update_images.get_aws_regions()
@@ -14,7 +14,7 @@ def test_get_aws_regions():
     boto.assert_called_with("DescribeRegions", {"AllRegions": "True"})
 
 
-def test_get_aws_cloud_access_images():
+def test_get_aws_cloud_access_images() -> None:
     """Test AWS image request."""
     with patch("botocore.client.BaseClient._make_api_call") as boto:
         update_images.get_aws_cloud_access_images("us-east-1")
