@@ -9,36 +9,18 @@ from src.rhelocator import update_images
 @mock.patch("botocore.client.BaseClient._make_api_call")
 def test_get_aws_regions(mock_boto: any):
     """Test AWS region request."""
-    mock_boto.return_value: dict = {
-        "Regions": [
-            {
-                "Endpoint": "ec2.us-east-1.amazonaws.com",
-                "RegionName": "us-east-1",
-            },
-        ]
-    }
+    with mock.patch("botocore.client.BaseClient._make_api_call") as boto:
+        update_images.get_aws_regions()
 
-    regions = update_images.get_aws_regions()
-
-    assert isinstance(regions, list)
-    assert "us-east-1" in regions
+    boto.assert_called_with("DescribeRegions", {"AllRegions": "True"})
 
 
 @mock.patch("botocore.client.BaseClient._make_api_call")
-def test_get_aws_marketplace_images(mock_boto: any):
+def test_get_aws_cloud_access_images(mock_boto: any):
     """Test AWS image request."""
-    mock_boto.return_value: dict = {
-        "Images": [
-            {
-                "ImageId": "ami-5731123e",
-            },
-        ],
-        "ResponseMetadata": {
-            "...": "...",
-        },
-    }
+    with mock.patch("botocore.client.BaseClient._make_api_call") as boto:
+        update_images.get_aws_cloud_access_images("us-east-1")
 
-    images = update_images.get_aws_marketplace_images("us-east-1")
-
-    assert isinstance(images, list)
-    assert images[0]["ImageId"] == "ami-5731123e"
+    boto.assert_called_with(
+        "DescribeImages", {"IncludeDeprecated": "False", "Owners": ["309956199498"]}
+    )

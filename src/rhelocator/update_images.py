@@ -15,12 +15,12 @@ def get_aws_regions() -> list[str]:
     return [x["RegionName"] for x in raw["Regions"]]
 
 
-def get_aws_marketplace_images(region: str) -> list[str]:
-    """Get a list of RHEL marketplace images from an AWS region.
+def get_aws_cloud_access_images(region: str) -> list[str]:
+    """Get a list of RHEL cloud access images from an AWS region.
 
     Args:
         region: AWS region name, such as us-east-1
     """
     ec2 = boto3.client("ec2", region_name=region)
-    raw = ec2.describe_images(Owners=["679593333241"], IncludeDeprecated=False)
+    raw = ec2.describe_images(Owners=["309956199498"], IncludeDeprecated="False")
     return list(raw["Images"])
