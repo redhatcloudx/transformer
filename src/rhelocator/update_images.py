@@ -20,8 +20,8 @@ def get_aws_regions() -> list[str]:
     return [x["RegionName"] for x in raw["Regions"]]
 
 
-def get_aws_cloud_access_images(region: str) -> list[str]:
-    """Get a list of RHEL cloud access images from an AWS region.
+def get_aws_hourly_images(region: str) -> list[str]:
+    """Get a list of RHEL hourly images from an AWS region.
 
     Args:
         region: AWS region name, such as "us-east-1"
