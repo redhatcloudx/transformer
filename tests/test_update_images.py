@@ -15,10 +15,10 @@ def test_get_aws_regions() -> None:
     boto.assert_called_with("DescribeRegions", {"AllRegions": "True"})
 
 
-def test_get_aws_cloud_access_images() -> None:
+def test_get_aws_hourly_images() -> None:
     """Test AWS image request."""
     with patch("botocore.client.BaseClient._make_api_call") as boto:
-        update_images.get_aws_cloud_access_images("us-east-1")
+        update_images.get_aws_hourly_images("us-east-1")
 
     boto.assert_called_with(
         "DescribeImages", {"IncludeDeprecated": "False", "Owners": ["309956199498"]}
