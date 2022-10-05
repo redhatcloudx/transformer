@@ -26,6 +26,24 @@ def test_get_aws_hourly_images() -> None:
     )
 
 
+@patch("src.rhelocator.update_images.get_aws_hourly_images")
+@patch("src.rhelocator.update_images.get_aws_regions")
+def test_get_aws_all_hourly_images(
+    mock_regions: MagicMock, mock_images: MagicMock
+) -> None:
+    """Test retrieving all AWS hourly images from all regions."""
+    # Fake the regions and images values.
+    mock_regions.return_value = ["region1", "region2", "region3"]
+    mock_images.return_value = ["image1", "image2", "image3"]
+
+    images = update_images.get_aws_all_hourly_images()
+
+    assert isinstance(images, dict)
+    print(images.keys())
+    assert list(images.keys()) == ["region1", "region2", "region3"]
+    assert images["region1"] == ["image1", "image2", "image3"]
+
+
 @patch("rhelocator.update_images.requests.post")
 def test_get_azure_access_token(mock_requests: MagicMock) -> None:
     """Test retrieving Azure locations."""

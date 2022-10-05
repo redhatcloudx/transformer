@@ -36,6 +36,17 @@ def get_aws_hourly_images(region: str) -> list[str]:
     return list(raw["Images"])
 
 
+def get_aws_all_hourly_images() -> dict[str, list[str]]:
+    """Retrieve all RHEL images from all regions."""
+    regions = get_aws_regions()
+    images_per_region = {}
+    for region in regions:
+        images = get_aws_hourly_images(region)
+        images_per_region[region] = images
+
+    return images_per_region
+
+
 @functools.lru_cache
 def get_azure_access_token() -> str:
     """Authenticate with Azure and return the access token to use with API requests.
