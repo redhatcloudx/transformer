@@ -18,8 +18,8 @@ def get_aws_regions() -> list[str]:
         List of AWS regions as strings.
     """
     ec2 = boto3.client("ec2", region_name="us-east-1")
-    raw = ec2.describe_regions(AllRegions="True")
-    return [x["RegionName"] for x in raw["Regions"]]
+    raw = ec2.describe_regions(AllRegions=True)
+    return sorted([x["RegionName"] for x in raw["Regions"]])
 
 
 def get_aws_hourly_images(region: str) -> list[str]:
@@ -32,8 +32,12 @@ def get_aws_hourly_images(region: str) -> list[str]:
         List of dictionaries containing metadata about images.
     """
     ec2 = boto3.client("ec2", region_name=region)
-    raw = ec2.describe_images(Owners=["309956199498"], IncludeDeprecated="False")
-    return list(raw["Images"])
+    raw = ec2.describe_images(Owners=["309956199498"], IncludeDeprecated=False)
+
+    # Filter based on the billing code to ensure we only return hourly images.
+    # RunInstances:0010 == Hourly billing by cloud provider
+    # RunInstances:00g0 == Cloud Access
+    return [x for x in raw["Images"] if x["UsageOperation"] == "RunInstances:0010"]
 
 
 @functools.lru_cache

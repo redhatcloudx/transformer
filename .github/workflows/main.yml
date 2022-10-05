@@ -80,6 +80,9 @@ jobs:
 
       - name: Run pytest
         run: poetry run python -m pytest -n auto -p no:sugar -q tests/
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Check for clean working tree
         run: |

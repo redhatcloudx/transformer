@@ -13,7 +13,7 @@ def test_get_aws_regions() -> None:
     with patch("botocore.client.BaseClient._make_api_call") as boto:
         update_images.get_aws_regions()
 
-    boto.assert_called_with("DescribeRegions", {"AllRegions": "True"})
+    boto.assert_called_with("DescribeRegions", {"AllRegions": True})
 
 
 def test_get_aws_hourly_images() -> None:
@@ -22,7 +22,7 @@ def test_get_aws_hourly_images() -> None:
         update_images.get_aws_hourly_images("us-east-1")
 
     boto.assert_called_with(
-        "DescribeImages", {"IncludeDeprecated": "False", "Owners": ["309956199498"]}
+        "DescribeImages", {"IncludeDeprecated": False, "Owners": ["309956199498"]}
     )
 
 
