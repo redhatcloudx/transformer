@@ -36,5 +36,17 @@ poetry add foo
 poetry add --group dev bar
 ```
 
+## Running tests
+
+Use poetry to run pytest:
+
+```commandline
+# Run all tests, including end-to-end tests that call out to cloud APIs:
+poetry run pytest
+
+# Skip any tests that communicate remotely:
+poetry run pytest -m "not e2e"
+```
+
 [Poetry]: https://python-poetry.org/
 [installing poetry]: https://python-poetry.org/docs/#installation
