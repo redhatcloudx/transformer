@@ -22,7 +22,7 @@ def get_aws_regions() -> list[str]:
     return sorted([x["RegionName"] for x in raw["Regions"]])
 
 
-def aws_describe_images(region: str) -> list[str]:
+def aws_describe_images(region: str) -> list[dict[str, str]]:
     """Make an API call to AWS to get a list of RHEL images in a region.
 
     Args:
@@ -33,10 +33,10 @@ def aws_describe_images(region: str) -> list[str]:
     """
     ec2 = boto3.client("ec2", region_name=region)
     raw = ec2.describe_images(Owners=["309956199498"], IncludeDeprecated=False)
-    return raw["Images"]
+    return list(raw["Images"])
 
 
-def get_aws_images(region: str, image_type: str = "hourly") -> list[str]:
+def get_aws_images(region: str, image_type: str = "hourly") -> list[dict[str, str]]:
     """Get a list of RHEL hourly images from an AWS region.
 
     Args:
@@ -60,7 +60,7 @@ def get_aws_images(region: str, image_type: str = "hourly") -> list[str]:
     return [x for x in images if x["UsageOperation"] == billing_code]
 
 
-def get_aws_all_images(image_type: str = "hourly") -> dict[str, list[str]]:
+def get_aws_all_images(image_type: str = "hourly") -> dict[str, list[dict[str, str]]]:
     """Retrieve all RHEL images from all regions."""
     regions = get_aws_regions()
     images_per_region = {}
