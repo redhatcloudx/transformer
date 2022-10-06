@@ -14,26 +14,6 @@ def runner():
     return click.testing.CliRunner()
 
 
-@pytest.fixture
-def mock_regions(mocker):
-    """Provide an offline result for calls to get_aws_regions."""
-    mock = mocker.patch("rhelocator.update_images.get_aws_regions")
-    mock.return_value = ["us-east-1", "us-east-2"]
-    return mock
-
-
-@pytest.fixture
-def mock_aws_hourly_images(mocker):
-    """Provide an offline result for calls to get_aws_hourly_images."""
-    mock = mocker.patch("rhelocator.update_images.get_aws_hourly_images")
-    mock.return_value = [
-        {"ImageId": "ami-0001", "UsageOperation": "RunInstances:0010"},
-        {"ImageId": "ami-0002", "UsageOperation": "RunInstances:0010"},
-        {"ImageId": "ami-0003", "UsageOperation": "RunInstances:0010"},
-    ]
-    return mock
-
-
 @pytest.mark.e2e
 def test_aws_hourly_images_live(runner):
     """Run a live test against the AWS API to get hourly images via CLI."""
@@ -45,7 +25,7 @@ def test_aws_hourly_images_live(runner):
     assert result.exit_code == 0
 
 
-def test_aws_hourly_images_offline(runner, mock_regions, mock_aws_hourly_images):
+def test_aws_hourly_images_offline(runner, mock_aws_regions, mock_aws_hourly_images):
     """Run an offline test against the AWS API to get hourly images via CLI."""
     result = runner.invoke(cli.aws_hourly_images, ["--region=us-east-1"])
     parsed = json.loads(result.output)
@@ -63,7 +43,7 @@ def test_aws_hourly_images_missing_region(runner):
     assert result.exit_code == 2
 
 
-def test_aws_hourly_images_invalid_region(mock_regions, runner):
+def test_aws_hourly_images_invalid_region(mock_aws_regions, runner):
     """Simulate a failure to provide a valid region for the hourly images command."""
     result = runner.invoke(cli.aws_hourly_images, ["--region=antarctica-west-99"])
 
@@ -82,7 +62,7 @@ def test_aws_regions_live(runner):
     assert result.exit_code == 0
 
 
-def test_aws_regions_offline(mock_regions, runner):
+def test_aws_regions_offline(mock_aws_regions, runner):
     """Run an offline test against the AWS API to get hourly images via CLI."""
     result = runner.invoke(cli.aws_regions)
 
