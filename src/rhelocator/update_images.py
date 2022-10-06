@@ -69,18 +69,15 @@ def get_azure_access_token() -> str:
     return str(resp.json().get("access_token", None))
 
 
-def get_azure_locations(access_token: str) -> list[str]:
+def get_azure_locations() -> list[str]:
     """Get a list of all Azure locations.
 
-    Azure API docs:
-        https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/list-locations?tabs=HTTP
-
-    Args:
-        access_token: Valid Azure access token from get_azure_access_token().
+    https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/list-locations?tabs=HTTP
 
     Returns:
         List of valid Azure regions.
     """
+    access_token = get_azure_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2020-01-01"}
     url = (

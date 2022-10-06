@@ -5,7 +5,7 @@ from unittest.mock import MagicMock
 from unittest.mock import Mock
 from unittest.mock import patch
 
-from src.rhelocator import update_images
+from rhelocator import update_images
 
 
 def test_get_aws_regions() -> None:
@@ -26,8 +26,8 @@ def test_get_aws_hourly_images() -> None:
     )
 
 
-@patch("src.rhelocator.update_images.get_aws_hourly_images")
-@patch("src.rhelocator.update_images.get_aws_regions")
+@patch("rhelocator.update_images.get_aws_hourly_images")
+@patch("rhelocator.update_images.get_aws_regions")
 def test_get_aws_all_hourly_images(
     mock_regions: MagicMock, mock_images: MagicMock
 ) -> None:
@@ -45,14 +45,14 @@ def test_get_aws_all_hourly_images(
 
 
 @patch("rhelocator.update_images.requests.post")
-def test_get_azure_access_token(mock_requests: MagicMock) -> None:
+def test_get_azure_access_token(mock_post) -> None:
     """Test retrieving Azure locations."""
-    mock_response = MagicMock()
-    mock_response.status_code = 200
-    mock_response.json.return_value = {"foo": "bar", "access_token": "secrete"}
-    mock_requests.return_value = mock_response
+    auth_response = {"foo": "bar", "access_token": "secrete"}
+    mock_post.return_value = Mock(ok=True)
+    mock_post.return_value.json.return_value = auth_response
 
     access_token = update_images.get_azure_access_token()
+
     assert access_token == "secrete"  # nosec B105
 
 
@@ -87,7 +87,11 @@ def test_get_azure_locations(mock_requests: MagicMock) -> None:
     }
     mock_requests.return_value = mock_response
 
-    regions = update_images.get_azure_locations("secrete")
+    # Fake the access token.
+    with patch("rhelocator.update_images.get_azure_access_token") as mock_token:
+        mock_token.return_value = "secrete"
+        regions = update_images.get_azure_locations()
+
     assert regions == ["eastus"]
 
 
