@@ -5,6 +5,9 @@ from unittest.mock import MagicMock
 from unittest.mock import Mock
 from unittest.mock import patch
 
+import pytest
+
+from rhelocator import config
 from rhelocator import update_images
 
 
@@ -16,32 +19,49 @@ def test_get_aws_regions() -> None:
     boto.assert_called_with("DescribeRegions", {"AllRegions": True})
 
 
-def test_get_aws_hourly_images() -> None:
+def test_aws_describe_images() -> None:
     """Test AWS image request."""
     with patch("botocore.client.BaseClient._make_api_call") as boto:
-        update_images.get_aws_hourly_images("us-east-1")
+        update_images.aws_describe_images("us-east-1")
 
     boto.assert_called_with(
         "DescribeImages", {"IncludeDeprecated": False, "Owners": ["309956199498"]}
     )
 
 
-@patch("rhelocator.update_images.get_aws_hourly_images")
-@patch("rhelocator.update_images.get_aws_regions")
-def test_get_aws_all_hourly_images(
-    mock_regions: MagicMock, mock_images: MagicMock
-) -> None:
+def test_get_aws_hourly_images(mock_aws_regions, mock_aws_images):
+    """Ensure we filter for hourly images properly."""
+    images = update_images.get_aws_images(region="us-east-1", image_type="hourly")
+
+    billing_codes = {x["UsageOperation"] for x in images}
+    assert billing_codes == {config.AWS_HOURLY_BILLING_CODE}
+
+
+def test_get_aws_cloud_access_images(mock_aws_regions, mock_aws_images):
+    """Ensure we filter for cloud access images properly."""
+    images = update_images.get_aws_images(region="us-east-1", image_type="cloudaccess")
+
+    billing_codes = {x["UsageOperation"] for x in images}
+    assert billing_codes == {config.AWS_CLOUD_ACCESS_BILLING_CODE}
+
+
+def test_get_aws_images_bogus_type(mock_aws_regions, mock_aws_images):
+    """Test the exception if someone provides a bogus image type."""
+    with pytest.raises(NotImplementedError):
+        update_images.get_aws_images(region="us-east-1", image_type="doot")
+
+
+def test_get_aws_all_images(mock_aws_regions, mock_aws_images) -> None:
     """Test retrieving all AWS hourly images from all regions."""
-    # Fake the regions and images values.
-    mock_regions.return_value = ["region1", "region2", "region3"]
-    mock_images.return_value = ["image1", "image2", "image3"]
+    images = update_images.get_aws_all_images()
 
-    images = update_images.get_aws_all_hourly_images()
+    # Regions should be in the keys.
+    assert list(images.keys()) == mock_aws_regions.return_value
 
-    assert isinstance(images, dict)
-    print(images.keys())
-    assert list(images.keys()) == ["region1", "region2", "region3"]
-    assert images["region1"] == ["image1", "image2", "image3"]
+    # Each region should have only hourly image billing codes.
+    for _region, image_list in images.items():
+        billing_codes = {x["UsageOperation"] for x in image_list}
+        assert billing_codes == {config.AWS_HOURLY_BILLING_CODE}
 
 
 @patch("rhelocator.update_images.requests.post")

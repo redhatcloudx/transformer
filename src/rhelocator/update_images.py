@@ -22,30 +22,50 @@ def get_aws_regions() -> list[str]:
     return sorted([x["RegionName"] for x in raw["Regions"]])
 
 
-def get_aws_hourly_images(region: str) -> list[str]:
+def aws_describe_images(region: str) -> list[str]:
+    """Make an API call to AWS to get a list of RHEL images in a region.
+
+    Args:
+        region: AWS region name, such as us-east-1
+
+    Returns:
+        List of dictionaries containing image data.
+    """
+    ec2 = boto3.client("ec2", region_name=region)
+    raw = ec2.describe_images(Owners=["309956199498"], IncludeDeprecated=False)
+    return raw["Images"]
+
+
+def get_aws_images(region: str, image_type: str = "hourly") -> list[str]:
     """Get a list of RHEL hourly images from an AWS region.
 
     Args:
-        region: AWS region name, such as "us-east-1"
+        region: AWS region name, such as us-east-1
+        image_type: hourly or cloudaccess
 
     Returns:
         List of dictionaries containing metadata about images.
     """
-    ec2 = boto3.client("ec2", region_name=region)
-    raw = ec2.describe_images(Owners=["309956199498"], IncludeDeprecated=False)
+    # Determine the right billing code for the UsageOperation field.
 
-    # Filter based on the billing code to ensure we only return hourly images.
-    # RunInstances:0010 == Hourly billing by cloud provider
-    # RunInstances:00g0 == Cloud Access
-    return [x for x in raw["Images"] if x["UsageOperation"] == "RunInstances:0010"]
+    if image_type == "hourly":
+        billing_code = config.AWS_HOURLY_BILLING_CODE
+    elif image_type == "cloudaccess":
+        billing_code = config.AWS_CLOUD_ACCESS_BILLING_CODE
+    else:
+        raise (NotImplementedError("Only hourly and cloudaccess types are supported."))
+
+    # Filter the results based on the billing code of the image.
+    images = aws_describe_images(region)
+    return [x for x in images if x["UsageOperation"] == billing_code]
 
 
-def get_aws_all_hourly_images() -> dict[str, list[str]]:
+def get_aws_all_images(image_type: str = "hourly") -> dict[str, list[str]]:
     """Retrieve all RHEL images from all regions."""
     regions = get_aws_regions()
     images_per_region = {}
     for region in regions:
-        images = get_aws_hourly_images(region)
+        images = get_aws_images(region, image_type=image_type)
         images_per_region[region] = images
 
     return images_per_region
