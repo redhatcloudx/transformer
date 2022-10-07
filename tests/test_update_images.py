@@ -173,6 +173,52 @@ def test_get_azure_skus(mock_get):
     assert skus == [sku_response[0]["name"]]
 
 
+@patch("rhelocator.update_images.requests.get")
+def test_get_azure_image_versions(mock_get):
+    """Test retrieving and filtering Azure image versions."""
+    image_versions_response = [
+        {
+            "location": "eastus",
+            "name": "9.0.2022053014",
+            "id": "9-lvm-gen2/Versions/9.0.2022053014",
+        },
+        {
+            "location": "eastus",
+            "name": "9.0.2022062014",
+            "id": "9-lvm-gen2/Versions/9.0.2022062014",
+        },
+        {
+            "location": "eastus",
+            "name": "9.0.2022062414",
+            "id": "9-lvm-gen2/Versions/9.0.2022062414",
+        },
+        {
+            "location": "eastus",
+            "name": "9.0.2022081801",
+            "id": "9-lvm-gen2/Versions/9.0.2022081801",
+        },
+        {
+            "location": "eastus",
+            "name": "9.0.2022090601",
+            "id": "9-lvm-gen2/Versions/9.0.2022090601",
+        },
+    ]
+    mock_get.return_value = Mock(ok=True)
+    mock_get.return_value.json.return_value = image_versions_response
+
+    # Try with the default where we only get the latest image.
+    image_versions = update_images.get_azure_image_versions(
+        "eastus", "publisher", "offer", "sku"
+    )
+    assert image_versions == [image_versions_response[-1]["name"]]
+
+    # Now try to get all of the images.
+    image_versions = update_images.get_azure_image_versions(
+        "eastus", "publisher", "offer", "sku", latest=False
+    )
+    assert image_versions == [x["name"] for x in image_versions_response]
+
+
 @patch("rhelocator.update_images.compute_v1.ImagesClient")
 def test_get_google_images(mock_gcp: MagicMock) -> None:
     """Test getting Google images."""
