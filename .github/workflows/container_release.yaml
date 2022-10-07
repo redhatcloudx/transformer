@@ -14,13 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Setup rhelocator
     steps:
-      - name: Install rhelocator
-        uses: jaxxstorm/action-install-gh-release@v1.7.1
+      - uses: robinraju/release-downloader@v1.5
         with:
-          repo: redhatcloudx/rhelocator
-          tag: rhelocator-0.1.0.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          latest: true
+          fileName: "*.tar.gz"
+      - name: Install rhelocator
+        run: pip install rhelocator-0.1.0.tar.gz
 
   regions:
     needs: setup
