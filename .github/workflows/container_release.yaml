@@ -11,6 +11,8 @@ on:
 
 jobs:
   setup:
+    runs-on: ubuntu-latest
+    name: Setup rhelocator
     steps:
       - name: Install rhelocator
         uses: jaxxstorm/action-install-gh-release@v1.5.0
