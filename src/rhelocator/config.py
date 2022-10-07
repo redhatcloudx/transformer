@@ -4,6 +4,13 @@ from __future__ import annotations
 import os
 
 
+# AWS
+# UsageOperation is the AWS method for tagging an image with a billing code.
+# RunInstances:0010 is for hourly images (customer pays cloud provider)
+# RunInstances:0000 is for cloud access images (customer gets sub from Red Hat)
+AWS_HOURLY_BILLING_CODE = "RunInstances:0010"
+AWS_CLOUD_ACCESS_BILLING_CODE = "RunInstances:0000"
+
 # AZURE AUTHENTICATION
 AZURE_CLIENT_ID = os.environ.get("AZURE_CLIENT_ID", None)
 AZURE_CLIENT_SECRET = os.environ.get("AZURE_CLIENT_SECRET", None)

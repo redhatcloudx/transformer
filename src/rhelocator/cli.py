@@ -32,7 +32,7 @@ def aws_hourly_images(region: str) -> None:
         message += "\n  ".join(valid_regions)
         raise click.UsageError(message)
 
-    images = update_images.get_aws_hourly_images(region)
+    images = update_images.get_aws_images(region)
     click.echo(json.dumps(images, indent=2))
 
 

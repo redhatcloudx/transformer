@@ -7,7 +7,7 @@ import pytest
 MOCKED_AWS_IMAGE_LIST = [
     {"ImageId": "ami-0001", "UsageOperation": "RunInstances:0010"},
     {"ImageId": "ami-0002", "UsageOperation": "RunInstances:0010"},
-    {"ImageId": "ami-0003", "UsageOperation": "RunInstances:0010"},
+    {"ImageId": "ami-0003", "UsageOperation": "RunInstances:0000"},
 ]
 
 
@@ -24,8 +24,8 @@ def mock_aws_regions(mocker):
 
 
 @pytest.fixture
-def mock_aws_hourly_images(mocker):
-    """Provide an offline result for calls to get_aws_hourly_images."""
-    mock = mocker.patch("rhelocator.update_images.get_aws_hourly_images")
+def mock_aws_images(mocker):
+    """Provide an offline result for calls to get_aws_images."""
+    mock = mocker.patch("rhelocator.update_images.aws_describe_images")
     mock.return_value = MOCKED_AWS_IMAGE_LIST
     return mock
