@@ -14,6 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Setup rhelocator
     steps:
+      - name: Set up Python 3.8.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8.10
+
+      - name: Get full Python version
+        id: full-python-version
+        run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+
       - uses: robinraju/release-downloader@v1.5
         with:
           latest: true
