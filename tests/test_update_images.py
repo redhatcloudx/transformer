@@ -219,6 +219,32 @@ def test_get_azure_image_versions(mock_get):
     assert image_versions == [x["name"] for x in image_versions_response]
 
 
+def test_get_azure_images(mock_azure_image_versions):
+    """Test retrieving Azure images."""
+    images = update_images.get_azure_images()
+
+    assert isinstance(images, list)
+
+    # Make sure we have the right keys that match Azure's specification.
+    assert sorted(images[0].keys()) == [
+        "offer",
+        "publisher",
+        "sku",
+        "urn",
+        "version",
+    ]
+
+    # Loop through each image to ensure the URN is set properly.
+    for image in images:
+        urn_sections = [
+            image["publisher"],
+            image["offer"],
+            image["sku"],
+            image["version"],
+        ]
+        assert image["urn"] == ":".join(urn_sections)
+
+
 @patch("rhelocator.update_images.compute_v1.ImagesClient")
 def test_get_google_images(mock_gcp: MagicMock) -> None:
     """Test getting Google images."""
