@@ -107,6 +107,29 @@ def get_azure_locations() -> list[str]:
     return sorted([x["name"] for x in resp.json()["value"]])
 
 
+def get_azure_publishers(location: str) -> list[str]:
+    """Get a list of Azure publishers.
+
+    Publishers create offers (which contain SKUs and image versions).
+    https://learn.microsoft.com/en-us/rest/api/compute/virtual-machine-images/list-publishers
+
+    Args:
+        location: String containing a valid Azure location, such as eastus
+
+    Returns:
+        List of publishers on Azure.
+    """
+    access_token = get_azure_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+    params = {"api-version": "2022-08-01"}
+    url = (
+        f"https://management.azure.com/subscriptions/{config.AZURE_SUBSCRIPTION_ID}/"
+        f"providers/Microsoft.Compute/locations/{location}/publishers"
+    )
+    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    return sorted([x["name"] for x in resp.json()])
+
+
 def get_google_images() -> list[str]:
     """Get a list of RHEL images from Google Cloud.
 

@@ -116,6 +116,25 @@ def test_get_azure_locations(mock_requests: MagicMock) -> None:
     assert regions == ["eastus"]
 
 
+@patch("rhelocator.update_images.requests.get")
+def test_get_azure_publishers(mock_get):
+    """Test retrieving and filtering Azure publishers."""
+    publisher_response = [
+        {
+            "name": "aaaaaaaa",
+            "location": "aaaaaaaaaaaaaaaaaa",
+            "tags": {"key7868": "aaaaa"},
+            "extendedLocation": {"name": "aaaaaaaaaaaaaaaaaaaaa", "type": "EdgeZone"},
+            "id": "aaaaaaaaaaa",
+        }
+    ]
+    mock_get.return_value = Mock(ok=True)
+    mock_get.return_value.json.return_value = publisher_response
+
+    publishers = update_images.get_azure_publishers("eastus")
+    assert publishers == [publisher_response[0]["name"]]
+
+
 @patch("rhelocator.update_images.compute_v1.ImagesClient")
 def test_get_google_images(mock_gcp: MagicMock) -> None:
     """Test getting Google images."""
