@@ -1,8 +1,6 @@
 """Update images from public cloud APIs."""
 from __future__ import annotations
 
-import functools
-
 import boto3
 import requests
 
@@ -73,7 +71,6 @@ def get_aws_all_images(image_type: str = "hourly") -> dict[str, list[dict[str, s
     return images_per_region
 
 
-@functools.lru_cache
 def get_azure_access_token() -> str:
     """Authenticate with Azure and return the access token to use with API requests.
 
