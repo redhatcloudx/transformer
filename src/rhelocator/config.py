@@ -44,3 +44,6 @@ AZURE_RHEL_IMAGE_TREE = {
         "RHEL": {"7lvm-gen2": "latest", "8-lvm-gen2": "latest", "9-lvm-gen2": "latest"}
     }
 }
+
+# GCP
+GCP_PROJECTNAME = "rhel-cloud"
