@@ -32,7 +32,9 @@ def aws_describe_images(region: str) -> list[dict[str, str]]:
         List of dictionaries containing image data.
     """
     ec2 = boto3.client("ec2", region_name=region)
-    raw = ec2.describe_images(Owners=["309956199498"], IncludeDeprecated=False)
+    raw = ec2.describe_images(
+        Owners=[config.AWS_RHEL_OWNER_ID], IncludeDeprecated=False
+    )
     return list(raw["Images"])
 
 

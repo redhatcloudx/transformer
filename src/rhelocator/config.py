@@ -10,6 +10,8 @@ import os
 # RunInstances:0000 is for cloud access images (customer gets sub from Red Hat)
 AWS_HOURLY_BILLING_CODE = "RunInstances:0010"
 AWS_CLOUD_ACCESS_BILLING_CODE = "RunInstances:0000"
+# RHEL's OwnerId for RHEL images in AWS is 309956199498.
+AWS_RHEL_OWNER_ID = "309956199498"
 
 # AZURE AUTHENTICATION
 AZURE_CLIENT_ID = os.environ.get("AZURE_CLIENT_ID", None)

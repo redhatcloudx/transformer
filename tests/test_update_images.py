@@ -25,7 +25,8 @@ def test_aws_describe_images() -> None:
         update_images.aws_describe_images("us-east-1")
 
     boto.assert_called_with(
-        "DescribeImages", {"IncludeDeprecated": False, "Owners": ["309956199498"]}
+        "DescribeImages",
+        {"IncludeDeprecated": False, "Owners": [config.AWS_RHEL_OWNER_ID]},
     )
 
 
