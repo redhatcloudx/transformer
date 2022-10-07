@@ -15,9 +15,10 @@ jobs:
     name: Setup rhelocator
     steps:
       - name: Install rhelocator
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1.7.1
         with:
           repo: redhatcloudx/rhelocator
+          tag: 0.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
