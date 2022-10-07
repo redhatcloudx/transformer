@@ -5,7 +5,7 @@ name: Container-Release
 on:
   push:
     branches:
-      - add-release-workflow
+      - add-container-release-workflow
   #   tags:
   #     - '*.*.*'
 
