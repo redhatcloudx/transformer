@@ -45,3 +45,11 @@ def mock_azure_image_versions(mocker):
     mock = mocker.patch("rhelocator.update_images.get_azure_image_versions")
     mock.return_value = MOCKED_AZURE_IMAGE_VERSION_LIST
     return mock
+
+
+@pytest.fixture
+def mock_azure_image_versions_latest(mocker):
+    """Provide an offline result got get_azure_image_versions."""
+    mock = mocker.patch("rhelocator.update_images.get_azure_image_versions")
+    mock.return_value = [MOCKED_AZURE_IMAGE_VERSION_LIST[0]]
+    return mock
