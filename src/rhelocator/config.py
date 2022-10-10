@@ -45,5 +45,11 @@ AZURE_RHEL_IMAGE_TREE = {
     }
 }
 
-# GCP
+#    ________________ 
+#   / ____/ ____/ __ \
+#  / / __/ /   / /_/ /
+# / /_/ / /___/ ____/ 
+# \____/\____/_/ 
+
+# Defines project name.
 GCP_PROJECTNAME = "rhel-cloud"
