@@ -1,6 +1,8 @@
 """Update images from public cloud APIs."""
 from __future__ import annotations
 
+import re
+
 import boto3
 import requests
 
@@ -69,6 +71,44 @@ def get_aws_all_images(image_type: str = "hourly") -> dict[str, list[dict[str, s
         images_per_region[region] = images
 
     return images_per_region
+
+
+def parse_aws_image_name(image_name: str) -> dict[str, str]:
+    """Parse an AWS image name and return extra data about the image.
+
+    Regex101: https://regex101.com/r/mXCl73/1
+
+    Args:
+        image_name: String containing the image name, such as:
+                    RHEL-9.0.0_HVM_BETA-20211026-x86_64-10-Hourly2-GP2
+
+    Returns:
+        Dictionary with additional information about the image.
+    """
+    # See Regex101 link above to tinker with this regex. Each group is named to make
+    # it easier to handle parsed data. Explanation of names:
+    #
+    #     intprod = internal product (such as HA)
+    #     extprod = external product (such as SAP)
+    #     version = RHEL version (such as 9.0.0)
+    #     virt = virtualization type (such as HVM)
+    #     beta = beta vs non-beta release
+    #     date = date image was produced
+    #     arch = architecture (such as x86_64 or arm64)
+    #     release = release number of the image
+    #     billing = Hourly2 or Access2  #noqa: E800
+    #     storage = storage type (almost always GP2)
+    #
+    aws_image_name_regex = (
+        r"RHEL_*(?P<intprod>\w*)?-*(?P<extprod>\w*)?-(?P<version>[\d\-\.]*)_"
+        r"(?P<virt>[A-Z]*)_*(?P<beta>\w*)?-(?P<date>\d+)-(?P<arch>\w*)-"
+        r"(?P<release>\d+)-(?P<billing>[\w\d]*)-(?P<storage>\w*)"
+    )
+    matches = re.match(aws_image_name_regex, image_name, re.IGNORECASE)
+    if matches:
+        return matches.groupdict()
+
+    return {}
 
 
 def get_azure_access_token() -> str:
