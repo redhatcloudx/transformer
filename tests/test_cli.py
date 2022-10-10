@@ -72,3 +72,32 @@ def test_aws_regions_offline(mock_aws_regions, runner):
     assert isinstance(parsed, list)
     assert "us-east-1" in parsed
     assert result.exit_code == 0
+
+
+@pytest.mark.e2e
+def test_azure_images_live(runner):
+    """Run a live test against the Azure API to get images via CLI."""
+    result = runner.invoke(cli.azure_images)
+    parsed = json.loads(result.output)
+
+    assert isinstance(parsed, list)
+
+    for image in parsed:
+        expected_keys = ["offer", "publisher", "sku", "urn", "version"]
+        assert list(image.keys()) == expected_keys
+
+    assert result.exit_code == 0
+
+
+def test_azure_images_offline(mock_azure_image_versions, runner):
+    """Run a live test against the Azure API to get images via CLI."""
+    result = runner.invoke(cli.azure_images)
+    parsed = json.loads(result.output)
+
+    assert isinstance(parsed, list)
+
+    for image in parsed:
+        expected_keys = ["offer", "publisher", "sku", "urn", "version"]
+        assert list(image.keys()) == expected_keys
+
+    assert result.exit_code == 0
