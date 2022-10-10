@@ -43,5 +43,13 @@ def aws_regions() -> None:
     click.echo(json.dumps(regions, indent=2))
 
 
+@click.command()
+def azure_images() -> None:
+    """Dump Azure images from a region in JSON format"""
+    images = update_images.get_azure_images()
+    click.echo(json.dumps(images, indent=2))
+
+
 cli.add_command(aws_hourly_images)
 cli.add_command(aws_regions)
+cli.add_command(azure_images)
