@@ -219,7 +219,7 @@ def test_get_azure_image_versions(mock_get):
     assert image_versions == [x["name"] for x in image_versions_response]
 
 
-def test_get_azure_images(mock_azure_image_versions):
+def test_get_latest_azure_images(mock_azure_image_versions_latest):
     """Test retrieving Azure images."""
     images = update_images.get_azure_images()
 
@@ -243,6 +243,22 @@ def test_get_azure_images(mock_azure_image_versions):
             image["version"],
         ]
         assert image["urn"] == ":".join(urn_sections)
+
+    # Since we asked for the latest image only, we should have one image per SKU.
+    assert len({x["sku"] for x in images}) == len(images)
+
+
+def test_get_all_azure_images(mock_azure_image_versions):
+    """Test retrieving Azure images when we want all of the image versions."""
+    # Fake an image tree with one SKU that doesn't use 'latest'.
+    config.AZURE_RHEL_IMAGE_TREE = {"redhat": {"RHEL": {"7lvm-gen2": ""}}}
+    images = update_images.get_azure_images()
+
+    assert isinstance(images, list)
+
+    # Since we're looking for all image versions instead of just the latest ones, we
+    # should have multiple image versions returned.
+    assert len(images) == len(mock_azure_image_versions.return_value)
 
 
 @patch("rhelocator.update_images.compute_v1.ImagesClient")
