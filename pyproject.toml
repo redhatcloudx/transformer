@@ -54,7 +54,7 @@ build-backend = "poetry.core.masonry.api"
 # Much of what is below this line is borrowed from poetry's pyproject.yaml.
 # https://github.com/python-poetry/poetry/blob/master/pyproject.toml
 [tool.isort]
-py_version = 37
+py_version = 39
 profile = "black"
 force_single_line = true
 combine_as_imports = true
@@ -64,7 +64,7 @@ src_paths = ["src", "tests"]
 extend_skip = ["setup.py"]
 
 [tool.black]
-target-version = ['py37']
+target-version = ['py39']
 preview = true
 force-exclude = '''
 .*/setup\.py$
