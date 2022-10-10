@@ -217,6 +217,40 @@ def get_azure_image_versions(
     return images
 
 
+def get_azure_images() -> list[dict[str, str]]:
+    """Get a list of Azure RHEL images.
+
+    Returns:
+        List of dictionaries matching `az vm image list` output.
+    """
+    results = []
+    for publisher, offers in config.AZURE_RHEL_IMAGE_TREE.items():
+        for offer, skus in offers.items():
+            for sku, version in skus.items():
+                # Are we looking for the latest image or all images?
+                latest = True
+                if version != "latest":
+                    latest = False
+                # Get the image versions that match the pub/offer/sku combination.
+                image_versions = get_azure_image_versions(
+                    config.AZURE_DEFAULT_LOCATION, publisher, offer, sku, latest
+                )
+
+                # Loop through the image versions and add on this image version to the
+                # list in Azure's `az vm image list` format.
+                for image_version in image_versions:
+                    result = {
+                        "offer": offer,
+                        "publisher": publisher,
+                        "sku": sku,
+                        "urn": f"{publisher}:{offer}:{sku}:{image_version}",
+                        "version": image_version,
+                    }
+                    results.append(result)
+
+    return results
+
+
 def get_google_images() -> list[str]:
     """Get a list of RHEL images from Google Cloud.
 
