@@ -42,6 +42,11 @@ def aws_regions() -> None:
     regions = update_images.get_aws_regions()
     click.echo(json.dumps(regions, indent=2))
 
+@click.command()
+def gcp_images() -> None:
+    """Dump GCP images for all regions in JSON format"""
+    images = update_images.get_google_images()
+    click.echo(json.dumps(images, indent=2))
 
 @click.command()
 def azure_images() -> None:
@@ -53,3 +58,4 @@ def azure_images() -> None:
 cli.add_command(aws_hourly_images)
 cli.add_command(aws_regions)
 cli.add_command(azure_images)
+cli.add_command(gcp_images)
