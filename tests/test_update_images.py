@@ -16,7 +16,15 @@ def test_get_aws_regions() -> None:
     with patch("botocore.client.BaseClient._make_api_call") as boto:
         update_images.get_aws_regions()
 
-    boto.assert_called_with("DescribeRegions", {"AllRegions": True})
+    boto.assert_called_with(
+        "DescribeRegions",
+        {
+            "AllRegions": True,
+            "Filters": [
+                {"Name": "opt-in-status", "Values": ["opt-in-not-required", "opted-in"]}
+            ],
+        },
+    )
 
 
 def test_aws_describe_images() -> None:

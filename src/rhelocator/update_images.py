@@ -18,7 +18,15 @@ def get_aws_regions() -> list[str]:
         List of AWS regions as strings.
     """
     ec2 = boto3.client("ec2", region_name="us-east-1")
-    raw = ec2.describe_regions(AllRegions=True)
+    # TODO(mhayden): Remove the opt-in-status filter below once AWS enables the
+    #  additional regions for the account. The opt-in was requested on 2022-10-11 but
+    #  it could take time before they are enabled.
+    raw = ec2.describe_regions(
+        Filters=[
+            {"Name": "opt-in-status", "Values": ["opt-in-not-required", "opted-in"]}
+        ],
+        AllRegions=True,
+    )
     return sorted([x["RegionName"] for x in raw["Regions"]])
 
 
