@@ -4,11 +4,13 @@ version = "0.1.0"
 description = "Locate RHEL images in public clouds"
 authors = [
     "Felix Kolwa <felix@redhat.com>",
-    "Major Hayden <major@redhat.com>"
+    "Major Hayden <major@redhat.com>",
+    "Nina Olear <nolear@redhat.com>"
 ]
 maintainers = [
     "Felix Kolwa <felix@redhat.com>",
-    "Major Hayden <major@redhat.com>"
+    "Major Hayden <major@redhat.com>",
+    "Nina Olear <nolear@redhat.com>"
 ]
 license = "Apache-2.0"
 readme = "README.md"
