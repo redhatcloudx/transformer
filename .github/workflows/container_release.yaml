@@ -1,0 +1,85 @@
+name: Container-Release
+
+on: [workflow_dispatch]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    name: Setup rhelocator
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Bootstrap poetry
+        run: |
+          curl -sL https://install.python-poetry.org | python - -y
+
+      - name: Update PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Configure poetry
+        run: poetry config virtualenvs.in-project true
+
+      - name: Set up cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Ensure cache is healthy
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: |
+          # Using `timeout` is a safeguard against the Poetry command hanging for some reason.
+          timeout 10s poetry run pip --version || rm -rf .venv
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: List aws hourly images
+        run: |
+          mkdir ./results
+          AWS_REGIONS=$(poetry run rhelocator-updater aws-regions)
+          regions=$(echo "$AWS_REGIONS" | jq -r '.[]')
+          for region in ${regions[@]}; do
+            poetry run rhelocator-updater aws-hourly-images --region $region >> ./results/aws_hourly_images.json
+          done
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Build API container
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: rhelocator
+          tags: latest ${{ github.sha }}
+          containerfiles: |
+            ./Containerfile
+
+      # TODO: Choose registry and setup secrets
+      # - name: Log in to the GitHub Container registry
+      #   uses: redhat-actions/podman-login@v1
+      #   with:
+      #     registry: ${{  }}
+      #     username: ${{  }}
+      #     password: ${{  }}
+
+      # - name: Push to GitHub Container Repository
+      #   id: push-to-ghcr
+      #   uses: redhat-actions/push-to-registry@v2
+      #   with:
+      #     image: ${{ steps.build-image.outputs.image }}
+      #     tags: ${{ steps.build-image.outputs.tags }}
+      #     registry: ${{  }}
+
+      - name: Archive generated image data
+        uses: actions/upload-artifact@v3
+        with:
+          name: Upload AWS hourly images
+          path: ./results
+          retention-days: 7
