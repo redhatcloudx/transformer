@@ -40,9 +40,11 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
+      - name: Create output folder
+        run: mkdir -p results
+
       - name: List aws hourly images
         run: |
-          mkdir ./results
           AWS_REGIONS=$(poetry run rhelocator-updater aws-regions)
           regions=$(echo "$AWS_REGIONS" | jq -r '.[]')
           for region in ${regions[@]}; do
@@ -51,6 +53,15 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: List azure images
+        run: |
+          poetry run rhelocator-updater azure-images >> ./results/azure_images.json
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Build API container
         id: build-image
