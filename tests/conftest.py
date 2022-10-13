@@ -20,7 +20,7 @@ MOCKED_AZURE_IMAGE_VERSION_LIST = [
 
 MOCKED_GCP_IMAGE_LIST = [
     {"status": "READY"},
-    {"status": "DEPRICATED"},
+    {"status": "DEPRECATED"},
 ]
 
 

@@ -123,7 +123,7 @@ def test_gcp_images_live(runner):
 
     assert isinstance(parsed, list)
 
-    assert {image["status"] for image in parsed} != "DEPRICATED"
+    assert {image["status"] for image in parsed} != "DEPRECATED"
 
     assert result.exit_code == 0
 
@@ -135,6 +135,6 @@ def test_gcp_images_offline(mock_gcp_images, runner):
 
     assert isinstance(parsed, list)
 
-    assert {image["status"] for image in parsed} != "DEPRICATED"
+    assert {image["status"] for image in parsed} != "DEPRECATED"
 
     assert result.exit_code == 0
