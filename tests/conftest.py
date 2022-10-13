@@ -31,7 +31,7 @@ def pytest_configure(config: any) -> None:
 @pytest.fixture
 def mock_aws_regions(mocker):
     """Provide an offline result for calls to get_aws_regions."""
-    mock = mocker.patch("rhelocator.update_images.get_aws_regions")
+    mock = mocker.patch("rhelocator.update_images.aws.get_aws_regions")
     mock.return_value = ["us-east-1", "us-east-2"]
     return mock
 
@@ -39,7 +39,7 @@ def mock_aws_regions(mocker):
 @pytest.fixture
 def mock_aws_images(mocker):
     """Provide an offline result for calls to get_aws_images."""
-    mock = mocker.patch("rhelocator.update_images.aws_describe_images")
+    mock = mocker.patch("rhelocator.update_images.aws.aws_describe_images")
     mock.return_value = MOCKED_AWS_IMAGE_LIST
     return mock
 
@@ -47,7 +47,7 @@ def mock_aws_images(mocker):
 @pytest.fixture
 def mock_azure_image_versions(mocker):
     """Provide an offline result got get_azure_image_versions."""
-    mock = mocker.patch("rhelocator.update_images.get_azure_image_versions")
+    mock = mocker.patch("rhelocator.update_images.azure.get_azure_image_versions")
     mock.return_value = MOCKED_AZURE_IMAGE_VERSION_LIST
     return mock
 
@@ -55,7 +55,7 @@ def mock_azure_image_versions(mocker):
 @pytest.fixture
 def mock_azure_image_versions_latest(mocker):
     """Provide an offline result got get_azure_image_versions."""
-    mock = mocker.patch("rhelocator.update_images.get_azure_image_versions")
+    mock = mocker.patch("rhelocator.update_images.azure.get_azure_image_versions")
     mock.return_value = [MOCKED_AZURE_IMAGE_VERSION_LIST[0]]
     return mock
 
