@@ -87,7 +87,6 @@ def test_aws_regions_offline(mock_aws_regions, runner):
     assert "us-east-1" in parsed
     assert result.exit_code == 0
 
-
 @pytest.mark.e2e
 def test_azure_images_live(runner):
     """Run a live test against the Azure API to get images via CLI."""
@@ -113,5 +112,29 @@ def test_azure_images_offline(mock_azure_image_versions, runner):
     for image in parsed:
         expected_keys = ["offer", "publisher", "sku", "urn", "version"]
         assert list(image.keys()) == expected_keys
+
+    assert result.exit_code == 0
+
+@pytest.mark.e2e
+def test_gcp_images_live(runner):
+    """Run a live test against the Google Cloud API to get images via CLI."""
+    result = runner.invoke(cli.gcp_images)
+    parsed = json.loads(result.output)
+
+    assert isinstance(parsed, list)
+
+    assert {image["status"] for image in parsed} != "DEPRICATED"
+
+    assert result.exit_code == 0
+
+
+def test_gcp_images_offline(mock_gcp_images, runner):
+    """Run a live test against the Google Cloud API to get images via CLI."""
+    result = runner.invoke(cli.gcp_images)
+    parsed = json.loads(result.output)
+
+    assert isinstance(parsed, list)
+
+    assert {image["status"] for image in parsed} != "DEPRICATED"
 
     assert result.exit_code == 0

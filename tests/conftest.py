@@ -18,6 +18,11 @@ MOCKED_AZURE_IMAGE_VERSION_LIST = [
     "9.0.2022090601",
 ]
 
+MOCKED_GCP_IMAGE_LIST = [
+    {"status": "READY"},
+    {"status": "DEPRICATED"},
+]
+
 
 def pytest_configure(config: any) -> None:
     config.addinivalue_line("markers", "e2e: mark as end-to-end test.")
@@ -52,4 +57,12 @@ def mock_azure_image_versions_latest(mocker):
     """Provide an offline result got get_azure_image_versions."""
     mock = mocker.patch("rhelocator.update_images.get_azure_image_versions")
     mock.return_value = [MOCKED_AZURE_IMAGE_VERSION_LIST[0]]
+    return mock
+
+
+@pytest.fixture
+def mock_gcp_images(mocker):
+    """Provide an offline result for calls to get_google_images."""
+    mock = mocker.patch("rhelocator.update_images.get_google_images")
+    mock.return_value = MOCKED_GCP_IMAGE_LIST
     return mock
