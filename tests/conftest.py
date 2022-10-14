@@ -63,6 +63,6 @@ def mock_azure_image_versions_latest(mocker):
 @pytest.fixture
 def mock_gcp_images(mocker):
     """Provide an offline result for calls to get_google_images."""
-    mock = mocker.patch("rhelocator.update_images.get_google_images")
+    mock = mocker.patch("rhelocator.update_images.gcp.get_google_images")
     mock.return_value = MOCKED_GCP_IMAGE_LIST
     return mock
