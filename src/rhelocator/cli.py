@@ -8,6 +8,7 @@ import click
 from rhelocator import __version__
 from rhelocator.update_images import aws
 from rhelocator.update_images import azure
+from rhelocator.update_images import gcp
 
 
 @click.group()
@@ -46,7 +47,7 @@ def aws_regions() -> None:
 @click.command()
 def gcp_images() -> None:
     """Dump GCP images for all regions in JSON format"""
-    images = update_images.get_google_images()
+    images = gcp.get_google_images()
     click.echo(json.dumps(images, indent=2))
 
 @click.command()
