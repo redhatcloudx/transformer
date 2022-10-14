@@ -19,8 +19,10 @@ MOCKED_AZURE_IMAGE_VERSION_LIST = [
 ]
 
 MOCKED_GCP_IMAGE_LIST = [
-    {"status": "READY"},
-    {"status": "DEPRECATED"},
+    "rhel-7-v20220920",
+    "rhel-8-v20220920",
+    "rhel-9-arm64-v20220920",
+    "rhel-9-v20220920",
 ]
 
 
