@@ -78,6 +78,11 @@ jobs:
       - name: Install pytest plugin
         run: poetry run pip install pytest-github-actions-annotate-failures
 
+      - name: Dump Google credentials to a temporary file
+        run: echo $GOOGLE_APPLICATION_CREDENTIALS >> /tmp/google-creds.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+
       - name: Run pytest with live e2e tests
         if: env.AWS_ACCESS_KEY_ID != null
         run: poetry run python -m pytest -n auto -p no:sugar -q tests/
@@ -88,7 +93,10 @@ jobs:
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/google-creds.json
+
+      - name: Remove Google credentials
+        run: rm -f /tmp/google-creds.json
 
       - name: Run pytest with offline tests only
         if: env.SECRET_CHECK == null
