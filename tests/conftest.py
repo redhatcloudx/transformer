@@ -1,6 +1,8 @@
 """Configuration for tests."""
 from __future__ import annotations
 
+from unittest.mock import MagicMock
+
 import pytest
 
 
@@ -16,13 +18,6 @@ MOCKED_AZURE_IMAGE_VERSION_LIST = [
     "9.0.2022062414",
     "9.0.2022081801",
     "9.0.2022090601",
-]
-
-MOCKED_GCP_IMAGE_LIST = [
-    "rhel-7-v20220920",
-    "rhel-8-v20220920",
-    "rhel-9-arm64-v20220920",
-    "rhel-9-v20220920",
 ]
 
 
@@ -66,5 +61,29 @@ def mock_azure_image_versions_latest(mocker):
 def mock_gcp_images(mocker):
     """Provide an offline result for calls to get_google_images."""
     mock = mocker.patch("rhelocator.update_images.gcp.get_images")
-    mock.return_value = MOCKED_GCP_IMAGE_LIST
+
+    mocked_image = {
+        "architecture": "x86_64",
+        "creation_timestamp": "2022-09-20T16:32:45.572-07:00",
+        "description": "Red Hat, Red Hat Enterprise Linux, 7, x86_64",
+        "name": "rhel-7-v20220920",
+    }
+    mock.return_value = [mocked_image]
+
+    return mock
+
+
+@pytest.fixture
+def mock_normalize_google_images(mocker):
+    """Provide an offline result for calls to normalize_google_images."""
+    mock = mocker.patch("rhelocator.update_images.gcp.normalize_google_images")
+
+    # Fake a Google image listing.
+    mocked_image = MagicMock()
+    mocked_image.architecture = "X86_64"
+    mocked_image.creation_timestamp = "20221018"
+    mocked_image.description = "RHEL"
+    mocked_image.name = "rhel-9-20221018"
+    mock.return_value = [mocked_image]
+
     return mock

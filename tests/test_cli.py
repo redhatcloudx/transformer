@@ -125,8 +125,11 @@ def test_gcp_images_live(runner):
 
     assert isinstance(parsed, list)
 
-    for image in parsed:
-        assert image.startswith("rhel")
+    for img in parsed:
+        assert img["architecture"] in ["arm64", "x86_64"]
+        assert "creation_timestamp" in img
+        assert "Red Hat" in img["description"]
+        assert "rhel" in img["name"]
 
     assert result.exit_code == 0
 
@@ -138,7 +141,10 @@ def test_gcp_images_offline(mock_gcp_images, runner):
 
     assert isinstance(parsed, list)
 
-    for image in parsed:
-        assert image.startswith("rhel")
+    for img in parsed:
+        assert img["architecture"] in ["arm64", "x86_64"]
+        assert "creation_timestamp" in img
+        assert "Red Hat" in img["description"]
+        assert "rhel" in img["name"]
 
     assert result.exit_code == 0
