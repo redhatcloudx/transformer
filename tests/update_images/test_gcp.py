@@ -12,7 +12,7 @@ from rhelocator.update_images import gcp
 
 
 @patch("rhelocator.update_images.gcp.compute_v1.ImagesClient")
-def test_get_google_images(mock_gcp: MagicMock) -> None:
+def test_get_images(mock_gcp: MagicMock) -> None:
     """Test getting Google images."""
     # Fake a valid, non-deprecated image.
     mock_image = Mock()
@@ -28,5 +28,5 @@ def test_get_google_images(mock_gcp: MagicMock) -> None:
     mock_response.list.return_value = [mock_image, mock_deprecated_image]
     mock_gcp.return_value = mock_response
 
-    images = gcp.get_google_images()
+    images = gcp.get_images()
     assert images == ["valid_image"]

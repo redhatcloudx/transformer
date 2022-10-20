@@ -12,19 +12,19 @@ from rhelocator.update_images import azure
 
 
 @patch("rhelocator.update_images.azure.requests.post")
-def test_get_azure_access_token(mock_post) -> None:
+def test_get_access_token(mock_post) -> None:
     """Test retrieving Azure locations."""
     auth_response = {"foo": "bar", "access_token": "secrete"}
     mock_post.return_value = Mock(ok=True)
     mock_post.return_value.json.return_value = auth_response
 
-    access_token = azure.get_azure_access_token()
+    access_token = azure.get_access_token()
 
     assert access_token == "secrete"  # nosec B105
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_azure_locations(mock_requests: MagicMock) -> None:
+def test_get_locations(mock_requests: MagicMock) -> None:
     """Test getting Azure location list."""
     mock_response = MagicMock()
     mock_response.status_code = 200
@@ -57,13 +57,13 @@ def test_get_azure_locations(mock_requests: MagicMock) -> None:
     # Fake the access token.
     with patch("rhelocator.update_images.azure.get_azure_access_token") as mock_token:
         mock_token.return_value = "secrete"
-        regions = azure.get_azure_locations()
+        regions = azure.get_locations()
 
     assert regions == ["eastus"]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_azure_publishers(mock_get):
+def test_get_publishers(mock_get):
     """Test retrieving and filtering Azure publishers."""
     publisher_response = [
         {
@@ -77,12 +77,12 @@ def test_get_azure_publishers(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = publisher_response
 
-    publishers = azure.get_azure_publishers("eastus")
+    publishers = azure.get_publishers("eastus")
     assert publishers == [publisher_response[0]["name"]]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_azure_offers(mock_get):
+def test_get_offers(mock_get):
     """Test retrieving and filtering Azure offers."""
     offer_response = [
         {
@@ -96,12 +96,12 @@ def test_get_azure_offers(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = offer_response
 
-    offers = azure.get_azure_offers("eastus", "publisher")
+    offers = azure.get_offers("eastus", "publisher")
     assert offers == [offer_response[0]["name"]]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_azure_skus(mock_get):
+def test_get_skus(mock_get):
     """Test retrieving and filtering Azure SKUs."""
     sku_response = [
         {
@@ -115,12 +115,12 @@ def test_get_azure_skus(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = sku_response
 
-    skus = azure.get_azure_skus("eastus", "publisher", "offer")
+    skus = azure.get_skus("eastus", "publisher", "offer")
     assert skus == [sku_response[0]["name"]]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_azure_image_versions(mock_get):
+def test_get_image_versions(mock_get):
     """Test retrieving and filtering Azure image versions."""
     image_versions_response = [
         {
@@ -153,21 +153,21 @@ def test_get_azure_image_versions(mock_get):
     mock_get.return_value.json.return_value = image_versions_response
 
     # Try with the default where we only get the latest image.
-    image_versions = azure.get_azure_image_versions(
+    image_versions = azure.get_image_versions(
         "eastus", "publisher", "offer", "sku"
     )
     assert image_versions == [image_versions_response[-1]["name"]]
 
     # Now try to get all of the images.
-    image_versions = azure.get_azure_image_versions(
+    image_versions = azure.get_image_versions(
         "eastus", "publisher", "offer", "sku", latest=False
     )
     assert image_versions == [x["name"] for x in image_versions_response]
 
 
-def test_get_latest_azure_images(mock_azure_image_versions_latest):
+def test_get_latest_images(mock_azure_image_versions_latest):
     """Test retrieving Azure images."""
-    images = azure.get_azure_images()
+    images = azure.get_images()
 
     assert isinstance(images, list)
 
@@ -194,11 +194,11 @@ def test_get_latest_azure_images(mock_azure_image_versions_latest):
     assert len({x["sku"] for x in images}) == len(images)
 
 
-def test_get_all_azure_images(mock_azure_image_versions):
+def test_get_all_images(mock_azure_image_versions):
     """Test retrieving Azure images when we want all of the image versions."""
     # Fake an image tree with one SKU that doesn't use 'latest'.
     config.AZURE_RHEL_IMAGE_TREE = {"redhat": {"RHEL": {"7lvm-gen2": ""}}}
-    images = azure.get_azure_images()
+    images = azure.get_images()
 
     assert isinstance(images, list)
 
