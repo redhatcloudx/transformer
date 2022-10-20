@@ -8,7 +8,7 @@ import boto3
 from rhelocator import config
 
 
-def get_aws_regions() -> list[str]:
+def get_regions() -> list[str]:
     """Get the latest list of AWS regions.
 
     Returns:
@@ -27,7 +27,7 @@ def get_aws_regions() -> list[str]:
     return sorted([x["RegionName"] for x in raw["Regions"]])
 
 
-def aws_describe_images(region: str) -> list[dict[str, str]]:
+def describe_images(region: str) -> list[dict[str, str]]:
     """Make an API call to AWS to get a list of RHEL images in a region.
 
     Args:
@@ -43,7 +43,7 @@ def aws_describe_images(region: str) -> list[dict[str, str]]:
     return list(raw["Images"])
 
 
-def get_aws_images(region: str, image_type: str = "hourly") -> list[dict[str, str]]:
+def get_images(region: str, image_type: str = "hourly") -> list[dict[str, str]]:
     """Get a list of RHEL hourly images from an AWS region.
 
     Args:
@@ -63,22 +63,22 @@ def get_aws_images(region: str, image_type: str = "hourly") -> list[dict[str, st
         raise (NotImplementedError("Only hourly and cloudaccess types are supported."))
 
     # Filter the results based on the billing code of the image.
-    images = aws_describe_images(region)
+    images = describe_images(region)
     return [x for x in images if x["UsageOperation"] == billing_code]
 
 
-def get_aws_all_images(image_type: str = "hourly") -> dict[str, list[dict[str, str]]]:
+def get_all_images(image_type: str = "hourly") -> dict[str, list[dict[str, str]]]:
     """Retrieve all RHEL images from all regions."""
-    regions = get_aws_regions()
+    regions = get_regions()
     images_per_region = {}
     for region in regions:
-        images = get_aws_images(region, image_type=image_type)
+        images = get_images(region, image_type=image_type)
         images_per_region[region] = images
 
     return images_per_region
 
 
-def parse_aws_image_name(image_name: str) -> dict[str, str]:
+def parse_image_name(image_name: str) -> dict[str, str]:
     """Parse an AWS image name and return extra data about the image.
 
     Regex101: https://regex101.com/r/mXCl73/1

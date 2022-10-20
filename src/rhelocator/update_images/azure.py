@@ -6,7 +6,7 @@ import requests
 from rhelocator import config
 
 
-def get_azure_access_token() -> str:
+def get_access_token() -> str:
     """Authenticate with Azure and return the access token to use with API requests.
 
     Returns:
@@ -23,7 +23,7 @@ def get_azure_access_token() -> str:
     return str(resp.json().get("access_token", None))
 
 
-def get_azure_locations() -> list[str]:
+def get_locations() -> list[str]:
     """Get a list of all Azure locations.
 
     https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/list-locations?tabs=HTTP
@@ -31,7 +31,7 @@ def get_azure_locations() -> list[str]:
     Returns:
         List of valid Azure regions.
     """
-    access_token = get_azure_access_token()
+    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2020-01-01"}
     url = (
@@ -42,7 +42,7 @@ def get_azure_locations() -> list[str]:
     return sorted([x["name"] for x in resp.json()["value"]])
 
 
-def get_azure_publishers(location: str) -> list[str]:
+def get_publishers(location: str) -> list[str]:
     """Get a list of Azure publishers.
 
     Publishers create offers (which contain SKUs and image versions).
@@ -54,7 +54,7 @@ def get_azure_publishers(location: str) -> list[str]:
     Returns:
         List of publishers on Azure.
     """
-    access_token = get_azure_access_token()
+    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -65,7 +65,7 @@ def get_azure_publishers(location: str) -> list[str]:
     return sorted([x["name"] for x in resp.json()])
 
 
-def get_azure_offers(location: str, publisher: str) -> list[str]:
+def get_offers(location: str, publisher: str) -> list[str]:
     """Get a list of Azure offers.
 
     Offers come from a publisher and each offer contains one or more SKUs.
@@ -78,7 +78,7 @@ def get_azure_offers(location: str, publisher: str) -> list[str]:
     Returns:
         List of offers on Azure.
     """
-    access_token = get_azure_access_token()
+    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -90,7 +90,7 @@ def get_azure_offers(location: str, publisher: str) -> list[str]:
     return sorted([x["name"] for x in resp.json()])
 
 
-def get_azure_skus(location: str, publisher: str, offer: str) -> list[str]:
+def get_skus(location: str, publisher: str, offer: str) -> list[str]:
     """Get a list of Azure SKUs.
 
     SKUs contain one or more image versions.
@@ -104,7 +104,7 @@ def get_azure_skus(location: str, publisher: str, offer: str) -> list[str]:
     Returns:
         List of skus on Azure.
     """
-    access_token = get_azure_access_token()
+    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -116,7 +116,7 @@ def get_azure_skus(location: str, publisher: str, offer: str) -> list[str]:
     return sorted([x["name"] for x in resp.json()])
 
 
-def get_azure_image_versions(
+def get_image_versions(
     location: str, publisher: str, offer: str, sku: str, latest: bool = True
 ) -> list[str]:
     """Get a list of Azure image versions.
@@ -134,7 +134,7 @@ def get_azure_image_versions(
     Returns:
         List of skus on Azure.
     """
-    access_token = get_azure_access_token()
+    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -152,7 +152,7 @@ def get_azure_image_versions(
     return images
 
 
-def get_azure_images() -> list[dict[str, str]]:
+def get_images() -> list[dict[str, str]]:
     """Get a list of Azure RHEL images.
 
     Returns:
@@ -167,7 +167,7 @@ def get_azure_images() -> list[dict[str, str]]:
                 if version != "latest":
                     latest = False
                 # Get the image versions that match the pub/offer/sku combination.
-                image_versions = get_azure_image_versions(
+                image_versions = get_image_versions(
                     config.AZURE_DEFAULT_LOCATION, publisher, offer, sku, latest
                 )
 
