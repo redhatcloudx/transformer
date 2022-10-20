@@ -6,7 +6,7 @@ from google.cloud import compute_v1
 from rhelocator import config
 
 
-def get_google_images() -> list[str]:
+def get_images() -> list[str]:
     """Get a list of RHEL images from Google Cloud.
 
     Returns:

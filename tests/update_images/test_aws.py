@@ -11,10 +11,10 @@ from rhelocator import config
 from rhelocator.update_images import aws
 
 
-def test_get_aws_regions() -> None:
+def test_get_regions() -> None:
     """Test AWS region request."""
     with patch("botocore.client.BaseClient._make_api_call") as boto:
-        aws.get_aws_regions()
+        aws.get_regions()
 
     boto.assert_called_with(
         "DescribeRegions",
@@ -27,10 +27,10 @@ def test_get_aws_regions() -> None:
     )
 
 
-def test_aws_describe_images() -> None:
+def test_describe_images() -> None:
     """Test AWS image request."""
     with patch("botocore.client.BaseClient._make_api_call") as boto:
-        aws.aws_describe_images("us-east-1")
+        aws.describe_images("us-east-1")
 
     boto.assert_called_with(
         "DescribeImages",
@@ -38,31 +38,31 @@ def test_aws_describe_images() -> None:
     )
 
 
-def test_get_aws_hourly_images(mock_aws_regions, mock_aws_images):
+def test_get_hourly_images(mock_aws_regions, mock_aws_images):
     """Ensure we filter for hourly images properly."""
-    images = aws.get_aws_images(region="us-east-1", image_type="hourly")
+    images = aws.get_images(region="us-east-1", image_type="hourly")
 
     billing_codes = {x["UsageOperation"] for x in images}
     assert billing_codes == {config.AWS_HOURLY_BILLING_CODE}
 
 
-def test_get_aws_cloud_access_images(mock_aws_regions, mock_aws_images):
+def test_get_cloud_access_images(mock_aws_regions, mock_aws_images):
     """Ensure we filter for cloud access images properly."""
-    images = aws.get_aws_images(region="us-east-1", image_type="cloudaccess")
+    images = aws.get_images(region="us-east-1", image_type="cloudaccess")
 
     billing_codes = {x["UsageOperation"] for x in images}
     assert billing_codes == {config.AWS_CLOUD_ACCESS_BILLING_CODE}
 
 
-def test_get_aws_images_bogus_type(mock_aws_regions, mock_aws_images):
+def test_get_images_bogus_type(mock_aws_regions, mock_aws_images):
     """Test the exception if someone provides a bogus image type."""
     with pytest.raises(NotImplementedError):
-        aws.get_aws_images(region="us-east-1", image_type="doot")
+        aws.get_images(region="us-east-1", image_type="doot")
 
 
-def test_get_aws_all_images(mock_aws_regions, mock_aws_images) -> None:
+def test_get_all_images(mock_aws_regions, mock_aws_images) -> None:
     """Test retrieving all AWS hourly images from all regions."""
-    images = aws.get_aws_all_images()
+    images = aws.get_all_images()
 
     # Regions should be in the keys.
     assert list(images.keys()) == mock_aws_regions.return_value
@@ -73,10 +73,10 @@ def test_get_aws_all_images(mock_aws_regions, mock_aws_images) -> None:
         assert billing_codes == {config.AWS_HOURLY_BILLING_CODE}
 
 
-def test_parse_aws_image_name_basic():
+def test_parse_image_name_basic():
     """Test parsing an AWS image name with a very basic image."""
     image_name = "RHEL-7.9_HVM-20220512-x86_64-1-Hourly2-GP2"
-    data = aws.parse_aws_image_name(image_name)
+    data = aws.parse_image_name(image_name)
 
     assert isinstance(data, dict)
 
@@ -92,10 +92,10 @@ def test_parse_aws_image_name_basic():
     assert data["storage"] == "GP2"
 
 
-def test_parse_aws_image_name_beta():
+def test_parse_image_name_beta():
     """Test parsing an AWS image name for a beta arm64 image."""
     image_name = "RHEL-9.1.0_HVM_BETA-20220829-arm64-0-Hourly2-GP2"
-    data = aws.parse_aws_image_name(image_name)
+    data = aws.parse_image_name(image_name)
 
     assert isinstance(data, dict)
 
@@ -111,10 +111,10 @@ def test_parse_aws_image_name_beta():
     assert data["storage"] == "GP2"
 
 
-def test_parse_aws_image_name_internal_product():
+def test_parse_image_name_internal_product():
     """Test parsing an AWS image name with an internal product."""
     image_name = "RHEL_HA-8.5.0_HVM-20211103-x86_64-0-Hourly2-GP2"
-    data = aws.parse_aws_image_name(image_name)
+    data = aws.parse_image_name(image_name)
 
     assert isinstance(data, dict)
 
@@ -130,10 +130,10 @@ def test_parse_aws_image_name_internal_product():
     assert data["storage"] == "GP2"
 
 
-def test_parse_aws_image_name_external_product():
+def test_parse_image_name_external_product():
     """Test parsing an AWS image name for a beta arm64 image."""
     image_name = "RHEL-SAP-8.2.0_HVM-20211007-x86_64-0-Hourly2-GP2"
-    data = aws.parse_aws_image_name(image_name)
+    data = aws.parse_image_name(image_name)
 
     assert isinstance(data, dict)
 

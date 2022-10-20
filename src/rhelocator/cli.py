@@ -28,32 +28,32 @@ def aws_hourly_images(region: str) -> None:
         )
 
     # Is this a valid region?
-    valid_regions = aws.get_aws_regions()
+    valid_regions = aws.get_regions()
     if region not in valid_regions:
         message = f"{region} is not valid. Valid regions include: \n\n  "
         message += "\n  ".join(valid_regions)
         raise click.UsageError(message)
 
-    images = aws.get_aws_images(region)
+    images = aws.get_images(region)
     click.echo(json.dumps(images, indent=2))
 
 
 @click.command()
 def aws_regions() -> None:
     """Get all valid AWS regions."""
-    regions = aws.get_aws_regions()
+    regions = aws.get_regions()
     click.echo(json.dumps(regions, indent=2))
 
 @click.command()
 def gcp_images() -> None:
     """Dump GCP images for all regions in JSON format"""
-    images = gcp.get_google_images()
+    images = gcp.get_images()
     click.echo(json.dumps(images, indent=2))
 
 @click.command()
 def azure_images() -> None:
     """Dump Azure images from a region in JSON format"""
-    images = azure.get_azure_images()
+    images = azure.get_images()
     click.echo(json.dumps(images, indent=2))
 
 
