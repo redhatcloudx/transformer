@@ -3,11 +3,16 @@ name: Container-Release
 on: [workflow_dispatch]
 
 jobs:
-  setup:
+  push:
     runs-on: ubuntu-latest
-    name: Setup rhelocator
+    name: Push Cloud-Image-Locator Container
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install latest podman
+        if: matrix.install_latest
+        run: |
+          bash .github/install_latest_podman.sh
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
@@ -63,30 +68,39 @@ jobs:
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - id: 'google_auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
+
+      - name: List Google Cloud images
+        run: |
+          poetry run rhelocator-updater gcp-images >> ./results/gcp_images.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: '${{ steps.google_auth.outputs.credentials_file_path }}'
+
       - name: Build API container
         id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: rhelocator
+          image: cloud-image-locator
           tags: latest ${{ github.sha }}
           containerfiles: |
             ./Containerfile
 
-      # TODO: Choose registry and setup secrets
-      # - name: Log in to the GitHub Container registry
-      #   uses: redhat-actions/podman-login@v1
-      #   with:
-      #     registry: ${{  }}
-      #     username: ${{  }}
-      #     password: ${{  }}
+      - name: Push To quay.io
+        id: push-to-quay
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: quay.io/cloudexperience
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
 
-      # - name: Push to GitHub Container Repository
-      #   id: push-to-ghcr
-      #   uses: redhat-actions/push-to-registry@v2
-      #   with:
-      #     image: ${{ steps.build-image.outputs.image }}
-      #     tags: ${{ steps.build-image.outputs.tags }}
-      #     registry: ${{  }}
+      - name: Print image url
+        run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
 
       - name: Archive generated image data
         uses: actions/upload-artifact@v3
