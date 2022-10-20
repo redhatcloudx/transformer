@@ -1,6 +1,12 @@
 name: Container-Release
 
-on: [workflow_dispatch]
+# on: [workflow_dispatch]
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+    branches:
+      - upload-images-to-quay
 
 jobs:
   setup:
@@ -72,21 +78,20 @@ jobs:
           containerfiles: |
             ./Containerfile
 
-      # TODO: Choose registry and setup secrets
-      # - name: Log in to the GitHub Container registry
-      #   uses: redhat-actions/podman-login@v1
-      #   with:
-      #     registry: ${{  }}
-      #     username: ${{  }}
-      #     password: ${{  }}
+      - name: Log in to the GitHub Container registry
+        uses: redhat-actions/podman-login@v1
+        with:
+          registry: quay.io/cloudexperience/cloud-image-locator
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
 
-      # - name: Push to GitHub Container Repository
-      #   id: push-to-ghcr
-      #   uses: redhat-actions/push-to-registry@v2
-      #   with:
-      #     image: ${{ steps.build-image.outputs.image }}
-      #     tags: ${{ steps.build-image.outputs.tags }}
-      #     registry: ${{  }}
+      - name: Push to GitHub Container Repository
+        id: push-to-ghcr
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: quay.io/cloudexperience/cloud-image-locator
 
       - name: Archive generated image data
         uses: actions/upload-artifact@v3
