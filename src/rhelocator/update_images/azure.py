@@ -184,4 +184,3 @@ def get_images() -> list[dict[str, str]]:
                     results.append(result)
 
     return results
-
