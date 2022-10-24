@@ -44,11 +44,13 @@ def aws_regions() -> None:
     regions = aws.get_regions()
     click.echo(json.dumps(regions, indent=2))
 
+
 @click.command()
 def gcp_images() -> None:
     """Dump GCP images for all regions in JSON format"""
     images = gcp.get_images()
     click.echo(json.dumps(images, indent=2))
+
 
 @click.command()
 def azure_images() -> None:

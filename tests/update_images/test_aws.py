@@ -1,8 +1,6 @@
 """Test image updates from remote cloud APIs."""
 from __future__ import annotations
 
-from unittest.mock import MagicMock
-from unittest.mock import Mock
 from unittest.mock import patch
 
 import pytest
