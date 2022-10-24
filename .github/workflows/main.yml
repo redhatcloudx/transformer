@@ -78,11 +78,8 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Run mypy
-        run: poetry run mypy
-
-      - name: Install pytest plugin
-        run: poetry run pip install pytest-github-actions-annotate-failures
+      - name: Run the pre-commit hooks
+        run: poetry run pre-commit run --all-files
 
       - name: Run pytest with live e2e tests
         if: env.AWS_ACCESS_KEY_ID != null
