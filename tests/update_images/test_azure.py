@@ -5,8 +5,6 @@ from unittest.mock import MagicMock
 from unittest.mock import Mock
 from unittest.mock import patch
 
-import pytest
-
 from rhelocator import config
 from rhelocator.update_images import azure
 
@@ -153,9 +151,7 @@ def test_get_image_versions(mock_get):
     mock_get.return_value.json.return_value = image_versions_response
 
     # Try with the default where we only get the latest image.
-    image_versions = azure.get_image_versions(
-        "eastus", "publisher", "offer", "sku"
-    )
+    image_versions = azure.get_image_versions("eastus", "publisher", "offer", "sku")
     assert image_versions == [image_versions_response[-1]["name"]]
 
     # Now try to get all of the images.
@@ -205,4 +201,3 @@ def test_get_all_images(mock_azure_image_versions):
     # Since we're looking for all image versions instead of just the latest ones, we
     # should have multiple image versions returned.
     assert len(images) == len(mock_azure_image_versions.return_value)
-
