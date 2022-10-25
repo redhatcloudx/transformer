@@ -17,7 +17,8 @@ def runner():
 
 @pytest.mark.e2e
 def test_aws_hourly_images_live_opt_in_region(runner):
-    """Run a live test against the AWS API to get hourly images for opt-in regions.
+    """Run a live test against the AWS API to get hourly images for opt-in
+    regions.
 
     Further reading: https://github.com/redhatcloudx/rhelocator/issues/43
     """
@@ -59,7 +60,8 @@ def test_aws_hourly_images_missing_region(runner):
 
 
 def test_aws_hourly_images_invalid_region(mock_aws_regions, runner):
-    """Simulate a failure to provide a valid region for the hourly images command."""
+    """Simulate a failure to provide a valid region for the hourly images
+    command."""
     result = runner.invoke(cli.aws_hourly_images, ["--region=antarctica-west-99"])
 
     assert "antarctica-west-99 is not valid" in result.output

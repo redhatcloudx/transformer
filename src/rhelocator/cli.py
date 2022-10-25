@@ -20,7 +20,7 @@ def cli() -> None:
 @click.command()
 @click.option("--region", help="AWS region to query (optional)", type=str)
 def aws_hourly_images(region: str) -> None:
-    """Dump AWS hourly images from a region in JSON format"""
+    """Dump AWS hourly images from a region in JSON format."""
     # Verify that the user provided a region.
     if not region:
         raise click.UsageError(
@@ -47,14 +47,14 @@ def aws_regions() -> None:
 
 @click.command()
 def gcp_images() -> None:
-    """Dump GCP images for all regions in JSON format"""
+    """Dump GCP images for all regions in JSON format."""
     images = gcp.get_images()
     click.echo(json.dumps(images, indent=2))
 
 
 @click.command()
 def azure_images() -> None:
-    """Dump Azure images from a region in JSON format"""
+    """Dump Azure images from a region in JSON format."""
     images = azure.get_images()
     click.echo(json.dumps(images, indent=2))
 
