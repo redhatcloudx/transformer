@@ -7,7 +7,8 @@ from rhelocator import config
 
 
 def get_access_token() -> str:
-    """Authenticate with Azure and return the access token to use with API requests.
+    """Authenticate with Azure and return the access token to use with API
+    requests.
 
     Returns:
         Access token as a string.
