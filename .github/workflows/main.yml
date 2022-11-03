@@ -8,6 +8,7 @@ on:
       - 'docs/**'
     branches:
       - main
+      - execute-google-auth-only-with-creds
   pull_request:
     paths-ignore:
       - 'docs/**'
