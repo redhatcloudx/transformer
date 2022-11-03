@@ -36,12 +36,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v0'
-        with:
-          credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
@@ -83,6 +77,13 @@ jobs:
 
       - name: Install pytest plugin
         run: poetry run pip install pytest-github-actions-annotate-failures
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        if: env.GOOGLE_APPLICATION_CREDENTIALS != null
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
 
       - name: Run pytest with live e2e tests
         if: env.AWS_ACCESS_KEY_ID != null
