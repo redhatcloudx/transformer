@@ -93,9 +93,20 @@ SCHEMA = {
 
 
 def validate_json(data: str) -> None:
+    """Validate a JSON document against the schema.
+
+    Args:
+        data: JSON string to validate.
+
+    Returns:
+        None if the schema is valid, or raises a ValidationError if it is invalid.
+    """
     try:
         validator = Draft202012Validator(SCHEMA)
-        errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
+        errors = sorted(
+            validator.iter_errors(data),
+            key=lambda e: e.path,  # type: ignore[no-any-return]
+        )
 
         if errors:
             error_message = "Error validating image data: "
