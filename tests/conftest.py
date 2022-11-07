@@ -7,9 +7,30 @@ import pytest
 
 
 MOCKED_AWS_IMAGE_LIST = [
-    {"ImageId": "ami-0001", "UsageOperation": "RunInstances:0010"},
-    {"ImageId": "ami-0002", "UsageOperation": "RunInstances:0010"},
-    {"ImageId": "ami-0003", "UsageOperation": "RunInstances:0000"},
+    {
+        "ImageId": "ami-0001",
+        "UsageOperation": "RunInstances:0010",
+        "Architecture": "x86_64",
+        "CreationDate": "2021-02-10T16:19:48.000Z",
+        "Name": "RHEL-8.3_HVM-20210209-x86_64-0-Hourly2-GP2",
+        "VirtualizationType": "hvm",
+    },
+    {
+        "ImageId": "ami-0002",
+        "UsageOperation": "RunInstances:0010",
+        "Architecture": "x86_64",
+        "CreationDate": "2021-02-10T16:19:48.000Z",
+        "Name": "RHEL-8.3_HVM-20210209-x86_64-0-Hourly2-GP2",
+        "VirtualizationType": "hvm",
+    },
+    {
+        "ImageId": "ami-0003",
+        "UsageOperation": "RunInstances:0000",
+        "Architecture": "x86_64",
+        "CreationDate": "2021-02-10T16:19:48.000Z",
+        "Name": "RHEL-8.3_HVM-20210209-x86_64-0-Hourly2-GP2",
+        "VirtualizationType": "hvm",
+    },
 ]
 
 MOCKED_AZURE_IMAGE_VERSION_LIST = [
