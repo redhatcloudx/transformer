@@ -114,3 +114,65 @@ def parse_image_name(image_name: str) -> dict[str, str]:
         return matches.groupdict()
 
     return {}
+
+
+def format_all_images() -> object:
+    """Retrieve all AWS images from all regions and return a simplified data
+    representation.
+
+    Returns:
+        JSON like structure containting a list of streamlined image
+        information on all regions.
+    """
+    formatted_images: list[dict[str, str]] = []
+
+    hourly_images = get_all_images()
+    cloudaccess_images = get_all_images("cloudaccess")
+
+    for region in hourly_images:
+        for image in hourly_images[region]:
+            formatted_images.append(format_image(image, region))
+
+    for region in cloudaccess_images:
+        for image in cloudaccess_images[region]:
+            formatted_images.append(format_image(image, region))
+
+    return {"images": {"aws": formatted_images}}
+
+
+def format_image(image: dict[str, str], region: str) -> dict[str, str]:
+    """Compile a dictionary of important image information.
+
+    Args:
+        images: A dictionary containing metadata about the image.
+        region: Name of the image region.
+
+    Returns:
+        JSON like structure containing streamlined image
+        information.
+    """
+    additional_information = parse_image_name(image["Name"])
+
+    arch = image["Architecture"]
+    image_id = image["ImageId"]
+    virt_type = image["VirtualizationType"]
+    date = image["CreationDate"]
+    version = additional_information["version"]
+    beta = additional_information["beta"]
+    billing = additional_information["billing"]
+
+    name = f"RHEL {version} {virt_type} {arch} {billing} {beta}"
+    selflink = (
+        f"https://console.aws.amazon.com/ec2/home?region={region}#launchAmi={image_id}"
+    )
+
+    return {
+        "name": name,
+        "arch": arch,
+        "version": version,
+        "imageId": image_id,
+        "date": date,
+        "virt": virt_type,
+        "selflink": selflink,
+        "region": region,
+    }

@@ -5,8 +5,11 @@ from unittest.mock import patch
 
 import pytest
 
+from jsonschema import ValidationError
+
 from rhelocator import config
 from rhelocator.update_images import aws
+from rhelocator.update_images import schema
 
 
 def test_get_regions() -> None:
@@ -145,3 +148,31 @@ def test_parse_image_name_external_product():
     assert data["release"] == "0"
     assert data["billing"] == "Hourly2"
     assert data["storage"] == "GP2"
+
+
+def test_format_image():
+    """Test transforming a single AWS image into a schema approved format."""
+    mocked_image = {
+        "Architecture": "x86_64",
+        "CreationDate": "2021-02-10T16:19:48.000Z",
+        "ImageId": "ami-0bcadaece3162039d",
+        "Name": "RHEL-8.3_HVM-20210209-x86_64-0-Hourly2-GP2",
+        "VirtualizationType": "hvm",
+    }
+
+    data = {"images": {"aws": [aws.format_image(mocked_image, "us-east-1")]}}
+
+    try:
+        schema.validate_json(data)
+    except ValidationError as exc:
+        raise AssertionError(f"Formatted data does not expect schema: {exc}")
+
+
+def test_format_all_images(mock_aws_regions, mock_aws_images):
+    """Test transforming a list of AWS images into a schema approved format."""
+    data = aws.format_all_images()
+
+    try:
+        schema.validate_json(data)
+    except ValidationError as exc:
+        raise AssertionError(f"Formatted data does not expect schema: {exc}")
