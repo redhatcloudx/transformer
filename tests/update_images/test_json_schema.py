@@ -15,6 +15,7 @@ def test_valid_image_data_validation():
             "aws": [
                 {
                     "name": "some name",
+                    "arch": "some arch",
                     "version": "some version",
                     "imageId": "some id",
                     "date": "some date",
@@ -26,6 +27,7 @@ def test_valid_image_data_validation():
             "azure": [
                 {
                     "name": "some name",
+                    "arch": "some arch",
                     "version": "some version",
                     "imageId": "some id",
                     "date": "some date",
@@ -35,6 +37,7 @@ def test_valid_image_data_validation():
             "google": [
                 {
                     "name": "some name",
+                    "arch": "some arch",
                     "version": "some version",
                     "imageId": "some id",
                     "date": "some date",
@@ -58,6 +61,7 @@ def test_incomplete_image_data_validation():
             "aws": [
                 {
                     "name": "some name",
+                    "arch": "some arch",
                     "version": "some version",
                     "imageId": "some id",
                     "virt": "some virt",
@@ -79,6 +83,7 @@ def test_invalid_image_data_validation():
             "aws": [
                 {
                     "name": "some name",
+                    "arch": "some arch",
                     "version": False,
                     "imageId": "some id",
                     "virt": "some virt",
@@ -101,6 +106,7 @@ def test_invalid_extra_image_data_validation():
             "oracle": [
                 {
                     "name": "some name",
+                    "arch": "some arch",
                     "version": "some version",
                     "imageId": "some id",
                     "virt": "some virt",
@@ -125,6 +131,7 @@ def test_malicious_url():
             "aws": [
                 {
                     "name": "some name",
+                    "arch": "some arch",
                     "version": "some version",
                     "imageId": "some id",
                     "virt": "some virt",

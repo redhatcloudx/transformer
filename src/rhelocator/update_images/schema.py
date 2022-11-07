@@ -12,6 +12,7 @@ SCHEMA = {
             "type": "object",
             "properties": {
                 "name": {"type": "string", "description": "Human readable image name"},
+                "arch": {"type": "string", "description": "Architecture"},
                 "version": {
                     "type": "string",
                     "description": "RHEL image version following MAJOR.MINOR.PATCH",
