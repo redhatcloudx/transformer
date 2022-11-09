@@ -153,6 +153,38 @@ def get_image_versions(
     return images
 
 
+def get_image_details(
+    location: str, publisher: str, offer: str, sku: str, version: str
+) -> dict[str, dict[str, str]]:
+    """Get details about a specific image.
+
+    Args:
+        location: String containing a valid Azure location, such as eastus
+        publisher: String containing an Azure publisher, such as redhat
+        offer: String container an offer name
+        sku: String containing a SKU name
+        version: String containing a valid image SKU version
+
+    Returns:
+        Dictionary of image details
+    """
+
+    access_token = get_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+    params = {"api-version": "2022-08-01"}
+
+    url = (
+        f"https://management.azure.com/subscriptions/{config.AZURE_SUBSCRIPTION_ID}/"
+        f"providers/Microsoft.Compute/locations/{location}/publishers/"
+        f"{publisher}/artifacttypes/vmimage/offers/{offer}/skus/{sku}/"
+        f"versions/{version}"
+    )
+
+    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    data: dict[str, dict[str, str]] = resp.json()
+    return data
+
+
 def get_images() -> list[dict[str, str]]:
     """Get a list of Azure RHEL images.
 
@@ -175,13 +207,25 @@ def get_images() -> list[dict[str, str]]:
                 # Loop through the image versions and add on this image version to the
                 # list in Azure's `az vm image list` format.
                 for image_version in image_versions:
+                    image_details = get_image_details(
+                        config.AZURE_DEFAULT_LOCATION,
+                        publisher,
+                        offer,
+                        sku,
+                        image_version,
+                    )
                     result = {
+                        "architecture": image_details["properties"]["architecture"],
+                        "hyperVGeneration": image_details["properties"][
+                            "hyperVGeneration"
+                        ],
                         "offer": offer,
                         "publisher": publisher,
                         "sku": sku,
                         "urn": f"{publisher}:{offer}:{sku}:{image_version}",
                         "version": image_version,
                     }
+
                     results.append(result)
 
     return results

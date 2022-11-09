@@ -161,7 +161,44 @@ def test_get_image_versions(mock_get):
     assert image_versions == [x["name"] for x in image_versions_response]
 
 
-def test_get_latest_images(mock_azure_image_versions_latest):
+@patch("rhelocator.update_images.azure.requests.get")
+def test_get_image_details(mock_get):
+    """Test retrieving Azure image details."""
+    image_details_response = {
+        "id": "a very long ID",
+        "location": "westus",
+        "name": "7.9.2022032206",
+        "properties": {
+            "architecture": "x64",
+            "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": False},
+            "dataDiskImages": [],
+            "disallowed": {"vmDiskType": "Unmanaged"},
+            "features": [{"name": "IsAcceleratedNetworkSupported", "value": "True"}],
+            "hyperVGeneration": "V2",
+            "imageDeprecationStatus": {"imageState": "Active"},
+            "osDiskImage": {"operatingSystem": "Linux", "sizeInGb": 64},
+            "replicaCount": 10,
+            "replicaType": "Managed",
+        },
+    }
+
+    mock_get.return_value = Mock(ok=True)
+    mock_get.return_value.json.return_value = image_details_response
+
+    image_details = azure.get_image_details(
+        "eastus", "publisher", "offer", "sku", "version"
+    )
+    assert (
+        image_details["properties"]["architecture"]
+        == image_details_response["properties"]["architecture"]
+    )
+    assert (
+        image_details["properties"]["hyperVGeneration"]
+        == image_details_response["properties"]["hyperVGeneration"]
+    )
+
+
+def test_get_latest_images(mock_azure_image_versions_latest, mock_azure_image_details):
     """Test retrieving Azure images."""
     images = azure.get_images()
 
@@ -169,6 +206,8 @@ def test_get_latest_images(mock_azure_image_versions_latest):
 
     # Make sure we have the right keys that match Azure's specification.
     assert sorted(images[0].keys()) == [
+        "architecture",
+        "hyperVGeneration",
         "offer",
         "publisher",
         "sku",
@@ -190,7 +229,7 @@ def test_get_latest_images(mock_azure_image_versions_latest):
     assert len({x["sku"] for x in images}) == len(images)
 
 
-def test_get_all_images(mock_azure_image_versions):
+def test_get_all_images(mock_azure_image_versions, mock_azure_image_details):
     """Test retrieving Azure images when we want all of the image versions."""
     # Fake an image tree with one SKU that doesn't use 'latest'.
     config.AZURE_RHEL_IMAGE_TREE = {"redhat": {"RHEL": {"7lvm-gen2": ""}}}
