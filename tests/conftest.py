@@ -28,7 +28,7 @@ MOCKED_AWS_IMAGE_LIST = [
         "UsageOperation": "RunInstances:0000",
         "Architecture": "x86_64",
         "CreationDate": "2021-02-10T16:19:48.000Z",
-        "Name": "RHEL-8.3_HVM-20210209-x86_64-0-Hourly2-GP2",
+        "Name": "RHEL-8.3_HVM-20210209-x86_64-0-Access2-GP2",
         "VirtualizationType": "hvm",
     },
 ]
