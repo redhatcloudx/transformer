@@ -93,7 +93,7 @@ SCHEMA = {
 }
 
 
-def validate_json(data: str) -> None:
+def validate_json(data: object) -> None:
     """Validate a JSON document against the schema.
 
     Args:
