@@ -7,7 +7,6 @@ import click.testing
 import pytest
 
 from rhelocator import cli
-from rhelocator import config
 
 
 @pytest.fixture
@@ -26,7 +25,7 @@ def test_aws_hourly_images_live_opt_in_region(runner):
     parsed = json.loads(result.output)
 
     # Ensure we only received hourly images with the proper billing code.
-    assert {x["UsageOperation"] for x in parsed} == {config.AWS_HOURLY_BILLING_CODE}
+    assert {"hourly" in x["name"] for x in parsed["images"]["aws"]}
     assert result.exit_code == 0
 
 
@@ -37,7 +36,7 @@ def test_aws_hourly_images_live(runner):
     parsed = json.loads(result.output)
 
     # Ensure we only received hourly images with the proper billing code.
-    assert {x["UsageOperation"] for x in parsed} == {config.AWS_HOURLY_BILLING_CODE}
+    assert {"hourly" in x["name"] for x in parsed["images"]["aws"]}
     assert result.exit_code == 0
 
 
@@ -47,7 +46,7 @@ def test_aws_hourly_images_offline(runner, mock_aws_regions, mock_aws_images):
     parsed = json.loads(result.output)
 
     # Ensure we only received hourly images with the proper billing code.
-    assert {x["UsageOperation"] for x in parsed} == {config.AWS_HOURLY_BILLING_CODE}
+    assert {"hourly" in x["name"] for x in parsed["images"]["aws"]}
     assert result.exit_code == 0
 
 

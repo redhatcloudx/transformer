@@ -9,6 +9,7 @@ from rhelocator import __version__
 from rhelocator.update_images import aws
 from rhelocator.update_images import azure
 from rhelocator.update_images import gcp
+from rhelocator.update_images import schema
 
 
 @click.group()
@@ -26,6 +27,7 @@ def aws_hourly_images(region: str) -> None:
         raise click.UsageError(
             "Provide a valid AWS region with --region, such as 'us-east-1'"
         )
+    formatted_images: list[dict[str, str]] = []
 
     # Is this a valid region?
     valid_regions = aws.get_regions()
@@ -35,7 +37,10 @@ def aws_hourly_images(region: str) -> None:
         raise click.UsageError(message)
 
     images = aws.get_images(region)
-    click.echo(json.dumps(images, indent=2))
+    for image in images:
+        formatted_images.append(aws.format_image(image, region))
+
+    dump_images({"images": {"aws": formatted_images}})
 
 
 @click.command()
@@ -56,6 +61,12 @@ def gcp_images() -> None:
 def azure_images() -> None:
     """Dump Azure images from a region in JSON format."""
     images = azure.get_images()
+    click.echo(json.dumps(images, indent=2))
+
+
+def dump_images(images: object) -> None:
+    """Validate and dump image data in JSON format."""
+    schema.validate_json(images)
     click.echo(json.dumps(images, indent=2))
 
 
