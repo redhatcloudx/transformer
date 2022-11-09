@@ -98,13 +98,23 @@ def test_azure_images_live(runner):
     assert isinstance(parsed, list)
 
     for image in parsed:
-        expected_keys = ["offer", "publisher", "sku", "urn", "version"]
+        expected_keys = [
+            "architecture",
+            "hyperVGeneration",
+            "offer",
+            "publisher",
+            "sku",
+            "urn",
+            "version",
+        ]
         assert list(image.keys()) == expected_keys
 
     assert result.exit_code == 0
 
 
-def test_azure_images_offline(mock_azure_image_versions, runner):
+def test_azure_images_offline(
+    mock_azure_image_versions, mock_azure_image_details, runner
+):
     """Run a live test against the Azure API to get images via CLI."""
     result = runner.invoke(cli.azure_images)
     parsed = json.loads(result.output)
@@ -112,7 +122,15 @@ def test_azure_images_offline(mock_azure_image_versions, runner):
     assert isinstance(parsed, list)
 
     for image in parsed:
-        expected_keys = ["offer", "publisher", "sku", "urn", "version"]
+        expected_keys = [
+            "architecture",
+            "hyperVGeneration",
+            "offer",
+            "publisher",
+            "sku",
+            "urn",
+            "version",
+        ]
         assert list(image.keys()) == expected_keys
 
     assert result.exit_code == 0

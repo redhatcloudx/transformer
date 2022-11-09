@@ -41,6 +41,13 @@ MOCKED_AZURE_IMAGE_VERSION_LIST = [
     "9.0.2022090601",
 ]
 
+MOCKED_AZURE_IMAGE_DETAILS = {
+    "properties": {
+        "architecture": "x64",
+        "hyperVGeneration": "V2",
+    }
+}
+
 
 def pytest_configure(config: any) -> None:
     config.addinivalue_line("markers", "e2e: mark as end-to-end test.")
@@ -75,6 +82,14 @@ def mock_azure_image_versions_latest(mocker):
     """Provide an offline result got get_azure_image_versions."""
     mock = mocker.patch("rhelocator.update_images.azure.get_image_versions")
     mock.return_value = [MOCKED_AZURE_IMAGE_VERSION_LIST[0]]
+    return mock
+
+
+@pytest.fixture
+def mock_azure_image_details(mocker):
+    """Provide an offline result got get_azure_image_details."""
+    mock = mocker.patch("rhelocator.update_images.azure.get_image_details")
+    mock.return_value = MOCKED_AZURE_IMAGE_DETAILS
     return mock
 
 
