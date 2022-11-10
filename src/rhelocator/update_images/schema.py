@@ -70,7 +70,7 @@ SCHEMA = {
                     "pattern": r"^https://console.cloud.google.com/compute/imagesDetail/projects/rhel-cloud/global/images/[a-z0-9-]*",  # noqa: E501
                 }
             },
-            "required": ["name", "version", "imageId", "date", "virt", "selflink"],
+            "required": ["name", "version", "imageId", "date", "selflink"],
         },
     },
     "additionalProperties": False,
