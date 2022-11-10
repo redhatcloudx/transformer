@@ -57,3 +57,68 @@ def normalize_google_images(image_list: list[Any]) -> list[dict[str, str]]:
         normalized_images.append(image_data)
 
     return normalized_images
+
+
+def parse_image_version_from_name(image_name: str) -> str:
+    """Parse an google image name and return version string.
+
+    Args:
+        image_name: String containing the image name, such as:
+                    rhel-7-9-sap-v20220719
+
+    Returns:
+        Returns the google image version as string
+                    rhel-7-9
+    """
+    res = image_name.split("-", 3)
+    return res[0]+"-"+res[1]+"-"+res[2]
+
+def format_all_images() -> object:
+    """Retrieve all google images and return a simplified data
+    representation.
+
+    Returns:
+        JSON like structure containting a list of streamlined image
+        information.
+    """
+    formatted_images: list[dict[str, str]] = []
+
+    images = get_images()
+
+    for image in images:
+        formatted_images.append(format_image(image))
+
+    return {"images": {"google": formatted_images}}
+
+
+def format_image(image: dict[str, str]) -> dict[str, str]:
+    """Compile a dictionary of important image information.
+
+    Args:
+        images: A dictionary containing metadata about the image.
+        region: Name of the image region.
+
+    Returns:
+        JSON like structure containing streamlined image
+        information.
+    """
+
+    arch = image["architecture"]
+    image_id = image["id"]
+    date = image["creationTimestamp"]
+    version = parse_image_version_from_name(image["name"])
+
+
+    name = f"RHEL {version} {arch}"
+    selflink = (
+        f"https://console.cloud.google.com/compute/imagesDetail/projects/rhel-cloud/global/images/{image_id}"
+    )
+
+    return {
+        "name": name,
+        "arch": arch,
+        "version": version,
+        "imageId": image_id,
+        "date": date,
+        "selflink": selflink,
+    }
