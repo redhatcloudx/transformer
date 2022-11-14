@@ -1,6 +1,10 @@
 """Update images from public cloud APIs."""
 from __future__ import annotations
 
+import re
+
+from datetime import datetime
+
 import requests
 
 from rhelocator import config
@@ -229,3 +233,83 @@ def get_images() -> list[dict[str, str]]:
                     results.append(result)
 
     return results
+
+
+def parse_image_version(image_version: str) -> dict[str, str]:
+    """Parse an AWS image name and return extra data about the image.
+
+    Regex101: https://regex101.com/r/yHB9jJ/1
+
+    Args:
+        image_version: String containing the image version, such as:
+                    7.4.2021051102 or 9.0.0.2022053014
+
+    Returns:
+        Dictionary with additional information about the image.
+    """
+    # See Regex101 link above to tinker with this regex. Each group is named to make
+    # it easier to handle parsed data. Explanation of names:
+    #
+    #     version = RHEL version (such as 9.0)
+    #     date = date image was produced
+    #
+    aws_image_name_regex = (
+        r"(?P<version>[\d]+\.[\d]+(?:\.[\d]+)?)\.(?P<date>\d{4}\d{2}\d{2})"
+    )
+    matches = re.match(aws_image_name_regex, image_version, re.IGNORECASE)
+    if matches:
+        return matches.groupdict()
+
+    return {}
+
+
+def format_all_images() -> object:
+    """Retrieve all Azure images and return a simplified data representation.
+
+    Returns:
+        JSON like structure containting a list of streamlined image information.
+    """
+    formatted_images: list[dict[str, str]] = []
+
+    images = get_images()
+
+    for image in images:
+        formatted_images.append(format_image(image))
+
+    return {"images": {"azure": formatted_images}}
+
+
+def format_image(image: dict[str, str]) -> dict[str, str]:
+    """Compile a dictionary of important image information.
+
+    Args:
+        images: A dictionary containing metadata about the image.
+
+    Returns:
+        JSON like structure containing streamlined image
+        information.
+    """
+
+    additional_information = parse_image_version(image["version"])
+
+    arch = image["architecture"]
+    image_id = image["urn"]
+    virt_type = image["hyperVGeneration"]
+    sku = image["sku"]
+    offer = image["offer"]
+
+    date = datetime.strptime(additional_information["date"], "%Y%m%d").strftime(
+        "%Y-%m-%d"
+    )
+    version = additional_information["version"]
+
+    name = f"{offer} {sku} {arch}"
+
+    return {
+        "name": name,
+        "arch": arch,
+        "version": version,
+        "imageId": image_id,
+        "date": date,
+        "virt": virt_type,
+    }

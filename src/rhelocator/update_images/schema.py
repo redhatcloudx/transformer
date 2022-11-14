@@ -57,7 +57,7 @@ SCHEMA = {
             "type": "object",
             "description": "Azure RHEL Image Data",
             "$ref": "#/definitions/defaults",
-            "required": ["name", "version", "imageId", "date", "virt"],
+            "required": ["name", "arch", "version", "imageId", "date", "virt"],
         },
         "google": {
             "type": "object",

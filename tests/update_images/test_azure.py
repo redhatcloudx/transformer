@@ -5,8 +5,11 @@ from unittest.mock import MagicMock
 from unittest.mock import Mock
 from unittest.mock import patch
 
+from jsonschema import ValidationError
+
 from rhelocator import config
 from rhelocator.update_images import azure
+from rhelocator.update_images import schema
 
 
 @patch("rhelocator.update_images.azure.requests.post")
@@ -240,3 +243,34 @@ def test_get_all_images(mock_azure_image_versions, mock_azure_image_details):
     # Since we're looking for all image versions instead of just the latest ones, we
     # should have multiple image versions returned.
     assert len(images) == len(mock_azure_image_versions.return_value)
+
+
+def test_format_image():
+    """Test transforming a single Azure image into a schema approved format."""
+    mocked_image = {
+        "architecture": "x86_64",
+        "hyperVGeneration": "v2",
+        "offer": "offer",
+        "publisher": "publisher",
+        "sku": "sku",
+        "urn": "publisher:offer:sku:7.6.2020082423",
+        "version": "7.6.2020082423",
+    }
+
+    data = {"images": {"azure": [azure.format_image(mocked_image)]}}
+
+    try:
+        schema.validate_json(data)
+    except ValidationError as exc:
+        raise AssertionError(f"Formatted data does not expect schema: {exc}")
+
+
+def test_format_all_images(mock_azure_images):
+    """Test transforming a list of Azure images into a schema approved
+    format."""
+    data = azure.format_all_images()
+
+    try:
+        schema.validate_json(data)
+    except ValidationError as exc:
+        raise AssertionError(f"Formatted data does not expect schema: {exc}")
