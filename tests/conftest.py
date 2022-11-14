@@ -137,6 +137,7 @@ def mock_gcp_images(mocker):
     mock = mocker.patch("rhelocator.update_images.gcp.get_images")
 
     mocked_image = {
+        "id": "rhel-7-9-sap-v20220719",
         "architecture": "x86_64",
         "creation_timestamp": "2022-09-20T16:32:45.572-07:00",
         "description": "Red Hat, Red Hat Enterprise Linux, 7, x86_64",
