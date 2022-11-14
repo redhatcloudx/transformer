@@ -33,6 +33,36 @@ MOCKED_AWS_IMAGE_LIST = [
     },
 ]
 
+MOCKED_AZURE_IMAGE_LIST = [
+    {
+        "architecture": "x86_64",
+        "hyperVGeneration": "v2",
+        "offer": "offer",
+        "publisher": "publisher",
+        "sku": "sku",
+        "urn": "publisher:offer:sku:9.0.2022053014",
+        "version": "9.0.2022053014",
+    },
+    {
+        "architecture": "x86_64",
+        "hyperVGeneration": "v2",
+        "offer": "offer",
+        "publisher": "publisher",
+        "sku": "sku",
+        "urn": "publisher:offer:sku:9.0.2022062014",
+        "version": "9.0.2022062014",
+    },
+    {
+        "architecture": "x86_64",
+        "hyperVGeneration": "v2",
+        "offer": "offer",
+        "publisher": "publisher",
+        "sku": "sku",
+        "urn": "publisher:offer:sku:9.0.2022062414",
+        "version": "9.0.2022062414",
+    },
+]
+
 MOCKED_AZURE_IMAGE_VERSION_LIST = [
     "9.0.2022053014",
     "9.0.2022062014",
@@ -90,6 +120,14 @@ def mock_azure_image_details(mocker):
     """Provide an offline result got get_azure_image_details."""
     mock = mocker.patch("rhelocator.update_images.azure.get_image_details")
     mock.return_value = MOCKED_AZURE_IMAGE_DETAILS
+    return mock
+
+
+@pytest.fixture
+def mock_azure_images(mocker):
+    """Provide an offline result for calls to azure.get_images."""
+    mock = mocker.patch("rhelocator.update_images.azure.get_images")
+    mock.return_value = MOCKED_AZURE_IMAGE_LIST
     return mock
 
 
