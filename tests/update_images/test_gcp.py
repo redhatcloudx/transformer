@@ -5,7 +5,10 @@ from unittest.mock import MagicMock
 from unittest.mock import Mock
 from unittest.mock import patch
 
+from jsonschema import ValidationError
+
 from rhelocator.update_images import gcp
+from rhelocator.update_images import schema
 
 
 @patch("rhelocator.update_images.gcp.compute_v1.ImagesClient")
@@ -57,3 +60,39 @@ def test_normalize_google_images() -> None:
         "description": "RHEL",
         "name": "rhel-9-20221018",
     }
+
+
+def test_parse_image_version_from_name():
+    """Test parsing a google image name with a basic image."""
+    image_name = "rhel-7-9-sap-v20220719"
+    version = gcp.parse_image_version_from_name(image_name)
+
+    assert version == "rhel-7-9"
+
+
+def test_format_image():
+    """Test transforming a single google image into a schmea approved format."""
+    mocked_image = {
+        "id": "rhel-7-v20220719",
+        "architecture": "x86_64",
+        "creation_timestamp": "2022-09-20T16:32:45.572-07:00",
+        "description": "Red Hat, Red Hat Enterprise Linux, 7, x86_64",
+        "name": "rhel-7-v20220920",
+    }
+
+    data = {"images": {"google": [gcp.format_image(mocked_image)]}}
+
+    try:
+        schema.validate_json(data)
+    except ValidationError as exc:
+        raise AssertionError(f"Formatted data does not expect schema: {exc}")
+
+
+def test_format_all_images(mock_gcp_images):
+    """Test transforming a list of google images into a schema approved format."""
+    data = gcp.format_all_images()
+
+    try:
+        schema.validate_json(data)
+    except ValidationError as exc:
+        raise AssertionError(f"Formatted data does not expect schema: {exc}")

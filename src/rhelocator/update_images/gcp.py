@@ -96,7 +96,6 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
 
     Args:
         images: A dictionary containing metadata about the image.
-        region: Name of the image region.
 
     Returns:
         JSON like structure containing streamlined image
@@ -105,7 +104,7 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
 
     arch = image["architecture"]
     image_id = image["id"]
-    date = image["creationTimestamp"]
+    date = image["creation_timestamp"]
     version = parse_image_version_from_name(image["name"])
 
 
