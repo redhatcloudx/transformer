@@ -71,7 +71,8 @@ def test_parse_image_version_from_name():
 
 
 def test_format_image():
-    """Test transforming a single google image into a schmea approved format."""
+    """Test transforming a single google image into a schmea approved
+    format."""
     mocked_image = {
         "id": "rhel-7-v20220719",
         "architecture": "x86_64",
@@ -89,7 +90,8 @@ def test_format_image():
 
 
 def test_format_all_images(mock_gcp_images):
-    """Test transforming a list of google images into a schema approved format."""
+    """Test transforming a list of google images into a schema approved
+    format."""
     data = gcp.format_all_images()
 
     try:

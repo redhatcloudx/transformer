@@ -71,11 +71,11 @@ def parse_image_version_from_name(image_name: str) -> str:
                     rhel-7-9
     """
     res = image_name.split("-", 3)
-    return res[0]+"-"+res[1]+"-"+res[2]
+    return res[0] + "-" + res[1] + "-" + res[2]
+
 
 def format_all_images() -> object:
-    """Retrieve all google images and return a simplified data
-    representation.
+    """Retrieve all google images and return a simplified data representation.
 
     Returns:
         JSON like structure containting a list of streamlined image
@@ -107,11 +107,9 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
     date = image["creation_timestamp"]
     version = parse_image_version_from_name(image["name"])
 
-
     name = f"RHEL {version} {arch}"
-    selflink = (
-        f"https://console.cloud.google.com/compute/imagesDetail/projects/rhel-cloud/global/images/{image_id}"
-    )
+    selflink = "https://console.cloud.google.com/compute/imagesDetail/"
+    selflink += f"projects/rhel-cloud/global/images/{image_id}"
 
     return {
         "name": name,
