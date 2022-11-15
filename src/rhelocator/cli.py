@@ -59,9 +59,9 @@ def gcp_images() -> None:
 
 @click.command()
 def azure_images() -> None:
-    """Dump Azure images from a region in JSON format."""
-    images = azure.get_images()
-    click.echo(json.dumps(images, indent=2))
+    """Dump Azure images in JSON format."""
+    images = azure.format_all_images()
+    dump_images(images)
 
 
 def dump_images(images: object) -> None:
