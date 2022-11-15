@@ -1,6 +1,8 @@
 """Update images from public cloud APIs."""
 from __future__ import annotations
 
+import re
+
 from typing import Any
 
 from google.cloud import compute_v1
@@ -62,6 +64,8 @@ def normalize_google_images(image_list: list[Any]) -> list[dict[str, str]]:
 def parse_image_version_from_name(image_name: str) -> str:
     """Parse an google image name and return version string.
 
+    Regex101: https://regex101.com/r/CiABs5/1
+
     Args:
         image_name: String containing the image name, such as:
                     rhel-7-9-sap-v20220719
@@ -70,8 +74,17 @@ def parse_image_version_from_name(image_name: str) -> str:
         Returns the google image version as string
                     rhel-7-9
     """
-    res = image_name.split("-", 3)
-    return res[0] + "-" + res[1] + "-" + res[2]
+    google_image_name_regex = (
+        r"(?P<product>\w*)-(?P<version>[\d]+(?:\-[\d]){0,3})-?"
+        r"(?P<intprod>\w*)?-v(?P<date>\d{4}\d{2}\d{2})"
+    )
+
+    matches = re.match(google_image_name_regex, image_name, re.IGNORECASE)
+    if matches:
+        image_data = matches.groupdict()
+        version = image_data["version"]
+        return version.replace("-", ".")
+    return "unknown"
 
 
 def format_all_images() -> object:

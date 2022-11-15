@@ -67,7 +67,25 @@ def test_parse_image_version_from_name():
     image_name = "rhel-7-9-sap-v20220719"
     version = gcp.parse_image_version_from_name(image_name)
 
-    assert version == "rhel-7-9"
+    assert version == "7.9"
+
+    """Test parsing a google image name with a basic image."""
+    image_name = "rhel-7-sap-v20220719"
+    version = gcp.parse_image_version_from_name(image_name)
+
+    assert version == "7"
+
+    """Test parsing a google image name with a basic image."""
+    image_name = "rhel-7-1-2-sap-v20220719"
+    version = gcp.parse_image_version_from_name(image_name)
+
+    assert version == "7.1.2"
+
+    """Test parsing a google image name with a basic image."""
+    image_name = "rhel-sap-v20220719"
+    version = gcp.parse_image_version_from_name(image_name)
+
+    assert version == "unknown"
 
 
 def test_format_image():
