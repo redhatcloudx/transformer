@@ -95,17 +95,16 @@ def test_azure_images_live(runner):
     result = runner.invoke(cli.azure_images)
     parsed = json.loads(result.output)
 
-    assert isinstance(parsed, list)
+    assert isinstance(parsed["images"]["azure"], list)
 
-    for image in parsed:
+    for image in parsed["images"]["azure"]:
         expected_keys = [
-            "architecture",
-            "hyperVGeneration",
-            "offer",
-            "publisher",
-            "sku",
-            "urn",
+            "name",
+            "arch",
             "version",
+            "imageId",
+            "date",
+            "virt",
         ]
         assert list(image.keys()) == expected_keys
 
@@ -119,17 +118,16 @@ def test_azure_images_offline(
     result = runner.invoke(cli.azure_images)
     parsed = json.loads(result.output)
 
-    assert isinstance(parsed, list)
+    assert isinstance(parsed["images"]["azure"], list)
 
-    for image in parsed:
+    for image in parsed["images"]["azure"]:
         expected_keys = [
-            "architecture",
-            "hyperVGeneration",
-            "offer",
-            "publisher",
-            "sku",
-            "urn",
+            "name",
+            "arch",
             "version",
+            "imageId",
+            "date",
+            "virt",
         ]
         assert list(image.keys()) == expected_keys
 
