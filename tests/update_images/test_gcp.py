@@ -89,7 +89,7 @@ def test_parse_image_version_from_name():
 
 
 def test_format_image():
-    """Test transforming a single google image into a schmea approved
+    """Test transforming a single google image into a schema approved
     format."""
     mocked_image = {
         "id": "rhel-7-v20220719",
