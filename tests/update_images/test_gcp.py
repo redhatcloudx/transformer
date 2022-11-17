@@ -1,8 +1,9 @@
 """Test image updates from remote cloud APIs."""
 from __future__ import annotations
 
+import json
+
 from unittest.mock import MagicMock
-from unittest.mock import Mock
 from unittest.mock import patch
 
 from jsonschema import ValidationError
@@ -14,32 +15,42 @@ from rhelocator.update_images import schema
 @patch("rhelocator.update_images.gcp.compute_v1.ImagesClient")
 def test_get_images(mock_gcp: MagicMock) -> None:
     """Test getting Google images."""
-    # Fake a valid, non-deprecated image.
-    mock_image = Mock()
-    mock_image.name = "valid_image"
+    fam_rhel_images = []
+    with open("tests/update_images/testdata/gcp_list_images.json") as json_file:
+        list = json.load(json_file)
+        for entry in list:
+            if entry["family"].__contains__("rhel"):
+                fam_rhel_images.append(entry)
 
-    # Fake a deprecated Google image listing.
-    mocked_deprecated_image = MagicMock()
-    mocked_deprecated_image.architecture = "X86_64"
-    mocked_deprecated_image.creation_timestamp = "19750101"
-    mocked_deprecated_image.description = "RHEL"
-    mocked_deprecated_image.name = "rhel-0-19750101"
-    mocked_deprecated_image.deprecated.state = "DEPRECATED"
+    mocked_list = []
 
-    # Fake a valid Google image listing.
-    mocked_valid_image = MagicMock()
-    mocked_valid_image.architecture = "X86_64"
-    mocked_valid_image.creation_timestamp = "20221018"
-    mocked_valid_image.description = "RHEL"
-    mocked_valid_image.name = "rhel-9-20221018"
+    for image in fam_rhel_images:
+        # Fake a deprecated Google image listing.
+        mocked_deprecated_image = MagicMock()
+        mocked_deprecated_image.architecture = image["architecture"]
+        mocked_deprecated_image.creation_timestamp = image["creationTimestamp"]
+        mocked_deprecated_image.description = image["description"]
+        mocked_deprecated_image.name = image["name"]
+        mocked_deprecated_image.deprecated.state = "DEPRECATED"
+
+        mocked_list.append(mocked_deprecated_image)
+
+        # Fake a valid Google image listing.
+        mocked_valid_image = MagicMock()
+        mocked_valid_image.architecture = image["architecture"]
+        mocked_valid_image.creation_timestamp = image["creationTimestamp"]
+        mocked_valid_image.description = image["description"]
+        mocked_valid_image.name = image["name"]
+
+        mocked_list.append(mocked_valid_image)
 
     # Connect the mock to the ImagesClient return value.
     mock_response = MagicMock()
-    mock_response.list.return_value = [mocked_valid_image, mocked_deprecated_image]
+    mock_response.list.return_value = mocked_list
     mock_gcp.return_value = mock_response
 
     images = gcp.get_images()
-    assert len(images) == 1
+    assert len(images) == len(mocked_list) / 2
 
 
 def test_normalize_google_images() -> None:
