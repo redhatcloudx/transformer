@@ -140,13 +140,11 @@ def test_gcp_images_live(runner):
     result = runner.invoke(cli.gcp_images)
     parsed = json.loads(result.output)
 
-    assert isinstance(parsed, list)
+    assert isinstance(parsed["images"]["google"], list)
 
-    for img in parsed:
-        assert img["architecture"] in ["arm64", "x86_64"]
-        assert "creation_timestamp" in img
-        assert "Red Hat" in img["description"]
-        assert "rhel" in img["name"]
+    for image in parsed["images"]["google"]:
+        expected_keys = ["name", "arch", "version", "imageId", "date", "selflink"]
+        assert list(image.keys()) == expected_keys
 
     assert result.exit_code == 0
 
@@ -156,12 +154,10 @@ def test_gcp_images_offline(mock_gcp_images, runner):
     result = runner.invoke(cli.gcp_images)
     parsed = json.loads(result.output)
 
-    assert isinstance(parsed, list)
+    assert isinstance(parsed["images"]["google"], list)
 
-    for img in parsed:
-        assert img["architecture"] in ["arm64", "x86_64"]
-        assert "creation_timestamp" in img
-        assert "Red Hat" in img["description"]
-        assert "rhel" in img["name"]
+    for image in parsed["images"]["google"]:
+        expected_keys = ["name", "arch", "version", "imageId", "date", "selflink"]
+        assert list(image.keys()) == expected_keys
 
     assert result.exit_code == 0
