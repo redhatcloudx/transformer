@@ -53,8 +53,8 @@ def aws_regions() -> None:
 @click.command()
 def gcp_images() -> None:
     """Dump GCP images for all regions in JSON format."""
-    images = gcp.get_images()
-    click.echo(json.dumps(images, indent=2))
+    images = gcp.format_all_images()
+    dump_images(images)
 
 
 @click.command()

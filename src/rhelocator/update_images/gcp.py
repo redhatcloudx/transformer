@@ -116,7 +116,7 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
     """
 
     arch = image["architecture"]
-    image_id = image["id"]
+    image_id = image["name"]
     date = image["creation_timestamp"]
     version = parse_image_version_from_name(image["name"])
 
