@@ -1,9 +1,11 @@
 """Test image updates from remote cloud APIs."""
 from __future__ import annotations
 
+import json
+
 from unittest.mock import patch
 
-import pytest, json
+import pytest
 
 from jsonschema import ValidationError
 
@@ -38,6 +40,7 @@ def test_describe_images() -> None:
         {"IncludeDeprecated": False, "Owners": [config.AWS_RHEL_OWNER_ID]},
     )
 
+
 def test_parse_name_of_all_images() -> None:
     """Test AWS parse image name with real aws data."""
     images = []
@@ -53,6 +56,7 @@ def test_parse_name_of_all_images() -> None:
         assert data["release"]
         assert data["billing"]
         assert data["storage"]
+
 
 def test_get_hourly_images(mock_aws_regions, mock_aws_images):
     """Ensure we filter for hourly images properly."""
