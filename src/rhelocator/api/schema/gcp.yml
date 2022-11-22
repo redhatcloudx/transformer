@@ -1,0 +1,60 @@
+---
+parameters:
+  - name: name
+    in: query
+    type: string
+    example: RHEL 9 arm64
+  - name: date
+    in: query
+    type: string
+    example: 2022-11-02
+  - name: imageId
+    in: query
+    type: string
+    example: rhel-9-arm64-v20221102
+  - name: arch
+    in: query
+    type: string
+    example: x86_6
+  - name: version
+    in: query
+    type: string
+    example: 9
+
+definitions:
+  images:
+    type: array
+    items:
+      $ref: '#/definitions/image'
+  image:
+    type: object
+    properties:
+      arch:
+        type: string
+      date:
+        type: string
+      imageId:
+        type: string
+      name:
+        type: string
+      selflink:
+        type: string
+      version:
+        type: string
+
+responses:
+  200:
+    description: A list of Google Cloud Images
+    schema:
+      $ref: '#/definitions/images'
+    examples:
+      images: [
+          {
+            "arch":"x86_64",
+            "date":"2022-11-02T12:23:04.737-07:00",
+            "imageId":"rhel-7-v20221102",
+            "name":"RHEL 7 x86_64",
+            "selflink":"https://console.cloud.google.com/compute/imagesDetail/projects/rhel-cloud/global/images/rhel-7-v20221102",
+            "version":"7"
+          }
+        ]

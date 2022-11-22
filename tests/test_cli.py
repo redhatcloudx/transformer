@@ -14,6 +14,11 @@ def runner():
     return click.testing.CliRunner()
 
 
+@pytest.fixture
+def api_server(runner):
+    runner.invoke(cli.serve, ["--file-path=tests/api/testdata/formatted_images.json"])
+
+
 @pytest.mark.e2e
 def test_aws_hourly_images_live_opt_in_region(runner):
     """Run a live test against the AWS API to get hourly images for opt-in
