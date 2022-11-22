@@ -36,6 +36,23 @@ poetry add foo
 poetry add --group dev bar
 ```
 
+## Locator API server
+
+### Running the Flask server locally
+You can run the API server locally by using the rhelocator cli command `serve`:
+`poetry run rhelocator-updater serve --file-path <path to formatted image data>`
+
+By default, the swagger documenation is available at http://127.0.0.1:5000/apidocs/
+
+### Configuring the Flask server
+The API server will read its configuration on boot from the .env file located in
+`src/rhelocator/api/.env`.
+
+### Production build
+Still in progress. The current implementation only enables you to run the development server.
+A production build can be performed by using third party tools like
+[waitress](https://flask.palletsprojects.com/en/2.2.x/deploying/waitress/).
+
 ## Running tests
 
 Use poetry to run pytest:

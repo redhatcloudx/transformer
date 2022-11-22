@@ -6,6 +6,7 @@ import json
 import click
 
 from rhelocator import __version__
+from rhelocator.api import server
 from rhelocator.update_images import aws
 from rhelocator.update_images import azure
 from rhelocator.update_images import gcp
@@ -70,7 +71,17 @@ def dump_images(images: object) -> None:
     click.echo(json.dumps(images, indent=2))
 
 
+@click.command()
+@click.option("--file-path", help="Path to JSON image data file.", type=str)
+@click.option("--port", help="Port to run Locator API at (optional).", type=int)
+@click.option("--host", help="Address to run Locator API at (optional).", type=str)
+def serve(file_path: str, port: int, host: str) -> None:
+    """Host API endpoint to serve cloud provider image data."""
+    server.run(file_path=file_path, port=port, host=host)
+
+
 cli.add_command(aws_hourly_images)
 cli.add_command(aws_regions)
 cli.add_command(azure_images)
 cli.add_command(gcp_images)
+cli.add_command(serve)
