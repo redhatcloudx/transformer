@@ -15,6 +15,14 @@ jobs:
       with:
         # check out all branches
         fetch-depth: 0
+    - id: "auth"
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"
+        # If credentials aren't available (such as PRs from a fork or dependabot
+        # commits) keep going with the remainder of the job.
+        continue-on-error: true
     - name: Update cloud provider dumps
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
