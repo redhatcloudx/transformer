@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 
 import click
+import waitress
 
 from rhelocator import __version__
 from rhelocator.api import server
@@ -72,12 +73,33 @@ def dump_images(images: object) -> None:
 
 
 @click.command()
-@click.option("--file-path", help="Path to JSON image data file.", type=str)
-@click.option("--port", help="Port to run Locator API at (optional).", type=int)
-@click.option("--host", help="Address to run Locator API at (optional).", type=str)
-def serve(file_path: str, port: int, host: str) -> None:
+@click.option("-f", "--file-path", help="Path to JSON image data file.", type=str)
+@click.option(
+    "-p", "--port", show_default=True, default=5000, help="Port to run Locator API at."
+)
+@click.option(
+    "-h",
+    "--host",
+    show_default=True,
+    default="0.0.0.0",
+    help="Address to run Locator API at.",
+)
+@click.option(
+    "-d",
+    "--dev",
+    is_flag=True,
+    show_default=True,
+    default=False,
+    help="Run in development mode.",
+)
+def serve(file_path: str, port: int, host: str, dev: bool) -> None:
     """Host API endpoint to serve cloud provider image data."""
-    server.run(file_path=file_path, port=port, host=host)
+    if dev:
+        server.run(file_path=file_path, port=port, host=host)
+    else:
+        waitress.serve(
+            server.create_app(file_path=file_path), host=host, port=port, threads=4
+        )
 
 
 cli.add_command(aws_hourly_images)
