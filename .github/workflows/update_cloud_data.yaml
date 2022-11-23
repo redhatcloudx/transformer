@@ -60,4 +60,3 @@ jobs:
 #        labels: |
 #          automated-testdata-update
 #        reviewers: miyunari
-
