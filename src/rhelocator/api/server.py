@@ -7,7 +7,7 @@ from rhelocator.api.routes.gcp import gcp_blueprint
 from rhelocator.update_images import schema
 
 
-def create_app(data_path: str) -> Flask:
+def create_app(file_path: str) -> Flask:
     """Creates and returns a Flask server configuration including cloud image
     data.
 
@@ -25,7 +25,7 @@ def create_app(data_path: str) -> Flask:
     # Add support for .env parsing:
     app.config.from_pyfile("config.py")
 
-    with open(data_path) as f:
+    with open(file_path) as f:
         image_data = json.load(f)
     schema.validate_json(image_data)
 
