@@ -2,8 +2,10 @@
 name: Update-Job
 
 on:
-  schedule: # run at midnight
-    - cron: "0 0 * * *"
+ # schedule: # run at midnight
+ #   - cron: "0 0 * * *"
+  push:
+    branches: [ cloud_provider_update_job_#84 ]
 jobs:
   update-testdata:
     runs-on: ubuntu-latest
@@ -16,13 +18,13 @@ jobs:
         # check out all branches
         fetch-depth: 0
     - id: "auth"
-        name: "Authenticate to Google Cloud"
-        uses: "google-github-actions/auth@v1"
-        with:
-          credentials_json: "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"
-        # If credentials aren't available (such as PRs from a fork or dependabot
-        # commits) keep going with the remainder of the job.
-        continue-on-error: true
+      name: "Authenticate to Google Cloud"
+      uses: "google-github-actions/auth@v1"
+      with:
+        credentials_json: "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"
+        # If credentials aren't available such as PRs from a fork keep
+        # going with the remainder of the job.
+      continue-on-error: true
     - name: Update cloud provider dumps
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -32,7 +34,9 @@ jobs:
         AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         GOOGLE_APPLICATION_CREDENTIALS: "${{ steps.auth.outputs.credentials_file_path }}"
-      run: ./update.sh
+      run: |
+       ./update.sh
+       rm ${{ steps.auth.outputs.credentials_file_path }}
     - name: Commit cloud provider dumps
       env:
         BRANCH_NAME: cloud_data_update
@@ -40,18 +44,20 @@ jobs:
         git checkout -b ${BRANCH_NAME}
         git config --global user.name Janine Olear
         git config --global user.email pninak@web.de
+        git status
         git add .
-        git commit -m "Automated cloud provider update $(date +%  F)"    
+        git commit -m "Automated cloud provider update $(date +%F)"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
-      with:
-        delete-branch: true
-        title: '[Update] cloud provider test data'
-        body: |
-          Update cloud provider test data
-          - AWS
-          - Azure
-          - Google
-        labels: |
-          automated-testdata-update
-        reviewers: miyunari
+#      with:
+#        delete-branch: true
+#        title: '[Update] cloud provider test data'
+#        body: |
+#          Update cloud provider test data
+#          - AWS
+#          - Azure
+#          - Google
+#        labels: |
+#          automated-testdata-update
+#        reviewers: miyunari
+
