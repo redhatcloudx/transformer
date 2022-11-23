@@ -1,0 +1,43 @@
+
+name: Update-Job
+
+on:
+  push:
+    branches: [ cloud_provider_update_job_#84 ]
+ # schedule:
+  #  - cron: "0 0 * * *"
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tests/update_images/testdata
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        # check out all branches
+        fetch-depth: 0
+    - name: Update cloud provider dumps
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        GOOGLE_APPLICATION_CREDENTIALS: "${{ steps.auth.outputs.credentials_file_path }}"
+      run: ./update.sh
+    - name: Commit cloud provider dumps
+      env:
+        BRANCH_NAME: cloud_data_update
+      run: |
+        git checkout -b ${BRANCH_NAME}
+        git config --global user.name test user
+        git config --global user.email test@update.com
+        git add .
+        git commit -m "Automated cloud provider update $(date +F)"
+        
+        
+       # git push origin ${BRANCH_NAME}
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
