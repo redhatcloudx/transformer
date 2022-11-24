@@ -43,7 +43,7 @@ pytest-xdist = {version = "^2.5.0", extras = ["psutil"]}
 mypy = "^0.991"
 pre-commit = "^2.20.0"
 ipython = "^8.5.0"
-flake8 = "^5.0.4"
+flake8 = "^6.0.0"
 pydocstyle = "^6.1.1"
 yapf = "^0.32.0"
 black = {version = "^22.8.0", allow-prereleases = true}
