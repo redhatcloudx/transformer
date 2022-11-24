@@ -1,0 +1,71 @@
+---
+parameters:
+  - name: name
+    in: query
+    type: string
+    example: RHEL 9.0.0 HVM x86_64 Hourly2 BETA
+  - name: arch
+    in: query
+    type: string
+    example: x86_64
+  - name: version
+    in: query
+    type: string
+    example: 9.0.0
+  - name: imageId
+    in: query
+    type: string
+    example: ami-0bcadaece3162039d
+  - name: date
+    in: query
+    type: string
+    example: 2022-11-02
+  - name: virt
+    in: query
+    type: string
+    example: hvm
+  - name: region
+    in: query
+    type: string
+    example: us-east-1
+
+definitions:
+  images:
+    type: array
+    items:
+      $ref: '#/definitions/image'
+  image:
+    type: object
+    properties:
+      name:
+        type: string
+      arch:
+        type: string
+      version:
+        type: string
+      imageId:
+        type: string
+      date:
+        type: string
+      virt:
+        type: string
+      region:
+        type: string
+
+responses:
+  200:
+    description: A list of AWS Cloud Images
+    schema:
+      $ref: '#/definitions/images'
+    examples:
+      images: [
+          {
+            "name": "RHEL-8.1.0",
+            "arch": "x86_64",
+            "version": "8.1.0",
+            "imageId": "ami-0bcadaece3162039d",
+            "date": "2022-09-06",
+            "virt": "HVM",
+            "region": "us-east-1"
+          }
+        ]
