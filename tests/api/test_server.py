@@ -64,3 +64,43 @@ def test_request_gcp_with_multi_query(client):
         assert test_query["imageId"] in image["imageId"]
         assert test_query["date"] in image["date"]
     assert response.status_code == 200
+
+
+def test_request_aws(client):
+    response = client.get("/api/aws")
+    assert len(response.data) > 0
+    assert response.status_code == 200
+
+
+def test_request_aws_with_query(client):
+    response = client.get(
+        "/api/aws",
+        query_string={
+            "version": "8.1.0",
+        },
+    )
+    for image in json.loads(response.data):
+        assert image["version"] == "8.1.0"
+    assert response.status_code == 200
+
+
+def test_request_aws_with_multi_query(client):
+    test_query = {
+        "name": "RHEL-8.1.0",
+        "arch": "x86_64",
+        "version": "8.1.0",
+        "imageId": "ami-0bcadaece3162039d",
+        "date": "2022-09-06",
+        "virt": "HVM",
+        "region": "us-east-1",
+    }
+    response = client.get("/api/aws", query_string=test_query)
+    for image in json.loads(response.data):
+        assert test_query["name"] in image["name"]
+        assert test_query["arch"] in image["arch"]
+        assert test_query["version"] in image["version"]
+        assert test_query["imageId"] in image["imageId"]
+        assert test_query["date"] in image["date"]
+        assert test_query["virt"] in image["virt"]
+        assert test_query["region"] in image["region"]
+    assert response.status_code == 200
