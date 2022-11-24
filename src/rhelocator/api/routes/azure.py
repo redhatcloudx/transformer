@@ -5,7 +5,7 @@ from flask import Blueprint
 from flask import request
 
 
-def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
+def azure_blueprint(data: list[dict[str, str]]) -> Blueprint:
     """Creates and returns a Flask blueprint based that serves the provided
     image data.
 
@@ -15,13 +15,13 @@ def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
     Returns:
         Flask blueprint serving the provided data.
     """
-    gcp_endpoint = Blueprint("gcp_api", __name__)
+    azure_endpoint = Blueprint("azure_api", __name__)
 
-    @gcp_endpoint.route("/gcp", methods=["GET"])
-    @swag_from("../schema/gcp.yml")
+    @azure_endpoint.route("/azure", methods=["GET"])
+    @swag_from("../schema/azure.yml")
     def endpoint() -> list[dict[str, str]]:
-        """Cloud Image Locator GCP Endpoint Provides RHEL image data for Google
-        Cloud."""
+        """Cloud Image Locator Azure Endpoint Provides RHEL image data for
+        Google Cloud."""
 
         query: dict[str, str] = {}
         name: Optional[str] = request.args.get("name")
@@ -29,6 +29,7 @@ def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
         image_id: Optional[str] = request.args.get("imageId")
         date: Optional[str] = request.args.get("date")
         version: Optional[str] = request.args.get("version")
+        virt: Optional[str] = request.args.get("virt")
 
         if name:
             query.update({"name": name})
@@ -40,6 +41,8 @@ def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
             query.update({"date": date})
         if version:
             query.update({"version": version})
+        if virt:
+            query.update({"virt": virt})
 
         if len(query) == 0:
             return data
@@ -55,4 +58,4 @@ def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
                 response.append(image)
         return response
 
-    return gcp_endpoint
+    return azure_endpoint
