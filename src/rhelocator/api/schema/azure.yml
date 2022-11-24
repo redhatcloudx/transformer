@@ -1,0 +1,64 @@
+---
+parameters:
+  - name: name
+    in: query
+    type: string
+    example: RHEL 9-lvm-gen2 x64
+  - name: arch
+    in: query
+    type: string
+    example: x64
+  - name: version
+    in: query
+    type: string
+    example: 9.0
+  - name: imageId
+    in: query
+    type: string
+    example: redhat:RHEL:9-lvm-gen2:9.0.2022090601
+  - name: date
+    in: query
+    type: string
+    example: 2022-11-02
+  - name: virt
+    in: query
+    type: string
+    example: v2
+
+definitions:
+  images:
+    type: array
+    items:
+      $ref: '#/definitions/image'
+  image:
+    type: object
+    properties:
+      name:
+        type: string
+      arch:
+        type: string
+      version:
+        type: string
+      imageId:
+        type: string
+      date:
+        type: string
+      virt:
+        type: string
+
+responses:
+  200:
+    description: A list of Azure Cloud Images
+    schema:
+      $ref: '#/definitions/images'
+    examples:
+      images: [
+          {
+            "name": "RHEL 9-lvm-gen2 x64",
+            "arch": "x64",
+            "version": "9.0",
+            "imageId": "redhat:RHEL:9-lvm-gen2:9.0.2022090601",
+            "date": "2022-09-06",
+            "virt": "V2"
+          }
+        ]

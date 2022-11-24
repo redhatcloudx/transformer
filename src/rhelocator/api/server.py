@@ -4,6 +4,7 @@ from flasgger import Swagger
 from flask import Flask
 
 from rhelocator.api.routes.aws import aws_blueprint
+from rhelocator.api.routes.azure import azure_blueprint
 from rhelocator.api.routes.gcp import gcp_blueprint
 from rhelocator.update_images import schema
 
@@ -29,6 +30,10 @@ def create_app(file_path: str) -> Flask:
     with open(file_path) as f:
         image_data = json.load(f)
     schema.validate_json(image_data)
+
+    app.register_blueprint(
+        azure_blueprint(image_data["images"]["azure"]), url_prefix="/api"
+    )
 
     app.register_blueprint(
         gcp_blueprint(image_data["images"]["google"]), url_prefix="/api"
