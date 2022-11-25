@@ -62,6 +62,25 @@ http://127.0.0.1:5000/apidocs/ by default.
 The API server will read its configuration on boot from the .env file located in
 `src/rhelocator/api/.env`.
 
+### How to build the API container on your local system
+1. Build the container from within the rhelocator directory:
+```
+buildah bud -f ./Containerfile --format docker --tls-verify=true -t rhelocator:latest .
+```
+or with podman:
+```
+podman build -f Containerfile -t rhelocator:latest .
+```
+
+2. Run the container, forward the Flask default port 5000 and mount a json file containing test data to
+`/opt/rhelocator/opt/rhelocator/data/image-data.json`.
+```
+podman run -p 5000:5000  -v ./tests/api/testdata/formatted_images.json:/opt/rhelocator/data/image-data.json:Z rhelocator
+```
+Mind that this is only meant for local testing and should not run like this in production. The Z operator at the end of the
+volume mount is necessary for SELinux and applies the same (MCS)[https://en.wikipedia.org/wiki/Multi_categories_security]
+labels to the mounted data that the container will run with. For more information see this former (Project Atomic)[https://projectatomic.io/blog/2015/06/using-volumes-with-docker-can-cause-problems-with-selinux/] article (now CoreOS).
+
 ## Running tests
 
 Use poetry to run pytest:
@@ -133,3 +152,14 @@ Azure requires multiple environment variables:
 Google requires one environment variable that points to a JSON file or a block of JSON text.
 
 * `GOOGLE_APPLICATION_CREDENTIALS`: path to JSON credentials file or a block of JSON credentials text
+
+## Running the latest Cloud Image Locator backend
+1. Pull the newest locator image from quay:
+```
+podman pull quay.io/cloudexperience/cloud-image-locator:latest
+```
+
+2. Run the locator and forward the default port:
+```
+podman run -p 5000:5000 cloud-image-locator
+```
