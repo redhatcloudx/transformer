@@ -43,7 +43,7 @@ def aws_hourly_images(region: str) -> None:
             formatted_images.append(aws.format_image(image, region))
         dump_images({"images": {"aws": formatted_images}})
     else:
-        dump_images({"images": {"aws": aws.format_all_images()}})
+        dump_images(aws.format_all_images())
 
 
 @click.command()
