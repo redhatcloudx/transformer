@@ -33,6 +33,7 @@ flasgger = "^0.9.5"
 python-dotenv = "^0.21.0"
 waitress = "^2.1.2"
 types-waitress = "^2.1.4.3"
+flask-cors = "^3.0.10"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.3"

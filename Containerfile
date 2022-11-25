@@ -13,6 +13,4 @@ RUN pip install "poetry==$POETRY_VERSION"
 RUN poetry config virtualenvs.create false
 RUN poetry install --only main --no-interaction --no-ansi
 
-# TODO: Implement API backend + add cli command to run and configure API
-# EXPOSE 8000
-# CMD ["poetry", "run", "rhelocator-cli", "serve", "--image-data", "/path/to/image/data.json"]
+CMD ["poetry", "run", "rhelocator-updater", "serve", "--file-path", "/opt/rhelocator/data/image-data.json"]

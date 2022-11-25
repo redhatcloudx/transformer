@@ -2,6 +2,7 @@ import json
 
 from flasgger import Swagger
 from flask import Flask
+from flask_cors import CORS
 
 from rhelocator.api.routes.aws import aws_blueprint
 from rhelocator.api.routes.azure import azure_blueprint
@@ -24,6 +25,9 @@ def create_app(file_path: str) -> Flask:
         "title": "Cloud Image Locator",
     }
     Swagger(app)
+
+    CORS(app)
+
     # Add support for .env parsing:
     app.config.from_pyfile("config.py")
 

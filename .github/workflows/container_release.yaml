@@ -78,7 +78,7 @@ jobs:
 
       - name: Merge JSON files
         run: |
-          jq -s 'reduce .[] as $item ({}; . * $item)' ./data/* >> image-data.json
+          jq -s 'reduce .[] as $item ({}; . * $item)' ./data/* >> ./data/image-data.json
           rm ./data/temp*.json
 
       - name: Build API container
@@ -107,5 +107,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Upload AWS hourly images
-          path: ./results
+          path: ./data
           retention-days: 7
