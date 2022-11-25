@@ -248,14 +248,15 @@ def test_get_all_images(mock_azure_image_versions, mock_azure_image_details):
 
 
 def test_format_image():
-    """Test verifying transformed Azure images into a schema approved format."""
+    """Test verifying transformed Azure images into a schema approved
+    format."""
     images = []
     with open("tests/update_images/testdata/azure_list_images.json") as json_file:
         images = json.load(json_file)
-    
+
     for image in images:
         image["hyperVGeneration"] = "untested"
-        image["version"] += ".2022053014" # untested
+        image["version"] += ".2022053014"  # untested
         data = {"images": {"azure": [azure.format_image(image)]}}
         try:
             schema.validate_json(data)
