@@ -46,22 +46,18 @@ jobs:
         run: poetry install
 
       - name: Create output folder
-        run: mkdir -p results
+        run: mkdir -p data
 
       - name: List aws hourly images
         run: |
-          AWS_REGIONS=$(poetry run rhelocator-updater aws-regions)
-          regions=$(echo "$AWS_REGIONS" | jq -r '.[]')
-          for region in ${regions[@]}; do
-            poetry run rhelocator-updater aws-hourly-images --region $region >> ./results/aws_hourly_images.json
-          done
+          poetry run rhelocator-updater aws-hourly-images >> ./data/temp-aws-data.json
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: List azure images
         run: |
-          poetry run rhelocator-updater azure-images >> ./results/azure_images.json
+          poetry run rhelocator-updater azure-images >> ./data/temp-azure-data.json
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
@@ -76,9 +72,14 @@ jobs:
 
       - name: List Google Cloud images
         run: |
-          poetry run rhelocator-updater gcp-images >> ./results/gcp_images.json
+          poetry run rhelocator-updater gcp-images >> ./data/temp-gcp-data.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: '${{ steps.google_auth.outputs.credentials_file_path }}'
+
+      - name: Merge JSON files
+        run: |
+          jq -s 'reduce .[] as $item ({}; . * $item)' ./data/* >> image-data.json
+          rm ./data/temp*.json
 
       - name: Build API container
         id: build-image

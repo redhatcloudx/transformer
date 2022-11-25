@@ -55,14 +55,6 @@ def test_aws_hourly_images_offline(runner, mock_aws_regions, mock_aws_images):
     assert result.exit_code == 0
 
 
-def test_aws_hourly_images_missing_region(runner):
-    """Simulate a failure to provide a region for the hourly images command."""
-    result = runner.invoke(cli.aws_hourly_images)
-
-    assert "Provide a valid AWS region" in result.output
-    assert result.exit_code == 2
-
-
 def test_aws_hourly_images_invalid_region(mock_aws_regions, runner):
     """Simulate a failure to provide a valid region for the hourly images
     command."""

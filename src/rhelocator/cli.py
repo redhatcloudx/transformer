@@ -21,28 +21,29 @@ def cli() -> None:
 
 
 @click.command()
-@click.option("--region", help="AWS region to query (optional)", type=str)
+@click.option(
+    "--region", help="Select specific AWS region to query (optional).", type=str
+)
 def aws_hourly_images(region: str) -> None:
-    """Dump AWS hourly images from a region in JSON format."""
-    # Verify that the user provided a region.
-    if not region:
-        raise click.UsageError(
-            "Provide a valid AWS region with --region, such as 'us-east-1'"
-        )
-    formatted_images: list[dict[str, str]] = []
+    """Dump AWS hourly images from a range of regions in JSON format.
 
-    # Is this a valid region?
-    valid_regions = aws.get_regions()
-    if region not in valid_regions:
-        message = f"{region} is not valid. Valid regions include: \n\n  "
-        message += "\n  ".join(valid_regions)
-        raise click.UsageError(message)
+    Returns images for all regions by default.
+    """
+    if region:
+        # Is this a valid region?
+        valid_regions = aws.get_regions()
+        if region not in valid_regions:
+            message = f"{region} is not valid. Valid regions include: \n\n  "
+            message += "\n  ".join(valid_regions)
+            raise click.UsageError(message)
 
-    images = aws.get_images(region)
-    for image in images:
-        formatted_images.append(aws.format_image(image, region))
-
-    dump_images({"images": {"aws": formatted_images}})
+        formatted_images: list[dict[str, str]] = []
+        images = aws.get_images(region)
+        for image in images:
+            formatted_images.append(aws.format_image(image, region))
+        dump_images({"images": {"aws": formatted_images}})
+    else:
+        dump_images({"images": {"aws": aws.format_all_images()}})
 
 
 @click.command()
