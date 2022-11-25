@@ -1,6 +1,8 @@
 """Test image updates from remote cloud APIs."""
 from __future__ import annotations
 
+import json
+
 from unittest.mock import MagicMock
 from unittest.mock import Mock
 from unittest.mock import patch
@@ -246,23 +248,19 @@ def test_get_all_images(mock_azure_image_versions, mock_azure_image_details):
 
 
 def test_format_image():
-    """Test transforming a single Azure image into a schema approved format."""
-    mocked_image = {
-        "architecture": "x86_64",
-        "hyperVGeneration": "v2",
-        "offer": "offer",
-        "publisher": "publisher",
-        "sku": "sku",
-        "urn": "publisher:offer:sku:7.6.2020082423",
-        "version": "7.6.2020082423",
-    }
-
-    data = {"images": {"azure": [azure.format_image(mocked_image)]}}
-
-    try:
-        schema.validate_json(data)
-    except ValidationError as exc:
-        raise AssertionError(f"Formatted data does not expect schema: {exc}")
+    """Test verifying transformed Azure images into a schema approved format."""
+    images = []
+    with open("tests/update_images/testdata/azure_list_images.json") as json_file:
+        images = json.load(json_file)
+    
+    for image in images:
+        image["hyperVGeneration"] = "untested"
+        image["version"] += ".2022053014" # untested
+        data = {"images": {"azure": [azure.format_image(image)]}}
+        try:
+            schema.validate_json(data)
+        except ValidationError as exc:
+            raise AssertionError(f"Formatted data does not expect schema: {exc}")
 
 
 def test_format_all_images(mock_azure_images):
