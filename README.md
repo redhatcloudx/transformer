@@ -67,10 +67,6 @@ The API server will read its configuration on boot from the .env file located in
 ```
 podman build -f Containerfile -t rhelocator:latest .
 ```
-or with podman:
-```
-podman build -f Containerfile -t rhelocator:latest .
-```
 
 2. Run the container, forward the Flask default port 5000 and mount a json file containing test data to
 `/opt/rhelocator/opt/rhelocator/data/image-data.json`.
