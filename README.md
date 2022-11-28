@@ -65,7 +65,7 @@ The API server will read its configuration on boot from the .env file located in
 ### How to build the API container on your local system
 1. Build the container from within the rhelocator directory:
 ```
-buildah bud -f ./Containerfile --format docker --tls-verify=true -t rhelocator:latest .
+podman build -f Containerfile -t rhelocator:latest .
 ```
 or with podman:
 ```
