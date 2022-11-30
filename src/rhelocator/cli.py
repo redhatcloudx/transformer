@@ -10,7 +10,7 @@ from rhelocator import __version__
 from rhelocator.api import server
 from rhelocator.update_images import aws
 from rhelocator.update_images import azure
-from rhelocator.update_images import gcp
+from rhelocator.update_images import google
 from rhelocator.update_images import schema
 
 
@@ -54,9 +54,9 @@ def aws_regions() -> None:
 
 
 @click.command()
-def gcp_images() -> None:
-    """Dump GCP images for all regions in JSON format."""
-    images = gcp.format_all_images()
+def google_images() -> None:
+    """Dump GOOGLE images for all regions in JSON format."""
+    images = google.format_all_images()
     dump_images(images)
 
 
@@ -106,5 +106,5 @@ def serve(file_path: str, port: int, host: str, dev: bool) -> None:
 cli.add_command(aws_hourly_images)
 cli.add_command(aws_regions)
 cli.add_command(azure_images)
-cli.add_command(gcp_images)
+cli.add_command(google_images)
 cli.add_command(serve)

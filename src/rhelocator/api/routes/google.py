@@ -5,7 +5,7 @@ from flask import Blueprint
 from flask import request
 
 
-def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
+def google_blueprint(data: list[dict[str, str]]) -> Blueprint:
     """Creates and returns a Flask blueprint based that serves the provided
     image data.
 
@@ -15,13 +15,13 @@ def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
     Returns:
         Flask blueprint serving the provided data.
     """
-    gcp_endpoint = Blueprint("gcp_api", __name__)
+    google_endpoint = Blueprint("google_api", __name__)
 
-    @gcp_endpoint.route("/gcp", methods=["GET"])
-    @swag_from("../schema/gcp.yml")
+    @google_endpoint.route("/google", methods=["GET"])
+    @swag_from("../schema/google.yml")
     def endpoint() -> list[dict[str, str]]:
-        """Cloud Image Locator GCP Endpoint Provides RHEL image data for Google
-        Cloud."""
+        """Cloud Image Locator GOOGLE Endpoint Provides RHEL image data for
+        Google Cloud."""
 
         query: dict[str, str] = {}
         name: Optional[str] = request.args.get("name")
@@ -55,4 +55,4 @@ def gcp_blueprint(data: list[dict[str, str]]) -> Blueprint:
                 response.append(image)
         return response
 
-    return gcp_endpoint
+    return google_endpoint

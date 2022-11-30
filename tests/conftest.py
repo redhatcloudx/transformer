@@ -132,9 +132,9 @@ def mock_azure_images(mocker):
 
 
 @pytest.fixture
-def mock_gcp_images(mocker):
+def mock_google_images(mocker):
     """Provide an offline result for calls to get_google_images."""
-    mock = mocker.patch("rhelocator.update_images.gcp.get_images")
+    mock = mocker.patch("rhelocator.update_images.google.get_images")
 
     mocked_image = {
         "id": "rhel-7-9-sap-v20220719",
@@ -151,7 +151,7 @@ def mock_gcp_images(mocker):
 @pytest.fixture
 def mock_normalize_google_images(mocker):
     """Provide an offline result for calls to normalize_google_images."""
-    mock = mocker.patch("rhelocator.update_images.gcp.normalize_google_images")
+    mock = mocker.patch("rhelocator.update_images.google.normalize_google_images")
 
     # Fake a Google image listing.
     mocked_image = MagicMock()

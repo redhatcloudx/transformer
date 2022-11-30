@@ -52,4 +52,4 @@ AZURE_RHEL_IMAGE_TREE = {
 # \____/\____/_/
 
 # Defines project name.
-GCP_PROJECTNAME = "rhel-cloud"
+GOOGLE_PROJECTNAME = "rhel-cloud"
