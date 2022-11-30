@@ -8,15 +8,15 @@ from unittest.mock import patch
 
 from jsonschema import ValidationError
 
-from rhelocator.update_images import gcp
+from rhelocator.update_images import google
 from rhelocator.update_images import schema
 
 
-@patch("rhelocator.update_images.gcp.compute_v1.ImagesClient")
-def test_get_images(mock_gcp: MagicMock) -> None:
+@patch("rhelocator.update_images.google.compute_v1.ImagesClient")
+def test_get_images(mock_google: MagicMock) -> None:
     """Test getting Google images."""
     fam_rhel_images = []
-    with open("tests/update_images/testdata/gcp_list_images.json") as json_file:
+    with open("tests/update_images/testdata/google_list_images.json") as json_file:
         list = json.load(json_file)
         for entry in list:
             if entry["family"].__contains__("rhel"):
@@ -47,9 +47,9 @@ def test_get_images(mock_gcp: MagicMock) -> None:
     # Connect the mock to the ImagesClient return value.
     mock_response = MagicMock()
     mock_response.list.return_value = mocked_list
-    mock_gcp.return_value = mock_response
+    mock_google.return_value = mock_response
 
-    images = gcp.get_images()
+    images = google.get_images()
     assert len(images) == len(mocked_list) / 2
 
 
@@ -62,7 +62,7 @@ def test_normalize_google_images() -> None:
     mocked_image.description = "RHEL"
     mocked_image.name = "rhel-9-20221018"
 
-    images = gcp.normalize_google_images([mocked_image])
+    images = google.normalize_google_images([mocked_image])
 
     assert isinstance(images, list)
     assert images[0] == {
@@ -76,25 +76,25 @@ def test_normalize_google_images() -> None:
 def test_parse_image_version_from_name():
     """Test parsing a google image name with a basic image."""
     image_name = "rhel-7-9-sap-v20220719"
-    version = gcp.parse_image_version_from_name(image_name)
+    version = google.parse_image_version_from_name(image_name)
 
     assert version == "7.9"
 
     """Test parsing a google image name with a basic image."""
     image_name = "rhel-7-sap-v20220719"
-    version = gcp.parse_image_version_from_name(image_name)
+    version = google.parse_image_version_from_name(image_name)
 
     assert version == "7"
 
     """Test parsing a google image name with a basic image."""
     image_name = "rhel-7-1-2-sap-v20220719"
-    version = gcp.parse_image_version_from_name(image_name)
+    version = google.parse_image_version_from_name(image_name)
 
     assert version == "7.1.2"
 
     """Test parsing a google image name with a basic image."""
     image_name = "rhel-sap-v20220719"
-    version = gcp.parse_image_version_from_name(image_name)
+    version = google.parse_image_version_from_name(image_name)
 
     assert version == "unknown"
 
@@ -110,7 +110,7 @@ def test_format_image():
         "name": "rhel-7-v20220920",
     }
 
-    data = {"images": {"google": [gcp.format_image(mocked_image)]}}
+    data = {"images": {"google": [google.format_image(mocked_image)]}}
 
     try:
         schema.validate_json(data)
@@ -118,10 +118,10 @@ def test_format_image():
         raise AssertionError(f"Formatted data does not expect schema: {exc}")
 
 
-def test_format_all_images(mock_gcp_images):
+def test_format_all_images(mock_google_images):
     """Test transforming a list of google images into a schema approved
     format."""
-    data = gcp.format_all_images()
+    data = google.format_all_images()
 
     try:
         schema.validate_json(data)

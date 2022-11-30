@@ -30,15 +30,15 @@ def runner(app):
     return app.test_cli_runner()
 
 
-def test_request_gcp(client):
-    response = client.get("/api/gcp")
+def test_request_google(client):
+    response = client.get("/api/google")
     assert len(response.data) > 0
     assert response.status_code == 200
 
 
-def test_request_gcp_with_query(client):
+def test_request_google_with_query(client):
     response = client.get(
-        "/api/gcp",
+        "/api/google",
         query_string={
             "version": "9",
         },
@@ -48,7 +48,7 @@ def test_request_gcp_with_query(client):
     assert response.status_code == 200
 
 
-def test_request_gcp_with_multi_query(client):
+def test_request_google_with_multi_query(client):
     test_query = {
         "name": "RHEL 9",
         "arch": "arm64",
@@ -56,7 +56,7 @@ def test_request_gcp_with_multi_query(client):
         "imageId": "rhel-9",
         "date": "2022-11-02",
     }
-    response = client.get("/api/gcp", query_string=test_query)
+    response = client.get("/api/google", query_string=test_query)
     for image in json.loads(response.data):
         assert test_query["name"] in image["name"]
         assert test_query["arch"] in image["arch"]

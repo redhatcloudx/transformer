@@ -132,9 +132,9 @@ def test_azure_images_offline(
 
 
 @pytest.mark.e2e
-def test_gcp_images_live(runner):
+def test_google_images_live(runner):
     """Run a live test against the Google Cloud API to get images via CLI."""
-    result = runner.invoke(cli.gcp_images)
+    result = runner.invoke(cli.google_images)
     parsed = json.loads(result.output)
 
     assert isinstance(parsed["images"]["google"], list)
@@ -146,9 +146,9 @@ def test_gcp_images_live(runner):
     assert result.exit_code == 0
 
 
-def test_gcp_images_offline(mock_gcp_images, runner):
+def test_google_images_offline(mock_google_images, runner):
     """Run a live test against the Google Cloud API to get images via CLI."""
-    result = runner.invoke(cli.gcp_images)
+    result = runner.invoke(cli.google_images)
     parsed = json.loads(result.output)
 
     assert isinstance(parsed["images"]["google"], list)

@@ -21,7 +21,9 @@ def get_images() -> list[dict[str, str]]:
     # NOTE(mhayden): Google's examples suggest using a filter here for "deprecated.state
     # != DEPRECATED" but it returns no images when I tried it.
     # https://github.com/googleapis/python-compute/blob/main/samples/recipes/images/pagination.py
-    images_list_request = compute_v1.ListImagesRequest(project=config.GCP_PROJECTNAME)
+    images_list_request = compute_v1.ListImagesRequest(
+        project=config.GOOGLE_PROJECTNAME
+    )
 
     # Normalize the data first.
 
@@ -37,9 +39,9 @@ def get_images() -> list[dict[str, str]]:
 def normalize_google_images(image_list: list[Any]) -> list[dict[str, str]]:
     """Normalize the data returned from Google's image listing.
 
-    The GCP SDK returns an unusual object with repeated attributes and some attributes
-    lead to other interesting objects. The goal here is to normalize this data so that
-    it's dict-like, similar to the Azure and AWS functions.
+    The GOOGLE SDK returns an unusual object with repeated attributes and some 
+    attributes lead to other interesting objects. The goal here is to normalize 
+    this data so that it's dict-like, similar to the Azure and AWS functions.
 
     Args:
         image_list: A Google image listing from the ImagesClient class.
