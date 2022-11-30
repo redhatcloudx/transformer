@@ -39,8 +39,8 @@ def get_images() -> list[dict[str, str]]:
 def normalize_google_images(image_list: list[Any]) -> list[dict[str, str]]:
     """Normalize the data returned from Google's image listing.
 
-    The GOOGLE SDK returns an unusual object with repeated attributes and some 
-    attributes lead to other interesting objects. The goal here is to normalize 
+    The GOOGLE SDK returns an unusual object with repeated attributes and some
+    attributes lead to other interesting objects. The goal here is to normalize
     this data so that it's dict-like, similar to the Azure and AWS functions.
 
     Args:
