@@ -196,41 +196,42 @@ def get_images() -> list[dict[str, str]]:
         List of dictionaries matching `az vm image list` output.
     """
     results = []
-    for publisher, offers in config.AZURE_RHEL_IMAGE_TREE.items():
-        for offer, skus in offers.items():
-            for sku, version in skus.items():
-                # Are we looking for the latest image or all images?
-                latest = True
-                if version != "latest":
-                    latest = False
-                # Get the image versions that match the pub/offer/sku combination.
-                image_versions = get_image_versions(
-                    config.AZURE_DEFAULT_LOCATION, publisher, offer, sku, latest
-                )
-
-                # Loop through the image versions and add on this image version to the
-                # list in Azure's `az vm image list` format.
-                for image_version in image_versions:
-                    image_details = get_image_details(
-                        config.AZURE_DEFAULT_LOCATION,
-                        publisher,
-                        offer,
-                        sku,
-                        image_version,
+    for entry in config.AZURE_RHEL_IMAGE_TREE:
+        for publisher, offers in entry.items():
+            for offer, skus in offers.items():
+                for sku, version in skus.items():
+                    # Are we looking for the latest image or all images?
+                    latest = True
+                    if version != "latest":
+                        latest = False
+                    # Get the image versions that match the pub/offer/sku combination.
+                    image_versions = get_image_versions(
+                        config.AZURE_DEFAULT_LOCATION, publisher, offer, sku, latest
                     )
-                    result = {
-                        "architecture": image_details["properties"]["architecture"],
-                        "hyperVGeneration": image_details["properties"][
-                            "hyperVGeneration"
-                        ],
-                        "offer": offer,
-                        "publisher": publisher,
-                        "sku": sku,
-                        "urn": f"{publisher}:{offer}:{sku}:{image_version}",
-                        "version": image_version,
-                    }
 
-                    results.append(result)
+                    # Loop through the image versions and add on this image version to
+                    # the list in Azure's `az vm image list` format.
+                    for image_version in image_versions:
+                        image_details = get_image_details(
+                            config.AZURE_DEFAULT_LOCATION,
+                            publisher,
+                            offer,
+                            sku,
+                            image_version,
+                        )
+                        result = {
+                            "architecture": image_details["properties"]["architecture"],
+                            "hyperVGeneration": image_details["properties"][
+                                "hyperVGeneration"
+                            ],
+                            "offer": offer,
+                            "publisher": publisher,
+                            "sku": sku,
+                            "urn": f"{publisher}:{offer}:{sku}:{image_version}",
+                            "version": image_version,
+                        }
+
+                        results.append(result)
 
     return results
 
