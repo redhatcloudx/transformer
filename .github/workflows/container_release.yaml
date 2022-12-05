@@ -72,7 +72,7 @@ jobs:
 
       - name: List Google Cloud images
         run: |
-          poetry run rhelocator-updater gcp-images >> ./data/temp-gcp-data.json
+          poetry run rhelocator-updater google-images >> ./data/temp-gcp-data.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: '${{ steps.google_auth.outputs.credentials_file_path }}'
 
