@@ -197,6 +197,7 @@ def get_images() -> list[dict[str, str]]:
     """
     results = []
     for entry in config.AZURE_RHEL_IMAGE_TREE:
+        print(entry.items())
         for publisher, offers in entry.items():
             for offer, skus in offers.items():
                 for sku, version in skus.items():
