@@ -30,7 +30,7 @@ def test_get_images(mock_google: MagicMock) -> None:
         mocked_deprecated_image.architecture = image["architecture"]
         mocked_deprecated_image.creation_timestamp = image["creationTimestamp"]
         mocked_deprecated_image.description = image["description"]
-        mocked_deprecated_image.name = image["name"]
+        mocked_deprecated_image.name = "DEPRECATED"
         mocked_deprecated_image.deprecated.state = "DEPRECATED"
 
         mocked_list.append(mocked_deprecated_image)
@@ -41,6 +41,7 @@ def test_get_images(mock_google: MagicMock) -> None:
         mocked_valid_image.creation_timestamp = image["creationTimestamp"]
         mocked_valid_image.description = image["description"]
         mocked_valid_image.name = image["name"]
+        mocked_valid_image.deprecated.state = "READY"
 
         mocked_list.append(mocked_valid_image)
 
@@ -50,7 +51,9 @@ def test_get_images(mock_google: MagicMock) -> None:
     mock_google.return_value = mock_response
 
     images = google.get_images()
-    assert len(images) == len(mocked_list) / 2
+
+    deprecated_images = [image for image in images if image["name"] == "DEPRECATED"]
+    assert len(deprecated_images) == 0
 
 
 def test_normalize_google_images() -> None:

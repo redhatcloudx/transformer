@@ -21,19 +21,24 @@ def get_images() -> list[dict[str, str]]:
     # NOTE(mhayden): Google's examples suggest using a filter here for "deprecated.state
     # != DEPRECATED" but it returns no images when I tried it.
     # https://github.com/googleapis/python-compute/blob/main/samples/recipes/images/pagination.py
-    images_list_request = compute_v1.ListImagesRequest(
-        project=config.GOOGLE_PROJECTNAME
-    )
+    images_list_requests = []
+
+    for projectname in config.GOOGLE_PROJECTNAME:
+        images_list_requests.append(compute_v1.ListImagesRequest(project=projectname))
 
     # Normalize the data first.
-
-    return normalize_google_images(
-        [
-            x
-            for x in images_client.list(request=images_list_request)
-            if x.deprecated.state != "DEPRECATED"
-        ]
-    )
+    normalized_image_list: list[dict[str, str]] = []
+    for request in images_list_requests:
+        normalized_image_list.extend(
+            normalize_google_images(
+                [
+                    x
+                    for x in images_client.list(request=request)
+                    if x.deprecated.state != "DEPRECATED"
+                ]
+            )
+        )
+    return normalized_image_list
 
 
 def normalize_google_images(image_list: list[Any]) -> list[dict[str, str]]:
