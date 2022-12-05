@@ -39,11 +39,53 @@ AZURE_DEFAULT_LOCATION = "eastus"
 # The dict below sets which publishers, offers, and skus we should examine for
 # RHEL image listings.
 # Example: {"publisher": {"offer": ["sku1", "sku2", "sku3"]}}  # noqa: E800
-AZURE_RHEL_IMAGE_TREE = {
-    "redhat": {
-        "RHEL": {"7lvm-gen2": "latest", "8-lvm-gen2": "latest", "9-lvm-gen2": "latest"}
-    }
-}
+AZURE_RHEL_IMAGE_TREE = [
+    {
+        "redhat": {
+            "RHEL": {
+                "7lvm-gen2": "latest",
+                "8-lvm-gen2": "latest",
+                "9-lvm-gen2": "latest",
+            }
+        }
+    },
+    {
+        "rhel-arm64": {
+            "RHEL": {
+                "7lvm-gen2": "latest",
+                "8-lvm-gen2": "latest",
+                "9-lvm-gen2": "latest",
+            }
+        }
+    },
+    {
+        "RHEL-SAP": {
+            "RHEL": {
+                "7lvm-gen2": "latest",
+                "8-lvm-gen2": "latest",
+                "9-lvm-gen2": "latest",
+            }
+        }
+    },
+    {
+        "RHEL-SAP-APPS": {
+            "RHEL": {
+                "7lvm-gen2": "latest",
+                "8-lvm-gen2": "latest",
+                "9-lvm-gen2": "latest",
+            }
+        }
+    },
+    {
+        "RHEL-SAP-HA": {
+            "RHEL": {
+                "7lvm-gen2": "latest",
+                "8-lvm-gen2": "latest",
+                "9-lvm-gen2": "latest",
+            }
+        }
+    },
+]
 
 #    ________________
 #   / ____/ ____/ __ \
