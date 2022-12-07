@@ -52,36 +52,35 @@ AZURE_RHEL_IMAGE_TREE = [
     {
         "redhat": {
             "rhel-arm64": {
-                "7lvm-gen2": "latest",
-                "8-lvm-gen2": "latest",
-                "9-lvm-gen2": "latest",
+                "8_6-arm64": "latest",
             }
         }
     },
     {
         "redhat": {
             "RHEL-SAP": {
-                "7lvm-gen2": "latest",
-                "8-lvm-gen2": "latest",
-                "9-lvm-gen2": "latest",
+                "7.4": "latest",
+                "7.5": "latest",
+                "7.6": "latest",
             }
         }
     },
     {
         "redhat": {
             "RHEL-SAP-APPS": {
-                "7lvm-gen2": "latest",
-                "8-lvm-gen2": "latest",
-                "9-lvm-gen2": "latest",
+                "74sapapps-gen2": "latest",
+                "76sapapps-gen2": "latest",
+                "77sapapps-gen2": "latest",
+                "79sapapps-gen2": "latest",
             }
         }
     },
     {
         "redhat": {
             "RHEL-SAP-HA": {
-                "7lvm-gen2": "latest",
-                "8-lvm-gen2": "latest",
-                "9-lvm-gen2": "latest",
+                "7.4": "latest",
+                "7.5": "latest",
+                "7.6": "latest",
             }
         }
     },

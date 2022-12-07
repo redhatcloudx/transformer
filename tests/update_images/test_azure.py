@@ -230,14 +230,11 @@ def test_get_latest_images(mock_azure_image_versions_latest, mock_azure_image_de
         ]
         assert image["urn"] == ":".join(urn_sections)
 
-    # Since we asked for the latest image only, we should have one image per SKU.
-    assert len({x["sku"] for x in images}) == len(images)
-
 
 def test_get_all_images(mock_azure_image_versions, mock_azure_image_details):
     """Test retrieving Azure images when we want all of the image versions."""
     # Fake an image tree with one SKU that doesn't use 'latest'.
-    config.AZURE_RHEL_IMAGE_TREE = {"redhat": {"RHEL": {"7lvm-gen2": ""}}}
+    config.AZURE_RHEL_IMAGE_TREE = [{"redhat": {"RHEL": {"7lvm-gen2": ""}}}]
     images = azure.get_images()
 
     assert isinstance(images, list)
