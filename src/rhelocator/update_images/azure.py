@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import re
+import sys
+import time
 
 from datetime import datetime
 
@@ -24,7 +26,14 @@ def get_access_token() -> str:
         "resource": "https://management.azure.com/",
     }
     url = f"https://login.microsoftonline.com/{config.AZURE_TENANT_ID}/oauth2/token"
-    resp = requests.post(url, data=params, timeout=10)
+    resp = None
+    for i in range(config.AZURE_MAX_RETRIES):
+        resp = requests.post(url, data=params, timeout=10)
+        if resp.status_code == 200:
+            break
+        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+    if resp is None:
+        return ""
     return str(resp.json().get("access_token", None))
 
 
@@ -43,7 +52,14 @@ def get_locations() -> list[str]:
         f"https://management.azure.com/subscriptions/{config.AZURE_SUBSCRIPTION_ID}"
         "/locations"
     )
-    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    resp = None
+    for i in range(config.AZURE_MAX_RETRIES):
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            break
+        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+    if resp is None:
+        return [""]
     return sorted([x["name"] for x in resp.json()["value"]])
 
 
@@ -66,7 +82,14 @@ def get_publishers(location: str) -> list[str]:
         f"https://management.azure.com/subscriptions/{config.AZURE_SUBSCRIPTION_ID}/"
         f"providers/Microsoft.Compute/locations/{location}/publishers"
     )
-    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    resp = None
+    for i in range(config.AZURE_MAX_RETRIES):
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            break
+        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+    if resp is None:
+        return [""]
     return sorted([x["name"] for x in resp.json()])
 
 
@@ -91,7 +114,14 @@ def get_offers(location: str, publisher: str) -> list[str]:
         f"providers/Microsoft.Compute/locations/{location}/publishers/"
         f"{publisher}/artifacttypes/vmimage/offers"
     )
-    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    resp = None
+    for i in range(config.AZURE_MAX_RETRIES):
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            break
+        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+    if resp is None:
+        return [""]
     return sorted([x["name"] for x in resp.json()])
 
 
@@ -117,7 +147,14 @@ def get_skus(location: str, publisher: str, offer: str) -> list[str]:
         f"providers/Microsoft.Compute/locations/{location}/publishers/"
         f"{publisher}/artifacttypes/vmimage/offers/{offer}/skus"
     )
-    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    resp = None
+    for i in range(config.AZURE_MAX_RETRIES):
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            break
+        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+    if resp is None:
+        return [""]
     return sorted([x["name"] for x in resp.json()])
 
 
@@ -147,7 +184,14 @@ def get_image_versions(
         f"providers/Microsoft.Compute/locations/{location}/publishers/"
         f"{publisher}/artifacttypes/vmimage/offers/{offer}/skus/{sku}/versions"
     )
-    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    resp = None
+    for i in range(config.AZURE_MAX_RETRIES):
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            break
+        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+    if resp is None:
+        return [""]
     images = [x["name"] for x in resp.json()]
 
     # Return only the last image if requested.
@@ -184,7 +228,14 @@ def get_image_details(
         f"versions/{version}"
     )
 
-    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    resp = None
+    for i in range(config.AZURE_MAX_RETRIES):
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            break
+        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+    if resp is None:
+        return {"":{"":""}}
     data: dict[str, dict[str, str]] = resp.json()
     return data
 
@@ -219,11 +270,21 @@ def get_images() -> list[dict[str, str]]:
                             sku,
                             image_version,
                         )
+                        hypervgen: str = ""
+                        if "hyperVGeneration" in image_details["properties"].keys() :
+                            hypervgen = image_details["properties"]["hyperVGeneration"]
+                        else:
+                            hypervgen = "unknown"
+
+                        arch: str = ""
+                        if "architecture" in image_details["properties"].keys() :
+                            arch = image_details["properties"]["architecture"]
+                        else:
+                            arch = "unknown"
+
                         result = {
-                            "architecture": image_details["properties"]["architecture"],
-                            "hyperVGeneration": image_details["properties"][
-                                "hyperVGeneration"
-                            ],
+                            "architecture": arch,
+                            "hyperVGeneration" : hypervgen,
                             "offer": offer,
                             "publisher": publisher,
                             "sku": sku,

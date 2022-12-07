@@ -86,6 +86,12 @@ AZURE_RHEL_IMAGE_TREE = [
     },
 ]
 
+# Sets the number of api call retries
+AZURE_MAX_RETRIES = 5
+
+# Sets the time before a timeout
+AZURE_REQUEST_FAILLURE_TIMEOUT = 1
+
 #    ________________
 #   / ____/ ____/ __ \
 #  / / __/ /   / /_/ /
