@@ -81,6 +81,10 @@ jobs:
           jq -s 'reduce .[] as $item ({}; . * $item)' ./data/* >> ./data/image-data.json
           rm ./data/temp*.json
 
+      - name: Build rhelocator release
+        run: |
+          poetry build -f wheel
+
       - name: Build API container
         id: build-image
         uses: redhat-actions/buildah-build@v2
