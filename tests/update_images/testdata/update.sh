@@ -8,6 +8,6 @@ gcloud compute images list --format="json" > google_list_images.json
 # when the image list is updated. 😉
 aws --region=us-east-1 ec2 describe-images \
     --owner 309956199498 \
-    --filter "Name=is-public,Values=true" \
+    --filter "Name=is-public,Values=true" | \
     jq '.Images | sort_by(.CreationDate)' \
     > aws_list_images.json
