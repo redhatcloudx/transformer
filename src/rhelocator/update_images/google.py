@@ -127,7 +127,7 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
     extprod = additional_information["extprod"]
     version = additional_information["version"].replace("-", ".")
 
-    name_parts = ['RHEL', version, extprod]
+    name_parts = ["RHEL", version, extprod]
 
     # This is necessary to avoid creating names like "RHEL 9 arm64 arm64"
     # as the naming conventions for Google images are inconsistent.
@@ -135,9 +135,9 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
     # rhel-9-arm64-v20221206
     # rhel-7-6-sap-v20221102
     if extprod.lower() != arch.lower():
-      name_parts.append(arch)
+        name_parts.append(arch)
 
-    name = ' '.join([x for x in name_parts if x != ''])
+    name = " ".join([x for x in name_parts if x != ""])
 
     selflink = "https://console.cloud.google.com/compute/imagesDetail/"
     selflink += f"projects/rhel-cloud/global/images/{image_id}"
