@@ -90,7 +90,7 @@ AZURE_RHEL_IMAGE_TREE = [
 AZURE_MAX_RETRIES = 5
 
 # Sets the time before a timeout
-AZURE_REQUEST_FAILLURE_TIMEOUT = 1
+AZURE_REQUEST_FAILURE_TIMEOUT = 1
 
 #    ________________
 #   / ____/ ____/ __ \
