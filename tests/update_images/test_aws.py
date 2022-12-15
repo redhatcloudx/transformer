@@ -176,6 +176,7 @@ def test_parse_invalid_image_name():
 
     assert not data
 
+
 def test_format_image():
     """Test transforming a single AWS image into a schema approved format."""
     mocked_image = {

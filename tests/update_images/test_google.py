@@ -112,9 +112,10 @@ def test_format_image():
     except ValidationError as exc:
         raise AssertionError(f"Formatted data does not expect schema: {exc}")
 
+
 def test_format_image_with_arch_in_name():
-    """Test transforming a single google image into a schema approved
-    format if name contains architecture instead of external product."""
+    """Test transforming a single google image into a schema approved format if
+    name contains architecture instead of external product."""
     mocked_image = {
         "id": "3359998819149417250",
         "architecture": "ARM64",
