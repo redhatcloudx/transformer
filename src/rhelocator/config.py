@@ -99,4 +99,4 @@ AZURE_REQUEST_FAILURE_TIMEOUT = 1
 # \____/\____/_/
 
 # Defines project name.
-GOOGLE_PROJECTNAME = "rhel-cloud"
+GOOGLE_PROJECTNAME = ["rhel-cloud", "rhel-sap-cloud"]

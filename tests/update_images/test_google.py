@@ -30,7 +30,7 @@ def test_get_images(mock_google: MagicMock) -> None:
         mocked_deprecated_image.architecture = image["architecture"]
         mocked_deprecated_image.creation_timestamp = image["creationTimestamp"]
         mocked_deprecated_image.description = image["description"]
-        mocked_deprecated_image.name = image["name"]
+        mocked_deprecated_image.name = "DEPRECATED"
         mocked_deprecated_image.deprecated.state = "DEPRECATED"
 
         mocked_list.append(mocked_deprecated_image)
@@ -41,6 +41,7 @@ def test_get_images(mock_google: MagicMock) -> None:
         mocked_valid_image.creation_timestamp = image["creationTimestamp"]
         mocked_valid_image.description = image["description"]
         mocked_valid_image.name = image["name"]
+        mocked_valid_image.deprecated.state = "READY"
 
         mocked_list.append(mocked_valid_image)
 
@@ -50,7 +51,9 @@ def test_get_images(mock_google: MagicMock) -> None:
     mock_google.return_value = mock_response
 
     images = google.get_images()
-    assert len(images) == len(mocked_list) / 2
+
+    deprecated_images = [image for image in images if image["name"] == "DEPRECATED"]
+    assert len(deprecated_images) == 0
 
 
 def test_normalize_google_images() -> None:
@@ -73,30 +76,22 @@ def test_normalize_google_images() -> None:
     }
 
 
-def test_parse_image_version_from_name():
+def test_parse_valid_image_name():
     """Test parsing a google image name with a basic image."""
     image_name = "rhel-7-9-sap-v20220719"
-    version = google.parse_image_version_from_name(image_name)
+    data = google.parse_image_name(image_name)
 
-    assert version == "7.9"
+    assert data["product"] == "rhel"
+    assert data["extprod"] == "sap"
+    assert data["version"] == "7-9"
+    assert data["date"] == "20220719"
 
-    """Test parsing a google image name with a basic image."""
-    image_name = "rhel-7-sap-v20220719"
-    version = google.parse_image_version_from_name(image_name)
 
-    assert version == "7"
-
-    """Test parsing a google image name with a basic image."""
-    image_name = "rhel-7-1-2-sap-v20220719"
-    version = google.parse_image_version_from_name(image_name)
-
-    assert version == "7.1.2"
-
-    """Test parsing a google image name with a basic image."""
-    image_name = "rhel-sap-v20220719"
-    version = google.parse_image_version_from_name(image_name)
-
-    assert version == "unknown"
+def test_parse_invalid_image_name():
+    """Test parsing an invalid google image name."""
+    image_name = "notarealname"
+    data = google.parse_image_name(image_name)
+    assert not data
 
 
 def test_format_image():
@@ -111,6 +106,28 @@ def test_format_image():
     }
 
     data = {"images": {"google": [google.format_image(mocked_image)]}}
+
+    try:
+        schema.validate_json(data)
+    except ValidationError as exc:
+        raise AssertionError(f"Formatted data does not expect schema: {exc}")
+
+
+def test_format_image_with_arch_in_name():
+    """Test transforming a single google image into a schema approved format if
+    name contains architecture instead of external product."""
+    mocked_image = {
+        "id": "3359998819149417250",
+        "architecture": "ARM64",
+        "creation_timestamp": "2022-09-20T16:32:45.572-07:00",
+        "description": "Red Hat, Red Hat Enterprise Linux, 9",
+        "name": "rhel-9-arm64-v20221206",
+    }
+
+    formatted = google.format_image(mocked_image)
+    data = {"images": {"google": [formatted]}}
+
+    assert formatted["name"] == "RHEL 9 arm64"
 
     try:
         schema.validate_json(data)

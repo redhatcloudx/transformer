@@ -21,19 +21,24 @@ def get_images() -> list[dict[str, str]]:
     # NOTE(mhayden): Google's examples suggest using a filter here for "deprecated.state
     # != DEPRECATED" but it returns no images when I tried it.
     # https://github.com/googleapis/python-compute/blob/main/samples/recipes/images/pagination.py
-    images_list_request = compute_v1.ListImagesRequest(
-        project=config.GOOGLE_PROJECTNAME
-    )
+    images_list_requests = []
+
+    for projectname in config.GOOGLE_PROJECTNAME:
+        images_list_requests.append(compute_v1.ListImagesRequest(project=projectname))
 
     # Normalize the data first.
-
-    return normalize_google_images(
-        [
-            x
-            for x in images_client.list(request=images_list_request)
-            if x.deprecated.state != "DEPRECATED"
-        ]
-    )
+    normalized_image_list: list[dict[str, str]] = []
+    for request in images_list_requests:
+        normalized_image_list.extend(
+            normalize_google_images(
+                [
+                    x
+                    for x in images_client.list(request=request)
+                    if x.deprecated.state != "DEPRECATED"
+                ]
+            )
+        )
+    return normalized_image_list
 
 
 def normalize_google_images(image_list: list[Any]) -> list[dict[str, str]]:
@@ -63,30 +68,28 @@ def normalize_google_images(image_list: list[Any]) -> list[dict[str, str]]:
     return normalized_images
 
 
-def parse_image_version_from_name(image_name: str) -> str:
+def parse_image_name(image_name: str) -> dict[str, str]:
     """Parse an google image name and return version string.
 
-    Regex101: https://regex101.com/r/CiABs5/1
+    Regex101: https://regex101.com/r/9QCWIJ/1
 
     Args:
         image_name: String containing the image name, such as:
                     rhel-7-9-sap-v20220719
 
     Returns:
-        Returns the google image version as string
-                    rhel-7-9
+        Dictionary with additional information about the image.
     """
     google_image_name_regex = (
         r"(?P<product>\w*)-(?P<version>[\d]+(?:\-[\d]){0,3})-?"
-        r"(?P<intprod>\w*)?-v(?P<date>\d{4}\d{2}\d{2})"
+        r"(?P<extprod>\w*)?-v(?P<date>\d{4}\d{2}\d{2})"
     )
 
     matches = re.match(google_image_name_regex, image_name, re.IGNORECASE)
     if matches:
-        image_data = matches.groupdict()
-        version = image_data["version"]
-        return version.replace("-", ".")
-    return "unknown"
+        return matches.groupdict()
+
+    return {}
 
 
 def format_all_images() -> object:
@@ -116,13 +119,26 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
         JSON like structure containing streamlined image
         information.
     """
+    additional_information = parse_image_name(image["name"])
 
     arch = image["architecture"]
     image_id = image["name"]
     date = image["creation_timestamp"]
-    version = parse_image_version_from_name(image["name"])
+    extprod = additional_information["extprod"]
+    version = additional_information["version"].replace("-", ".")
 
-    name = f"RHEL {version} {arch}"
+    name_parts = ["RHEL", version, extprod]
+
+    # This is necessary to avoid creating names like "RHEL 9 arm64 arm64"
+    # as the naming conventions for Google images are inconsistent.
+    # e.g.
+    # rhel-9-arm64-v20221206
+    # rhel-7-6-sap-v20221102
+    if extprod.lower() != arch.lower():
+        name_parts.append(arch)
+
+    name = " ".join([x for x in name_parts if x != ""])
+
     selflink = "https://console.cloud.google.com/compute/imagesDetail/"
     selflink += f"projects/rhel-cloud/global/images/{image_id}"
 
