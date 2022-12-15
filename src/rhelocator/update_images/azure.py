@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import re
-import sys
 import time
 
 from datetime import datetime
@@ -235,7 +234,7 @@ def get_image_details(
             break
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
-        return {"":{"":""}}
+        return {"": {"": ""}}
     data: dict[str, dict[str, str]] = resp.json()
     return data
 
@@ -271,20 +270,20 @@ def get_images() -> list[dict[str, str]]:
                             image_version,
                         )
                         hypervgen: str = ""
-                        if "hyperVGeneration" in image_details["properties"].keys() :
+                        if "hyperVGeneration" in image_details["properties"].keys():
                             hypervgen = image_details["properties"]["hyperVGeneration"]
                         else:
                             hypervgen = "unknown"
 
                         arch: str = ""
-                        if "architecture" in image_details["properties"].keys() :
+                        if "architecture" in image_details["properties"].keys():
                             arch = image_details["properties"]["architecture"]
                         else:
                             arch = "unknown"
 
                         result = {
                             "architecture": arch,
-                            "hyperVGeneration" : hypervgen,
+                            "hyperVGeneration": hypervgen,
                             "offer": offer,
                             "publisher": publisher,
                             "sku": sku,
