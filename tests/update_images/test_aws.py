@@ -169,6 +169,13 @@ def test_parse_image_name_external_product():
     assert data["storage"] == "GP2"
 
 
+def test_parse_invalid_image_name():
+    """Test parsing an AWS invalid image name."""
+    image_name = "thisisnotarealname"
+    data = aws.parse_image_name(image_name)
+
+    assert not data
+
 def test_format_image():
     """Test transforming a single AWS image into a schema approved format."""
     mocked_image = {
