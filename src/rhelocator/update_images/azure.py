@@ -31,7 +31,7 @@ def get_access_token() -> str:
         resp = requests.post(url, data=params, timeout=10)
         if resp.status_code == 200:
             break
-        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+        time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
         return ""
     return str(resp.json().get("access_token", None))
@@ -57,7 +57,7 @@ def get_locations() -> list[str]:
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
-        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+        time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
         return [""]
     return sorted([x["name"] for x in resp.json()["value"]])
@@ -87,7 +87,7 @@ def get_publishers(location: str) -> list[str]:
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
-        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+        time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
         return [""]
     return sorted([x["name"] for x in resp.json()])
@@ -119,7 +119,7 @@ def get_offers(location: str, publisher: str) -> list[str]:
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
-        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+        time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
         return [""]
     return sorted([x["name"] for x in resp.json()])
@@ -152,7 +152,7 @@ def get_skus(location: str, publisher: str, offer: str) -> list[str]:
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
-        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+        time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
         return [""]
     return sorted([x["name"] for x in resp.json()])
@@ -189,7 +189,7 @@ def get_image_versions(
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
-        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+        time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
         return [""]
     images = [x["name"] for x in resp.json()]
@@ -233,7 +233,7 @@ def get_image_details(
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
-        time.sleep(config.AZURE_REQUEST_FAILLURE_TIMEOUT)
+        time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
     if resp is None:
         return {"":{"":""}}
     data: dict[str, dict[str, str]] = resp.json()
