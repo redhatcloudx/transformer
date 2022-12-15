@@ -160,8 +160,11 @@ def format_image(image: dict[str, str], region: str) -> dict[str, str]:
     version = additional_information["version"]
     beta = additional_information["beta"]
     billing = additional_information["billing"]
+    extprod = additional_information["extprod"]
+    intprod = additional_information["intprod"]
+    name_parts = ['RHEL', version, intprod, extprod, virt_type, arch, billing, beta]
 
-    name = f"RHEL {version} {virt_type} {arch} {billing} {beta}"
+    name = ' '.join([x for x in name_parts if x != ''])
     selflink = (
         f"https://console.aws.amazon.com/ec2/home?region={region}#launchAmi={image_id}"
     )
@@ -176,3 +179,4 @@ def format_image(image: dict[str, str], region: str) -> dict[str, str]:
         "selflink": selflink,
         "region": region,
     }
+
