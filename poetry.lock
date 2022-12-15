@@ -585,14 +585,14 @@ reauth = ["pyu2f (>=0.1.5)"]
 
 [[package]]
 name = "google-cloud-compute"
-version = "1.7.0"
+version = "1.8.0"
 description = "Google Cloud Compute API client library"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "google-cloud-compute-1.7.0.tar.gz", hash = "sha256:5fc19368091a80671aff389ec75d614e09f2749c9f27835c682a52c75edfc5eb"},
-    {file = "google_cloud_compute-1.7.0-py2.py3-none-any.whl", hash = "sha256:613b01bda0103beb9ece4c4cd8971900d13285cab3e42058fc338d6cc0cd8c36"},
+    {file = "google-cloud-compute-1.8.0.tar.gz", hash = "sha256:a67857918497a61eda219268237b574cd214907e384b6d900c8197525f5c7855"},
+    {file = "google_cloud_compute-1.8.0-py2.py3-none-any.whl", hash = "sha256:d5ff00c41eae338e67744289fa28c28a87142436109b7041b352cdce6f410b60"},
 ]
 
 [package.dependencies]
