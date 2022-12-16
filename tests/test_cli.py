@@ -24,7 +24,8 @@ def test_aws_hourly_images_live_opt_in_region(runner):
     """Run a live test against the AWS API to get hourly images for opt-in
     regions.
 
-    Further reading: https://github.com/redhatcloudx/rhelocator/issues/43
+    Further reading:
+    https://github.com/redhatcloudx/rhelocator/issues/43
     """
     result = runner.invoke(cli.aws_hourly_images, ["--region=af-south-1"])
     parsed = json.loads(result.output)

@@ -26,7 +26,7 @@ def get_access_token() -> str:
     }
     url = f"https://login.microsoftonline.com/{config.AZURE_TENANT_ID}/oauth2/token"
     resp = None
-    for i in range(config.AZURE_MAX_RETRIES):
+    for _i in range(config.AZURE_MAX_RETRIES):
         resp = requests.post(url, data=params, timeout=10)
         if resp.status_code == 200:
             break
@@ -52,7 +52,7 @@ def get_locations() -> list[str]:
         "/locations"
     )
     resp = None
-    for i in range(config.AZURE_MAX_RETRIES):
+    for _i in range(config.AZURE_MAX_RETRIES):
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
@@ -82,7 +82,7 @@ def get_publishers(location: str) -> list[str]:
         f"providers/Microsoft.Compute/locations/{location}/publishers"
     )
     resp = None
-    for i in range(config.AZURE_MAX_RETRIES):
+    for _i in range(config.AZURE_MAX_RETRIES):
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
@@ -114,7 +114,7 @@ def get_offers(location: str, publisher: str) -> list[str]:
         f"{publisher}/artifacttypes/vmimage/offers"
     )
     resp = None
-    for i in range(config.AZURE_MAX_RETRIES):
+    for _i in range(config.AZURE_MAX_RETRIES):
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
@@ -147,7 +147,7 @@ def get_skus(location: str, publisher: str, offer: str) -> list[str]:
         f"{publisher}/artifacttypes/vmimage/offers/{offer}/skus"
     )
     resp = None
-    for i in range(config.AZURE_MAX_RETRIES):
+    for _i in range(config.AZURE_MAX_RETRIES):
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
@@ -184,7 +184,7 @@ def get_image_versions(
         f"{publisher}/artifacttypes/vmimage/offers/{offer}/skus/{sku}/versions"
     )
     resp = None
-    for i in range(config.AZURE_MAX_RETRIES):
+    for _i in range(config.AZURE_MAX_RETRIES):
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
@@ -228,7 +228,7 @@ def get_image_details(
     )
 
     resp = None
-    for i in range(config.AZURE_MAX_RETRIES):
+    for _i in range(config.AZURE_MAX_RETRIES):
         resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code == 200:
             break
@@ -269,17 +269,12 @@ def get_images() -> list[dict[str, str]]:
                             sku,
                             image_version,
                         )
-                        hypervgen: str = ""
-                        if "hyperVGeneration" in image_details["properties"].keys():
-                            hypervgen = image_details["properties"]["hyperVGeneration"]
-                        else:
-                            hypervgen = "unknown"
-
-                        arch: str = ""
-                        if "architecture" in image_details["properties"].keys():
-                            arch = image_details["properties"]["architecture"]
-                        else:
-                            arch = "unknown"
+                        hypervgen = image_details["properties"].get(
+                            "hyperVGeneration", "unknown"
+                        )
+                        arch = image_details["properties"].get(
+                            "architecture", "unknown"
+                        )
 
                         result = {
                             "architecture": arch,
