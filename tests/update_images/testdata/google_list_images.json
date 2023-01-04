@@ -2105,44 +2105,6 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2106464448",
-    "creationTimestamp": "2022-11-08T06:16:33.020-08:00",
-    "description": "SUSE, SUSE Linux Enterprise Server 12 SP4 for SAP, x86_64, built on 20221108, supports Shielded VM features",
-    "diskSizeGb": "10",
-    "family": "sles-12-sp4-sap",
-    "guestOsFeatures": [
-      {
-        "type": "UEFI_COMPATIBLE"
-      },
-      {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
-      }
-    ],
-    "id": "6742111794678454831",
-    "kind": "compute#image",
-    "labelFingerprint": "42WmSpB8rSM=",
-    "licenseCodes": [
-      "4079932016749305610"
-    ],
-    "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/licenses/sles-sap-12"
-    ],
-    "name": "sles-12-sp4-sap-v20221108-x86-64",
-    "rawDisk": {
-      "containerType": "TAR",
-      "source": ""
-    },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images/sles-12-sp4-sap-v20221108-x86-64",
-    "sourceType": "RAW",
-    "status": "READY",
-    "storageLocations": [
-      "asia",
-      "us",
-      "eu"
-    ]
-  },
-  {
-    "architecture": "X86_64",
     "archiveSizeBytes": "2193473280",
     "creationTimestamp": "2022-10-14T19:47:40.803-07:00",
     "description": "SUSE, SUSE Linux Enterprise Server 12 SP5 for SAP, x86_64, built on 20221015, supports Shielded VM features",
@@ -4419,9 +4381,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1754235840",
-    "creationTimestamp": "2022-12-06T15:47:55.329-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, arm64 jammy minimal image built on 2022-12-06, supports Shielded VM features",
+    "archiveSizeBytes": "1747387200",
+    "creationTimestamp": "2023-01-03T16:02:07.383-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, arm64 jammy minimal image built on 2023-01-03, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2204-lts-arm64",
     "guestOsFeatures": [
@@ -4435,7 +4397,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "5543521138298219076",
+    "id": "3102302048404209424",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4444,12 +4406,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2204-lts"
     ],
-    "name": "ubuntu-minimal-2204-jammy-arm64-v20221206",
+    "name": "ubuntu-minimal-2204-jammy-arm64-v20230103",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-arm64-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-arm64-v20230103",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4461,16 +4423,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "eu",
-      "us"
+      "us",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2210678784",
-    "creationTimestamp": "2022-12-06T15:47:53.212-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, amd64 jammy minimal image built on 2022-12-06, supports Shielded VM features",
+    "archiveSizeBytes": "2202798912",
+    "creationTimestamp": "2023-01-03T16:02:05.035-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, amd64 jammy minimal image built on 2023-01-03, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2204-lts",
     "guestOsFeatures": [
@@ -4487,7 +4449,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "8463432870409693767",
+    "id": "174580880337633043",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4496,12 +4458,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2204-lts"
     ],
-    "name": "ubuntu-minimal-2204-jammy-v20221206",
+    "name": "ubuntu-minimal-2204-jammy-v20230103",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-v20230103",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -5106,9 +5068,9 @@
     ]
   },
   {
-    "archiveSizeBytes": "2423340096",
-    "creationTimestamp": "2022-12-26T11:36:39.230-08:00",
-    "description": "Fedora, Fedora CoreOS next, 37.20221225.1.1, x86_64 published on 2022-12-26",
+    "archiveSizeBytes": "2423257920",
+    "creationTimestamp": "2023-01-03T09:07:06.368-08:00",
+    "description": "Fedora, Fedora CoreOS next, 37.20221225.1.2, x86_64 published on 2023-01-03",
     "diskSizeGb": "10",
     "family": "fedora-coreos-next",
     "guestOsFeatures": [
@@ -5125,7 +5087,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "4563639102926506281",
+    "id": "1870597610794507861",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5136,24 +5098,24 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-next",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20221225-1-1-gcp-x86-64",
+    "name": "fedora-coreos-37-20221225-1-2-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221225-1-1-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221225-1-2-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "us",
-      "asia",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
-    "archiveSizeBytes": "2423187072",
-    "creationTimestamp": "2022-12-26T08:53:04.347-08:00",
-    "description": "Fedora, Fedora CoreOS testing, 37.20221225.2.1, x86_64 published on 2022-12-26",
+    "archiveSizeBytes": "2423285568",
+    "creationTimestamp": "2023-01-03T09:04:30.453-08:00",
+    "description": "Fedora, Fedora CoreOS testing, 37.20221225.2.2, x86_64 published on 2023-01-03",
     "diskSizeGb": "10",
     "family": "fedora-coreos-testing",
     "guestOsFeatures": [
@@ -5170,7 +5132,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "8266311236074106752",
+    "id": "9152123342950096625",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5181,12 +5143,12 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-testing",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20221225-2-1-gcp-x86-64",
+    "name": "fedora-coreos-37-20221225-2-2-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221225-2-1-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221225-2-2-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
