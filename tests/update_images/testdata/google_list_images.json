@@ -4280,9 +4280,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1748687616",
-    "creationTimestamp": "2022-12-13T22:22:41.896-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, arm64 focal minimal image built on 2022-12-14, supports Shielded VM features",
+    "archiveSizeBytes": "1749357312",
+    "creationTimestamp": "2023-01-04T22:42:46.130-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, arm64 focal minimal image built on 2023-01-05, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2004-lts-arm64",
     "guestOsFeatures": [
@@ -4296,7 +4296,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1677353511592187230",
+    "id": "2420012808006258570",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4305,12 +4305,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2004-lts"
     ],
-    "name": "ubuntu-minimal-2004-focal-arm64-v20221214",
+    "name": "ubuntu-minimal-2004-focal-arm64-v20230105",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-arm64-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-arm64-v20230105",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4322,16 +4322,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "asia",
+      "eu",
       "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2194074432",
-    "creationTimestamp": "2022-12-13T22:22:42.504-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, amd64 focal minimal image built on 2022-12-14, supports Shielded VM features",
+    "archiveSizeBytes": "2193880128",
+    "creationTimestamp": "2023-01-04T22:42:47.405-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, amd64 focal minimal image built on 2023-01-05, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2004-lts",
     "guestOsFeatures": [
@@ -4348,7 +4348,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "6410137494434927965",
+    "id": "5278161140874727304",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4357,12 +4357,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2004-lts"
     ],
-    "name": "ubuntu-minimal-2004-focal-v20221214",
+    "name": "ubuntu-minimal-2004-focal-v20230105",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-v20230105",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4374,9 +4374,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "asia",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
