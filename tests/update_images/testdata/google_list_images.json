@@ -2570,9 +2570,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3039633600",
-    "creationTimestamp": "2023-01-03T18:58:39.716-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS Pro Server, amd64 jammy pro server image built on 2023-01-04, supports Shielded VM features",
+    "archiveSizeBytes": "3039856128",
+    "creationTimestamp": "2023-01-05T18:49:52.751-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS Pro Server, amd64 jammy pro server image built on 2023-01-06, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-2204-lts",
     "guestOsFeatures": [
@@ -2589,7 +2589,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "4999430386273047984",
+    "id": "2334104846381757119",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2598,12 +2598,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-2204-lts"
     ],
-    "name": "ubuntu-pro-2204-jammy-v20230104",
+    "name": "ubuntu-pro-2204-jammy-v20230106",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-2204-jammy-v20230104",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-2204-jammy-v20230106",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2616,8 +2616,8 @@
     "status": "READY",
     "storageLocations": [
       "us",
-      "asia",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
@@ -3246,9 +3246,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "2646115200",
-    "creationTimestamp": "2023-01-03T19:20:08.929-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS, arm64 jammy image built on 2023-01-04, supports Shielded VM features",
+    "archiveSizeBytes": "2645447424",
+    "creationTimestamp": "2023-01-06T18:45:12.749-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS, arm64 jammy image built on 2023-01-07, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-2204-lts-arm64",
     "guestOsFeatures": [
@@ -3262,7 +3262,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "264746322783456903",
+    "id": "59148467411706455",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3271,12 +3271,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-2204-lts"
     ],
-    "name": "ubuntu-2204-jammy-arm64-v20230104",
+    "name": "ubuntu-2204-jammy-arm64-v20230107",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-arm64-v20230104",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-arm64-v20230107",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -3288,16 +3288,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "asia",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3040165632",
-    "creationTimestamp": "2023-01-03T19:20:09.575-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS, amd64 jammy image built on 2023-01-04, supports Shielded VM features",
+    "archiveSizeBytes": "3040290816",
+    "creationTimestamp": "2023-01-06T18:45:11.313-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS, amd64 jammy image built on 2023-01-07, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-2204-lts",
     "guestOsFeatures": [
@@ -3314,7 +3314,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "7519256448654200454",
+    "id": "3172810086960947801",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3323,12 +3323,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-2204-lts"
     ],
-    "name": "ubuntu-2204-jammy-v20230104",
+    "name": "ubuntu-2204-jammy-v20230107",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20230104",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20230107",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -3340,9 +3340,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
+      "eu",
       "asia",
-      "eu"
+      "us"
     ]
   },
   {
@@ -4381,9 +4381,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1747387200",
-    "creationTimestamp": "2023-01-03T16:02:07.383-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, arm64 jammy minimal image built on 2023-01-03, supports Shielded VM features",
+    "archiveSizeBytes": "1747728768",
+    "creationTimestamp": "2023-01-06T16:19:35.334-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, arm64 jammy minimal image built on 2023-01-06, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2204-lts-arm64",
     "guestOsFeatures": [
@@ -4397,7 +4397,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "3102302048404209424",
+    "id": "7054029031420003449",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4406,12 +4406,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2204-lts"
     ],
-    "name": "ubuntu-minimal-2204-jammy-arm64-v20230103",
+    "name": "ubuntu-minimal-2204-jammy-arm64-v20230106",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-arm64-v20230103",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-arm64-v20230106",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4423,16 +4423,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "us",
-      "asia"
+      "asia",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2202798912",
-    "creationTimestamp": "2023-01-03T16:02:05.035-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, amd64 jammy minimal image built on 2023-01-03, supports Shielded VM features",
+    "archiveSizeBytes": "2202778176",
+    "creationTimestamp": "2023-01-06T16:19:38.693-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, amd64 jammy minimal image built on 2023-01-06, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2204-lts",
     "guestOsFeatures": [
@@ -4449,7 +4449,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "174580880337633043",
+    "id": "1476846068637697141",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4458,12 +4458,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2204-lts"
     ],
-    "name": "ubuntu-minimal-2204-jammy-v20230103",
+    "name": "ubuntu-minimal-2204-jammy-v20230106",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-v20230103",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-v20230106",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4476,8 +4476,8 @@
     "status": "READY",
     "storageLocations": [
       "us",
-      "eu",
-      "asia"
+      "asia",
+      "eu"
     ]
   },
   {
