@@ -5023,9 +5023,9 @@
     ]
   },
   {
-    "archiveSizeBytes": "2418908352",
-    "creationTimestamp": "2022-12-26T06:49:37.958-08:00",
-    "description": "Fedora, Fedora CoreOS stable, 37.20221211.3.0, x86_64 published on 2022-12-26",
+    "archiveSizeBytes": "2423417664",
+    "creationTimestamp": "2023-01-09T11:32:54.434-08:00",
+    "description": "Fedora, Fedora CoreOS stable, 37.20221225.3.0, x86_64 published on 2023-01-09",
     "diskSizeGb": "10",
     "family": "fedora-coreos-stable",
     "guestOsFeatures": [
@@ -5042,7 +5042,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "1636049996514331246",
+    "id": "7017154770088613130",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5053,24 +5053,24 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-stable",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20221211-3-0-gcp-x86-64",
+    "name": "fedora-coreos-37-20221225-3-0-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221211-3-0-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221225-3-0-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
+      "asia",
       "eu",
-      "asia"
+      "us"
     ]
   },
   {
-    "archiveSizeBytes": "2423257920",
-    "creationTimestamp": "2023-01-03T09:07:06.368-08:00",
-    "description": "Fedora, Fedora CoreOS next, 37.20221225.1.2, x86_64 published on 2023-01-03",
+    "archiveSizeBytes": "2430234240",
+    "creationTimestamp": "2023-01-09T11:10:03.487-08:00",
+    "description": "Fedora, Fedora CoreOS next, 37.20230107.1.0, x86_64 published on 2023-01-09",
     "diskSizeGb": "10",
     "family": "fedora-coreos-next",
     "guestOsFeatures": [
@@ -5087,7 +5087,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "1870597610794507861",
+    "id": "4246332515441301604",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5098,12 +5098,12 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-next",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20221225-1-2-gcp-x86-64",
+    "name": "fedora-coreos-37-20230107-1-0-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221225-1-2-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230107-1-0-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -5113,9 +5113,9 @@
     ]
   },
   {
-    "archiveSizeBytes": "2423285568",
-    "creationTimestamp": "2023-01-03T09:04:30.453-08:00",
-    "description": "Fedora, Fedora CoreOS testing, 37.20221225.2.2, x86_64 published on 2023-01-03",
+    "archiveSizeBytes": "2431384896",
+    "creationTimestamp": "2023-01-09T11:10:05.713-08:00",
+    "description": "Fedora, Fedora CoreOS testing, 37.20230107.2.0, x86_64 published on 2023-01-09",
     "diskSizeGb": "10",
     "family": "fedora-coreos-testing",
     "guestOsFeatures": [
@@ -5132,7 +5132,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "9152123342950096625",
+    "id": "6783582572947560546",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5143,12 +5143,12 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-testing",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20221225-2-2-gcp-x86-64",
+    "name": "fedora-coreos-37-20230107-2-0-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20221225-2-2-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230107-2-0-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
