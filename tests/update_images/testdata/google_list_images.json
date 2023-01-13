@@ -2316,9 +2316,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "2294706816",
-    "creationTimestamp": "2022-12-02T07:22:47.553-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS, arm64 bionic image built on 2022-12-01, supports Shielded VM features",
+    "archiveSizeBytes": "2278332864",
+    "creationTimestamp": "2023-01-12T11:35:37.678-08:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS, arm64 bionic image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-1804-lts-arm64",
     "guestOsFeatures": [
@@ -2332,7 +2332,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1423170698404669096",
+    "id": "832167242676166630",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2341,12 +2341,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1804-lts"
     ],
-    "name": "ubuntu-1804-bionic-arm64-v20221201",
+    "name": "ubuntu-1804-bionic-arm64-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-arm64-v20221201",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-arm64-v20230112",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2358,16 +2358,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "asia",
+      "us",
       "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2670600384",
-    "creationTimestamp": "2022-12-02T07:22:48.346-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image built on 2022-12-01, supports Shielded VM features",
+    "archiveSizeBytes": "2651073984",
+    "creationTimestamp": "2023-01-12T11:35:31.244-08:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-1804-lts",
     "guestOsFeatures": [
@@ -2384,7 +2384,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "3924978629949761191",
+    "id": "8070545626001956845",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2393,12 +2393,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1804-lts"
     ],
-    "name": "ubuntu-1804-bionic-v20221201",
+    "name": "ubuntu-1804-bionic-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20221201",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20230112",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2410,9 +2410,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
+      "eu",
       "asia",
-      "eu"
+      "us"
     ]
   },
   {
@@ -2622,9 +2622,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2462456256",
-    "creationTimestamp": "2022-12-02T03:37:53.790-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2022-12-01, supports Shielded VM features",
+    "archiveSizeBytes": "2442609600",
+    "creationTimestamp": "2023-01-12T11:33:31.042-08:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-fips-1804-lts",
     "guestOsFeatures": [
@@ -2641,7 +2641,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "449853838374231422",
+    "id": "4345231365867691621",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2650,12 +2650,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-fips-1804-lts"
     ],
-    "name": "ubuntu-pro-fips-1804-bionic-v20221201",
+    "name": "ubuntu-pro-fips-1804-bionic-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20221201",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20230112",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2667,9 +2667,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
+      "eu",
       "us",
-      "eu"
+      "asia"
     ]
   },
   {
@@ -2775,9 +2775,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "25277203200",
-    "creationTimestamp": "2022-12-14T15:57:16.216-08:00",
-    "description": "Microsoft, Windows Server, 2012 R2 Datacenter, Server with Desktop Experience, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "25291324608",
+    "creationTimestamp": "2023-01-12T14:07:40.818-08:00",
+    "description": "Microsoft, Windows Server, 2012 R2 Datacenter, Server with Desktop Experience, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "windows-2012-r2",
     "guestOsFeatures": [
@@ -2797,7 +2797,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "4493119120068828212",
+    "id": "4172584555425643075",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2806,25 +2806,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "windows-server-2012-r2-dc-v20221214",
+    "name": "windows-server-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
+      "us",
       "asia",
-      "us"
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "52461110400",
-    "creationTimestamp": "2022-12-14T15:57:26.528-08:00",
-    "description": "Microsoft, SQL Server 2014 Enterprise, on Windows Server 2012 R2 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "52450227648",
+    "creationTimestamp": "2023-01-12T13:52:06.993-08:00",
+    "description": "Microsoft, SQL Server 2014 Enterprise, on Windows Server 2012 R2 Datacenter, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2014-win-2012-r2",
     "guestOsFeatures": [
@@ -2844,7 +2844,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "2985338127452199945",
+    "id": "507144209571856361",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2855,25 +2855,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2014-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "sql-2014-enterprise-windows-2012-r2-dc-v20221214",
+    "name": "sql-2014-enterprise-windows-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-enterprise-windows-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-enterprise-windows-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "eu",
-      "us",
-      "asia"
+      "asia",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "53867412288",
-    "creationTimestamp": "2022-12-14T15:57:22.305-08:00",
-    "description": "Microsoft, SQL Server 2014 Enterprise, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "53785740672",
+    "creationTimestamp": "2023-01-12T13:52:07.532-08:00",
+    "description": "Microsoft, SQL Server 2014 Enterprise, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2014-win-2016",
     "guestOsFeatures": [
@@ -2893,7 +2893,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "5683960774967942158",
+    "id": "3550939136555565032",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2904,25 +2904,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2014-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2014-enterprise-windows-2016-dc-v20221214",
+    "name": "sql-2014-enterprise-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-enterprise-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-enterprise-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "eu",
       "asia",
-      "us",
-      "eu"
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "52750077120",
-    "creationTimestamp": "2022-12-14T15:57:22.853-08:00",
-    "description": "Microsoft, SQL Server 2014 Standard, on Windows Server 2012 R2 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "52839487488",
+    "creationTimestamp": "2023-01-12T13:52:07.197-08:00",
+    "description": "Microsoft, SQL Server 2014 Standard, on Windows Server 2012 R2 Datacenter, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2014-win-2012-r2",
     "guestOsFeatures": [
@@ -2942,7 +2942,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "3191325995918941197",
+    "id": "4743579906010333161",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2953,18 +2953,18 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2014-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "sql-2014-standard-windows-2012-r2-dc-v20221214",
+    "name": "sql-2014-standard-windows-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-standard-windows-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-standard-windows-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
@@ -3549,9 +3549,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "18760494720",
-    "creationTimestamp": "2022-12-14T16:47:07.661-08:00",
-    "description": "Microsoft, Windows Server, 2016 Datacenter Core, Server Core, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "18742293696",
+    "creationTimestamp": "2023-01-12T13:52:03.452-08:00",
+    "description": "Microsoft, Windows Server, 2016 Datacenter Core, Server Core, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "32",
     "family": "windows-2016-core",
     "guestOsFeatures": [
@@ -3571,7 +3571,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "8640342002102685796",
+    "id": "6842946519997169644",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3582,25 +3582,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"
     ],
-    "name": "windows-server-2016-dc-core-v20221214",
+    "name": "windows-server-2016-dc-core-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2016-dc-core-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2016-dc-core-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "us",
       "eu",
-      "asia",
-      "us"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "26885941632",
-    "creationTimestamp": "2022-12-14T15:57:16.840-08:00",
-    "description": "Microsoft, Windows Server, 2016 Datacenter, Server with Desktop Experience, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "26888442624",
+    "creationTimestamp": "2023-01-12T13:52:03.275-08:00",
+    "description": "Microsoft, Windows Server, 2016 Datacenter, Server with Desktop Experience, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "windows-2016",
     "guestOsFeatures": [
@@ -3620,7 +3620,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "8210026832124697651",
+    "id": "5903612437645311981",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3629,12 +3629,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "windows-server-2016-dc-v20221214",
+    "name": "windows-server-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -3696,9 +3696,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "21105827136",
-    "creationTimestamp": "2022-12-14T15:57:16.248-08:00",
-    "description": "Microsoft, Windows Server, 2019 Datacenter Core, Server Core, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "21078083712",
+    "creationTimestamp": "2023-01-12T13:52:03.026-08:00",
+    "description": "Microsoft, Windows Server, 2019 Datacenter Core, Server Core, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "32",
     "family": "windows-2019-core",
     "guestOsFeatures": [
@@ -3718,7 +3718,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1361599189711576116",
+    "id": "5899251005730406381",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3729,18 +3729,18 @@
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"
     ],
-    "name": "windows-server-2019-dc-core-v20221214",
+    "name": "windows-server-2019-dc-core-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2019-dc-core-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2019-dc-core-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
+      "asia",
       "eu",
-      "asia"
+      "us"
     ]
   },
   {
@@ -3794,9 +3794,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "29992697472",
-    "creationTimestamp": "2022-12-14T15:57:16.302-08:00",
-    "description": "Microsoft, Windows Server, 2019 Datacenter, Server with Desktop Experience, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "29948121216",
+    "creationTimestamp": "2023-01-12T13:52:03.287-08:00",
+    "description": "Microsoft, Windows Server, 2019 Datacenter, Server with Desktop Experience, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "windows-2019",
     "guestOsFeatures": [
@@ -3816,7 +3816,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "3323868575004351540",
+    "id": "1311759482974191597",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3825,25 +3825,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "windows-server-2019-dc-v20221214",
+    "name": "windows-server-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "asia",
       "eu",
-      "us",
-      "asia"
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "17174419200",
-    "creationTimestamp": "2022-12-14T15:57:16.216-08:00",
-    "description": "Microsoft, Windows Server, 2022 Datacenter Core, Server Core, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "17147010432",
+    "creationTimestamp": "2023-01-12T13:52:03.089-08:00",
+    "description": "Microsoft, Windows Server, 2022 Datacenter Core, Server Core, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "40",
     "family": "windows-2022-core",
     "guestOsFeatures": [
@@ -3863,7 +3863,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1787791191085407284",
+    "id": "6737003764297580525",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3874,25 +3874,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"
     ],
-    "name": "windows-server-2022-dc-core-v20221214",
+    "name": "windows-server-2022-dc-core-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2022-dc-core-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2022-dc-core-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "us",
-      "asia",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "24384404352",
-    "creationTimestamp": "2022-12-14T15:57:16.521-08:00",
-    "description": "Microsoft, Windows Server, 2022 Datacenter, Server with Desktop Experience, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "24330891648",
+    "creationTimestamp": "2023-01-12T13:52:03.353-08:00",
+    "description": "Microsoft, Windows Server, 2022 Datacenter, Server with Desktop Experience, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "windows-2022",
     "guestOsFeatures": [
@@ -3912,7 +3912,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "4776108085636226099",
+    "id": "7747861941324693485",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3921,25 +3921,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
     ],
-    "name": "windows-server-2022-dc-v20221214",
+    "name": "windows-server-2022-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2022-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images/windows-server-2022-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
+      "asia",
       "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "51346054848",
-    "creationTimestamp": "2022-12-14T15:57:22.758-08:00",
-    "description": "Microsoft, SQL Server 2014 Web, on Windows Server 2012 R2 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "51172175616",
+    "creationTimestamp": "2023-01-12T13:52:07.890-08:00",
+    "description": "Microsoft, SQL Server 2014 Web, on Windows Server 2012 R2 Datacenter, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2014-win-2012-r2",
     "guestOsFeatures": [
@@ -3959,7 +3959,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "6858858179824442381",
+    "id": "1335320707192405992",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3970,25 +3970,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2014-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "sql-2014-web-windows-2012-r2-dc-v20221214",
+    "name": "sql-2014-web-windows-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-web-windows-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2014-web-windows-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "eu",
-      "us"
+      "us",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "51830393856",
-    "creationTimestamp": "2022-12-14T15:57:22.232-08:00",
-    "description": "Microsoft, SQL Server 2016 Enterprise, on Windows Server 2012 R2 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "51212209344",
+    "creationTimestamp": "2023-01-12T13:52:07.501-08:00",
+    "description": "Microsoft, SQL Server 2016 Enterprise, on Windows Server 2012 R2 Datacenter, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2016-win-2012-r2",
     "guestOsFeatures": [
@@ -4008,7 +4008,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1735640624435551246",
+    "id": "2110802770749374440",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4019,25 +4019,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "sql-2016-enterprise-windows-2012-r2-dc-v20221214",
+    "name": "sql-2016-enterprise-windows-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-enterprise-windows-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-enterprise-windows-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "eu",
       "asia",
-      "us",
-      "eu"
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "52877066880",
-    "creationTimestamp": "2022-12-14T15:57:22.884-08:00",
-    "description": "Microsoft, SQL Server 2016 Enterprise, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "52882016640",
+    "creationTimestamp": "2023-01-12T13:52:07.511-08:00",
+    "description": "Microsoft, SQL Server 2016 Enterprise, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2016-win-2016",
     "guestOsFeatures": [
@@ -4057,7 +4057,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "8629156550054239245",
+    "id": "8426874108791046120",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4068,25 +4068,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2016-enterprise-windows-2016-dc-v20221214",
+    "name": "sql-2016-enterprise-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-enterprise-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-enterprise-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "asia",
       "us",
-      "eu",
-      "asia"
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "55975137408",
-    "creationTimestamp": "2022-12-14T15:57:22.349-08:00",
-    "description": "Microsoft, SQL Server 2016 Enterprise, on Windows Server 2019 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "55989506880",
+    "creationTimestamp": "2023-01-12T13:52:07.656-08:00",
+    "description": "Microsoft, SQL Server 2016 Enterprise, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2016-win-2019",
     "guestOsFeatures": [
@@ -4106,7 +4106,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "5572745302667418637",
+    "id": "4193006738371067880",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4117,25 +4117,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2016-enterprise-windows-2019-dc-v20221214",
+    "name": "sql-2016-enterprise-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-enterprise-windows-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-enterprise-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "asia",
-      "eu"
+      "eu",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "51773913792",
-    "creationTimestamp": "2022-12-14T15:57:22.532-08:00",
-    "description": "Microsoft, SQL Server 2016 Standard, on Windows Server 2012 R2 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "51207791424",
+    "creationTimestamp": "2023-01-12T13:52:12.759-08:00",
+    "description": "Microsoft, SQL Server 2016 Standard, on Windows Server 2012 R2 Datacenter, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2016-win-2012-r2",
     "guestOsFeatures": [
@@ -4155,7 +4155,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "3538333454782946317",
+    "id": "6435895865011683299",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4166,12 +4166,12 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "sql-2016-standard-windows-2012-r2-dc-v20221214",
+    "name": "sql-2016-standard-windows-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-standard-windows-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-standard-windows-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -4182,9 +4182,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "52885575168",
-    "creationTimestamp": "2022-12-14T15:57:22.764-08:00",
-    "description": "Microsoft, SQL Server 2016 Standard, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "52886141376",
+    "creationTimestamp": "2023-01-12T13:52:07.198-08:00",
+    "description": "Microsoft, SQL Server 2016 Standard, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2016-win-2016",
     "guestOsFeatures": [
@@ -4204,7 +4204,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "260980422445882381",
+    "id": "2242080542095654889",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4215,25 +4215,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2016-standard-windows-2016-dc-v20221214",
+    "name": "sql-2016-standard-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-standard-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-standard-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
+      "eu",
       "asia",
-      "eu"
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "55968255936",
-    "creationTimestamp": "2022-12-14T15:57:22.695-08:00",
-    "description": "Microsoft, SQL Server 2016 Standard, on Windows Server 2019 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "55989017664",
+    "creationTimestamp": "2023-01-12T13:52:07.364-08:00",
+    "description": "Microsoft, SQL Server 2016 Standard, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2016-win-2019",
     "guestOsFeatures": [
@@ -4253,7 +4253,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1293286497918114829",
+    "id": "292963257196298216",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4264,25 +4264,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2016-standard-windows-2019-dc-v20221214",
+    "name": "sql-2016-standard-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-standard-windows-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-standard-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
+      "asia",
       "us",
-      "asia"
+      "eu"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1749357312",
-    "creationTimestamp": "2023-01-04T22:42:46.130-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, arm64 focal minimal image built on 2023-01-05, supports Shielded VM features",
+    "archiveSizeBytes": "1745128704",
+    "creationTimestamp": "2023-01-11T22:33:02.659-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, arm64 focal minimal image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2004-lts-arm64",
     "guestOsFeatures": [
@@ -4296,7 +4296,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "2420012808006258570",
+    "id": "5431046347225700209",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4305,12 +4305,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2004-lts"
     ],
-    "name": "ubuntu-minimal-2004-focal-arm64-v20230105",
+    "name": "ubuntu-minimal-2004-focal-arm64-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-arm64-v20230105",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-arm64-v20230112",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4322,16 +4322,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "us",
       "asia",
-      "eu",
-      "us"
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2193880128",
-    "creationTimestamp": "2023-01-04T22:42:47.405-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, amd64 focal minimal image built on 2023-01-05, supports Shielded VM features",
+    "archiveSizeBytes": "2186188224",
+    "creationTimestamp": "2023-01-11T22:33:05.879-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, amd64 focal minimal image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2004-lts",
     "guestOsFeatures": [
@@ -4348,7 +4348,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "5278161140874727304",
+    "id": "7960728466197976910",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4357,12 +4357,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2004-lts"
     ],
-    "name": "ubuntu-minimal-2004-focal-v20230105",
+    "name": "ubuntu-minimal-2004-focal-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-v20230105",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-v20230112",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4374,16 +4374,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1747728768",
-    "creationTimestamp": "2023-01-06T16:19:35.334-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, arm64 jammy minimal image built on 2023-01-06, supports Shielded VM features",
+    "archiveSizeBytes": "1724875968",
+    "creationTimestamp": "2023-01-12T15:51:31.266-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, arm64 jammy minimal image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2204-lts-arm64",
     "guestOsFeatures": [
@@ -4397,7 +4397,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "7054029031420003449",
+    "id": "191154699576878061",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4406,12 +4406,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2204-lts"
     ],
-    "name": "ubuntu-minimal-2204-jammy-arm64-v20230106",
+    "name": "ubuntu-minimal-2204-jammy-arm64-v20230112a",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-arm64-v20230106",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-arm64-v20230112a",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4423,16 +4423,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "asia",
+      "us",
       "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2202778176",
-    "creationTimestamp": "2023-01-06T16:19:38.693-08:00",
-    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, amd64 jammy minimal image built on 2023-01-06, supports Shielded VM features",
+    "archiveSizeBytes": "2176797312",
+    "creationTimestamp": "2023-01-12T15:51:30.475-08:00",
+    "description": "Canonical, Ubuntu, 22.04 LTS Minimal, amd64 jammy minimal image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2204-lts",
     "guestOsFeatures": [
@@ -4449,7 +4449,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1476846068637697141",
+    "id": "1471611843539444717",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4458,12 +4458,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2204-lts"
     ],
-    "name": "ubuntu-minimal-2204-jammy-v20230106",
+    "name": "ubuntu-minimal-2204-jammy-v20230112a",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-v20230106",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2204-jammy-v20230112a",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4476,15 +4476,15 @@
     "status": "READY",
     "storageLocations": [
       "us",
-      "asia",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2257831104",
-    "creationTimestamp": "2023-01-03T21:50:38.107-08:00",
-    "description": "Canonical, Ubuntu, 22.10 Minimal, amd64 kinetic minimal image built on 2023-01-04, supports Shielded VM features",
+    "archiveSizeBytes": "2231828160",
+    "creationTimestamp": "2023-01-11T21:49:21.660-08:00",
+    "description": "Canonical, Ubuntu, 22.10 Minimal, amd64 kinetic minimal image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2210-amd64",
     "guestOsFeatures": [
@@ -4501,7 +4501,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "360971044960906562",
+    "id": "2090408384826319246",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4510,12 +4510,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2210"
     ],
-    "name": "ubuntu-minimal-2210-kinetic-amd64-v20230104",
+    "name": "ubuntu-minimal-2210-kinetic-amd64-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-amd64-v20230104",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-amd64-v20230112",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4527,16 +4527,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "eu",
+      "us",
       "asia"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1804332864",
-    "creationTimestamp": "2023-01-03T21:50:35.510-08:00",
-    "description": "Canonical, Ubuntu, 22.10 Minimal, arm64 kinetic minimal image built on 2023-01-04, supports Shielded VM features",
+    "archiveSizeBytes": "1781723328",
+    "creationTimestamp": "2023-01-11T21:49:19.887-08:00",
+    "description": "Canonical, Ubuntu, 22.10 Minimal, arm64 kinetic minimal image built on 2023-01-12, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2210-arm64",
     "guestOsFeatures": [
@@ -4550,7 +4550,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "7679798898794736964",
+    "id": "4735515091293839792",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4559,12 +4559,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2210"
     ],
-    "name": "ubuntu-minimal-2210-kinetic-arm64-v20230104",
+    "name": "ubuntu-minimal-2210-kinetic-arm64-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-arm64-v20230104",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-arm64-v20230112",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4576,16 +4576,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
+      "asia",
       "us",
-      "asia"
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "48244229568",
-    "creationTimestamp": "2022-12-14T15:57:22.601-08:00",
-    "description": "Microsoft, SQL Server 2016 Web, on Windows Server 2012 R2 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "48254651136",
+    "creationTimestamp": "2023-01-12T13:52:07.694-08:00",
+    "description": "Microsoft, SQL Server 2016 Web, on Windows Server 2012 R2 Datacenter, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2016-win-2012-r2",
     "guestOsFeatures": [
@@ -4605,7 +4605,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "5070099460335852557",
+    "id": "1579847527659552744",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4616,25 +4616,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "sql-2016-web-windows-2012-r2-dc-v20221214",
+    "name": "sql-2016-web-windows-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-web-windows-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-web-windows-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
+      "eu",
       "us",
-      "eu"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "49931947584",
-    "creationTimestamp": "2022-12-14T15:57:22.238-08:00",
-    "description": "Microsoft, SQL Server 2016 Web, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "49944087744",
+    "creationTimestamp": "2023-01-12T13:52:06.964-08:00",
+    "description": "Microsoft, SQL Server 2016 Web, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2016-win-2016",
     "guestOsFeatures": [
@@ -4654,7 +4654,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "4789693904712096782",
+    "id": "3690530568722530281",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4665,25 +4665,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2016-web-windows-2016-dc-v20221214",
+    "name": "sql-2016-web-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-web-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-web-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
+      "us",
       "eu",
-      "us"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "53023462464",
-    "creationTimestamp": "2022-12-14T15:57:22.907-08:00",
-    "description": "Microsoft, SQL Server 2016 Web, on Windows Server 2019 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "53035767360",
+    "creationTimestamp": "2023-01-12T13:52:07.116-08:00",
+    "description": "Microsoft, SQL Server 2016 Web, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2016-win-2019",
     "guestOsFeatures": [
@@ -4703,7 +4703,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1862777046581107725",
+    "id": "7803862924680577001",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4714,25 +4714,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2016-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2016-web-windows-2019-dc-v20221214",
+    "name": "sql-2016-web-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-web-windows-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2016-web-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "asia",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "43405608192",
-    "creationTimestamp": "2022-12-14T15:57:22.349-08:00",
-    "description": "Microsoft, SQL Server 2017 Enterprise, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "43519318464",
+    "creationTimestamp": "2023-01-12T13:52:07.609-08:00",
+    "description": "Microsoft, SQL Server 2017 Enterprise, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2017-win-2016",
     "guestOsFeatures": [
@@ -4752,7 +4752,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "3221494554875649037",
+    "id": "3478536175607431144",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4763,25 +4763,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2017-enterprise-windows-2016-dc-v20221214",
+    "name": "sql-2017-enterprise-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-enterprise-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-enterprise-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "asia",
-      "eu",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "46421738880",
-    "creationTimestamp": "2022-12-14T15:57:21.991-08:00",
-    "description": "Microsoft, SQL Server 2017 Enterprise, on Windows Server 2019 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "46409550528",
+    "creationTimestamp": "2023-01-12T13:52:07.208-08:00",
+    "description": "Microsoft, SQL Server 2017 Enterprise, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2017-win-2019",
     "guestOsFeatures": [
@@ -4801,7 +4801,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1851137663734111246",
+    "id": "8072213069745176553",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4812,25 +4812,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2017-enterprise-windows-2019-dc-v20221214",
+    "name": "sql-2017-enterprise-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-enterprise-windows-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-enterprise-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "asia",
-      "eu",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "41001219840",
-    "creationTimestamp": "2022-12-14T15:57:22.659-08:00",
-    "description": "Microsoft, SQL Server 2017 Enterprise, on Windows Server 2022 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "41165796480",
+    "creationTimestamp": "2023-01-12T13:52:07.201-08:00",
+    "description": "Microsoft, SQL Server 2017 Enterprise, on Windows Server 2022 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2017-win-2022",
     "guestOsFeatures": [
@@ -4850,7 +4850,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1985372172171336717",
+    "id": "2732639586247065577",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4861,25 +4861,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
     ],
-    "name": "sql-2017-enterprise-windows-2022-dc-v20221214",
+    "name": "sql-2017-enterprise-windows-2022-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-enterprise-windows-2022-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-enterprise-windows-2022-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "eu",
       "us",
-      "asia",
-      "eu"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "36454579776",
-    "creationTimestamp": "2022-12-14T15:57:22.569-08:00",
-    "description": "Microsoft, SQL Server 2017 Express, on Windows Server 2012 R2 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "36466495872",
+    "creationTimestamp": "2023-01-12T13:52:07.657-08:00",
+    "description": "Microsoft, SQL Server 2017 Express, on Windows Server 2012 R2 Datacenter, x64 built on 20230112, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-exp-2017-win-2012-r2",
     "guestOsFeatures": [
@@ -4899,7 +4899,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "5600645229833608205",
+    "id": "4278983698645073896",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4910,25 +4910,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-express",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2012-r2-dc"
     ],
-    "name": "sql-2017-express-windows-2012-r2-dc-v20221214",
+    "name": "sql-2017-express-windows-2012-r2-dc-v20230112",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-express-windows-2012-r2-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-express-windows-2012-r2-dc-v20230112",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
+      "eu",
       "asia",
-      "eu"
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "38130919872",
-    "creationTimestamp": "2022-12-14T15:57:22.505-08:00",
-    "description": "Microsoft, SQL Server 2017 Express, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "38147043840",
+    "creationTimestamp": "2023-01-12T13:52:06.991-08:00",
+    "description": "Microsoft, SQL Server 2017 Express, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-exp-2017-win-2016",
     "guestOsFeatures": [
@@ -4948,7 +4948,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "8784223032856534029",
+    "id": "1238717422302478313",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4959,25 +4959,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-express",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2017-express-windows-2016-dc-v20221214",
+    "name": "sql-2017-express-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-express-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-express-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
+      "eu",
       "us",
-      "eu"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "41088369984",
-    "creationTimestamp": "2022-12-14T15:57:22.379-08:00",
-    "description": "Microsoft, SQL Server 2017 Express, on Windows Server 2019 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "41342482368",
+    "creationTimestamp": "2023-01-12T13:52:06.907-08:00",
+    "description": "Microsoft, SQL Server 2017 Express, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-exp-2017-win-2019",
     "guestOsFeatures": [
@@ -4997,7 +4997,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "5549356448371694605",
+    "id": "4742114003607437289",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5008,12 +5008,12 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-express",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2017-express-windows-2019-dc-v20221214",
+    "name": "sql-2017-express-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-express-windows-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-express-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -5068,9 +5068,9 @@
     ]
   },
   {
-    "archiveSizeBytes": "2430234240",
-    "creationTimestamp": "2023-01-09T11:10:03.487-08:00",
-    "description": "Fedora, Fedora CoreOS next, 37.20230107.1.0, x86_64 published on 2023-01-09",
+    "archiveSizeBytes": "2432486976",
+    "creationTimestamp": "2023-01-11T15:46:44.448-08:00",
+    "description": "Fedora, Fedora CoreOS next, 37.20230110.1.0, x86_64 published on 2023-01-11",
     "diskSizeGb": "10",
     "family": "fedora-coreos-next",
     "guestOsFeatures": [
@@ -5087,7 +5087,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "4246332515441301604",
+    "id": "1177894638071248011",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5098,24 +5098,24 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-next",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20230107-1-0-gcp-x86-64",
+    "name": "fedora-coreos-37-20230110-1-0-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230107-1-0-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230110-1-0-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "eu",
-      "asia"
+      "asia",
+      "us"
     ]
   },
   {
-    "archiveSizeBytes": "2431384896",
-    "creationTimestamp": "2023-01-09T11:10:05.713-08:00",
-    "description": "Fedora, Fedora CoreOS testing, 37.20230107.2.0, x86_64 published on 2023-01-09",
+    "archiveSizeBytes": "2432591616",
+    "creationTimestamp": "2023-01-11T15:44:39.189-08:00",
+    "description": "Fedora, Fedora CoreOS testing, 37.20230110.2.0, x86_64 published on 2023-01-11",
     "diskSizeGb": "10",
     "family": "fedora-coreos-testing",
     "guestOsFeatures": [
@@ -5132,7 +5132,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "6783582572947560546",
+    "id": "4666084389448513289",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5143,25 +5143,25 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-testing",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20230107-2-0-gcp-x86-64",
+    "name": "fedora-coreos-37-20230110-2-0-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230107-2-0-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230110-2-0-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "us",
-      "asia"
+      "asia",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "43727064000",
-    "creationTimestamp": "2022-12-14T15:57:22.349-08:00",
-    "description": "Microsoft, SQL Server 2017 Standard, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "43417513536",
+    "creationTimestamp": "2023-01-12T13:52:07.190-08:00",
+    "description": "Microsoft, SQL Server 2017 Standard, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2017-win-2016",
     "guestOsFeatures": [
@@ -5181,7 +5181,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "2103859835852807181",
+    "id": "4019882593853718505",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5192,25 +5192,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2017-standard-windows-2016-dc-v20221214",
+    "name": "sql-2017-standard-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-standard-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-standard-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "asia",
+      "eu",
       "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "46520502336",
-    "creationTimestamp": "2022-12-14T15:57:22.689-08:00",
-    "description": "Microsoft, SQL Server 2017 Standard, on Windows Server 2019 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "46401393792",
+    "creationTimestamp": "2023-01-12T13:52:07.807-08:00",
+    "description": "Microsoft, SQL Server 2017 Standard, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2017-win-2019",
     "guestOsFeatures": [
@@ -5230,7 +5230,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "3196008390739876877",
+    "id": "5864847862422913000",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5241,25 +5241,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2017-standard-windows-2019-dc-v20221214",
+    "name": "sql-2017-standard-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-standard-windows-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-standard-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "us",
-      "asia"
+      "asia",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "39206128128",
-    "creationTimestamp": "2022-12-14T15:57:22.770-08:00",
-    "description": "Microsoft, SQL Server 2017 Standard, on Windows Server 2022 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "41226251712",
+    "creationTimestamp": "2023-01-12T13:52:07.811-08:00",
+    "description": "Microsoft, SQL Server 2017 Standard, on Windows Server 2022 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2017-win-2022",
     "guestOsFeatures": [
@@ -5279,7 +5279,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "3159676261655632909",
+    "id": "321671497207594984",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5290,25 +5290,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
     ],
-    "name": "sql-2017-standard-windows-2022-dc-v20221214",
+    "name": "sql-2017-standard-windows-2022-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-standard-windows-2022-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-standard-windows-2022-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "asia",
-      "us",
-      "eu"
+      "eu",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "41331012864",
-    "creationTimestamp": "2022-12-14T16:47:14.625-08:00",
-    "description": "Microsoft, SQL Server 2017 Web, on Windows Server 2016 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "41026642176",
+    "creationTimestamp": "2023-01-12T13:52:07.461-08:00",
+    "description": "Microsoft, SQL Server 2017 Web, on Windows Server 2016 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2017-win-2016",
     "guestOsFeatures": [
@@ -5328,7 +5328,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "2502636880587640957",
+    "id": "2285612131584655337",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5339,25 +5339,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2016-dc"
     ],
-    "name": "sql-2017-web-windows-2016-dc-v20221214",
+    "name": "sql-2017-web-windows-2016-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-web-windows-2016-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-web-windows-2016-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "eu",
       "us",
-      "asia",
-      "eu"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "44240807808",
-    "creationTimestamp": "2022-12-14T16:47:14.209-08:00",
-    "description": "Microsoft, SQL Server 2017 Web, on Windows Server 2019 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "44124042432",
+    "creationTimestamp": "2023-01-12T13:52:07.427-08:00",
+    "description": "Microsoft, SQL Server 2017 Web, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2017-win-2019",
     "guestOsFeatures": [
@@ -5377,7 +5377,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "5214373055395516542",
+    "id": "2747752506714832872",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5388,25 +5388,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2017-web-windows-2019-dc-v20221214",
+    "name": "sql-2017-web-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-web-windows-2019-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-web-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "asia",
-      "eu",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "38589908160",
-    "creationTimestamp": "2022-12-14T15:57:22.093-08:00",
-    "description": "Microsoft, SQL Server 2017 Web, on Windows Server 2022 Datacenter, x64 built on 20221214, supports Shielded VM features",
+    "archiveSizeBytes": "38489299584",
+    "creationTimestamp": "2023-01-12T13:52:07.525-08:00",
+    "description": "Microsoft, SQL Server 2017 Web, on Windows Server 2022 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2017-win-2022",
     "guestOsFeatures": [
@@ -5426,7 +5426,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "3918177016661662734",
+    "id": "6545460274574213096",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5437,12 +5437,12 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2017-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
     ],
-    "name": "sql-2017-web-windows-2022-dc-v20221214",
+    "name": "sql-2017-web-windows-2022-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-web-windows-2022-dc-v20221214",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2017-web-windows-2022-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -5454,8 +5454,8 @@
   {
     "architecture": "X86_64",
     "archiveSizeBytes": "44969992128",
-    "creationTimestamp": "2022-12-15T10:36:26.642-08:00",
-    "description": "Microsoft, SQL Server 2019 Enterprise, on Windows Server 2019 Datacenter, x64 built on 20221215, supports Shielded VM features",
+    "creationTimestamp": "2023-01-12T13:52:07.262-08:00",
+    "description": "Microsoft, SQL Server 2019 Enterprise, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2019-win-2019",
     "guestOsFeatures": [
@@ -5475,7 +5475,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "7536406987508471749",
+    "id": "5557655158414721001",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5486,25 +5486,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2019-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2019-enterprise-windows-2019-dc-v20221215",
+    "name": "sql-2019-enterprise-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-enterprise-windows-2019-dc-v20221215",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-enterprise-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
+      "us",
       "eu",
-      "us"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
     "archiveSizeBytes": "39502171008",
-    "creationTimestamp": "2022-12-15T10:36:27.676-08:00",
-    "description": "Microsoft, SQL Server 2019 Enterprise, on Windows Server 2022 Datacenter, x64 built on 20221215, supports Shielded VM features",
+    "creationTimestamp": "2023-01-12T13:52:07.140-08:00",
+    "description": "Microsoft, SQL Server 2019 Enterprise, on Windows Server 2022 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-ent-2019-win-2022",
     "guestOsFeatures": [
@@ -5524,7 +5524,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "4120767115025635268",
+    "id": "5128594952110817257",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5535,25 +5535,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2019-enterprise",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
     ],
-    "name": "sql-2019-enterprise-windows-2022-dc-v20221215",
+    "name": "sql-2019-enterprise-windows-2022-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-enterprise-windows-2022-dc-v20221215",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-enterprise-windows-2022-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
+      "us",
       "asia",
-      "us"
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
     "archiveSizeBytes": "45145861056",
-    "creationTimestamp": "2022-12-15T10:36:27.150-08:00",
-    "description": "Microsoft, SQL Server 2019 Standard, on Windows Server 2019 Datacenter, x64 built on 20221215, supports Shielded VM features",
+    "creationTimestamp": "2023-01-12T13:52:07.292-08:00",
+    "description": "Microsoft, SQL Server 2019 Standard, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2019-win-2019",
     "guestOsFeatures": [
@@ -5573,7 +5573,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "6690245202666772421",
+    "id": "7271112913542004713",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5584,25 +5584,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2019-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2019-standard-windows-2019-dc-v20221215",
+    "name": "sql-2019-standard-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-standard-windows-2019-dc-v20221215",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-standard-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "asia",
+      "us",
       "eu"
     ]
   },
   {
     "architecture": "X86_64",
     "archiveSizeBytes": "39432783936",
-    "creationTimestamp": "2022-12-15T10:36:28.088-08:00",
-    "description": "Microsoft, SQL Server 2019 Standard, on Windows Server 2022 Datacenter, x64 built on 20221215, supports Shielded VM features",
+    "creationTimestamp": "2023-01-12T13:52:07.526-08:00",
+    "description": "Microsoft, SQL Server 2019 Standard, on Windows Server 2022 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-std-2019-win-2022",
     "guestOsFeatures": [
@@ -5622,7 +5622,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "2621004139155871684",
+    "id": "868732446750621672",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5633,25 +5633,25 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2019-standard",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
     ],
-    "name": "sql-2019-standard-windows-2022-dc-v20221215",
+    "name": "sql-2019-standard-windows-2022-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-standard-windows-2022-dc-v20221215",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-standard-windows-2022-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "asia",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
     "archiveSizeBytes": "42706408512",
-    "creationTimestamp": "2022-12-15T10:36:27.017-08:00",
-    "description": "Microsoft, SQL Server 2019 Web, on Windows Server 2019 Datacenter, x64 built on 20221215, supports Shielded VM features",
+    "creationTimestamp": "2023-01-12T13:52:07.149-08:00",
+    "description": "Microsoft, SQL Server 2019 Web, on Windows Server 2019 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2019-win-2019",
     "guestOsFeatures": [
@@ -5671,7 +5671,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "4187312994712475589",
+    "id": "1924610337830420457",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5682,12 +5682,12 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2019-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
     ],
-    "name": "sql-2019-web-windows-2019-dc-v20221215",
+    "name": "sql-2019-web-windows-2019-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-web-windows-2019-dc-v20221215",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-web-windows-2019-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -5699,8 +5699,8 @@
   {
     "architecture": "X86_64",
     "archiveSizeBytes": "36760338432",
-    "creationTimestamp": "2022-12-15T10:36:32.860-08:00",
-    "description": "Microsoft, SQL Server 2019 Web, on Windows Server 2022 Datacenter, x64 built on 20221215, supports Shielded VM features",
+    "creationTimestamp": "2023-01-12T13:52:07.339-08:00",
+    "description": "Microsoft, SQL Server 2019 Web, on Windows Server 2022 Datacenter, x64 built on 20230111, supports Shielded VM features",
     "diskSizeGb": "50",
     "family": "sql-web-2019-win-2022",
     "guestOsFeatures": [
@@ -5720,7 +5720,7 @@
         "type": "WINDOWS"
       }
     ],
-    "id": "1591103627621488607",
+    "id": "677230326152249320",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5731,18 +5731,312 @@
       "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2019-web",
       "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
     ],
-    "name": "sql-2019-web-windows-2022-dc-v20221215",
+    "name": "sql-2019-web-windows-2022-dc-v20230111",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-web-windows-2022-dc-v20221215",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2019-web-windows-2022-dc-v20230111",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "eu",
       "us",
       "asia"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "42025674240",
+    "creationTimestamp": "2023-01-12T13:01:16.525-08:00",
+    "description": "Microsoft, SQL Server 2022 Enterprise, on Windows Server 2019 Datacenter, x64 built on 20230112, supports Shielded VM features",
+    "diskSizeGb": "50",
+    "family": "sql-ent-2022-win-2019",
+    "guestOsFeatures": [
+      {
+        "type": "MULTI_IP_SUBNET"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "WINDOWS"
+      }
+    ],
+    "id": "2642438972314078195",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "1239729342351313064",
+      "3389558045860892917"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2022-enterprise",
+      "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
+    ],
+    "name": "sql-2022-enterprise-windows-2019-dc-v20230112",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2022-enterprise-windows-2019-dc-v20230112",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "us",
+      "eu",
+      "asia"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "36869575872",
+    "creationTimestamp": "2023-01-12T13:01:16.579-08:00",
+    "description": "Microsoft, SQL Server 2022 Enterprise, on Windows Server 2022 Datacenter, x64 built on 20230112, supports Shielded VM features",
+    "diskSizeGb": "50",
+    "family": "sql-ent-2022-win-2022",
+    "guestOsFeatures": [
+      {
+        "type": "MULTI_IP_SUBNET"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "WINDOWS"
+      }
+    ],
+    "id": "5419945209686248435",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "1239729342351313064",
+      "4079807029871201927"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2022-enterprise",
+      "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
+    ],
+    "name": "sql-2022-enterprise-windows-2022-dc-v20230112",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2022-enterprise-windows-2022-dc-v20230112",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "us",
+      "asia",
+      "eu"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "42036924864",
+    "creationTimestamp": "2023-01-12T13:01:16.564-08:00",
+    "description": "Microsoft, SQL Server 2022 Standard, on Windows Server 2019 Datacenter, x64 built on 20230112, supports Shielded VM features",
+    "diskSizeGb": "50",
+    "family": "sql-std-2022-win-2019",
+    "guestOsFeatures": [
+      {
+        "type": "MULTI_IP_SUBNET"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "WINDOWS"
+      }
+    ],
+    "id": "1040701657382243315",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "7764068523658872858",
+      "3389558045860892917"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2022-standard",
+      "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
+    ],
+    "name": "sql-2022-standard-windows-2019-dc-v20230112",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2022-standard-windows-2019-dc-v20230112",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "eu",
+      "asia",
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "36630258624",
+    "creationTimestamp": "2023-01-12T13:01:16.471-08:00",
+    "description": "Microsoft, SQL Server 2022 Standard, on Windows Server 2022 Datacenter, x64 built on 20230112, supports Shielded VM features",
+    "diskSizeGb": "50",
+    "family": "sql-std-2022-win-2022",
+    "guestOsFeatures": [
+      {
+        "type": "MULTI_IP_SUBNET"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "WINDOWS"
+      }
+    ],
+    "id": "125409384614185971",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "7764068523658872858",
+      "4079807029871201927"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2022-standard",
+      "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
+    ],
+    "name": "sql-2022-standard-windows-2022-dc-v20230112",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2022-standard-windows-2022-dc-v20230112",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "us",
+      "asia",
+      "eu"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "40445527104",
+    "creationTimestamp": "2023-01-12T13:01:16.479-08:00",
+    "description": "Microsoft, SQL Server 2022 Web, on Windows Server 2019 Datacenter, x64 built on 20230112, supports Shielded VM features",
+    "diskSizeGb": "50",
+    "family": "sql-web-2022-win-2019",
+    "guestOsFeatures": [
+      {
+        "type": "MULTI_IP_SUBNET"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "WINDOWS"
+      }
+    ],
+    "id": "8917567546764151795",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "1086120352405948436",
+      "3389558045860892917"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2022-web",
+      "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
+    ],
+    "name": "sql-2022-web-windows-2019-dc-v20230112",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2022-web-windows-2019-dc-v20230112",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "eu",
+      "asia",
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "34854509568",
+    "creationTimestamp": "2023-01-12T13:01:16.374-08:00",
+    "description": "Microsoft, SQL Server 2022 Web, on Windows Server 2022 Datacenter, x64 built on 20230112, supports Shielded VM features",
+    "diskSizeGb": "50",
+    "family": "sql-web-2022-win-2022",
+    "guestOsFeatures": [
+      {
+        "type": "MULTI_IP_SUBNET"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "WINDOWS"
+      }
+    ],
+    "id": "3231579116615355379",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "1086120352405948436",
+      "4079807029871201927"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/licenses/sql-server-2022-web",
+      "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2022-dc"
+    ],
+    "name": "sql-2022-web-windows-2022-dc-v20230112",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images/sql-2022-web-windows-2022-dc-v20230112",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "eu",
+      "asia",
+      "us"
     ]
   }
 ]
