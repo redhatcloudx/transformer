@@ -7,6 +7,7 @@ from flask_cors import CORS
 from rhelocator.api.routes.aws import aws_blueprint
 from rhelocator.api.routes.azure import azure_blueprint
 from rhelocator.api.routes.google import google_blueprint
+from rhelocator.api.routes.health import health_blueprint
 from rhelocator.update_images import schema
 
 
@@ -45,6 +46,10 @@ def create_app(file_path: str) -> Flask:
 
     app.register_blueprint(
         aws_blueprint(image_data["images"]["aws"]), url_prefix="/api"
+    )
+
+    app.register_blueprint(
+        health_blueprint(image_data["images"]), url_prefix="/api"
     )
 
     return app
