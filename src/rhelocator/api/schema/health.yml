@@ -1,0 +1,25 @@
+---
+ definitions:
+  type: object
+  properties:
+    message:
+      type: string
+
+responses:
+  200:
+    description: 
+    schema:
+      $ref: '#/definitions/images'
+    examples:
+          {
+            "message": "ok"
+          }
+  500:
+    description:
+    schema:
+      $ref: '#/definitions/images'
+    examples:
+          {
+            "message": "?"
+          }
+
