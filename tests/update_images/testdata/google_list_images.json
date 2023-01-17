@@ -2105,9 +2105,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2193473280",
-    "creationTimestamp": "2022-10-14T19:47:40.803-07:00",
-    "description": "SUSE, SUSE Linux Enterprise Server 12 SP5 for SAP, x86_64, built on 20221015, supports Shielded VM features",
+    "archiveSizeBytes": "2197449216",
+    "creationTimestamp": "2023-01-15T18:11:19.945-08:00",
+    "description": "SUSE, SUSE Linux Enterprise Server 12 SP5 for SAP, x86_64, built on 20230116, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "sles-12-sp5-sap",
     "guestOsFeatures": [
@@ -2121,7 +2121,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "4106194879412412835",
+    "id": "1654282905786584232",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2130,18 +2130,18 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/licenses/sles-sap-12"
     ],
-    "name": "sles-12-sp5-sap-v20221015-x86-64",
+    "name": "sles-12-sp5-sap-v20230116-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images/sles-12-sp5-sap-v20221015-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images/sles-12-sp5-sap-v20230116-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "eu",
-      "asia",
-      "us"
+      "us",
+      "asia"
     ]
   },
   {
