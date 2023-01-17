@@ -4,6 +4,9 @@ from __future__ import annotations
 import json
 
 import pytest
+from flask import Flask
+from flask_cors import CORS
+from rhelocator.api.routes.health import health_blueprint
 
 from rhelocator.api import server
 
@@ -23,6 +26,22 @@ def app():
 @pytest.fixture()
 def client(app):
     return app.test_client()
+
+
+@pytest.fixture()
+def empty_app():
+    empty_app = Flask(__name__)
+
+    empty_app.register_blueprint(
+        health_blueprint({}), url_prefix="/api"
+    )
+
+    yield empty_app
+
+
+@pytest.fixture()
+def corrupted_client(empty_app):
+    return empty_app.test_client()
 
 
 @pytest.fixture()
@@ -146,3 +165,8 @@ def test_request_azure_with_multi_query(client):
 def test_request_health(client):
     response = client.get("/api/health")
     assert response.status_code == 200
+
+
+def test_request_health_with_corrupt_data(corrupted_client):
+    response = corrupted_client.get("/api/health")
+    assert response.status_code == 500
