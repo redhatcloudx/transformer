@@ -22,12 +22,14 @@ def health_blueprint(data: dict[str, str]) -> Blueprint:
     def endpoint() -> Response:
         """Cloud Image Directory health Endpoint sanity checks the provided image data."""
         
-        #TODO: Check-(check the value that comes back, ... ?)
         message = "ok" 
         status = 200
         image_data_is_corrupt = False
 
         if data is None:
+            image_data_is_corrupt = True
+        
+        if not bool(data):
             image_data_is_corrupt = True
 
         if image_data_is_corrupt:
