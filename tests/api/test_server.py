@@ -141,3 +141,8 @@ def test_request_azure_with_multi_query(client):
         assert test_query["date"] in image["date"]
         assert test_query["virt"] in image["virt"]
     assert response.status_code == 200
+
+
+def test_request_health(client):
+    response = client.get("/api/health")
+    assert response.status_code == 200

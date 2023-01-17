@@ -1,5 +1,5 @@
 ---
- definitions:
+definitions:
   type: object
   properties:
     message:
