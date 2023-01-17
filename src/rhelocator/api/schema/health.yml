@@ -9,7 +9,7 @@ responses:
   200:
     description: 
     schema:
-      $ref: '#/definitions/images'
+      $ref: '#/definitions'
     examples:
           {
             "message": "ok"
@@ -17,7 +17,7 @@ responses:
   500:
     description:
     schema:
-      $ref: '#/definitions/images'
+      $ref: '#/definitions'
     examples:
           {
             "message": "?"
