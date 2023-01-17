@@ -29,7 +29,7 @@ def health_blueprint(data: dict[str, str]) -> Blueprint:
         if data is None:
             image_data_is_corrupt = True
         
-        if not bool(data):
+        if bool(data) is False:
             image_data_is_corrupt = True
 
         if image_data_is_corrupt:
