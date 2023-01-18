@@ -215,14 +215,14 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1294303488",
-    "creationTimestamp": "2023-01-09T13:37:41.932-08:00",
-    "description": "Google, Container-Optimized OS, 89-16108.766.29 LTS, Kernel: COS-5.4.217 Kubernetes: 1.20.15 Docker: 20.10.3 Family: cos-89-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1306131648",
+    "creationTimestamp": "2023-01-17T16:10:25.649-08:00",
+    "description": "Google, Container-Optimized OS, 89-16108.798.1 LTS, Kernel: COS-5.4.228 Kubernetes: 1.20.15 Docker: 20.10.3 Family: cos-89-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-89-lts",
     "guestOsFeatures": [
       {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
         "type": "GVNIC"
@@ -231,32 +231,32 @@
         "type": "SEV_CAPABLE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
       }
     ],
-    "id": "3697336592937072586",
+    "id": "143012136277935646",
     "kind": "compute#image",
-    "labelFingerprint": "1TyJk0Z-GfQ=",
+    "labelFingerprint": "IL9wXAS4McE=",
     "labels": {
-      "build_number": "16108-766-29",
+      "build_number": "16108-798-1",
       "milestone": "89"
     },
     "licenseCodes": [
-      "6880041984096540132",
       "166739712233658766",
+      "6880041984096540132",
       "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-89-16108-766-29",
+    "name": "cos-89-16108-798-1",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-89-16108-766-29",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-89-16108-798-1",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -296,21 +296,21 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1284939648",
-    "creationTimestamp": "2023-01-09T13:37:43.380-08:00",
-    "description": "Google, Container-Optimized OS, 93-16623.295.31 LTS, Kernel: COS-5.10.147 Kubernetes: 1.21.14 Docker: 20.10.6 Family: cos-93-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1281137472",
+    "creationTimestamp": "2023-01-17T16:10:24.800-08:00",
+    "description": "Google, Container-Optimized OS, 93-16623.341.1 LTS, Kernel: COS-5.10.162 Kubernetes: 1.21.14 Docker: 20.10.6 Family: cos-93-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-93-lts",
     "guestOsFeatures": [
       {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
         "type": "GVNIC"
@@ -319,32 +319,32 @@
         "type": "SEV_CAPABLE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
       }
     ],
-    "id": "6604920119641585608",
+    "id": "9055506254040565279",
     "kind": "compute#image",
-    "labelFingerprint": "DlRImemNis0=",
+    "labelFingerprint": "av-HnB5UQXQ=",
     "labels": {
-      "build_number": "16623-295-31",
+      "build_number": "16623-341-1",
       "milestone": "93"
     },
     "licenseCodes": [
-      "6880041984096540132",
       "166739712233658766",
+      "6880041984096540132",
       "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-93-16623-295-31",
+    "name": "cos-93-16623-341-1",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-93-16623-295-31",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-93-16623-341-1",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -384,8 +384,8 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "eu",
+      "asia",
       "us"
     ]
   },
