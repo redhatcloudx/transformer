@@ -48,9 +48,7 @@ def create_app(file_path: str) -> Flask:
         aws_blueprint(image_data["images"]["aws"]), url_prefix="/api"
     )
 
-    app.register_blueprint(
-        health_blueprint(image_data["images"]), url_prefix="/api"
-    )
+    app.register_blueprint(health_blueprint(image_data["images"]), url_prefix="/api")
 
     return app
 
