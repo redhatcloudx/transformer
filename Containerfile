@@ -1,11 +1,10 @@
-FROM python:3.10-alpine
+FROM registry.access.redhat.com/ubi9/ubi:latest
 
 COPY ./dist/*.whl /opt/rhelocator/
 COPY ./data/image-data.json /opt/rhelocator/
 WORKDIR /opt/rhelocator
 
-RUN apk update \
-    && apk --no-cache --update add build-base
+RUN dnf -y install pip && dnf clean all
 
 RUN pip install ./*.whl
 
