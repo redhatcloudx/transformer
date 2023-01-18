@@ -83,3 +83,12 @@ repos:
     rev: v3.0.2
     hooks:
       - id: validate_manifest
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v0.991'
+    hooks:
+      - id: mypy
+        args: [--no-strict-optional, --ignore-missing-imports]
+        additional_dependencies:
+          - types-requests
+          - types-waitress

@@ -81,7 +81,7 @@ MOCKED_AZURE_IMAGE_DETAILS = {
 MOCKED_AZURE_ACCESS_TOKEN = "access_token"
 
 
-def pytest_configure(config: any) -> None:
+def pytest_configure(config) -> None:
     config.addinivalue_line("markers", "e2e: mark as end-to-end test.")
 
 

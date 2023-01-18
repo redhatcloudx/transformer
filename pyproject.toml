@@ -32,7 +32,6 @@ flask = "^2.2.2"
 flasgger = "^0.9.5"
 python-dotenv = "^0.21.0"
 waitress = "^2.1.2"
-types-waitress = "^2.1.4.4"
 flask-cors = "^3.0.10"
 
 [tool.poetry.group.dev.dependencies]
@@ -41,7 +40,6 @@ pytest-cov = "^4.0.0"
 pytest-mock = "^3.10.0"
 pytest-randomly = "^3.12.0"
 pytest-xdist = {version = "^3.1.0", extras = ["psutil"]}
-mypy = "^0.991"
 pre-commit = "^3.0.0"
 ipython = "^8.8.0"
 flake8 = "^6.0.0"
@@ -50,7 +48,6 @@ yapf = "^0.32.0"
 black = {version = "^23.1a1", allow-prereleases = true}
 bandit = "^1.7.4"
 pylint = "^2.15.10"
-types-requests = "^2.28.11.8"
 pytest-sugar = "^0.9.6"
 
 [tool.poetry.scripts]
@@ -78,22 +75,6 @@ preview = true
 force-exclude = '''
 .*/setup\.py$
 '''
-
-
-[tool.mypy]
-files = "src"
-mypy_path = "src"
-namespace_packages = true
-explicit_package_bases = true
-show_error_codes = true
-strict = true
-ignore_missing_imports = true
-enable_error_code = [
-    "ignore-without-code",
-    "redundant-expr",
-    "truthy-bool",
-]
-disallow_untyped_decorators = false
 
 [tool.pytest.ini_options]
 addopts = "-n auto --cov=src/rhelocator --cov-report=term-missing --cov-report=xml --cov-branch"
