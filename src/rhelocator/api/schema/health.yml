@@ -7,7 +7,7 @@ definitions:
 
 responses:
   200:
-    description: 
+    description:
     schema:
       $ref: '#/definitions'
     examples:
@@ -22,4 +22,3 @@ responses:
           {
             "message": "?"
           }
-

@@ -1,13 +1,11 @@
-from typing import Optional
-
 from flasgger import swag_from
 from flask import Blueprint
-from flask import request
 from flask import Response
 
 
 def health_blueprint(data: dict[str, str]) -> Blueprint:
-    """Creates and returns a Flask blueprint that sanity checks the provided image data.
+    """Creates and returns a Flask blueprint that sanity checks the provided
+    image data.
 
     Args:
         data: Formatted image data dict.
@@ -20,15 +18,16 @@ def health_blueprint(data: dict[str, str]) -> Blueprint:
     @health_endpoint.route("/health", methods=["GET"])
     @swag_from("../schema/health.yml")
     def endpoint() -> Response:
-        """Cloud Image Directory health Endpoint sanity checks the provided image data."""
-        
-        message = "ok" 
+        """Cloud Image Directory health Endpoint sanity checks the provided
+        image data."""
+
+        message = "ok"
         status = 200
         image_data_is_corrupt = False
 
         if data is None:
             image_data_is_corrupt = True
-        
+
         if bool(data) is False:
             image_data_is_corrupt = True
 
@@ -36,8 +35,8 @@ def health_blueprint(data: dict[str, str]) -> Blueprint:
             message = "image data is corrupt"
             status = 500
 
-        return Response("{'message':'"+ message +"'}", status=status, mimetype='application/json')
-
-
+        return Response(
+            "{'message':'" + message + "'}", status=status, mimetype="application/json"
+        )
 
     return health_endpoint

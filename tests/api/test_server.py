@@ -4,11 +4,11 @@ from __future__ import annotations
 import json
 
 import pytest
+
 from flask import Flask
-from flask_cors import CORS
-from rhelocator.api.routes.health import health_blueprint
 
 from rhelocator.api import server
+from rhelocator.api.routes.health import health_blueprint
 
 
 @pytest.fixture()
@@ -32,9 +32,7 @@ def client(app):
 def empty_app():
     empty_app = Flask(__name__)
 
-    empty_app.register_blueprint(
-        health_blueprint({}), url_prefix="/api"
-    )
+    empty_app.register_blueprint(health_blueprint({}), url_prefix="/api")
 
     yield empty_app
 
