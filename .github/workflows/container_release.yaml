@@ -1,6 +1,17 @@
 name: Container-Release
 
-on: [workflow_dispatch]
+on:
+  push:
+    paths-ignore:
+      - "docs/**"
+    branches:
+      - main
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+    branches:
+      - "**"
+  workflow_dispatch:
 
 jobs:
   push:
@@ -95,6 +106,7 @@ jobs:
             ./Containerfile
 
       - name: Push To quay.io
+        if: github.event_name != 'pull_request'
         id: push-to-quay
         uses: redhat-actions/push-to-registry@v2
         with:
