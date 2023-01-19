@@ -36,7 +36,7 @@ def get_access_token() -> str:
     return str(resp.json().get("access_token", None))
 
 
-def get_locations() -> list[str]:
+def get_locations(access_token: str) -> list[str]:
     """Get a list of all Azure locations.
 
     https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/list-locations?tabs=HTTP
@@ -44,7 +44,6 @@ def get_locations() -> list[str]:
     Returns:
         List of valid Azure regions.
     """
-    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2020-01-01"}
     url = (
@@ -62,7 +61,7 @@ def get_locations() -> list[str]:
     return sorted([x["name"] for x in resp.json()["value"]])
 
 
-def get_publishers(location: str) -> list[str]:
+def get_publishers(access_token: str, location: str) -> list[str]:
     """Get a list of Azure publishers.
 
     Publishers create offers (which contain SKUs and image versions).
@@ -74,7 +73,6 @@ def get_publishers(location: str) -> list[str]:
     Returns:
         List of publishers on Azure.
     """
-    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -92,7 +90,7 @@ def get_publishers(location: str) -> list[str]:
     return sorted([x["name"] for x in resp.json()])
 
 
-def get_offers(location: str, publisher: str) -> list[str]:
+def get_offers(access_token: str, location: str, publisher: str) -> list[str]:
     """Get a list of Azure offers.
 
     Offers come from a publisher and each offer contains one or more SKUs.
@@ -105,7 +103,6 @@ def get_offers(location: str, publisher: str) -> list[str]:
     Returns:
         List of offers on Azure.
     """
-    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -124,7 +121,7 @@ def get_offers(location: str, publisher: str) -> list[str]:
     return sorted([x["name"] for x in resp.json()])
 
 
-def get_skus(location: str, publisher: str, offer: str) -> list[str]:
+def get_skus(access_token: str, location: str, publisher: str, offer: str) -> list[str]:
     """Get a list of Azure SKUs.
 
     SKUs contain one or more image versions.
@@ -138,7 +135,6 @@ def get_skus(location: str, publisher: str, offer: str) -> list[str]:
     Returns:
         List of skus on Azure.
     """
-    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -158,7 +154,7 @@ def get_skus(location: str, publisher: str, offer: str) -> list[str]:
 
 
 def get_image_versions(
-    location: str, publisher: str, offer: str, sku: str, latest: bool = True
+    access_token: str, location: str, publisher: str, offer: str, sku: str, latest: bool = True
 ) -> list[str]:
     """Get a list of Azure image versions.
 
@@ -175,7 +171,6 @@ def get_image_versions(
     Returns:
         List of skus on Azure.
     """
-    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
     url = (
@@ -201,7 +196,7 @@ def get_image_versions(
 
 
 def get_image_details(
-    location: str, publisher: str, offer: str, sku: str, version: str
+    access_token: str, location: str, publisher: str, offer: str, sku: str, version: str
 ) -> dict[str, dict[str, str]]:
     """Get details about a specific image.
 
@@ -216,7 +211,6 @@ def get_image_details(
         Dictionary of image details
     """
 
-    access_token = get_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
 
@@ -246,6 +240,7 @@ def get_images() -> list[dict[str, str]]:
         List of dictionaries matching `az vm image list` output.
     """
     results = []
+    access_token = get_access_token()
     for entry in config.AZURE_RHEL_IMAGE_TREE:
         for publisher, offers in entry.items():
             for offer, skus in offers.items():
@@ -256,13 +251,14 @@ def get_images() -> list[dict[str, str]]:
                         latest = False
                     # Get the image versions that match the pub/offer/sku combination.
                     image_versions = get_image_versions(
-                        config.AZURE_DEFAULT_LOCATION, publisher, offer, sku, latest
+                        access_token, config.AZURE_DEFAULT_LOCATION, publisher, offer, sku, latest
                     )
 
                     # Loop through the image versions and add on this image version to
                     # the list in Azure's `az vm image list` format.
                     for image_version in image_versions:
                         image_details = get_image_details(
+                            access_token,
                             config.AZURE_DEFAULT_LOCATION,
                             publisher,
                             offer,
