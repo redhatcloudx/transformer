@@ -2,28 +2,56 @@
 from __future__ import annotations
 
 import json
+import pytest
+
+from jsonschema import ValidationError
+from requests import RequestException
 
 from unittest.mock import MagicMock
 from unittest.mock import Mock
 from unittest.mock import patch
 
-from jsonschema import ValidationError
-
 from rhelocator import config
 from rhelocator.update_images import azure
 from rhelocator.update_images import schema
 
-
 @patch("rhelocator.update_images.azure.requests.post")
-def test_get_access_token(mock_post) -> None:
+def test_get_access_token(mock_post: MagicMock) -> None:
     """Test retrieving Azure locations."""
-    auth_response = {"foo": "bar", "access_token": "secrete"}
-    mock_post.return_value = Mock(ok=True)
-    mock_post.return_value.json.return_value = auth_response
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+      "foo": "bar",
+      "access_token": "secrete"
+    }
+    mock_post.return_value = mock_response
 
     access_token = azure.get_access_token()
 
     assert access_token == "secrete"  # nosec B105
+
+
+@patch("rhelocator.update_images.azure.requests.post")
+def test_fail_to_get_access_token(mock_post: MagicMock) -> None:
+    """Test retrieving Azure locations."""
+    mock_response = MagicMock()
+    mock_response.status_code = 400
+    mock_response.json.return_value = {
+      "foo": "bar",
+      "access_token": ""
+    }
+    mock_post.return_value = mock_response
+
+    with pytest.raises(Exception, match=r"Unable to authenticate"):
+        azure.get_access_token()
+
+
+@patch("rhelocator.update_images.azure.requests.post", side_effect=RequestException('Failed Request'))
+def test_post_request_ambigious_request_error(mock_post: MagicMock) -> None:
+    """Test executing safeguarded post request."""
+
+    with pytest.raises(SystemExit):
+        azure.get_access_token()
 
 
 @patch("rhelocator.update_images.azure.requests.get")
