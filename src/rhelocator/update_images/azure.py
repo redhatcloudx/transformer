@@ -7,16 +7,18 @@ import time
 from datetime import datetime
 
 import requests
-from requests import Timeout, TooManyRedirects, RequestException, HTTPError
+
+from requests import HTTPError
+from requests import RequestException
+from requests import TooManyRedirects
 
 from rhelocator import config
-from typing import Optional
 
-def post_request(url: str, data: dict[str, Optional[str]]) -> requests.Response:
+
+def post_request(url: str, data: dict[str, str | None]) -> requests.Response:
+    # TODO: "except Timeout:" and Log to console and return ""
     try:
         return requests.post(url, data, timeout=10)
-    # except Timeout:
-    # TODO: Log to console and return ""
     except (HTTPError, TooManyRedirects, RequestException) as err:
         raise SystemExit(err)
 
@@ -45,7 +47,7 @@ def get_access_token() -> str:
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     # If no auth token can be obtained, throw an exception.
-    raise Exception('Unable to authenticate.')
+    raise Exception("Unable to authenticate.")
 
 
 def get_locations(access_token: str) -> list[str]:
@@ -166,7 +168,12 @@ def get_skus(access_token: str, location: str, publisher: str, offer: str) -> li
 
 
 def get_image_versions(
-    access_token: str, location: str, publisher: str, offer: str, sku: str, latest: bool = True
+    access_token: str,
+    location: str,
+    publisher: str,
+    offer: str,
+    sku: str,
+    latest: bool = True,
 ) -> list[str]:
     """Get a list of Azure image versions.
 
@@ -263,7 +270,12 @@ def get_images() -> list[dict[str, str]]:
                         latest = False
                     # Get the image versions that match the pub/offer/sku combination.
                     image_versions = get_image_versions(
-                        access_token, config.AZURE_DEFAULT_LOCATION, publisher, offer, sku, latest
+                        access_token,
+                        config.AZURE_DEFAULT_LOCATION,
+                        publisher,
+                        offer,
+                        sku,
+                        latest,
                     )
 
                     # Loop through the image versions and add on this image version to

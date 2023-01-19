@@ -110,10 +110,7 @@ def test_azure_images_live(runner):
 
 
 def test_azure_images_offline(
-    mock_azure_access_token,
-    mock_azure_image_versions,
-    mock_azure_image_details,
-    runner
+    mock_azure_access_token, mock_azure_image_versions, mock_azure_image_details, runner
 ):
     """Run a live test against the Azure API to get images via CLI."""
     result = runner.invoke(cli.azure_images)

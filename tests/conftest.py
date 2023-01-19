@@ -80,6 +80,7 @@ MOCKED_AZURE_IMAGE_DETAILS = {
 
 MOCKED_AZURE_ACCESS_TOKEN = "access_token"
 
+
 def pytest_configure(config: any) -> None:
     config.addinivalue_line("markers", "e2e: mark as end-to-end test.")
 
@@ -98,6 +99,7 @@ def mock_aws_images(mocker):
     mock = mocker.patch("rhelocator.update_images.aws.describe_images")
     mock.return_value = MOCKED_AWS_IMAGE_LIST
     return mock
+
 
 @pytest.fixture
 def mock_azure_access_token(mocker):
