@@ -60,7 +60,7 @@ def test_get_locations(mock_requests: MagicMock) -> None:
     # Fake the access token.
     with patch("rhelocator.update_images.azure.get_access_token") as mock_token:
         mock_token.return_value = "secrete"
-        regions = azure.get_locations()
+        regions = azure.get_locations("dummy_access_token")
 
     assert regions == ["eastus"]
 
@@ -80,7 +80,7 @@ def test_get_publishers(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = publisher_response
 
-    publishers = azure.get_publishers("eastus")
+    publishers = azure.get_publishers("dummy_access_token", "eastus")
     assert publishers == [publisher_response[0]["name"]]
 
 
@@ -99,7 +99,7 @@ def test_get_offers(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = offer_response
 
-    offers = azure.get_offers("eastus", "publisher")
+    offers = azure.get_offers("dummy_access_token", "eastus", "publisher")
     assert offers == [offer_response[0]["name"]]
 
 
@@ -118,7 +118,7 @@ def test_get_skus(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = sku_response
 
-    skus = azure.get_skus("eastus", "publisher", "offer")
+    skus = azure.get_skus("dummy_access_token", "eastus", "publisher", "offer")
     assert skus == [sku_response[0]["name"]]
 
 
@@ -156,12 +156,12 @@ def test_get_image_versions(mock_get):
     mock_get.return_value.json.return_value = image_versions_response
 
     # Try with the default where we only get the latest image.
-    image_versions = azure.get_image_versions("eastus", "publisher", "offer", "sku")
+    image_versions = azure.get_image_versions("dummy_access_token", "eastus", "publisher", "offer", "sku")
     assert image_versions == [image_versions_response[-1]["name"]]
 
     # Now try to get all of the images.
     image_versions = azure.get_image_versions(
-        "eastus", "publisher", "offer", "sku", latest=False
+        "dummy_access_token", "eastus", "publisher", "offer", "sku", latest=False
     )
     assert image_versions == [x["name"] for x in image_versions_response]
 
@@ -191,7 +191,7 @@ def test_get_image_details(mock_get):
     mock_get.return_value.json.return_value = image_details_response
 
     image_details = azure.get_image_details(
-        "eastus", "publisher", "offer", "sku", "version"
+        "dummy_access_token", "eastus", "publisher", "offer", "sku", "version"
     )
     assert (
         image_details["properties"]["architecture"]
