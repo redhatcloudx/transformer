@@ -7,8 +7,18 @@ import time
 from datetime import datetime
 
 import requests
+from requests import Timeout, TooManyRedirects, RequestException, HTTPError
 
 from rhelocator import config
+from typing import Optional
+
+def post_request(url: str, data: dict[str, Optional[str]]) -> requests.Response:
+    try:
+        return requests.post(url, data, timeout=10)
+    # except Timeout:
+    # TODO: Log to console and return ""
+    except (HTTPError, TooManyRedirects, RequestException) as err:
+        raise SystemExit(err)
 
 
 def get_access_token() -> str:
@@ -25,15 +35,17 @@ def get_access_token() -> str:
         "resource": "https://management.azure.com/",
     }
     url = f"https://login.microsoftonline.com/{config.AZURE_TENANT_ID}/oauth2/token"
-    resp = None
+
     for _i in range(config.AZURE_MAX_RETRIES):
-        resp = requests.post(url, data=params, timeout=10)
+        resp = post_request(url, params)
+
         if resp.status_code == 200:
-            break
+            return str(resp.json().get("access_token", None))
+
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
-    if resp is None:
-        return ""
-    return str(resp.json().get("access_token", None))
+
+    # If no auth token can be obtained, throw an exception.
+    raise Exception('Unable to authenticate.')
 
 
 def get_locations(access_token: str) -> list[str]:
