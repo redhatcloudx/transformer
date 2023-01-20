@@ -1414,41 +1414,6 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "4200006912",
-    "creationTimestamp": "2022-11-02T12:23:04.867-07:00",
-    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 7.6, x86_64 built on 20221102, supports Shielded VM features",
-    "diskSizeGb": "20",
-    "family": "rhel-7-6-sap-ha",
-    "guestOsFeatures": [
-      {
-        "type": "UEFI_COMPATIBLE"
-      }
-    ],
-    "id": "2341210496122715511",
-    "kind": "compute#image",
-    "labelFingerprint": "42WmSpB8rSM=",
-    "licenseCodes": [
-      "8555687517154622919"
-    ],
-    "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/licenses/rhel-7-sap"
-    ],
-    "name": "rhel-7-6-sap-v20221102",
-    "rawDisk": {
-      "containerType": "TAR",
-      "source": ""
-    },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-7-6-sap-v20221102",
-    "sourceType": "RAW",
-    "status": "READY",
-    "storageLocations": [
-      "asia",
-      "us",
-      "eu"
-    ]
-  },
-  {
-    "architecture": "X86_64",
     "archiveSizeBytes": "4484339712",
     "creationTimestamp": "2022-12-06T13:36:14.230-08:00",
     "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 7.7, x86_64 built on 20221206, supports Shielded VM features",
