@@ -2483,9 +2483,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3145593792",
-    "creationTimestamp": "2023-01-25T15:05:30.529-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Pro Server, amd64 focal pro server image built on 2023-01-25, supports Shielded VM features",
+    "archiveSizeBytes": "3145663680",
+    "creationTimestamp": "2023-01-26T15:00:11.728-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Pro Server, amd64 focal pro server image built on 2023-01-26, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-2004-lts",
     "guestOsFeatures": [
@@ -2502,7 +2502,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "7972325212911569750",
+    "id": "7211086523628698389",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2511,12 +2511,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-2004-lts"
     ],
-    "name": "ubuntu-pro-2004-focal-v20230125",
+    "name": "ubuntu-pro-2004-focal-v20230126",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-2004-focal-v20230125",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-2004-focal-v20230126",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2529,8 +2529,8 @@
     "status": "READY",
     "storageLocations": [
       "us",
-      "asia",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
@@ -2587,9 +2587,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2566331520",
-    "creationTimestamp": "2023-01-24T09:54:44.037-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2023-01-24, supports Shielded VM features",
+    "archiveSizeBytes": "2566272000",
+    "creationTimestamp": "2023-01-26T08:47:46.551-08:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2023-01-26, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-fips-1804-lts",
     "guestOsFeatures": [
@@ -2606,7 +2606,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "5633584240269305229",
+    "id": "224896671325032542",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2615,12 +2615,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-fips-1804-lts"
     ],
-    "name": "ubuntu-pro-fips-1804-bionic-v20230124",
+    "name": "ubuntu-pro-fips-1804-bionic-v20230126",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20230124",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20230126",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2632,16 +2632,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "asia",
-      "eu"
+      "eu",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3002057472",
-    "creationTimestamp": "2023-01-23T14:47:59.855-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Pro FIPS Server, amd64 focal pro fips server image built on 2023-01-23, supports Shielded VM features",
+    "archiveSizeBytes": "3084408384",
+    "creationTimestamp": "2023-01-26T14:57:25.850-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Pro FIPS Server, amd64 focal pro fips server image built on 2023-01-26, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-fips-2004-lts",
     "guestOsFeatures": [
@@ -2658,7 +2658,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "9217056436652257392",
+    "id": "8207656031656786875",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2667,12 +2667,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-fips-2004-lts"
     ],
-    "name": "ubuntu-pro-fips-2004-focal-v20230123",
+    "name": "ubuntu-pro-fips-2004-focal-v20230126",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-2004-focal-v20230123",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-2004-focal-v20230126",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2684,9 +2684,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "eu",
       "us",
-      "asia",
-      "eu"
+      "asia"
     ]
   },
   {
@@ -4245,9 +4245,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1743907008",
-    "creationTimestamp": "2023-01-13T10:04:25.917-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, arm64 focal minimal image built on 2023-01-13, supports Shielded VM features",
+    "archiveSizeBytes": "1852783488",
+    "creationTimestamp": "2023-01-25T22:36:19.501-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, arm64 focal minimal image built on 2023-01-26, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2004-lts-arm64",
     "guestOsFeatures": [
@@ -4261,7 +4261,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1902935832615723974",
+    "id": "5840971447735918989",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4270,12 +4270,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2004-lts"
     ],
-    "name": "ubuntu-minimal-2004-focal-arm64-v20230113",
+    "name": "ubuntu-minimal-2004-focal-arm64-v20230126",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-arm64-v20230113",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-arm64-v20230126",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4287,16 +4287,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "eu",
-      "asia"
+      "asia",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2185449600",
-    "creationTimestamp": "2023-01-13T10:04:24.502-08:00",
-    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, amd64 focal minimal image built on 2023-01-13, supports Shielded VM features",
+    "archiveSizeBytes": "2308855872",
+    "creationTimestamp": "2023-01-25T22:36:19.027-08:00",
+    "description": "Canonical, Ubuntu, 20.04 LTS Minimal, amd64 focal minimal image built on 2023-01-26, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2004-lts",
     "guestOsFeatures": [
@@ -4313,7 +4313,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "8600201907772597191",
+    "id": "5569500197181956493",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4322,12 +4322,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2004-lts"
     ],
-    "name": "ubuntu-minimal-2004-focal-v20230113",
+    "name": "ubuntu-minimal-2004-focal-v20230126",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-v20230113",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-v20230126",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4339,9 +4339,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "us",
-      "asia"
+      "asia",
+      "eu"
     ]
   },
   {
@@ -4447,9 +4447,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2231828160",
-    "creationTimestamp": "2023-01-11T21:49:21.660-08:00",
-    "description": "Canonical, Ubuntu, 22.10 Minimal, amd64 kinetic minimal image built on 2023-01-12, supports Shielded VM features",
+    "archiveSizeBytes": "2356103616",
+    "creationTimestamp": "2023-01-25T21:48:58.863-08:00",
+    "description": "Canonical, Ubuntu, 22.10 Minimal, amd64 kinetic minimal image built on 2023-01-26, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2210-amd64",
     "guestOsFeatures": [
@@ -4466,7 +4466,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "2090408384826319246",
+    "id": "3997848728726645413",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4475,12 +4475,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2210"
     ],
-    "name": "ubuntu-minimal-2210-kinetic-amd64-v20230112",
+    "name": "ubuntu-minimal-2210-kinetic-amd64-v20230126",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-amd64-v20230112",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-amd64-v20230126",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -4493,15 +4493,15 @@
     "status": "READY",
     "storageLocations": [
       "eu",
-      "us",
-      "asia"
+      "asia",
+      "us"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1781723328",
-    "creationTimestamp": "2023-01-11T21:49:19.887-08:00",
-    "description": "Canonical, Ubuntu, 22.10 Minimal, arm64 kinetic minimal image built on 2023-01-12, supports Shielded VM features",
+    "archiveSizeBytes": "1890062016",
+    "creationTimestamp": "2023-01-25T21:48:59.808-08:00",
+    "description": "Canonical, Ubuntu, 22.10 Minimal, arm64 kinetic minimal image built on 2023-01-26, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-minimal-2210-arm64",
     "guestOsFeatures": [
@@ -4515,7 +4515,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "4735515091293839792",
+    "id": "8785041984340339365",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -4524,12 +4524,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-minimal-2210"
     ],
-    "name": "ubuntu-minimal-2210-kinetic-arm64-v20230112",
+    "name": "ubuntu-minimal-2210-kinetic-arm64-v20230126",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-arm64-v20230112",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2210-kinetic-arm64-v20230126",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {

@@ -1973,40 +1973,6 @@
       "DeprecationTime": "2025-01-19T15:13:15.000Z"
     },
     {
-      "Architecture": "x86_64",
-      "CreationDate": "2023-01-19T15:13:44.000Z",
-      "ImageId": "ami-0d7c243dd2a36cf78",
-      "ImageLocation": "amazon/RHEL-SAP-8.2.0_HVM-20230117-x86_64-9-Hourly2-GP2",
-      "ImageType": "machine",
-      "Public": true,
-      "OwnerId": "309956199498",
-      "PlatformDetails": "Red Hat Enterprise Linux",
-      "UsageOperation": "RunInstances:0010",
-      "State": "available",
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "SnapshotId": "snap-08a810147e0c59400",
-            "VolumeSize": 10,
-            "VolumeType": "gp2",
-            "Encrypted": false
-          }
-        }
-      ],
-      "Description": "Provided by Red Hat, Inc.",
-      "EnaSupport": true,
-      "Hypervisor": "xen",
-      "ImageOwnerAlias": "amazon",
-      "Name": "RHEL-SAP-8.2.0_HVM-20230117-x86_64-9-Hourly2-GP2",
-      "RootDeviceName": "/dev/sda1",
-      "RootDeviceType": "ebs",
-      "SriovNetSupport": "simple",
-      "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-01-19T15:13:44.000Z"
-    },
-    {
       "Architecture": "arm64",
       "CreationDate": "2023-01-19T19:05:25.000Z",
       "ImageId": "ami-066d6e27240ab6032",
