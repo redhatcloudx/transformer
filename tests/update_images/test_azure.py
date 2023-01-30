@@ -260,6 +260,20 @@ def test_get_latest_images(mock_azure_image_versions_latest, mock_azure_image_de
         assert image["urn"] == ":".join(urn_sections)
 
 
+def test_get_unique_sku():
+    """Test that the SKUs within each offer are unique."""
+    for entry in config.AZURE_RHEL_IMAGE_TREE:
+        for publisher, offers in entry.items():
+            for offer in offers:
+                skus = azure.get_skus(
+                    azure.get_access_token(), 
+                    config.AZURE_DEFAULT_LOCATION, 
+                    publisher, 
+                    offer,
+                    )
+                assert len(set(skus)) == len(skus)
+
+
 def test_get_all_images(mock_azure_image_versions, mock_azure_image_details):
     """Test retrieving Azure images when we want all of the image versions."""
     # Fake an image tree with one SKU that doesn't use 'latest'.
