@@ -266,11 +266,11 @@ def test_get_unique_sku():
         for publisher, offers in entry.items():
             for offer in offers:
                 skus = azure.get_skus(
-                    azure.get_access_token(), 
-                    config.AZURE_DEFAULT_LOCATION, 
-                    publisher, 
+                    azure.get_access_token(),
+                    config.AZURE_DEFAULT_LOCATION,
+                    publisher,
                     offer,
-                    )
+                )
                 assert len(set(skus)) == len(skus)
 
 
