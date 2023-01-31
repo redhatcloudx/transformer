@@ -15,10 +15,20 @@ from requests import TooManyRedirects
 from rhelocator import config
 
 
-def post_request(url: str, data: dict[str, str | None]) -> requests.Response:
+def post_request(url: str, params: dict[str, str | None]) -> requests.Response:
     # TODO: "except Timeout:" and Log to console and return ""
     try:
-        return requests.post(url, data, timeout=10)
+        return requests.post(url, params, timeout=10)
+    except (HTTPError, TooManyRedirects, RequestException) as err:
+        raise SystemExit(err)
+
+
+def get_request(
+    url: str, params: dict[str, str], headers: dict[str, str]
+) -> requests.Response:
+    # TODO: "except Timeout:" and Log to console and return ""
+    try:
+        return requests.get(url, params=params, headers=headers, timeout=10)
     except (HTTPError, TooManyRedirects, RequestException) as err:
         raise SystemExit(err)
 
@@ -66,13 +76,12 @@ def get_locations(access_token: str) -> list[str]:
     )
     resp = None
     for _i in range(config.AZURE_MAX_RETRIES):
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        resp = get_request(url, params, headers)
         if resp.status_code == 200:
-            break
+            return sorted([x["name"] for x in resp.json()["value"]])
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
-    if resp is None:
-        return [""]
-    return sorted([x["name"] for x in resp.json()["value"]])
+
+    raise Exception("Unable to retrieve locations.")
 
 
 def get_publishers(access_token: str, location: str) -> list[str]:
@@ -95,13 +104,12 @@ def get_publishers(access_token: str, location: str) -> list[str]:
     )
     resp = None
     for _i in range(config.AZURE_MAX_RETRIES):
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        resp = get_request(url, params, headers)
         if resp.status_code == 200:
-            break
+            return sorted([x["name"] for x in resp.json()])
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
-    if resp is None:
-        return [""]
-    return sorted([x["name"] for x in resp.json()])
+
+    raise Exception("Unable to retrieve publishers.")
 
 
 def get_offers(access_token: str, location: str, publisher: str) -> list[str]:
@@ -126,13 +134,12 @@ def get_offers(access_token: str, location: str, publisher: str) -> list[str]:
     )
     resp = None
     for _i in range(config.AZURE_MAX_RETRIES):
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        resp = get_request(url, params, headers)
         if resp.status_code == 200:
-            break
+            return sorted([x["name"] for x in resp.json()])
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
-    if resp is None:
-        return [""]
-    return sorted([x["name"] for x in resp.json()])
+
+    raise Exception("Unable to retrieve offers.")
 
 
 def get_skus(access_token: str, location: str, publisher: str, offer: str) -> list[str]:
@@ -158,13 +165,12 @@ def get_skus(access_token: str, location: str, publisher: str, offer: str) -> li
     )
     resp = None
     for _i in range(config.AZURE_MAX_RETRIES):
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        resp = get_request(url, params, headers)
         if resp.status_code == 200:
-            break
+            return sorted([x["name"] for x in resp.json()])
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
-    if resp is None:
-        return [""]
-    return sorted([x["name"] for x in resp.json()])
+
+    raise Exception("Unable to retrieve skus.")
 
 
 def get_image_versions(
@@ -199,19 +205,18 @@ def get_image_versions(
     )
     resp = None
     for _i in range(config.AZURE_MAX_RETRIES):
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        resp = get_request(url, params, headers)
         if resp.status_code == 200:
-            break
+            images = [x["name"] for x in resp.json()]
+
+            # Return only the last image if requested.
+            if latest:
+                return [images[-1]]
+
+            return images
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
-    if resp is None:
-        return [""]
-    images = [x["name"] for x in resp.json()]
 
-    # Return only the last image if requested.
-    if latest:
-        return [images[-1]]
-
-    return images
+    raise Exception("Unable to retrieve image versions.")
 
 
 def get_image_details(
@@ -242,14 +247,13 @@ def get_image_details(
 
     resp = None
     for _i in range(config.AZURE_MAX_RETRIES):
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        resp = get_request(url, params, headers)
         if resp.status_code == 200:
-            break
+            data: dict[str, dict[str, str]] = resp.json()
+            return data
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
-    if resp is None:
-        return {"": {"": ""}}
-    data: dict[str, dict[str, str]] = resp.json()
-    return data
+
+    raise Exception("Unable to retrieve image details.")
 
 
 def get_images() -> list[dict[str, str]]:

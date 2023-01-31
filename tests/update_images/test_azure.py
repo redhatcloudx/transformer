@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 
 from unittest.mock import MagicMock
-from unittest.mock import Mock
 from unittest.mock import patch
 
 import pytest
@@ -53,6 +52,17 @@ def test_post_request_ambigious_request_error(mock_post: MagicMock) -> None:
         azure.get_access_token()
 
 
+@patch(
+    "rhelocator.update_images.azure.requests.get",
+    side_effect=RequestException("Failed Request"),
+)
+def test_get_request_ambigious_request_error(mock_get: MagicMock) -> None:
+    """Test executing safeguarded get request."""
+
+    with pytest.raises(SystemExit):
+        azure.get_request("https://foo.bar", {"foo": "bar"}, {"foo": "bar"})
+
+
 @patch("rhelocator.update_images.azure.requests.get")
 def test_get_locations(mock_requests: MagicMock) -> None:
     """Test getting Azure location list."""
@@ -93,9 +103,22 @@ def test_get_locations(mock_requests: MagicMock) -> None:
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_publishers(mock_get):
+def test_fail_get_locations(mock_requests: MagicMock) -> None:
+    """Test failing to get Azure location list."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_requests.return_value = mock_response
+
+    with pytest.raises(Exception, match=r"Unable to retrieve locations."):
+        azure.get_locations("dummy_access_token")
+
+
+@patch("rhelocator.update_images.azure.requests.get")
+def test_get_publishers(mock_get: MagicMock):
     """Test retrieving and filtering Azure publishers."""
-    publisher_response = [
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = [
         {
             "name": "aaaaaaaa",
             "location": "aaaaaaaaaaaaaaaaaa",
@@ -104,17 +127,29 @@ def test_get_publishers(mock_get):
             "id": "aaaaaaaaaaa",
         }
     ]
-    mock_get.return_value = Mock(ok=True)
-    mock_get.return_value.json.return_value = publisher_response
+    mock_get.return_value = mock_response
 
     publishers = azure.get_publishers("dummy_access_token", "eastus")
-    assert publishers == [publisher_response[0]["name"]]
+    assert publishers == [mock_response.json.return_value[0]["name"]]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_offers(mock_get):
+def test_fail_get_publishers(mock_requests: MagicMock) -> None:
+    """Test failing to get Azure publisher list."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_requests.return_value = mock_response
+
+    with pytest.raises(Exception, match=r"Unable to retrieve publishers."):
+        azure.get_publishers("dummy_access_token", "dummy_location")
+
+
+@patch("rhelocator.update_images.azure.requests.get")
+def test_get_offers(mock_get: MagicMock):
     """Test retrieving and filtering Azure offers."""
-    offer_response = [
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = [
         {
             "name": "aaaaaaaa",
             "location": "aaaaaaaaaaaaaaaaaa",
@@ -123,17 +158,29 @@ def test_get_offers(mock_get):
             "id": "aaaaaaaaaaa",
         }
     ]
-    mock_get.return_value = Mock(ok=True)
-    mock_get.return_value.json.return_value = offer_response
+    mock_get.return_value = mock_response
 
     offers = azure.get_offers("dummy_access_token", "eastus", "publisher")
-    assert offers == [offer_response[0]["name"]]
+    assert offers == [mock_response.json.return_value[0]["name"]]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_skus(mock_get):
+def test_fail_get_offers(mock_requests: MagicMock) -> None:
+    """Test failing to get Azure offer list."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_requests.return_value = mock_response
+
+    with pytest.raises(Exception, match=r"Unable to retrieve offers."):
+        azure.get_offers("dummy_access_token", "dummy_location", "dummy_publisher")
+
+
+@patch("rhelocator.update_images.azure.requests.get")
+def test_get_skus(mock_get: MagicMock):
     """Test retrieving and filtering Azure SKUs."""
-    sku_response = [
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = [
         {
             "name": "aaaaaaaa",
             "location": "aaaaaaaaaaaaaaaaaa",
@@ -142,17 +189,32 @@ def test_get_skus(mock_get):
             "id": "aaaaaaaaaaa",
         }
     ]
-    mock_get.return_value = Mock(ok=True)
-    mock_get.return_value.json.return_value = sku_response
+    mock_get.return_value = mock_response
 
     skus = azure.get_skus("dummy_access_token", "eastus", "publisher", "offer")
-    assert skus == [sku_response[0]["name"]]
+    assert skus == [mock_response.json.return_value[0]["name"]]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_image_versions(mock_get):
+def test_fail_get_skus(mock_requests: MagicMock) -> None:
+    """Test failing to get Azure sku list."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_requests.return_value = mock_response
+
+    with pytest.raises(Exception, match=r"Unable to retrieve skus."):
+        azure.get_skus(
+            "dummy_access_token", "dummy_location", "dummy_publisher", "dummy_offer"
+        )
+
+
+@patch("rhelocator.update_images.azure.requests.get")
+def test_get_image_versions(mock_get: MagicMock):
     """Test retrieving and filtering Azure image versions."""
-    image_versions_response = [
+
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = [
         {
             "location": "eastus",
             "name": "9.0.2022053014",
@@ -179,26 +241,44 @@ def test_get_image_versions(mock_get):
             "id": "9-lvm-gen2/Versions/9.0.2022090601",
         },
     ]
-    mock_get.return_value = Mock(ok=True)
-    mock_get.return_value.json.return_value = image_versions_response
+    mock_get.return_value = mock_response
 
     # Try with the default where we only get the latest image.
     image_versions = azure.get_image_versions(
         "dummy_access_token", "eastus", "publisher", "offer", "sku"
     )
-    assert image_versions == [image_versions_response[-1]["name"]]
+    assert image_versions == [mock_response.json.return_value[-1]["name"]]
 
     # Now try to get all of the images.
     image_versions = azure.get_image_versions(
         "dummy_access_token", "eastus", "publisher", "offer", "sku", latest=False
     )
-    assert image_versions == [x["name"] for x in image_versions_response]
+    assert image_versions == [x["name"] for x in mock_response.json.return_value]
 
 
 @patch("rhelocator.update_images.azure.requests.get")
-def test_get_image_details(mock_get):
+def test_fail_get_image_versions(mock_requests: MagicMock) -> None:
+    """Test failing to get image versions."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_requests.return_value = mock_response
+
+    with pytest.raises(Exception, match=r"Unable to retrieve image versions."):
+        azure.get_image_versions(
+            "dummy_access_token",
+            "dummy_location",
+            "dummy_publisher",
+            "dummy_offer",
+            "dummy_sku",
+        )
+
+
+@patch("rhelocator.update_images.azure.requests.get")
+def test_get_image_details(mock_get: MagicMock):
     """Test retrieving Azure image details."""
-    image_details_response = {
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
         "id": "a very long ID",
         "location": "westus",
         "name": "7.9.2022032206",
@@ -216,20 +296,37 @@ def test_get_image_details(mock_get):
         },
     }
 
-    mock_get.return_value = Mock(ok=True)
-    mock_get.return_value.json.return_value = image_details_response
+    mock_get.return_value = mock_response
 
     image_details = azure.get_image_details(
         "dummy_access_token", "eastus", "publisher", "offer", "sku", "version"
     )
     assert (
         image_details["properties"]["architecture"]
-        == image_details_response["properties"]["architecture"]
+        == mock_response.json.return_value["properties"]["architecture"]
     )
     assert (
         image_details["properties"]["hyperVGeneration"]
-        == image_details_response["properties"]["hyperVGeneration"]
+        == mock_response.json.return_value["properties"]["hyperVGeneration"]
     )
+
+
+@patch("rhelocator.update_images.azure.requests.get")
+def test_fail_get_image_details(mock_requests: MagicMock) -> None:
+    """Test failing to get image details."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_requests.return_value = mock_response
+
+    with pytest.raises(Exception, match=r"Unable to retrieve image details."):
+        azure.get_image_details(
+            "dummy_access_token",
+            "dummy_location",
+            "dummy_publisher",
+            "dummy_offer",
+            "dummy_sku",
+            "dummy_version",
+        )
 
 
 def test_get_latest_images(mock_azure_image_versions_latest, mock_azure_image_details):
@@ -313,3 +410,13 @@ def test_format_all_images(mock_azure_images):
         schema.validate_json(data)
     except ValidationError as exc:
         raise AssertionError(f"Formatted data does not expect schema: {exc}")
+
+
+def test_failing_to_parse_image_version():
+    """Test expected failure behavior on supplying the parse function with an
+    invalid image version."""
+    invalid_version = "thisisnotaproperazureversion"
+
+    parsed = azure.parse_image_version(invalid_version)
+
+    assert parsed == {}
