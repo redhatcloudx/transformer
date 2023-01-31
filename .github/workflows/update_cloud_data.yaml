@@ -2,8 +2,8 @@
 name: Update-Job
 
 on:
-  schedule: # run at midnight
-    - cron: "0 0 * * *"
+  schedule: # run every sunday at midnight
+    - cron: "0 0 * * 0"
 
 jobs:
   update-testdata:
