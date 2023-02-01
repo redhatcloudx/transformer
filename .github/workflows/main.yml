@@ -55,8 +55,7 @@ jobs:
         run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
 
       - name: Bootstrap poetry
-        run: |
-          curl -sL https://install.python-poetry.org | python - -y
+        run: pipx install poetry
 
       - name: Update PATH
         if: ${{ matrix.os != 'Windows' }}
