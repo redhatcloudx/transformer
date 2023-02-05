@@ -2073,6 +2073,40 @@
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
       "DeprecationTime": "2025-01-19T20:15:22.000Z"
+    },
+    {
+      "Architecture": "x86_64",
+      "CreationDate": "2023-01-27T13:33:37.000Z",
+      "ImageId": "ami-09b659801c07f881c",
+      "ImageLocation": "amazon/RHEL_HA-8.6.0_HVM-20230118-x86_64-30-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux with High Availability",
+      "UsageOperation": "RunInstances:1010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-0f9c675ee50f96c70",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL_HA-8.6.0_HVM-20230118-x86_64-30-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-01-27T13:33:37.000Z"
     }
   ]
 }
