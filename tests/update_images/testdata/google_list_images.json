@@ -1,9 +1,9 @@
 [
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3031386240",
-    "creationTimestamp": "2022-12-06T13:36:13.548-08:00",
-    "description": "CentOS, CentOS, 7, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "3105607488",
+    "creationTimestamp": "2023-02-03T08:52:19.550-08:00",
+    "description": "CentOS, CentOS, 7, x86_64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "centos-7",
     "guestOsFeatures": [
@@ -14,7 +14,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1351628264218692386",
+    "id": "8186606268089140525",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -23,25 +23,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-7"
     ],
-    "name": "centos-7-v20221206",
+    "name": "centos-7-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "asia",
-      "us",
-      "eu"
+      "eu",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "5217721536",
-    "creationTimestamp": "2022-12-06T13:36:14.169-08:00",
-    "description": "CentOS, CentOS, Stream 8, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "5417504640",
+    "creationTimestamp": "2023-02-03T08:52:19.779-08:00",
+    "description": "CentOS, CentOS, Stream 8, x86_64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "centos-stream-8",
     "guestOsFeatures": [
@@ -58,7 +58,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1364567518917823266",
+    "id": "6000397283687957805",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -67,25 +67,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-stream"
     ],
-    "name": "centos-stream-8-v20221206",
+    "name": "centos-stream-8-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-stream-8-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-stream-8-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "eu",
-      "us",
-      "asia"
+      "asia",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3936844224",
-    "creationTimestamp": "2022-11-02T12:23:04.501-07:00",
-    "description": "CentOS, CentOS, Stream 9, x86_64 built on 20221102, supports Shielded VM features",
+    "archiveSizeBytes": "3955246464",
+    "creationTimestamp": "2023-02-03T08:52:18.900-08:00",
+    "description": "CentOS, CentOS, Stream 9, x86_64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "centos-stream-9",
     "guestOsFeatures": [
@@ -102,7 +102,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "6972877956541545847",
+    "id": "6236251216564749613",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -111,18 +111,18 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-stream-9"
     ],
-    "name": "centos-stream-9-v20221102",
+    "name": "centos-stream-9-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-stream-9-v20221102",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-stream-9-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "asia",
-      "eu"
+      "eu",
+      "us"
     ]
   },
   {
@@ -215,9 +215,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1295474112",
-    "creationTimestamp": "2023-01-23T11:50:01.792-08:00",
-    "description": "Google, Container-Optimized OS, 89-16108.798.3 LTS, Kernel: COS-5.4.228 Kubernetes: 1.20.15 Docker: 20.10.3 Family: cos-89-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1290780096",
+    "creationTimestamp": "2023-02-02T11:12:16.954-08:00",
+    "description": "Google, Container-Optimized OS, 89-16108.798.7 LTS, Kernel: COS-5.4.228 Kubernetes: 1.20.15 Docker: 20.10.3 Family: cos-89-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-89-lts",
     "guestOsFeatures": [
@@ -225,38 +225,38 @@
         "type": "GVNIC"
       },
       {
-        "type": "SEV_CAPABLE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
         "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "SEV_CAPABLE"
       }
     ],
-    "id": "6036581275054332422",
+    "id": "730933879962187232",
     "kind": "compute#image",
-    "labelFingerprint": "5JpeDhIqsww=",
+    "labelFingerprint": "hMY5K400sZE=",
     "labels": {
-      "build_number": "16108-798-3",
+      "build_number": "16108-798-7",
       "milestone": "89"
     },
     "licenseCodes": [
-      "6880041984096540132",
       "1001010",
+      "6880041984096540132",
       "166739712233658766"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos"
     ],
-    "name": "cos-89-16108-798-3",
+    "name": "cos-89-16108-798-7",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-89-16108-798-3",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-89-16108-798-7",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -296,16 +296,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "eu",
       "asia",
-      "us",
-      "eu"
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1279812480",
-    "creationTimestamp": "2023-01-23T11:50:01.711-08:00",
-    "description": "Google, Container-Optimized OS, 93-16623.341.4 LTS, Kernel: COS-5.10.162 Kubernetes: 1.21.14 Docker: 20.10.6 Family: cos-93-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1261763712",
+    "creationTimestamp": "2023-02-02T11:12:13.230-08:00",
+    "description": "Google, Container-Optimized OS, 93-16623.341.8 LTS, Kernel: COS-5.10.162 Kubernetes: 1.21.14 Docker: 20.10.6 Family: cos-93-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-93-lts",
     "guestOsFeatures": [
@@ -313,38 +313,38 @@
         "type": "GVNIC"
       },
       {
-        "type": "SEV_CAPABLE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
         "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "SEV_CAPABLE"
       }
     ],
-    "id": "2482699462013835783",
+    "id": "5557804060636198371",
     "kind": "compute#image",
-    "labelFingerprint": "gWha2JPYryw=",
+    "labelFingerprint": "nINVbOoNcyE=",
     "labels": {
-      "build_number": "16623-341-4",
+      "build_number": "16623-341-8",
       "milestone": "93"
     },
     "licenseCodes": [
-      "6880041984096540132",
       "1001010",
+      "6880041984096540132",
       "166739712233658766"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos"
     ],
-    "name": "cos-93-16623-341-4",
+    "name": "cos-93-16623-341-8",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-93-16623-341-4",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-93-16623-341-8",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -384,16 +384,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
+      "us",
       "eu",
-      "us"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1328769600",
-    "creationTimestamp": "2023-01-23T11:50:04.082-08:00",
-    "description": "Google, Container-Optimized OS, 97-16919.235.5 LTS, Kernel: COS-5.10.162 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-97-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1329156480",
+    "creationTimestamp": "2023-02-02T11:12:37.636-08:00",
+    "description": "Google, Container-Optimized OS, 97-16919.235.9 LTS, Kernel: COS-5.10.162 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-97-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-97-lts",
     "guestOsFeatures": [
@@ -401,38 +401,38 @@
         "type": "GVNIC"
       },
       {
-        "type": "SEV_CAPABLE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
         "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "SEV_CAPABLE"
       }
     ],
-    "id": "6950915473762638341",
+    "id": "587515301222004171",
     "kind": "compute#image",
-    "labelFingerprint": "9K5FqWkSQ_s=",
+    "labelFingerprint": "aw23mXIWjkI=",
     "labels": {
-      "build_number": "16919-235-5",
+      "build_number": "16919-235-9",
       "milestone": "97"
     },
     "licenseCodes": [
-      "6880041984096540132",
       "1001010",
+      "6880041984096540132",
       "166739712233658766"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos"
     ],
-    "name": "cos-97-16919-235-5",
+    "name": "cos-97-16919-235-9",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-97-16919-235-5",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-97-16919-235-9",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -472,8 +472,8 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
+      "asia",
       "eu"
     ]
   },
@@ -643,9 +643,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1160150592",
-    "creationTimestamp": "2023-01-09T13:37:41.580-08:00",
-    "description": "Google, Container-Optimized OS, 105-17353.0.0 dev, Kernel: COS-5.15.86 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-arm64-dev, supports Shielded VM features",
+    "archiveSizeBytes": "1311294528",
+    "creationTimestamp": "2023-02-02T11:12:35.665-08:00",
+    "description": "Google, Container-Optimized OS, 105-17400.0.0 dev, Kernel: COS-5.15.90 Kubernetes: 1.25.5 Docker: 20.10.12 Family: cos-arm64-dev, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-arm64-dev",
     "guestOsFeatures": [
@@ -656,29 +656,29 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "8185410751051151306",
+    "id": "8401099808184579533",
     "kind": "compute#image",
-    "labelFingerprint": "QQUJSMWOX_w=",
+    "labelFingerprint": "u1GENxHZ-oI=",
     "labels": {
-      "build_number": "17353-0-0",
+      "build_number": "17400-0-0",
       "milestone": "105"
     },
     "licenseCodes": [
+      "1001010",
       "6880041984096540132",
-      "166739712233658766",
-      "1001010"
+      "166739712233658766"
     ],
     "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos"
     ],
-    "name": "cos-arm64-dev-105-17353-0-0",
+    "name": "cos-arm64-dev-105-17400-0-0",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-dev-105-17353-0-0",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-dev-105-17400-0-0",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -897,6 +897,7 @@
     "architecture": "X86_64",
     "archiveSizeBytes": "1490320320",
     "creationTimestamp": "2022-12-06T13:36:13.846-08:00",
+    "deprecated": {},
     "description": "Debian, Debian GNU/Linux, 10 (buster), amd64 built on 20221206, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "debian-10",
@@ -935,6 +936,7 @@
     "architecture": "ARM64",
     "archiveSizeBytes": "1564518528",
     "creationTimestamp": "2022-11-02T12:23:04.771-07:00",
+    "deprecated": {},
     "description": "Debian, Debian GNU/Linux, 11 (bullseye), arm64 built on 20221102",
     "diskSizeGb": "10",
     "family": "debian-11-arm64",
@@ -973,6 +975,7 @@
     "architecture": "X86_64",
     "archiveSizeBytes": "1539087552",
     "creationTimestamp": "2022-12-06T13:36:14.214-08:00",
+    "deprecated": {},
     "description": "Debian, Debian GNU/Linux, 11 (bullseye), amd64 built on 20221206, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "debian-11",
@@ -1250,9 +1253,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "4761339840",
-    "creationTimestamp": "2022-12-06T13:36:13.885-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux, 7, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "4878148032",
+    "creationTimestamp": "2023-02-03T08:52:19.994-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux, 7, x86_64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-7",
     "guestOsFeatures": [
@@ -1263,7 +1266,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1625186520986159906",
+    "id": "3648229964105418029",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1272,12 +1275,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/licenses/rhel-7-server"
     ],
-    "name": "rhel-7-v20221206",
+    "name": "rhel-7-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-7-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-7-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -1288,9 +1291,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "6852580032",
-    "creationTimestamp": "2022-12-06T13:36:14.211-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux, 8, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "6204649152",
+    "creationTimestamp": "2023-02-03T08:52:19.477-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux, 8, x86_64 built on 20230202, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-8",
     "guestOsFeatures": [
@@ -1307,7 +1310,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "8999076710253202210",
+    "id": "5682859609781470509",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1316,25 +1319,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/licenses/rhel-8-server"
     ],
-    "name": "rhel-8-v20221206",
+    "name": "rhel-8-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-8-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-8-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
+      "asia",
       "eu"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "4708972224",
-    "creationTimestamp": "2022-12-06T13:36:14.200-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux, 9, aarch64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "4959548352",
+    "creationTimestamp": "2023-02-03T08:52:20.356-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux, 9, aarch64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-9-arm64",
     "guestOsFeatures": [
@@ -1345,7 +1348,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "3359998819149417250",
+    "id": "6226612850391024940",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1354,12 +1357,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/licenses/rhel-9-server"
     ],
-    "name": "rhel-9-arm64-v20221206",
+    "name": "rhel-9-arm64-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-9-arm64-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-9-arm64-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -1370,9 +1373,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "5747501568",
-    "creationTimestamp": "2022-12-06T13:36:14.432-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux, 9, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "4946897856",
+    "creationTimestamp": "2023-02-03T08:52:19.877-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux, 9, x86_64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-9",
     "guestOsFeatures": [
@@ -1389,7 +1392,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "8625661748048956194",
+    "id": "4875824182437381421",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1398,12 +1401,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/licenses/rhel-9-server"
     ],
-    "name": "rhel-9-v20221206",
+    "name": "rhel-9-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-9-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-9-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -1414,9 +1417,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "4484339712",
-    "creationTimestamp": "2022-12-06T13:36:14.230-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 7.7, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "4749920832",
+    "creationTimestamp": "2023-02-03T08:52:20.058-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 7.7, x86_64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-7-7-sap-ha",
     "guestOsFeatures": [
@@ -1424,7 +1427,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "50603045861591842",
+    "id": "8976876239053686060",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1433,25 +1436,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/licenses/rhel-7-sap"
     ],
-    "name": "rhel-7-7-sap-v20221206",
+    "name": "rhel-7-7-sap-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-7-7-sap-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-7-7-sap-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "us",
-      "eu",
-      "asia"
+      "asia",
+      "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "5035956672",
-    "creationTimestamp": "2022-12-06T13:36:13.591-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA, 7.9, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "4927744704",
+    "creationTimestamp": "2023-02-03T08:52:20.210-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA, 7.9, x86_64 built on 20230203, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-7-9-sap-ha",
     "guestOsFeatures": [
@@ -1462,7 +1465,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "3430469096353958690",
+    "id": "4563687979661428012",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1471,12 +1474,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/licenses/rhel-7-sap"
     ],
-    "name": "rhel-7-9-sap-v20221206",
+    "name": "rhel-7-9-sap-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-7-9-sap-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-7-9-sap-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -1487,9 +1490,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "4837247808",
-    "creationTimestamp": "2022-12-06T13:36:13.602-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.1, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "4876833600",
+    "creationTimestamp": "2023-02-03T08:52:19.782-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.1, x86_64 built on 20230202, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-8-1-sap-ha",
     "guestOsFeatures": [
@@ -1500,7 +1503,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "1385341451094854434",
+    "id": "8581470889675097389",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1509,25 +1512,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/licenses/rhel-8-sap"
     ],
-    "name": "rhel-8-1-sap-v20221206",
+    "name": "rhel-8-1-sap-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-1-sap-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-1-sap-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "eu",
-      "asia"
+      "asia",
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "5020504320",
-    "creationTimestamp": "2022-12-06T13:36:13.584-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.2, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "5245220160",
+    "creationTimestamp": "2023-02-03T08:52:19.654-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.2, x86_64 built on 20230202, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-8-2-sap-ha",
     "guestOsFeatures": [
@@ -1541,7 +1544,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "4938141615276559138",
+    "id": "3749291244659967277",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1550,25 +1553,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/licenses/rhel-8-sap"
     ],
-    "name": "rhel-8-2-sap-v20221206",
+    "name": "rhel-8-2-sap-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-2-sap-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-2-sap-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "asia",
       "eu",
-      "us",
-      "asia"
+      "us"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "5976212352",
-    "creationTimestamp": "2022-12-06T13:36:14.002-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.4, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "5942670528",
+    "creationTimestamp": "2023-02-03T08:52:19.395-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.4, x86_64 built on 20230202, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-8-4-sap-ha",
     "guestOsFeatures": [
@@ -1585,7 +1588,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "974356915303877410",
+    "id": "7358329100730139949",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1594,25 +1597,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/licenses/rhel-8-sap"
     ],
-    "name": "rhel-8-4-sap-v20221206",
+    "name": "rhel-8-4-sap-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-4-sap-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-4-sap-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
+      "us",
       "eu",
-      "us"
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "6998962560",
-    "creationTimestamp": "2022-12-06T13:36:14.056-08:00",
-    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.6, x86_64 built on 20221206, supports Shielded VM features",
+    "archiveSizeBytes": "6979441920",
+    "creationTimestamp": "2023-02-03T08:52:19.713-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux for SAP with HA and Update Services, 8.6, x86_64 built on 20230202, supports Shielded VM features",
     "diskSizeGb": "20",
     "family": "rhel-8-6-sap-ha",
     "guestOsFeatures": [
@@ -1629,7 +1632,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "1977597272046832418",
+    "id": "4950172501577598253",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1638,25 +1641,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/licenses/rhel-8-sap"
     ],
-    "name": "rhel-8-6-sap-v20221206",
+    "name": "rhel-8-6-sap-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-6-sap-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images/rhel-8-6-sap-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "us",
-      "eu",
-      "asia"
+      "asia",
+      "eu"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "4307550912",
-    "creationTimestamp": "2022-12-06T13:36:13.102-08:00",
-    "description": "Rocky Linux, Rocky Linux, 8 optimized for GCP, aarch64 built on 20221206",
+    "archiveSizeBytes": "3889352448",
+    "creationTimestamp": "2023-02-03T08:52:19.040-08:00",
+    "description": "Rocky Linux, Rocky Linux, 8 optimized for GCP, aarch64 built on 20230202",
     "diskSizeGb": "20",
     "family": "rocky-linux-8-optimized-gcp-arm64",
     "guestOsFeatures": [
@@ -1667,7 +1670,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "8525875643284589347",
+    "id": "7093028064618120494",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1676,25 +1679,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/licenses/rocky-linux-8-optimized-gcp"
     ],
-    "name": "rocky-linux-8-optimized-gcp-arm64-v20221206",
+    "name": "rocky-linux-8-optimized-gcp-arm64-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-8-optimized-gcp-arm64-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-8-optimized-gcp-arm64-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
       "eu",
-      "asia",
-      "us"
+      "us",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "5071399680",
-    "creationTimestamp": "2022-12-06T13:36:13.124-08:00",
-    "description": "Rocky Linux, Rocky Linux, 8 optimized for GCP, x86_64 built on 20221206",
+    "archiveSizeBytes": "5073691392",
+    "creationTimestamp": "2023-02-03T08:52:18.657-08:00",
+    "description": "Rocky Linux, Rocky Linux, 8 optimized for GCP, x86_64 built on 20230202",
     "diskSizeGb": "20",
     "family": "rocky-linux-8-optimized-gcp",
     "guestOsFeatures": [
@@ -1711,7 +1714,7 @@
         "type": "SEV_CAPABLE"
       }
     ],
-    "id": "5796396653634259747",
+    "id": "510683829559657774",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1720,25 +1723,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/licenses/rocky-linux-8-optimized-gcp"
     ],
-    "name": "rocky-linux-8-optimized-gcp-v20221206",
+    "name": "rocky-linux-8-optimized-gcp-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-8-optimized-gcp-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-8-optimized-gcp-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
       "asia",
+      "us",
       "eu"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "5075822016",
-    "creationTimestamp": "2022-12-06T13:36:12.902-08:00",
-    "description": "Rocky Linux, Rocky Linux, 8, x86_64 built on 20221206",
+    "archiveSizeBytes": "5161186176",
+    "creationTimestamp": "2023-02-03T08:52:18.805-08:00",
+    "description": "Rocky Linux, Rocky Linux, 8, x86_64 built on 20230202",
     "diskSizeGb": "20",
     "family": "rocky-linux-8",
     "guestOsFeatures": [
@@ -1755,7 +1758,7 @@
         "type": "SEV_CAPABLE"
       }
     ],
-    "id": "1843447400235141923",
+    "id": "114779813003167022",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1764,25 +1767,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/licenses/rocky-linux-8"
     ],
-    "name": "rocky-linux-8-v20221206",
+    "name": "rocky-linux-8-v20230202",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-8-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-8-v20230202",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "us",
+      "eu",
       "asia",
-      "eu"
+      "us"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "2990452992",
-    "creationTimestamp": "2022-12-06T13:36:13.029-08:00",
-    "description": "Rocky Linux, Rocky Linux, 9, aarch64 built on 20221206",
+    "archiveSizeBytes": "3174044352",
+    "creationTimestamp": "2023-02-03T08:52:18.889-08:00",
+    "description": "Rocky Linux, Rocky Linux, 9, aarch64 built on 20230203",
     "diskSizeGb": "20",
     "family": "rocky-linux-9-arm64",
     "guestOsFeatures": [
@@ -1793,7 +1796,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "7615409316029401891",
+    "id": "3273420915646432558",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1802,25 +1805,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/licenses/rocky-linux-9"
     ],
-    "name": "rocky-linux-9-arm64-v20221206",
+    "name": "rocky-linux-9-arm64-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-arm64-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-arm64-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "us",
+      "eu",
       "asia"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "2908553472",
-    "creationTimestamp": "2022-12-06T13:36:13.139-08:00",
-    "description": "Rocky Linux, Rocky Linux, 9 optimized for GCP, aarch64 built on 20221206",
+    "archiveSizeBytes": "3179493888",
+    "creationTimestamp": "2023-02-03T08:52:18.112-08:00",
+    "description": "Rocky Linux, Rocky Linux, 9 optimized for GCP, aarch64 built on 20230203",
     "diskSizeGb": "20",
     "family": "rocky-linux-9-optimized-gcp-arm64",
     "guestOsFeatures": [
@@ -1831,7 +1834,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "9150051347647826723",
+    "id": "3032744967151846702",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1840,12 +1843,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/licenses/rocky-linux-9-optimized-gcp"
     ],
-    "name": "rocky-linux-9-optimized-gcp-arm64-v20221206",
+    "name": "rocky-linux-9-optimized-gcp-arm64-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-optimized-gcp-arm64-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-optimized-gcp-arm64-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -1856,9 +1859,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3590848512",
-    "creationTimestamp": "2022-12-06T13:36:13.118-08:00",
-    "description": "Rocky Linux, Rocky Linux, 9 optimized for GCP, x86_64 built on 20221206",
+    "archiveSizeBytes": "3925959360",
+    "creationTimestamp": "2023-02-03T08:52:19.026-08:00",
+    "description": "Rocky Linux, Rocky Linux, 9 optimized for GCP, x86_64 built on 20230203",
     "diskSizeGb": "20",
     "family": "rocky-linux-9-optimized-gcp",
     "guestOsFeatures": [
@@ -1875,7 +1878,7 @@
         "type": "SEV_CAPABLE"
       }
     ],
-    "id": "7290853321963866915",
+    "id": "166866968755864878",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1884,25 +1887,25 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/licenses/rocky-linux-9-optimized-gcp"
     ],
-    "name": "rocky-linux-9-optimized-gcp-v20221206",
+    "name": "rocky-linux-9-optimized-gcp-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-optimized-gcp-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-optimized-gcp-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "3801874944",
-    "creationTimestamp": "2022-12-06T13:36:13.025-08:00",
-    "description": "Rocky Linux, Rocky Linux, 9, x86_64 built on 20221206",
+    "archiveSizeBytes": "3919832064",
+    "creationTimestamp": "2023-02-03T08:52:19.203-08:00",
+    "description": "Rocky Linux, Rocky Linux, 9, x86_64 built on 20230203",
     "diskSizeGb": "20",
     "family": "rocky-linux-9",
     "guestOsFeatures": [
@@ -1919,7 +1922,7 @@
         "type": "SEV_CAPABLE"
       }
     ],
-    "id": "1739219143940508451",
+    "id": "2661566871159997741",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -1928,18 +1931,18 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/licenses/rocky-linux-9"
     ],
-    "name": "rocky-linux-9-v20221206",
+    "name": "rocky-linux-9-v20230203",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-v20221206",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rocky-linux-cloud/global/images/rocky-linux-9-v20230203",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "eu",
       "us",
-      "asia",
-      "eu"
+      "asia"
     ]
   },
   {
@@ -2281,9 +2284,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "2278332864",
-    "creationTimestamp": "2023-01-12T11:35:37.678-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS, arm64 bionic image built on 2023-01-12, supports Shielded VM features",
+    "archiveSizeBytes": "2405835648",
+    "creationTimestamp": "2023-01-31T10:30:57.259-08:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS, arm64 bionic image built on 2023-01-31, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-1804-lts-arm64",
     "guestOsFeatures": [
@@ -2297,7 +2300,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "832167242676166630",
+    "id": "1973986321247821967",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2306,64 +2309,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1804-lts"
     ],
-    "name": "ubuntu-1804-bionic-arm64-v20230112",
+    "name": "ubuntu-1804-bionic-arm64-v20230131",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-arm64-v20230112",
-    "shieldedInstanceInitialState": {
-      "dbxs": [
-        {
-          "content": "2gcDBhMRFQAAAAAAAAAAABENAAAAAvEOndKvSt9o7kmKqTR9N1ZlpzCCDPUCAQExDzANBglghkgBZQMEAgEFADALBgkqhkiG9w0BBwGgggsIMIIFGDCCBACgAwIBAgITMwAAABNryScg3e1ZiAAAAAAAEzANBgkqhkiG9w0BAQsFADCBgDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEqMCgGA1UEAxMhTWljcm9zb2Z0IENvcnBvcmF0aW9uIEtFSyBDQSAyMDExMB4XDTE2MDEwNjE4MzQxNVoXDTE3MDQwNjE4MzQxNVowgZUxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xDTALBgNVBAsTBE1PUFIxMDAuBgNVBAMTJ01pY3Jvc29mdCBXaW5kb3dzIFVFRkkgS2V5IEV4Y2hhbmdlIEtleTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKXiCkZgbboTnVZnS1h_JbnlcVst9wtFK8NQjTpeB9wirml3h-fzi8vzki0hSNBD2Dg49lGEvs4egyowmTsLu1TnBUH1f_Hi8Noa7fKXV6F93qYrTPajx5v9L7NedplWnMEPsRvJrQdrysTZwtoXMLYDhc8bQHI5nlJDfgqrB8JiC4A3vL9i19lkQOTq4PZb5AcVcE0wlG7lR_btoQN0g5B4_7pI2S_9mU1PXr1NBSEl48Kl4cJwO2GyvOVvxQ6wUSFTExmCBKrT3LnPU5lZY68n3MpZ5VY4skhrEt2dyf5bZNzkYTTouxC0n37OrMbGGq3tpv7JDD6E_Rfqua3dXYECAwEAAaOCAXIwggFuMBQGA1UdJQQNMAsGCSsGAQQBgjdPATAdBgNVHQ4EFgQUVsJIppTfox2XYoAJRIlnxAUOy2owUQYDVR0RBEowSKRGMEQxDTALBgNVBAsTBE1PUFIxMzAxBgNVBAUTKjMxNjMxKzJjNDU2Y2JjLTA1NDItNDdkOS05OWU1LWQzOWI4MTVjNTczZTAfBgNVHSMEGDAWgBRi_EPNoD6ky2cS0lvZVax7zLaKXzBTBgNVHR8ETDBKMEigRqBEhkJodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NybC9NaWNDb3JLRUtDQTIwMTFfMjAxMS0wNi0yNC5jcmwwYAYIKwYBBQUHAQEEVDBSMFAGCCsGAQUFBzAChkRodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NlcnRzL01pY0NvcktFS0NBMjAxMV8yMDExLTA2LTI0LmNydDAMBgNVHRMBAf8EAjAAMA0GCSqGSIb3DQEBCwUAA4IBAQCGjTFLjxsKmyLESJueg0S2Cp8N7MOq2IALsitZHwfYw2jMhY9b9kmKvIdSqVna1moZ6_zJSOS_JY6HkWZr6dDJe9Lj7xiW_e4qPP-KDrCVb02vBnK4EktVjTdJpyMhxBMdXUcq1eGl6518oCkQ27tu0-WZjaWEVsEY_gpQj0ye2UA4HYUYgJlpT24oJRi7TeQ03Nebb-ZrUkbf9uxl0OVV_mg2R5FDwOc3REoRAgv5jnw6X7ha5hlRCl2cLF27TFrFIRQQT4eSM33eDiitXXpYmD13jqKeHhLVXr07QSwqvKe1o1UYokJngP0pTwoDnt2qRuLnZ71jw732dSPN9B57MIIF6DCCA9CgAwIBAgIKYQrRiAAAAAAAAzANBgkqhkiG9w0BAQsFADCBkTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjE7MDkGA1UEAxMyTWljcm9zb2Z0IENvcnBvcmF0aW9uIFRoaXJkIFBhcnR5IE1hcmtldHBsYWNlIFJvb3QwHhcNMTEwNjI0MjA0MTI5WhcNMjYwNjI0MjA1MTI5WjCBgDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEqMCgGA1UEAxMhTWljcm9zb2Z0IENvcnBvcmF0aW9uIEtFSyBDQSAyMDExMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxOi1ir-tVyawJsPq5_tXekQCXQcN2krldCrmsA_sbevsf7njWmMyfBEXTw7jC6c4FZOOxvXghLGamyzn9beR1gnh4sAEqKwwHN9I8wZQmmSnUX_IhU-PIIbO_i_hn_-CwO3pzc70U2piOgtDueIl_f4F-dTEFKsR4iOJjXC3pB1N7K7lnPoWwtfBy9ToxC_lme4kiwPsjfKL6sNK-0MREgt-tUeSbNzmBInr9TME6xABKnHl-YMTPP8lCS9odkb_uk--3K1xKliq-w7SeT3km2U7zCkqn_xyWaLrrpLv9jUTgMYC7ORfzJ12ze9jksGveUCEeYd_41Ko6J17B2mPFQIDAQABo4IBTzCCAUswEAYJKwYBBAGCNxUBBAMCAQAwHQYDVR0OBBYEFGL8Q82gPqTLZxLSW9lVrHvMtopfMBkGCSsGAQQBgjcUAgQMHgoAUwB1AGIAQwBBMAsGA1UdDwQEAwIBhjAPBgNVHRMBAf8EBTADAQH_MB8GA1UdIwQYMBaAFEVmUkPhflgRv9ZOniNVCDs6ImqoMFwGA1UdHwRVMFMwUaBPoE2GS2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2kvY3JsL3Byb2R1Y3RzL01pY0NvclRoaVBhck1hclJvb18yMDEwLTEwLTA1LmNybDBgBggrBgEFBQcBAQRUMFIwUAYIKwYBBQUHMAKGRGh0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2kvY2VydHMvTWljQ29yVGhpUGFyTWFyUm9vXzIwMTAtMTAtMDUuY3J0MA0GCSqGSIb3DQEBCwUAA4ICAQDUhIj1FJQYAsoqPPsqkhwM16DR8ehSZqjuorV1epAAqi2kdlrqebe5N2pRexBk9uFk8gJnvveoG3i9us6IWGQM1lfIGaNfBdbbxtBpzkhLMrfrXdIw9cD1uLp4B6Mr_pvbNFaE7ILKrkElcJxr6f6QD9eWH-XnlB-yKgyNS_8oKRB799d8pdF2uQXIee0PkJKcwv7fb35sD3vUwUXdNFGWOQ_lXlbYGAWW9AemQrOgd_0IGfJxVsyfhiOkh8um_Vh-1GlnFZF-gfJ_E-UNi4o8h4Tr4869Q-WtLYSTjmorWnxE-lKqgcgtHLvgUt8AEfiaPcFgsOEztaOI0WUZChrnrHykwYKHTjixLw3FFIdv_Y0uvDm25-bD4OTNJ4TvlELvKYuQRkE7gRtn2PlDWWXLDbz9AJJP9HU7p6kk_FBBQHngLU8Kaid2blLtlml7rw_3hwXQRcKtUxSBH_swBKo3NmHaSmkbNNho7dYCz2yUDNPPbCJ5rbHwvAOiRmCpxAfCIYLx_fLoeTJgv9ispSIUS8rB2EvrfT9XNbLmT3W0sGADIlOukXkd1ptBHxWGVHCy3g01D3ywNHK6l2A78HnrorIcXaIWuIfF6Rv2tZclbzif45H6inmYw2kOt6McIAWX-MoUrgDXxPPAFBB1azSgG7WZYPNcsMVXTjbSMoS_njGCAcQwggHAAgEBMIGYMIGAMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSowKAYDVQQDEyFNaWNyb3NvZnQgQ29ycG9yYXRpb24gS0VLIENBIDIwMTECEzMAAAATa8knIN3tWYgAAAAAABMwDQYJYIZIAWUDBAIBBQAwDQYJKoZIhvcNAQEBBQAEggEAhabaxRIJ7nUZ-m__mIG0lII6yD-lxoeI8S83ZKTP8Qx5h5asySWl7420eGhna7zyaVRvVVIhkjOMIfcKr29LgzQpYDqPUc8aYAdGCsZKZGmHCMjEulnq5TDK79GKinzZfb2sAWXEJ68N8oNnY7faBKjHjmmJbAEz8ufE4DijgJ_NBov2xmhTZyNHQ7pB1iCdrEUGObzdJc0Qtmh3CNOEcmH0ukd8sTHE9acBBTFHS8dvreR_sP7dXClZJbJiWAFKvQn3EjCTiYizkZ4I_5xiqjHELht_ORQKN-Hnoqnl4kcRINhZRV7JlgAQDlBJLv3OTjShRO_ZWCdcu7PtwhweiSYWxMFMUJJArKlB-TaTQyiMDgAAAAAAADAAAAC9mvp3WQMyTb1gKPTnj3hLgLTZaTG_DQL9kaYeGdFPHaRS5m2yQIyoYE1BH5Jlnwq9mvp3WQMyTb1gKPTnj3hL9S-Do_qc-9aSD3IoJNvkA0U00luFByRrO5V9rG4bznq9mvp3WQMyTb1gKPTnj3hLxdnYoYbiyC0Jr6oqb38uc4cNPmT3LE4I72d5aoQPD729mvp3WQMyTb1gKPTnj3hLNjOE0U0fLgt4FWJkhMRZrVejGO9DliZgSNBYxaGbv3a9mvp3WQMyTb1gKPTnj3hLGuyEuEtsZaUSIKm-cYGWUjAhDWLW0zxImZxrKVorCga9mvp3WQMyTb1gKPTnj3hL5spo6UFGYprwP2nC-G5r72L5MLN8b7zIeLeN-YwDNOW9mvp3WQMyTb1gKPTnj3hLw6maRg2kZKBXw1htg8719K4ItxA5ee2JMnQt8O1TDGa9mvp3WQMyTb1gKPTnj3hLWPuUGu-VollDs_tfJRCg3z_kTFjJXgq4BIcpdWirl3G9mvp3WQMyTb1gKPTnj3hLU5HDovsRIQKmqh7cJa534Z9dbwnNCe6yUJkiv81Zkuq9mvp3WQMyTb1gKPTnj3hL1iYVfh1qcYvBJKuNony7ZQcsoDp7ayV9vcu9YPZe89G9mvp3WQMyTb1gKPTnj3hL0GPsKPZ-ulPxZC2_ff8zxqMq3YafYBP-Fi4sMvHL5W29mvp3WQMyTb1gKPTnj3hLKcbrUrQ8OqGLLNjtbqhgfO88-uG6_hFldVzy5hSESkS9mvp3WQMyTb1gKPTnj3hLkPvnDmnWM0CNPhcMaDLbstIJ4CclJ9-2PUnSlXKm9Ey9mvp3WQMyTb1gKPTnj3hLB17qBgWJVIugYLL-7RDaPCDH_psXzQJrlOimg7gRUji9mvp3WQMyTb1gKPTnj3hLB-bGqFhkb7HvxnkD_iixFgEfI2f-kua-KzaZnv850J69mvp3WQMyTb1gKPTnj3hLCd9fTlESCOx4uW0S0IEl_bYDho3jn29yknhSWZtlnCa9mvp3WQMyTb1gKPTnj3hLC7tDktqseribMKSsZXUxuXv6qwT5Cw2v5fm265CgY3S9mvp3WQMyTb1gKPTnj3hLDBiTOXYt8zarPdAGpGPfcVo5z7D0kkZcYA5sa9e9iYy9mvp3WQMyTb1gKPTnj3hLDQ2-ym8p7KBvMxp9cuSISxIJf7NImDoqFKDXP08QFA-9mvp3WQMyTb1gKPTnj3hLDcnz-5mWIUjDyoM2MnWNPtT8jQsAB7lbMeZSjyrNW_y9mvp3WQMyTb1gKPTnj3hLEG-s6s_s_U4wO3T0gKCAmOLQgCuTb47HdM4h8xaGaJy9mvp3WQMyTb1gKPTnj3hLF046C1tDxqYHu9NATwU0Hj3POWJnzpT4tQ4uI6nakgy9mvp3WQMyTb1gKPTnj3hLGDM0Kf8FYu2flwM-EUjc7uUtvi5JbVQQtc_WyGTS0Q-9mvp3WQMyTb1gKPTnj3hLK5nPJkIukv42X79Lww0nCGye4Ut6b_9E-y9rkAFpmTm9mvp3WQMyTb1gKPTnj3hLK78sp7jx2R8n7lK2-ypd0Em4WiubUpxdZmIGgQSwVfi9mvp3WQMyTb1gKPTnj3hLLHPZMyW6bcvlidSkxjxbk1VZ75L78FDtUMTiCFIG8X29mvp3WQMyTb1gKPTnj3hLLnCRZ4am93NRH6cYH6sPHXC1V8YyLqkjsqjTuStRr329mvp3WQMyTb1gKPTnj3hLMGYo-lR3MFcoukpGfefQOHpU9WnTdp_OXnXsidKNFZO9mvp3WQMyTb1gKPTnj3hLNgjtuvWtD0GkFKF3er8vr15nAzRnXsOZXmk1gp4MqtK9mvp3WQMyTb1gKPTnj3hLOEHSITaNFYPXXAoC5iFgOU1sTgpnYLb2B7kDYryFWwK9mvp3WQMyTb1gKPTnj3hLP86bn98-8J1UUrD5XuSBwrfwbXQ6c3lxVY5wE2rOPnO9mvp3WQMyTb1gKPTnj3hLQ5fayoOef2MHfLUMkt9DvC0vsqj1nyb8eg5L1Nl1FpK9mvp3WQMyTb1gKPTnj3hLR8wIYSfiBpqG4Dpr7yzUEPjFWm1r2zYhaMMbLOMqWt-9mvp3WQMyTb1gKPTnj3hLUYgx_nOCtRTQPhXGISKLirZUeb0Mv6PFwdD0jZwwYTW9mvp3WQMyTb1gKPTnj3hLWulJ6ohV65PkOdvGW9ouQoUsL99nifoUZzbjw0EPK1y9mvp3WQMyTb1gKPTnj3hLax0TgHjkQYqmjet7s14GYJLPR57rjOTNEufQcsy0L2a9mvp3WQMyTb1gKPTnj3hLbIhUR43VWeKTUbgmwGy4v-8rlK01ODWHctGT-C7RyhG9mvp3WQMyTb1gKPTnj3hLbxQo_3HJ2w7Vrx8ue7_Lq2R8wmXd9bKTzbYm9Qo6eF69mvp3WQMyTb1gKPTnj3hLcfKQb9IiSX5Uo0ZiqySX_MgQIHcP9RNo6ePZv8v9Y3W9mvp3WQMyTb1gKPTnj3hLcms-tlQEajDz-D2bls4D9nDpqAbRcIoDceYtxJ0sI8G9mvp3WQMyTb1gKPTnj3hLcuC9GGfPXZ1WqxWK3zvdvIK_MqjYqh2MXi9t8pQo1ti9mvp3WQMyTb1gKPTnj3hLeCevmTYs-vBxfa3ksb_gQ4rRccFa3cJIt1v4yqRLssW9mvp3WQMyTb1gKPTnj3hLgai5ZbuE04drlCmpVIHMlVMYz6oUEtgIyKM7_TP_8OS9mvp3WQMyTb1gKPTnj3hLgts7zrT2CEPOnZfD0YfNm1lBzT3oEA5YbyvaVjdXX2e9mvp3WQMyTb1gKPTnj3hLiVqXhfYXyh1-1E_BoUcLcfPxIjhi2f-dzDri35IWPa-9mvp3WQMyTb1gKPTnj3hLitZIWfGVtfWNr6qUC2phZ6zWeohuj0aTZBdyIcVZRbm9mvp3WQMyTb1gKPTnj3hLi_Q0tJ4AzPcVAqLNkAhlywHsOz2gPDW-UF_fe9Vj9SG9mvp3WQMyTb1gKPTnj3hLjY6iic_nChwHq3NlyyjuUe3TPPJQbeiI-63WDr-ASBy9mvp3WQMyTb1gKPTnj3hLmZjTY8SRvha9dLoQuU2SkQAWEXNv3KZDo2ZkvA8xWkK9mvp3WQMyTb1gKPTnj3hLnkppFzFhaC5V_ej-9WDriOwf_tyvBAAfZsDK9weytzS9mvp3WQMyTb1gKPTnj3hLprUVHzZV06KvDUcnWXlr5KQgDlSVp9hpdUxISIV0CKe9mvp3WQMyTb1gKPTnj3hLp_MvUI1OsP6tmgh--U7RugrsXeb372_wpiuTvt9dRY29mvp3WQMyTb1gKPTnj3hLrWgm4ZRtJtPq82hciNl9hd47Tcs9DuKugccFYNE8VyC9mvp3WQMyTb1gKPTnj3hLruuuMVEnEnPtlaouZxE57TGphWcwOjMimPg3CanVWqG9mvp3WQMyTb1gKPTnj3hLr-IDCvt9LNoT-fozOgLjT2dRr-wRsBDbzUQf30xAArO9mvp3WQMyTb1gKPTnj3hLtU8e5jZjH61oBY07CTcDGsG5DMsXBio5HMpor9vkDVW9mvp3WQMyTb1gKPTnj3hLuPB42YOiSsQzIWOTiDUUzZMsM68Y591wiEyCNfQnVza9mvp3WQMyTb1gKPTnj3hLuXoIiQWcA1_x1UtttTsRuXZmaNn5VSR8AosoN9egTNm9mvp3WQMyTb1gKPTnj3hLvIemaOgZZkictQjugFGDwZ5qzSTPF3mcoGLS44TaDqe9mvp3WQMyTb1gKPTnj3hLxAm9rEd1rdjbkqoitbcY-4yUoUYsH-mkFrldijOIwvy9mvp3WQMyTb1gKPTnj3hLxhfBqLHuKoEcKLWoG0yD18mLWwwnKB1hAgfr5pLCln-9mvp3WQMyTb1gKPTnj3hLyQ8zZhe45_mDl1QTyZfxC3PrJn_YoQy5472_xmer24u9mvp3WQMyTb1gKPTnj3hLy2uFi0DToJh2WBW1ksFRSklgT6_WCBnaiNenbpd4_ve9mvp3WQMyTb1gKPTnj3hLzjv6vlnWfOisjf1KFvfEPvnCJFE_vGVZV9c1-in1QM69mvp3WQMyTb1gKPTnj3hL2MvrlzX1Zys2fk-WzcdJaWFdFwdK6WxyTULOAhb48_q9mvp3WQMyTb1gKPTnj3hL6Swi6ztWQtZcHsLK8kfSWUc47rt_s4QaRJVvWeKw0fq9mvp3WQMyTb1gKPTnj3hL_d1uPSnqhMd0Pa1KG9vHALX-wbOR-TJAkIasxx3W29i9mvp3WQMyTb1gKPTnj3hL_mOoT3gsydP88sz5_BH70Ddgh4dY0mKF7RJmm9xubQG9mvp3WQMyTb1gKPTnj3hL_s-yMtEumUttSF0scWdyiqVSWYStXKYedRYiHweaFDa9mvp3WQMyTb1gKPTnj3hLyhcdYUqNfhIck5SM0P5V05mB-dEaqW4DRQpBUifCxlu9mvp3WQMyTb1gKPTnj3hLVbmbDeU9vP5IWqnHN88_thbvPZH6tZmqfKsZ7adjtbq9mvp3WQMyTb1gKPTnj3hLd90ZD6MNiP9eOwEaCuYeYgl4DBMLU17Lh-bwiIoLay-9mvp3WQMyTb1gKPTnj3hLyDyxOSKtmfVgdEZ13TfMlNytWh_Lpkcv7jQRcdk56IS9mvp3WQMyTb1gKPTnj3hLOwKHUz4Mw9DsGqgjy_CpQarYchV50cSZgC3Rw6Y2uKm9mvp3WQMyTb1gKPTnj3hLk5ru9PX6UeIzQMPy5JBIzohyUmr991LDp_Oj8ryfYEm9mvp3WQMyTb1gKPTnj3hLZFdb2RJ4mi4UrVb2NB9Sr2v4DPlEAHhZdenwTi1k10W9mvp3WQMyTb1gKPTnj3hLRcfIrnUKz7tI_DdSfWQS3WRNrtiRPM2KJMlNhWln344=",
-          "fileType": "BIN"
-        }
-      ]
-    },
-    "sourceType": "RAW",
-    "status": "READY",
-    "storageLocations": [
-      "asia",
-      "us",
-      "eu"
-    ]
-  },
-  {
-    "architecture": "X86_64",
-    "archiveSizeBytes": "2651073984",
-    "creationTimestamp": "2023-01-12T11:35:31.244-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image built on 2023-01-12, supports Shielded VM features",
-    "diskSizeGb": "10",
-    "family": "ubuntu-1804-lts",
-    "guestOsFeatures": [
-      {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
-      },
-      {
-        "type": "SEV_CAPABLE"
-      },
-      {
-        "type": "UEFI_COMPATIBLE"
-      },
-      {
-        "type": "GVNIC"
-      }
-    ],
-    "id": "8070545626001956845",
-    "kind": "compute#image",
-    "labelFingerprint": "42WmSpB8rSM=",
-    "licenseCodes": [
-      "5926592092274602096"
-    ],
-    "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1804-lts"
-    ],
-    "name": "ubuntu-1804-bionic-v20230112",
-    "rawDisk": {
-      "containerType": "TAR",
-      "source": ""
-    },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20230112",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-arm64-v20230131",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2376,8 +2327,8 @@
     "status": "READY",
     "storageLocations": [
       "eu",
-      "asia",
-      "us"
+      "us",
+      "asia"
     ]
   },
   {
@@ -2587,9 +2538,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2566272000",
-    "creationTimestamp": "2023-01-26T08:47:46.551-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2023-01-26, supports Shielded VM features",
+    "archiveSizeBytes": "2584531776",
+    "creationTimestamp": "2023-01-31T10:30:22.772-08:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2023-01-31, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-fips-1804-lts",
     "guestOsFeatures": [
@@ -2606,7 +2557,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "224896671325032542",
+    "id": "7699316063417458898",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2615,12 +2566,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-fips-1804-lts"
     ],
-    "name": "ubuntu-pro-fips-1804-bionic-v20230126",
+    "name": "ubuntu-pro-fips-1804-bionic-v20230131",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20230126",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20230131",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2934,48 +2885,48 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1322394816",
-    "creationTimestamp": "2023-01-09T13:37:48.565-08:00",
-    "description": "Google, Container-Optimized OS, 105-17353.0.0 dev, Kernel: COS-5.15.86 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-dev, supports Shielded VM features",
+    "archiveSizeBytes": "1451167872",
+    "creationTimestamp": "2023-02-02T11:12:43.362-08:00",
+    "description": "Google, Container-Optimized OS, 105-17400.0.0 dev, Kernel: COS-5.15.90 Kubernetes: 1.25.5 Docker: 20.10.12 Family: cos-dev, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-dev",
     "guestOsFeatures": [
       {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
-      },
-      {
         "type": "GVNIC"
       },
       {
-        "type": "SEV_CAPABLE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "SEV_CAPABLE"
       }
     ],
-    "id": "8304813234176735171",
+    "id": "9191768206085305797",
     "kind": "compute#image",
-    "labelFingerprint": "QQUJSMWOX_w=",
+    "labelFingerprint": "u1GENxHZ-oI=",
     "labels": {
-      "build_number": "17353-0-0",
+      "build_number": "17400-0-0",
       "milestone": "105"
     },
     "licenseCodes": [
+      "1001010",
       "6880041984096540132",
-      "166739712233658766",
-      "1001010"
+      "166739712233658766"
     ],
     "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos"
     ],
-    "name": "cos-dev-105-17353-0-0",
+    "name": "cos-dev-105-17400-0-0",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-dev-105-17353-0-0",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-dev-105-17400-0-0",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -3106,6 +3057,58 @@
       "asia",
       "us",
       "eu"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "2793201792",
+    "creationTimestamp": "2023-01-31T10:30:42.699-08:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image built on 2023-01-31, supports Shielded VM features",
+    "diskSizeGb": "10",
+    "family": "ubuntu-1804-lts",
+    "guestOsFeatures": [
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "GVNIC"
+      }
+    ],
+    "id": "4434703965664633022",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "5926592092274602096"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1804-lts"
+    ],
+    "name": "ubuntu-1804-bionic-v20230131",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20230131",
+    "shieldedInstanceInitialState": {
+      "dbxs": [
+        {
+          "content": "2gcDBhMRFQAAAAAAAAAAABENAAAAAvEOndKvSt9o7kmKqTR9N1ZlpzCCDPUCAQExDzANBglghkgBZQMEAgEFADALBgkqhkiG9w0BBwGgggsIMIIFGDCCBACgAwIBAgITMwAAABNryScg3e1ZiAAAAAAAEzANBgkqhkiG9w0BAQsFADCBgDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEqMCgGA1UEAxMhTWljcm9zb2Z0IENvcnBvcmF0aW9uIEtFSyBDQSAyMDExMB4XDTE2MDEwNjE4MzQxNVoXDTE3MDQwNjE4MzQxNVowgZUxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xDTALBgNVBAsTBE1PUFIxMDAuBgNVBAMTJ01pY3Jvc29mdCBXaW5kb3dzIFVFRkkgS2V5IEV4Y2hhbmdlIEtleTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKXiCkZgbboTnVZnS1h_JbnlcVst9wtFK8NQjTpeB9wirml3h-fzi8vzki0hSNBD2Dg49lGEvs4egyowmTsLu1TnBUH1f_Hi8Noa7fKXV6F93qYrTPajx5v9L7NedplWnMEPsRvJrQdrysTZwtoXMLYDhc8bQHI5nlJDfgqrB8JiC4A3vL9i19lkQOTq4PZb5AcVcE0wlG7lR_btoQN0g5B4_7pI2S_9mU1PXr1NBSEl48Kl4cJwO2GyvOVvxQ6wUSFTExmCBKrT3LnPU5lZY68n3MpZ5VY4skhrEt2dyf5bZNzkYTTouxC0n37OrMbGGq3tpv7JDD6E_Rfqua3dXYECAwEAAaOCAXIwggFuMBQGA1UdJQQNMAsGCSsGAQQBgjdPATAdBgNVHQ4EFgQUVsJIppTfox2XYoAJRIlnxAUOy2owUQYDVR0RBEowSKRGMEQxDTALBgNVBAsTBE1PUFIxMzAxBgNVBAUTKjMxNjMxKzJjNDU2Y2JjLTA1NDItNDdkOS05OWU1LWQzOWI4MTVjNTczZTAfBgNVHSMEGDAWgBRi_EPNoD6ky2cS0lvZVax7zLaKXzBTBgNVHR8ETDBKMEigRqBEhkJodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NybC9NaWNDb3JLRUtDQTIwMTFfMjAxMS0wNi0yNC5jcmwwYAYIKwYBBQUHAQEEVDBSMFAGCCsGAQUFBzAChkRodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NlcnRzL01pY0NvcktFS0NBMjAxMV8yMDExLTA2LTI0LmNydDAMBgNVHRMBAf8EAjAAMA0GCSqGSIb3DQEBCwUAA4IBAQCGjTFLjxsKmyLESJueg0S2Cp8N7MOq2IALsitZHwfYw2jMhY9b9kmKvIdSqVna1moZ6_zJSOS_JY6HkWZr6dDJe9Lj7xiW_e4qPP-KDrCVb02vBnK4EktVjTdJpyMhxBMdXUcq1eGl6518oCkQ27tu0-WZjaWEVsEY_gpQj0ye2UA4HYUYgJlpT24oJRi7TeQ03Nebb-ZrUkbf9uxl0OVV_mg2R5FDwOc3REoRAgv5jnw6X7ha5hlRCl2cLF27TFrFIRQQT4eSM33eDiitXXpYmD13jqKeHhLVXr07QSwqvKe1o1UYokJngP0pTwoDnt2qRuLnZ71jw732dSPN9B57MIIF6DCCA9CgAwIBAgIKYQrRiAAAAAAAAzANBgkqhkiG9w0BAQsFADCBkTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjE7MDkGA1UEAxMyTWljcm9zb2Z0IENvcnBvcmF0aW9uIFRoaXJkIFBhcnR5IE1hcmtldHBsYWNlIFJvb3QwHhcNMTEwNjI0MjA0MTI5WhcNMjYwNjI0MjA1MTI5WjCBgDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEqMCgGA1UEAxMhTWljcm9zb2Z0IENvcnBvcmF0aW9uIEtFSyBDQSAyMDExMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxOi1ir-tVyawJsPq5_tXekQCXQcN2krldCrmsA_sbevsf7njWmMyfBEXTw7jC6c4FZOOxvXghLGamyzn9beR1gnh4sAEqKwwHN9I8wZQmmSnUX_IhU-PIIbO_i_hn_-CwO3pzc70U2piOgtDueIl_f4F-dTEFKsR4iOJjXC3pB1N7K7lnPoWwtfBy9ToxC_lme4kiwPsjfKL6sNK-0MREgt-tUeSbNzmBInr9TME6xABKnHl-YMTPP8lCS9odkb_uk--3K1xKliq-w7SeT3km2U7zCkqn_xyWaLrrpLv9jUTgMYC7ORfzJ12ze9jksGveUCEeYd_41Ko6J17B2mPFQIDAQABo4IBTzCCAUswEAYJKwYBBAGCNxUBBAMCAQAwHQYDVR0OBBYEFGL8Q82gPqTLZxLSW9lVrHvMtopfMBkGCSsGAQQBgjcUAgQMHgoAUwB1AGIAQwBBMAsGA1UdDwQEAwIBhjAPBgNVHRMBAf8EBTADAQH_MB8GA1UdIwQYMBaAFEVmUkPhflgRv9ZOniNVCDs6ImqoMFwGA1UdHwRVMFMwUaBPoE2GS2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2kvY3JsL3Byb2R1Y3RzL01pY0NvclRoaVBhck1hclJvb18yMDEwLTEwLTA1LmNybDBgBggrBgEFBQcBAQRUMFIwUAYIKwYBBQUHMAKGRGh0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2kvY2VydHMvTWljQ29yVGhpUGFyTWFyUm9vXzIwMTAtMTAtMDUuY3J0MA0GCSqGSIb3DQEBCwUAA4ICAQDUhIj1FJQYAsoqPPsqkhwM16DR8ehSZqjuorV1epAAqi2kdlrqebe5N2pRexBk9uFk8gJnvveoG3i9us6IWGQM1lfIGaNfBdbbxtBpzkhLMrfrXdIw9cD1uLp4B6Mr_pvbNFaE7ILKrkElcJxr6f6QD9eWH-XnlB-yKgyNS_8oKRB799d8pdF2uQXIee0PkJKcwv7fb35sD3vUwUXdNFGWOQ_lXlbYGAWW9AemQrOgd_0IGfJxVsyfhiOkh8um_Vh-1GlnFZF-gfJ_E-UNi4o8h4Tr4869Q-WtLYSTjmorWnxE-lKqgcgtHLvgUt8AEfiaPcFgsOEztaOI0WUZChrnrHykwYKHTjixLw3FFIdv_Y0uvDm25-bD4OTNJ4TvlELvKYuQRkE7gRtn2PlDWWXLDbz9AJJP9HU7p6kk_FBBQHngLU8Kaid2blLtlml7rw_3hwXQRcKtUxSBH_swBKo3NmHaSmkbNNho7dYCz2yUDNPPbCJ5rbHwvAOiRmCpxAfCIYLx_fLoeTJgv9ispSIUS8rB2EvrfT9XNbLmT3W0sGADIlOukXkd1ptBHxWGVHCy3g01D3ywNHK6l2A78HnrorIcXaIWuIfF6Rv2tZclbzif45H6inmYw2kOt6McIAWX-MoUrgDXxPPAFBB1azSgG7WZYPNcsMVXTjbSMoS_njGCAcQwggHAAgEBMIGYMIGAMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSowKAYDVQQDEyFNaWNyb3NvZnQgQ29ycG9yYXRpb24gS0VLIENBIDIwMTECEzMAAAATa8knIN3tWYgAAAAAABMwDQYJYIZIAWUDBAIBBQAwDQYJKoZIhvcNAQEBBQAEggEAhabaxRIJ7nUZ-m__mIG0lII6yD-lxoeI8S83ZKTP8Qx5h5asySWl7420eGhna7zyaVRvVVIhkjOMIfcKr29LgzQpYDqPUc8aYAdGCsZKZGmHCMjEulnq5TDK79GKinzZfb2sAWXEJ68N8oNnY7faBKjHjmmJbAEz8ufE4DijgJ_NBov2xmhTZyNHQ7pB1iCdrEUGObzdJc0Qtmh3CNOEcmH0ukd8sTHE9acBBTFHS8dvreR_sP7dXClZJbJiWAFKvQn3EjCTiYizkZ4I_5xiqjHELht_ORQKN-Hnoqnl4kcRINhZRV7JlgAQDlBJLv3OTjShRO_ZWCdcu7PtwhweiSYWxMFMUJJArKlB-TaTQyiMDgAAAAAAADAAAAC9mvp3WQMyTb1gKPTnj3hLgLTZaTG_DQL9kaYeGdFPHaRS5m2yQIyoYE1BH5Jlnwq9mvp3WQMyTb1gKPTnj3hL9S-Do_qc-9aSD3IoJNvkA0U00luFByRrO5V9rG4bznq9mvp3WQMyTb1gKPTnj3hLxdnYoYbiyC0Jr6oqb38uc4cNPmT3LE4I72d5aoQPD729mvp3WQMyTb1gKPTnj3hLNjOE0U0fLgt4FWJkhMRZrVejGO9DliZgSNBYxaGbv3a9mvp3WQMyTb1gKPTnj3hLGuyEuEtsZaUSIKm-cYGWUjAhDWLW0zxImZxrKVorCga9mvp3WQMyTb1gKPTnj3hL5spo6UFGYprwP2nC-G5r72L5MLN8b7zIeLeN-YwDNOW9mvp3WQMyTb1gKPTnj3hLw6maRg2kZKBXw1htg8719K4ItxA5ee2JMnQt8O1TDGa9mvp3WQMyTb1gKPTnj3hLWPuUGu-VollDs_tfJRCg3z_kTFjJXgq4BIcpdWirl3G9mvp3WQMyTb1gKPTnj3hLU5HDovsRIQKmqh7cJa534Z9dbwnNCe6yUJkiv81Zkuq9mvp3WQMyTb1gKPTnj3hL1iYVfh1qcYvBJKuNony7ZQcsoDp7ayV9vcu9YPZe89G9mvp3WQMyTb1gKPTnj3hL0GPsKPZ-ulPxZC2_ff8zxqMq3YafYBP-Fi4sMvHL5W29mvp3WQMyTb1gKPTnj3hLKcbrUrQ8OqGLLNjtbqhgfO88-uG6_hFldVzy5hSESkS9mvp3WQMyTb1gKPTnj3hLkPvnDmnWM0CNPhcMaDLbstIJ4CclJ9-2PUnSlXKm9Ey9mvp3WQMyTb1gKPTnj3hLB17qBgWJVIugYLL-7RDaPCDH_psXzQJrlOimg7gRUji9mvp3WQMyTb1gKPTnj3hLB-bGqFhkb7HvxnkD_iixFgEfI2f-kua-KzaZnv850J69mvp3WQMyTb1gKPTnj3hLCd9fTlESCOx4uW0S0IEl_bYDho3jn29yknhSWZtlnCa9mvp3WQMyTb1gKPTnj3hLC7tDktqseribMKSsZXUxuXv6qwT5Cw2v5fm265CgY3S9mvp3WQMyTb1gKPTnj3hLDBiTOXYt8zarPdAGpGPfcVo5z7D0kkZcYA5sa9e9iYy9mvp3WQMyTb1gKPTnj3hLDQ2-ym8p7KBvMxp9cuSISxIJf7NImDoqFKDXP08QFA-9mvp3WQMyTb1gKPTnj3hLDcnz-5mWIUjDyoM2MnWNPtT8jQsAB7lbMeZSjyrNW_y9mvp3WQMyTb1gKPTnj3hLEG-s6s_s_U4wO3T0gKCAmOLQgCuTb47HdM4h8xaGaJy9mvp3WQMyTb1gKPTnj3hLF046C1tDxqYHu9NATwU0Hj3POWJnzpT4tQ4uI6nakgy9mvp3WQMyTb1gKPTnj3hLGDM0Kf8FYu2flwM-EUjc7uUtvi5JbVQQtc_WyGTS0Q-9mvp3WQMyTb1gKPTnj3hLK5nPJkIukv42X79Lww0nCGye4Ut6b_9E-y9rkAFpmTm9mvp3WQMyTb1gKPTnj3hLK78sp7jx2R8n7lK2-ypd0Em4WiubUpxdZmIGgQSwVfi9mvp3WQMyTb1gKPTnj3hLLHPZMyW6bcvlidSkxjxbk1VZ75L78FDtUMTiCFIG8X29mvp3WQMyTb1gKPTnj3hLLnCRZ4am93NRH6cYH6sPHXC1V8YyLqkjsqjTuStRr329mvp3WQMyTb1gKPTnj3hLMGYo-lR3MFcoukpGfefQOHpU9WnTdp_OXnXsidKNFZO9mvp3WQMyTb1gKPTnj3hLNgjtuvWtD0GkFKF3er8vr15nAzRnXsOZXmk1gp4MqtK9mvp3WQMyTb1gKPTnj3hLOEHSITaNFYPXXAoC5iFgOU1sTgpnYLb2B7kDYryFWwK9mvp3WQMyTb1gKPTnj3hLP86bn98-8J1UUrD5XuSBwrfwbXQ6c3lxVY5wE2rOPnO9mvp3WQMyTb1gKPTnj3hLQ5fayoOef2MHfLUMkt9DvC0vsqj1nyb8eg5L1Nl1FpK9mvp3WQMyTb1gKPTnj3hLR8wIYSfiBpqG4Dpr7yzUEPjFWm1r2zYhaMMbLOMqWt-9mvp3WQMyTb1gKPTnj3hLUYgx_nOCtRTQPhXGISKLirZUeb0Mv6PFwdD0jZwwYTW9mvp3WQMyTb1gKPTnj3hLWulJ6ohV65PkOdvGW9ouQoUsL99nifoUZzbjw0EPK1y9mvp3WQMyTb1gKPTnj3hLax0TgHjkQYqmjet7s14GYJLPR57rjOTNEufQcsy0L2a9mvp3WQMyTb1gKPTnj3hLbIhUR43VWeKTUbgmwGy4v-8rlK01ODWHctGT-C7RyhG9mvp3WQMyTb1gKPTnj3hLbxQo_3HJ2w7Vrx8ue7_Lq2R8wmXd9bKTzbYm9Qo6eF69mvp3WQMyTb1gKPTnj3hLcfKQb9IiSX5Uo0ZiqySX_MgQIHcP9RNo6ePZv8v9Y3W9mvp3WQMyTb1gKPTnj3hLcms-tlQEajDz-D2bls4D9nDpqAbRcIoDceYtxJ0sI8G9mvp3WQMyTb1gKPTnj3hLcuC9GGfPXZ1WqxWK3zvdvIK_MqjYqh2MXi9t8pQo1ti9mvp3WQMyTb1gKPTnj3hLeCevmTYs-vBxfa3ksb_gQ4rRccFa3cJIt1v4yqRLssW9mvp3WQMyTb1gKPTnj3hLgai5ZbuE04drlCmpVIHMlVMYz6oUEtgIyKM7_TP_8OS9mvp3WQMyTb1gKPTnj3hLgts7zrT2CEPOnZfD0YfNm1lBzT3oEA5YbyvaVjdXX2e9mvp3WQMyTb1gKPTnj3hLiVqXhfYXyh1-1E_BoUcLcfPxIjhi2f-dzDri35IWPa-9mvp3WQMyTb1gKPTnj3hLitZIWfGVtfWNr6qUC2phZ6zWeohuj0aTZBdyIcVZRbm9mvp3WQMyTb1gKPTnj3hLi_Q0tJ4AzPcVAqLNkAhlywHsOz2gPDW-UF_fe9Vj9SG9mvp3WQMyTb1gKPTnj3hLjY6iic_nChwHq3NlyyjuUe3TPPJQbeiI-63WDr-ASBy9mvp3WQMyTb1gKPTnj3hLmZjTY8SRvha9dLoQuU2SkQAWEXNv3KZDo2ZkvA8xWkK9mvp3WQMyTb1gKPTnj3hLnkppFzFhaC5V_ej-9WDriOwf_tyvBAAfZsDK9weytzS9mvp3WQMyTb1gKPTnj3hLprUVHzZV06KvDUcnWXlr5KQgDlSVp9hpdUxISIV0CKe9mvp3WQMyTb1gKPTnj3hLp_MvUI1OsP6tmgh--U7RugrsXeb372_wpiuTvt9dRY29mvp3WQMyTb1gKPTnj3hLrWgm4ZRtJtPq82hciNl9hd47Tcs9DuKugccFYNE8VyC9mvp3WQMyTb1gKPTnj3hLruuuMVEnEnPtlaouZxE57TGphWcwOjMimPg3CanVWqG9mvp3WQMyTb1gKPTnj3hLr-IDCvt9LNoT-fozOgLjT2dRr-wRsBDbzUQf30xAArO9mvp3WQMyTb1gKPTnj3hLtU8e5jZjH61oBY07CTcDGsG5DMsXBio5HMpor9vkDVW9mvp3WQMyTb1gKPTnj3hLuPB42YOiSsQzIWOTiDUUzZMsM68Y591wiEyCNfQnVza9mvp3WQMyTb1gKPTnj3hLuXoIiQWcA1_x1UtttTsRuXZmaNn5VSR8AosoN9egTNm9mvp3WQMyTb1gKPTnj3hLvIemaOgZZkictQjugFGDwZ5qzSTPF3mcoGLS44TaDqe9mvp3WQMyTb1gKPTnj3hLxAm9rEd1rdjbkqoitbcY-4yUoUYsH-mkFrldijOIwvy9mvp3WQMyTb1gKPTnj3hLxhfBqLHuKoEcKLWoG0yD18mLWwwnKB1hAgfr5pLCln-9mvp3WQMyTb1gKPTnj3hLyQ8zZhe45_mDl1QTyZfxC3PrJn_YoQy5472_xmer24u9mvp3WQMyTb1gKPTnj3hLy2uFi0DToJh2WBW1ksFRSklgT6_WCBnaiNenbpd4_ve9mvp3WQMyTb1gKPTnj3hLzjv6vlnWfOisjf1KFvfEPvnCJFE_vGVZV9c1-in1QM69mvp3WQMyTb1gKPTnj3hL2MvrlzX1Zys2fk-WzcdJaWFdFwdK6WxyTULOAhb48_q9mvp3WQMyTb1gKPTnj3hL6Swi6ztWQtZcHsLK8kfSWUc47rt_s4QaRJVvWeKw0fq9mvp3WQMyTb1gKPTnj3hL_d1uPSnqhMd0Pa1KG9vHALX-wbOR-TJAkIasxx3W29i9mvp3WQMyTb1gKPTnj3hL_mOoT3gsydP88sz5_BH70Ddgh4dY0mKF7RJmm9xubQG9mvp3WQMyTb1gKPTnj3hL_s-yMtEumUttSF0scWdyiqVSWYStXKYedRYiHweaFDa9mvp3WQMyTb1gKPTnj3hLyhcdYUqNfhIck5SM0P5V05mB-dEaqW4DRQpBUifCxlu9mvp3WQMyTb1gKPTnj3hLVbmbDeU9vP5IWqnHN88_thbvPZH6tZmqfKsZ7adjtbq9mvp3WQMyTb1gKPTnj3hLd90ZD6MNiP9eOwEaCuYeYgl4DBMLU17Lh-bwiIoLay-9mvp3WQMyTb1gKPTnj3hLyDyxOSKtmfVgdEZ13TfMlNytWh_Lpkcv7jQRcdk56IS9mvp3WQMyTb1gKPTnj3hLOwKHUz4Mw9DsGqgjy_CpQarYchV50cSZgC3Rw6Y2uKm9mvp3WQMyTb1gKPTnj3hLk5ru9PX6UeIzQMPy5JBIzohyUmr991LDp_Oj8ryfYEm9mvp3WQMyTb1gKPTnj3hLZFdb2RJ4mi4UrVb2NB9Sr2v4DPlEAHhZdenwTi1k10W9mvp3WQMyTb1gKPTnj3hLRcfIrnUKz7tI_DdSfWQS3WRNrtiRPM2KJMlNhWln344=",
+          "fileType": "BIN"
+        }
+      ]
+    },
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "us",
+      "eu",
+      "asia"
     ]
   },
   {
