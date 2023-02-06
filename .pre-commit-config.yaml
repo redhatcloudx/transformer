@@ -58,7 +58,7 @@ repos:
         args: [--all]
 
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.5.1
+    rev: v1.6.0.rc1
     hooks:
       - id: docformatter
 
@@ -74,13 +74,13 @@ repos:
       - id: black
 
   - repo: https://github.com/pycqa/flake8
-    rev: 5.0.4
+    rev: 6.0.0
     hooks:
       - id: flake8
         additional_dependencies: *flake8_deps
 
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v3.0.3
+    rev: v3.0.4
     hooks:
       - id: validate_manifest
 
