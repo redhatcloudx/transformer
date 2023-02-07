@@ -9,9 +9,9 @@ import pytest
 
 from jsonschema import ValidationError
 
-from rhelocator import config
-from rhelocator.update_images import aws
-from rhelocator.update_images import schema
+from cloud-image-directory import config
+from cloud-image-directory.update_images import aws
+from cloud-image-directory.update_images import schema
 
 
 def test_get_regions() -> None:

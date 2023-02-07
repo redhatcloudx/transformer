@@ -88,7 +88,7 @@ def pytest_configure(config) -> None:
 @pytest.fixture
 def mock_aws_regions(mocker):
     """Provide an offline result for calls to get_aws_regions."""
-    mock = mocker.patch("rhelocator.update_images.aws.get_regions")
+    mock = mocker.patch("cloud-image-directory.update_images.aws.get_regions")
     mock.return_value = ["us-east-1", "us-east-2"]
     return mock
 
@@ -96,7 +96,7 @@ def mock_aws_regions(mocker):
 @pytest.fixture
 def mock_aws_images(mocker):
     """Provide an offline result for calls to get_aws_images."""
-    mock = mocker.patch("rhelocator.update_images.aws.describe_images")
+    mock = mocker.patch("cloud-image-directory.update_images.aws.describe_images")
     mock.return_value = MOCKED_AWS_IMAGE_LIST
     return mock
 
@@ -104,7 +104,7 @@ def mock_aws_images(mocker):
 @pytest.fixture
 def mock_azure_access_token(mocker):
     """Provide an offline result got get_azure_image_versions."""
-    mock = mocker.patch("rhelocator.update_images.azure.get_access_token")
+    mock = mocker.patch("cloud-image-directory.update_images.azure.get_access_token")
     mock.return_value = MOCKED_AZURE_ACCESS_TOKEN
     return mock
 
@@ -112,7 +112,7 @@ def mock_azure_access_token(mocker):
 @pytest.fixture
 def mock_azure_image_versions(mocker):
     """Provide an offline result got get_azure_image_versions."""
-    mock = mocker.patch("rhelocator.update_images.azure.get_image_versions")
+    mock = mocker.patch("cloud-image-directory.update_images.azure.get_image_versions")
     mock.return_value = MOCKED_AZURE_IMAGE_VERSION_LIST
     return mock
 
@@ -120,7 +120,7 @@ def mock_azure_image_versions(mocker):
 @pytest.fixture
 def mock_azure_image_versions_latest(mocker):
     """Provide an offline result got get_azure_image_versions."""
-    mock = mocker.patch("rhelocator.update_images.azure.get_image_versions")
+    mock = mocker.patch("cloud-image-directory.update_images.azure.get_image_versions")
     mock.return_value = [MOCKED_AZURE_IMAGE_VERSION_LIST[0]]
     return mock
 
@@ -128,7 +128,7 @@ def mock_azure_image_versions_latest(mocker):
 @pytest.fixture
 def mock_azure_image_details(mocker):
     """Provide an offline result got get_azure_image_details."""
-    mock = mocker.patch("rhelocator.update_images.azure.get_image_details")
+    mock = mocker.patch("cloud-image-directory.update_images.azure.get_image_details")
     mock.return_value = MOCKED_AZURE_IMAGE_DETAILS
     return mock
 
@@ -136,7 +136,7 @@ def mock_azure_image_details(mocker):
 @pytest.fixture
 def mock_azure_images(mocker):
     """Provide an offline result for calls to azure.get_images."""
-    mock = mocker.patch("rhelocator.update_images.azure.get_images")
+    mock = mocker.patch("cloud-image-directory.update_images.azure.get_images")
     mock.return_value = MOCKED_AZURE_IMAGE_LIST
     return mock
 
@@ -144,7 +144,7 @@ def mock_azure_images(mocker):
 @pytest.fixture
 def mock_google_images(mocker):
     """Provide an offline result for calls to get_google_images."""
-    mock = mocker.patch("rhelocator.update_images.google.get_images")
+    mock = mocker.patch("cloud-image-directory.update_images.google.get_images")
 
     mocked_image = {
         "id": "rhel-7-9-sap-v20220719",
@@ -161,7 +161,7 @@ def mock_google_images(mocker):
 @pytest.fixture
 def mock_normalize_google_images(mocker):
     """Provide an offline result for calls to normalize_google_images."""
-    mock = mocker.patch("rhelocator.update_images.google.normalize_google_images")
+    mock = mocker.patch("cloud-image-directory.update_images.google.normalize_google_images")
 
     # Fake a Google image listing.
     mocked_image = MagicMock()

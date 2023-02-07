@@ -1,4 +1,4 @@
-"""Basics for the rhelocator package."""
+"""Basics for the cloud-image-directory package."""
 from __future__ import annotations
 
 

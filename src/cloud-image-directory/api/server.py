@@ -4,11 +4,11 @@ from flasgger import Swagger
 from flask import Flask
 from flask_cors import CORS
 
-from rhelocator.api.routes.aws import aws_blueprint
-from rhelocator.api.routes.azure import azure_blueprint
-from rhelocator.api.routes.google import google_blueprint
-from rhelocator.api.routes.health import health_blueprint
-from rhelocator.update_images import schema
+from cloud-image-directory.api.routes.aws import aws_blueprint
+from cloud-image-directory.api.routes.azure import azure_blueprint
+from cloud-image-directory.api.routes.google import google_blueprint
+from cloud-image-directory.api.routes.health import health_blueprint
+from cloud-image-directory.update_images import schema
 
 
 def create_app(file_path: str) -> Flask:

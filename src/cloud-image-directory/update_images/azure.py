@@ -12,7 +12,7 @@ from requests import HTTPError
 from requests import RequestException
 from requests import TooManyRedirects
 
-from rhelocator import config
+from cloud-image-directory import config
 
 
 def post_request(url: str, params: dict[str, str | None]) -> requests.Response:
