@@ -1,4 +1,4 @@
-"""Basics for the cloud-image-directory package."""
+"""Basics for the cloudimagedirectory package."""
 from __future__ import annotations
 
 

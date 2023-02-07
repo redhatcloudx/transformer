@@ -7,8 +7,8 @@ import pytest
 
 from flask import Flask
 
-from cloud-image-directory.api import server
-from cloud-image-directory.api.routes.health import health_blueprint
+from cloudimagedirectory.api import server
+from cloudimagedirectory.api.routes.health import health_blueprint
 
 
 @pytest.fixture()

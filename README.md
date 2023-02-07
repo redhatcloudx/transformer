@@ -39,11 +39,11 @@ poetry add --group dev bar
 ## Locator API server
 
 ### Running the Flask server locally
-You can run the API server locally by using the cloud-image-directory cli command `serve`:
-`poetry run cloud-image-directory-updater serve --file-path <path to formatted image data> --dev`
+You can run the API server locally by using the cloudimagedirectory cli command `serve`:
+`poetry run cloudimagedirectory-updater serve --file-path <path to formatted image data> --dev`
 
 ```console
-Usage: cloud-image-directory-updater serve [OPTIONS]
+Usage: cloudimagedirectory-updater serve [OPTIONS]
 
   Host API endpoint to serve cloud provider image data.
 
@@ -60,18 +60,18 @@ http://127.0.0.1:5000/apidocs/ by default.
 
 ### Configuring the Flask server
 The API server will read its configuration on boot from the .env file located in
-`src/cloud-image-directory/api/.env`.
+`src/cloudimagedirectory/api/.env`.
 
 ### How to build the API container on your local system
-1. Build the container from within the cloud-image-directory directory:
+1. Build the container from within the cloudimagedirectory directory:
 ```
-podman build -f Containerfile -t cloud-image-directory:latest .
+podman build -f Containerfile -t cloudimagedirectory:latest .
 ```
 
 2. Run the container, forward the Flask default port 5000 and mount a json file containing test data to
-`/opt/cloud-image-directory/opt/cloud-image-directory/data/image-data.json`.
+`/opt/cloudimagedirectory/opt/cloudimagedirectory/data/image-data.json`.
 ```
-podman run -p 5000:5000  -v ./tests/api/testdata/formatted_images.json:/opt/cloud-image-directory/data/image-data.json:Z cloud-image-directory
+podman run -p 5000:5000  -v ./tests/api/testdata/formatted_images.json:/opt/cloudimagedirectory/data/image-data.json:Z cloudimagedirectory
 ```
 Mind that this is only meant for local testing and should not run like this in production. The Z operator at the end of the
 volume mount is necessary for SELinux and applies the same (MCS)[https://en.wikipedia.org/wiki/Multi_categories_security]
