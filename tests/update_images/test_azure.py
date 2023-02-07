@@ -95,7 +95,9 @@ def test_get_locations(mock_requests: MagicMock) -> None:
     mock_requests.return_value = mock_response
 
     # Fake the access token.
-    with patch("cloudimagedirectory.update_images.azure.get_access_token") as mock_token:
+    with patch(
+        "cloudimagedirectory.update_images.azure.get_access_token"
+    ) as mock_token:
         mock_token.return_value = "secrete"
         regions = azure.get_locations("dummy_access_token")
 
