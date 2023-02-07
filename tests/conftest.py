@@ -161,7 +161,9 @@ def mock_google_images(mocker):
 @pytest.fixture
 def mock_normalize_google_images(mocker):
     """Provide an offline result for calls to normalize_google_images."""
-    mock = mocker.patch("cloudimagedirectory.update_images.google.normalize_google_images")
+    mock = mocker.patch(
+        "cloudimagedirectory.update_images.google.normalize_google_images"
+    )
 
     # Fake a Google image listing.
     mocked_image = MagicMock()
