@@ -6,12 +6,12 @@ import json
 import click
 import waitress
 
-from cloud-image-directory import __version__
-from cloud-image-directory.api import server
-from cloud-image-directory.update_images import aws
-from cloud-image-directory.update_images import azure
-from cloud-image-directory.update_images import google
-from cloud-image-directory.update_images import schema
+from cloudimagedirectory import __version__
+from cloudimagedirectory.api import server
+from cloudimagedirectory.update_images import aws
+from cloudimagedirectory.update_images import azure
+from cloudimagedirectory.update_images import google
+from cloudimagedirectory.update_images import schema
 
 
 @click.group()

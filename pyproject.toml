@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cloud-image-directory"
+name = "cloudimagedirectory"
 version = "0.1.0"
 description = "Locate RHEL images in public clouds"
 authors = [
@@ -15,7 +15,7 @@ maintainers = [
 license = "Apache-2.0"
 readme = "README.md"
 packages = [
-    {include = "cloud-image-directory", from = "src"}
+    {include = "cloudimagedirectory", from = "src"}
 ]
 include = [
     { path = "tests", format = "sdist" }
@@ -45,7 +45,7 @@ ipython = "^8.8.0"
 pytest-sugar = "^0.9.6"
 
 [tool.poetry.scripts]
-cloud-image-directory-updater = "cloud-image-directory.cli:cli"
+cloudimagedirectory-updater = "cloudimagedirectory.cli:cli"
 
 [build-system]
 requires = ["poetry-core"]
@@ -71,7 +71,7 @@ force-exclude = '''
 '''
 
 [tool.pytest.ini_options]
-addopts = "-n auto --cov=src/cloud-image-directory --cov-report=term-missing --cov-report=xml --cov-branch"
+addopts = "-n auto --cov=src/cloudimagedirectory --cov-report=term-missing --cov-report=xml --cov-branch"
 testpaths = [
     "tests"
 ]

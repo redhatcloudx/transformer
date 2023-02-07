@@ -11,12 +11,12 @@ import pytest
 from jsonschema import ValidationError
 from requests import RequestException
 
-from cloud-image-directory import config
-from cloud-image-directory.update_images import azure
-from cloud-image-directory.update_images import schema
+from cloudimagedirectory import config
+from cloudimagedirectory.update_images import azure
+from cloudimagedirectory.update_images import schema
 
 
-@patch("cloud-image-directory.update_images.azure.requests.post")
+@patch("cloudimagedirectory.update_images.azure.requests.post")
 def test_get_access_token(mock_post: MagicMock) -> None:
     """Test retrieving Azure locations."""
     mock_response = MagicMock()
@@ -29,7 +29,7 @@ def test_get_access_token(mock_post: MagicMock) -> None:
     assert access_token == "secrete"  # nosec B105
 
 
-@patch("cloud-image-directory.update_images.azure.requests.post")
+@patch("cloudimagedirectory.update_images.azure.requests.post")
 def test_fail_to_get_access_token(mock_post: MagicMock) -> None:
     """Test retrieving Azure locations."""
     mock_response = MagicMock()
@@ -42,7 +42,7 @@ def test_fail_to_get_access_token(mock_post: MagicMock) -> None:
 
 
 @patch(
-    "cloud-image-directory.update_images.azure.requests.post",
+    "cloudimagedirectory.update_images.azure.requests.post",
     side_effect=RequestException("Failed Request"),
 )
 def test_post_request_ambigious_request_error(mock_post: MagicMock) -> None:
@@ -53,7 +53,7 @@ def test_post_request_ambigious_request_error(mock_post: MagicMock) -> None:
 
 
 @patch(
-    "cloud-image-directory.update_images.azure.requests.get",
+    "cloudimagedirectory.update_images.azure.requests.get",
     side_effect=RequestException("Failed Request"),
 )
 def test_get_request_ambigious_request_error(mock_get: MagicMock) -> None:
@@ -63,7 +63,7 @@ def test_get_request_ambigious_request_error(mock_get: MagicMock) -> None:
         azure.get_request("https://foo.bar", {"foo": "bar"}, {"foo": "bar"})
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_get_locations(mock_requests: MagicMock) -> None:
     """Test getting Azure location list."""
     mock_response = MagicMock()
@@ -95,14 +95,14 @@ def test_get_locations(mock_requests: MagicMock) -> None:
     mock_requests.return_value = mock_response
 
     # Fake the access token.
-    with patch("cloud-image-directory.update_images.azure.get_access_token") as mock_token:
+    with patch("cloudimagedirectory.update_images.azure.get_access_token") as mock_token:
         mock_token.return_value = "secrete"
         regions = azure.get_locations("dummy_access_token")
 
     assert regions == ["eastus"]
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_fail_get_locations(mock_requests: MagicMock) -> None:
     """Test failing to get Azure location list."""
     mock_response = MagicMock()
@@ -113,7 +113,7 @@ def test_fail_get_locations(mock_requests: MagicMock) -> None:
         azure.get_locations("dummy_access_token")
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_get_publishers(mock_get: MagicMock):
     """Test retrieving and filtering Azure publishers."""
     mock_response = MagicMock()
@@ -133,7 +133,7 @@ def test_get_publishers(mock_get: MagicMock):
     assert publishers == [mock_response.json.return_value[0]["name"]]
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_fail_get_publishers(mock_requests: MagicMock) -> None:
     """Test failing to get Azure publisher list."""
     mock_response = MagicMock()
@@ -144,7 +144,7 @@ def test_fail_get_publishers(mock_requests: MagicMock) -> None:
         azure.get_publishers("dummy_access_token", "dummy_location")
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_get_offers(mock_get: MagicMock):
     """Test retrieving and filtering Azure offers."""
     mock_response = MagicMock()
@@ -164,7 +164,7 @@ def test_get_offers(mock_get: MagicMock):
     assert offers == [mock_response.json.return_value[0]["name"]]
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_fail_get_offers(mock_requests: MagicMock) -> None:
     """Test failing to get Azure offer list."""
     mock_response = MagicMock()
@@ -175,7 +175,7 @@ def test_fail_get_offers(mock_requests: MagicMock) -> None:
         azure.get_offers("dummy_access_token", "dummy_location", "dummy_publisher")
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_get_skus(mock_get: MagicMock):
     """Test retrieving and filtering Azure SKUs."""
     mock_response = MagicMock()
@@ -195,7 +195,7 @@ def test_get_skus(mock_get: MagicMock):
     assert skus == [mock_response.json.return_value[0]["name"]]
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_fail_get_skus(mock_requests: MagicMock) -> None:
     """Test failing to get Azure sku list."""
     mock_response = MagicMock()
@@ -208,7 +208,7 @@ def test_fail_get_skus(mock_requests: MagicMock) -> None:
         )
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_get_image_versions(mock_get: MagicMock):
     """Test retrieving and filtering Azure image versions."""
 
@@ -256,7 +256,7 @@ def test_get_image_versions(mock_get: MagicMock):
     assert image_versions == [x["name"] for x in mock_response.json.return_value]
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_fail_get_image_versions(mock_requests: MagicMock) -> None:
     """Test failing to get image versions."""
     mock_response = MagicMock()
@@ -273,7 +273,7 @@ def test_fail_get_image_versions(mock_requests: MagicMock) -> None:
         )
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_get_image_details(mock_get: MagicMock):
     """Test retrieving Azure image details."""
     mock_response = MagicMock()
@@ -311,7 +311,7 @@ def test_get_image_details(mock_get: MagicMock):
     )
 
 
-@patch("cloud-image-directory.update_images.azure.requests.get")
+@patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_fail_get_image_details(mock_requests: MagicMock) -> None:
     """Test failing to get image details."""
     mock_response = MagicMock()

@@ -5,7 +5,7 @@ import pytest
 
 from jsonschema import ValidationError
 
-from cloud-image-directory.update_images import schema
+from cloudimagedirectory.update_images import schema
 
 
 def test_valid_image_data_validation():

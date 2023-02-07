@@ -9,9 +9,9 @@ import pytest
 
 from jsonschema import ValidationError
 
-from cloud-image-directory import config
-from cloud-image-directory.update_images import aws
-from cloud-image-directory.update_images import schema
+from cloudimagedirectory import config
+from cloudimagedirectory.update_images import aws
+from cloudimagedirectory.update_images import schema
 
 
 def test_get_regions() -> None:

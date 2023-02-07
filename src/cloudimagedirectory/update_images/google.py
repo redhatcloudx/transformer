@@ -7,7 +7,7 @@ from typing import Any
 
 from google.cloud import compute_v1
 
-from cloud-image-directory import config
+from cloudimagedirectory import config
 
 
 def get_images() -> list[dict[str, str]]:

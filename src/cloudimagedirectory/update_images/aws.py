@@ -5,7 +5,7 @@ import re
 
 import boto3
 
-from cloud-image-directory import config
+from cloudimagedirectory import config
 
 
 def get_regions() -> list[str]:
