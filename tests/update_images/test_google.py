@@ -8,11 +8,11 @@ from unittest.mock import patch
 
 from jsonschema import ValidationError
 
-from rhelocator.update_images import google
-from rhelocator.update_images import schema
+from cloud-image-directory.update_images import google
+from cloud-image-directory.update_images import schema
 
 
-@patch("rhelocator.update_images.google.compute_v1.ImagesClient")
+@patch("cloud-image-directory.update_images.google.compute_v1.ImagesClient")
 def test_get_images(mock_google: MagicMock) -> None:
     """Test getting Google images."""
     fam_rhel_images = []

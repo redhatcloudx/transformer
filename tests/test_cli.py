@@ -6,7 +6,7 @@ import json
 import click.testing
 import pytest
 
-from rhelocator import cli
+from cloud-image-directory import cli
 
 
 @pytest.fixture
@@ -25,7 +25,7 @@ def test_aws_hourly_images_live_opt_in_region(runner):
     regions.
 
     Further reading:
-    https://github.com/redhatcloudx/rhelocator/issues/43
+    https://github.com/redhatcloudx/cloud-image-directory/issues/43
     """
     result = runner.invoke(cli.aws_hourly_images, ["--region=af-south-1"])
     parsed = json.loads(result.output)

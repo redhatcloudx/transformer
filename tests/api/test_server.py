@@ -7,8 +7,8 @@ import pytest
 
 from flask import Flask
 
-from rhelocator.api import server
-from rhelocator.api.routes.health import health_blueprint
+from cloud-image-directory.api import server
+from cloud-image-directory.api.routes.health import health_blueprint
 
 
 @pytest.fixture()
