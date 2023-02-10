@@ -8,6 +8,8 @@ from datetime import datetime
 
 import requests
 
+import unittest
+
 from requests import HTTPError
 from requests import RequestException
 from requests import TooManyRedirects
@@ -194,7 +196,7 @@ def get_image_versions(
         latest: Set to True to get the latest available image only, False to get all
 
     Returns:
-        List of skus on Azure.
+        List of names on Azure.
     """
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {"api-version": "2022-08-01"}
