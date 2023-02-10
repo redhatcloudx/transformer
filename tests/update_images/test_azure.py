@@ -21,12 +21,12 @@ def test_get_access_token(mock_post: MagicMock) -> None:
     """Test retrieving Azure locations."""
     mock_response = MagicMock()
     mock_response.status_code = 200
-    mock_response.json.return_value = {"foo": "bar", "access_token": "secrete"}
+    mock_response.json.return_value = {"foo": "bar", "access_token": "secret"}
     mock_post.return_value = mock_response
 
     access_token = azure.get_access_token()
 
-    assert access_token == "secrete"  # nosec B105
+    assert access_token == "secret"  # nosec B105
 
 
 @patch("cloudimagedirectory.update_images.azure.requests.post")
@@ -331,7 +331,7 @@ def test_fail_get_image_details(mock_requests: MagicMock) -> None:
         )
 
 
-def test_get_latest_images(mock_azure_image_versions_latest, mock_azure_image_details):
+def test_get_latest_images(mock_azure_access_token, mock_azure_image_version_list, mock_azure_image_details):
     """Test retrieving Azure images."""
     images = azure.get_images()
 
@@ -359,7 +359,7 @@ def test_get_latest_images(mock_azure_image_versions_latest, mock_azure_image_de
         assert image["urn"] == ":".join(urn_sections)
 
 
-def test_get_unique_sku():
+def test_get_unique_skus(mock_azure_image_skus_list, mock_azure_access_token):
     """Test that the SKUs within each offer are unique."""
     for entry in config.AZURE_RHEL_IMAGE_TREE:
         for publisher, offers in entry.items():
@@ -373,17 +373,17 @@ def test_get_unique_sku():
                 assert len(set(skus)) == len(skus)
 
 
-def test_get_all_images(mock_azure_image_versions, mock_azure_image_details):
+def test_get_all_images(mock_azure_access_token, mock_azure_image_version_list, mock_azure_image_details):
     """Test retrieving Azure images when we want all of the image versions."""
     # Fake an image tree with one SKU that doesn't use 'latest'.
-    config.AZURE_RHEL_IMAGE_TREE = [{"redhat": {"RHEL": {"7lvm-gen2": ""}}}]
+    config.AZURE_RHEL_IMAGE_TREE = [{"redhat": {"RHEL": {"9-lvm-gen2": ""}}}]
     images = azure.get_images()
 
     assert isinstance(images, list)
 
     # Since we're looking for all image versions instead of just the latest ones, we
     # should have multiple image versions returned.
-    assert len(images) == len(mock_azure_image_versions.return_value)
+    assert len(images) == len(mock_azure_image_version_list.return_value)
 
 
 def test_format_image():
