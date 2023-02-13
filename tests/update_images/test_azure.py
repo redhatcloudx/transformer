@@ -331,7 +331,9 @@ def test_fail_get_image_details(mock_requests: MagicMock) -> None:
         )
 
 
-def test_get_latest_images(mock_azure_access_token, mock_azure_image_version_list, mock_azure_image_details):
+def test_get_latest_images(
+    mock_azure_access_token, mock_azure_image_version_list, mock_azure_image_details
+):
     """Test retrieving Azure images."""
     images = azure.get_images()
 
@@ -373,7 +375,9 @@ def test_get_unique_skus(mock_azure_image_skus_list, mock_azure_access_token):
                 assert len(set(skus)) == len(skus)
 
 
-def test_get_all_images(mock_azure_access_token, mock_azure_image_version_list, mock_azure_image_details):
+def test_get_all_images(
+    mock_azure_access_token, mock_azure_image_version_list, mock_azure_image_details
+):
     """Test retrieving Azure images when we want all of the image versions."""
     # Fake an image tree with one SKU that doesn't use 'latest'.
     config.AZURE_RHEL_IMAGE_TREE = [{"redhat": {"RHEL": {"9-lvm-gen2": ""}}}]

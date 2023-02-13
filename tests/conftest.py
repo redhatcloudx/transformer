@@ -69,84 +69,63 @@ MOCKED_AZURE_IMAGE_VERSION_LIST = [
     "9.0.2022062414",
     "9.0.2022081801",
     "9.0.2022090601",
-    "9.1.2022112101"
+    "9.1.2022112101",
 ]
 
 MOCKED_AZURE_IMAGE_VERSION = [
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022053014",
-    "location": "westus",
-    "name": "9.0.2022053014"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022062014",
-    "location": "westus",
-    "name": "9.0.2022062014"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022062414",
-    "location": "westus",
-    "name": "9.0.2022062414"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022081801",
-    "location": "westus",
-    "name": "9.0.2022081801"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022090601",
-    "location": "westus",
-    "name": "9.0.2022090601"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.1.2022112101",
-    "location": "westus",
-    "name": "9.1.2022112101"
-  }
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022053014",
+        "location": "westus",
+        "name": "9.0.2022053014",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022062014",
+        "location": "westus",
+        "name": "9.0.2022062014",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022062414",
+        "location": "westus",
+        "name": "9.0.2022062414",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022081801",
+        "location": "westus",
+        "name": "9.0.2022081801",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022090601",
+        "location": "westus",
+        "name": "9.0.2022090601",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.1.2022112101",
+        "location": "westus",
+        "name": "9.1.2022112101",
+    },
 ]
 
 MOCKED_AZURE_IMAGE_DETAILS = {
-  "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022053014",
-  "location": "westus",
-  "name": "9.0.2022053014",
-  "properties": {
-    "architecture": "x64",
-    "automaticOSUpgradeProperties": {
-      "automaticOSUpgradeSupported": "false"
+    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9-lvm-gen2/Versions/9.0.2022053014",
+    "location": "westus",
+    "name": "9.0.2022053014",
+    "properties": {
+        "architecture": "x64",
+        "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": "false"},
+        "dataDiskImages": [],
+        "disallowed": {"vmDiskType": "Unmanaged"},
+        "features": [
+            {"name": "SecurityType", "value": "TrustedLaunchSupported"},
+            {"name": "IsAcceleratedNetworkSupported", "value": "True"},
+            {"name": "DiskControllerTypes", "value": "SCSI"},
+            {"name": "IsHibernateSupported", "value": "False"},
+        ],
+        "hyperVGeneration": "V2",
+        "imageDeprecationStatus": {"imageState": "Active"},
+        "osDiskImage": {"operatingSystem": "Linux", "sizeInGb": 64},
+        "replicaCount": 10,
+        "replicaType": "Managed",
     },
-    "dataDiskImages": [],
-    "disallowed": {
-      "vmDiskType": "Unmanaged"
-    },
-    "features": [
-      {
-        "name": "SecurityType",
-        "value": "TrustedLaunchSupported"
-      },
-      {
-        "name": "IsAcceleratedNetworkSupported",
-        "value": "True"
-      },
-      {
-        "name": "DiskControllerTypes",
-        "value": "SCSI"
-      },
-      {
-        "name": "IsHibernateSupported",
-        "value": "False"
-      }
-    ],
-    "hyperVGeneration": "V2",
-    "imageDeprecationStatus": {
-      "imageState": "Active"
-    },
-    "osDiskImage": {
-      "operatingSystem": "Linux",
-      "sizeInGb": 64
-    },
-    "replicaCount": 10,
-    "replicaType": "Managed"
-  }
 }
 
 MOCKED_AZURE_IMAGE_SKUS_LIST = [
@@ -196,198 +175,186 @@ MOCKED_AZURE_IMAGE_SKUS_LIST = [
     "90-gen2",
     "91-gen2",
     "9_0",
-    "9_1"
+    "9_1",
 ]
 
 MOCKED_AZURE_IMAGE_SKUS = [
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/6.10",
-    "location": "westus",
-    "name": "6.10",
-    "properties": {
-      "automaticOSUpgradeProperties": {
-        "automaticOSUpgradeSupported": "false"
-      }
-    }
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7-LVM",
-    "location": "westus",
-    "name": "7-LVM",
-    "properties": {
-      "automaticOSUpgradeProperties": {
-        "automaticOSUpgradeSupported": "false"
-      }
-    }
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7-RAW",
-    "location": "westus",
-    "name": "7-RAW",
-    "properties": {
-      "automaticOSUpgradeProperties": {
-        "automaticOSUpgradeSupported": "false"
-      }
-    }
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7-RAW-CI",
-    "location": "westus",
-    "name": "7-RAW-CI",
-    "properties": {
-      "automaticOSUpgradeProperties": {
-        "automaticOSUpgradeSupported": "false"
-      }
-    }
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7.2",
-    "location": "westus",
-    "name": "7.2",
-    "properties": {
-      "automaticOSUpgradeProperties": {
-        "automaticOSUpgradeSupported": "false"
-      }
-    }
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7.3",
-    "location": "westus",
-    "name": "7.3",
-    "properties": {
-      "automaticOSUpgradeProperties": {
-        "automaticOSUpgradeSupported": "false"
-      }
-    }
-  },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/6.10",
+        "location": "westus",
+        "name": "6.10",
+        "properties": {
+            "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": "false"}
+        },
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7-LVM",
+        "location": "westus",
+        "name": "7-LVM",
+        "properties": {
+            "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": "false"}
+        },
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7-RAW",
+        "location": "westus",
+        "name": "7-RAW",
+        "properties": {
+            "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": "false"}
+        },
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7-RAW-CI",
+        "location": "westus",
+        "name": "7-RAW-CI",
+        "properties": {
+            "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": "false"}
+        },
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7.2",
+        "location": "westus",
+        "name": "7.2",
+        "properties": {
+            "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": "false"}
+        },
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL/Skus/7.3",
+        "location": "westus",
+        "name": "7.3",
+        "properties": {
+            "automaticOSUpgradeProperties": {"automaticOSUpgradeSupported": "false"}
+        },
+    },
 ]
 
 MOCKED_AZURE_OFFERS = [
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/alfredtestoffer",
-    "location": "westus",
-    "name": "alfredtestoffer"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/osa",
-    "location": "westus",
-    "name": "osa"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-ocp-worker",
-    "location": "westus",
-    "name": "rh-ocp-worker"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-oke-worker",
-    "location": "westus",
-    "name": "rh-oke-worker"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-opp-worker",
-    "location": "westus",
-    "name": "rh-opp-worker"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-rhel",
-    "location": "westus",
-    "name": "rh-rhel"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL",
-    "location": "westus",
-    "name": "RHEL"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-arm64",
-    "location": "westus",
-    "name": "rhel-arm64"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-byos",
-    "location": "westus",
-    "name": "rhel-byos"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-byos-test",
-    "location": "westus",
-    "name": "rhel-byos-test"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-cpp-test",
-    "location": "westus",
-    "name": "rhel-cpp-test"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-HA",
-    "location": "westus",
-    "name": "RHEL-HA"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-raw",
-    "location": "westus",
-    "name": "rhel-raw"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-SAP",
-    "location": "westus",
-    "name": "RHEL-SAP"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-SAP-APPS",
-    "location": "westus",
-    "name": "RHEL-SAP-APPS"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-SAP-HA",
-    "location": "westus",
-    "name": "RHEL-SAP-HA"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-sig-publishing-test",
-    "location": "westus",
-    "name": "rhel-sig-publishing-test"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-TEST",
-    "location": "westus",
-    "name": "RHEL-TEST"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel_test_offers",
-    "location": "westus",
-    "name": "rhel_test_offers"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_7_latest",
-    "location": "westus",
-    "name": "rh_rhel_7_latest"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_7_vm",
-    "location": "westus",
-    "name": "rh_rhel_7_vm"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_8_latest",
-    "location": "westus",
-    "name": "rh_rhel_8_latest"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_8_main_1",
-    "location": "westus",
-    "name": "rh_rhel_8_main_1"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_8_vm",
-    "location": "westus",
-    "name": "rh_rhel_8_vm"
-  },
-  {
-    "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/test_offer_china",
-    "location": "westus",
-    "name": "test_offer_china"
-  }
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/alfredtestoffer",
+        "location": "westus",
+        "name": "alfredtestoffer",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/osa",
+        "location": "westus",
+        "name": "osa",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-ocp-worker",
+        "location": "westus",
+        "name": "rh-ocp-worker",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-oke-worker",
+        "location": "westus",
+        "name": "rh-oke-worker",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-opp-worker",
+        "location": "westus",
+        "name": "rh-opp-worker",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh-rhel",
+        "location": "westus",
+        "name": "rh-rhel",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL",
+        "location": "westus",
+        "name": "RHEL",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-arm64",
+        "location": "westus",
+        "name": "rhel-arm64",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-byos",
+        "location": "westus",
+        "name": "rhel-byos",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-byos-test",
+        "location": "westus",
+        "name": "rhel-byos-test",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-cpp-test",
+        "location": "westus",
+        "name": "rhel-cpp-test",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-HA",
+        "location": "westus",
+        "name": "RHEL-HA",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-raw",
+        "location": "westus",
+        "name": "rhel-raw",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-SAP",
+        "location": "westus",
+        "name": "RHEL-SAP",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-SAP-APPS",
+        "location": "westus",
+        "name": "RHEL-SAP-APPS",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-SAP-HA",
+        "location": "westus",
+        "name": "RHEL-SAP-HA",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel-sig-publishing-test",
+        "location": "westus",
+        "name": "rhel-sig-publishing-test",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/RHEL-TEST",
+        "location": "westus",
+        "name": "RHEL-TEST",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rhel_test_offers",
+        "location": "westus",
+        "name": "rhel_test_offers",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_7_latest",
+        "location": "westus",
+        "name": "rh_rhel_7_latest",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_7_vm",
+        "location": "westus",
+        "name": "rh_rhel_7_vm",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_8_latest",
+        "location": "westus",
+        "name": "rh_rhel_8_latest",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_8_main_1",
+        "location": "westus",
+        "name": "rh_rhel_8_main_1",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/rh_rhel_8_vm",
+        "location": "westus",
+        "name": "rh_rhel_8_vm",
+    },
+    {
+        "id": "/Subscriptions/a5192c85-2bff-4433-ac37-69aad5fcc86a/Providers/Microsoft.Compute/Locations/westus/Publishers/redhat/ArtifactTypes/VMImage/Offers/test_offer_china",
+        "location": "westus",
+        "name": "test_offer_china",
+    },
 ]
 
 MOCKED_AZURE_ACCESS_TOKEN = "access_token"
@@ -420,12 +387,14 @@ def mock_azure_access_token(mocker):
     mock.return_value = MOCKED_AZURE_ACCESS_TOKEN
     return mock
 
+
 @pytest.fixture
 def mock_azure_image_skus(mocker):
     """Provide an offline result got get_azure_image_skus."""
     mock = mocker.patch("cloudimagedirectory.update_images.azure.get_request")
     mock.return_value = MOCKED_AZURE_IMAGE_SKUS
     return mock
+
 
 @pytest.fixture
 def mock_azure_image_skus_list(mocker):
@@ -434,6 +403,7 @@ def mock_azure_image_skus_list(mocker):
     mock.return_value = MOCKED_AZURE_IMAGE_SKUS_LIST
     return mock
 
+
 @pytest.fixture
 def mock_azure_offers(mocker):
     """Provide an offline result got get_azure_offers."""
@@ -441,12 +411,16 @@ def mock_azure_offers(mocker):
     mock.return_value = MOCKED_AZURE_OFFERS
     return mock
 
+
 @pytest.fixture
 def mock_azure_image_version(mocker):
     """Provide an offline result got get_azure_image_version."""
-    mock = mocker.patch("cloudimagedirectory.update_images.azure.get_images.get_image_versions.get_request")
+    mock = mocker.patch(
+        "cloudimagedirectory.update_images.azure.get_images.get_image_versions.get_request"
+    )
     mock.return_value = MOCKED_AZURE_IMAGE_VERSION
     return mock
+
 
 @pytest.fixture
 def mock_azure_image_version_list(mocker):
