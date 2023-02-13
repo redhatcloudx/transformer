@@ -3,8 +3,24 @@
   "extends": [
     "config:base"
   ],
-  "rangeStrategy": "update-lockfile",
+  "rangeStrategy": "bump",
   "pre-commit": {
     "enabled": true
-  }
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "automergeType": "pr",
+    "platformAutomerge": true
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ]
 }
