@@ -8,8 +8,6 @@ from datetime import datetime
 
 import requests
 
-import unittest
-
 from requests import HTTPError
 from requests import RequestException
 from requests import TooManyRedirects
