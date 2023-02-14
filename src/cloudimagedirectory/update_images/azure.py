@@ -7,29 +7,40 @@ import time
 from datetime import datetime
 
 import requests
+import structlog
 
 from requests import HTTPError
 from requests import RequestException
+from requests import Timeout
 from requests import TooManyRedirects
 
 from cloudimagedirectory import config
 
 
+logger = structlog.get_logger()
+
+
 def post_request(url: str, params: dict[str, str | None]) -> requests.Response:
-    # TODO: "except Timeout:" and Log to console and return ""
     try:
         return requests.post(url, params, timeout=10)
-    except (HTTPError, TooManyRedirects, RequestException) as err:
+    except Timeout:
+        logger.warning(f"Timeout trying to reach: {url}")
+        return requests.Response()
+    except (HTTPError, TooManyRedirects, RequestException, Exception) as err:
+        logger.critical(f"Encountered critical error: {err}")
         raise SystemExit(err)
 
 
 def get_request(
     url: str, params: dict[str, str], headers: dict[str, str]
 ) -> requests.Response:
-    # TODO: "except Timeout:" and Log to console and return ""
     try:
         return requests.get(url, params=params, headers=headers, timeout=10)
-    except (HTTPError, TooManyRedirects, RequestException) as err:
+    except Timeout:
+        logger.warning(f"Timeout trying to reach: {url}")
+        return requests.Response()
+    except (HTTPError, TooManyRedirects, RequestException, Exception) as err:
+        logger.critical(f"Encountered critical error: {err}")
         raise SystemExit(err)
 
 
@@ -54,6 +65,7 @@ def get_access_token() -> str:
         if resp.status_code == 200:
             return str(resp.json().get("access_token", None))
 
+        logger.warning(f"Retry conneting to {url}")
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     # If no auth token can be obtained, throw an exception.
@@ -79,6 +91,8 @@ def get_locations(access_token: str) -> list[str]:
         resp = get_request(url, params, headers)
         if resp.status_code == 200:
             return sorted([x["name"] for x in resp.json()["value"]])
+
+        logger.warning(f"Retry conneting to {url}")
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     raise Exception("Unable to retrieve locations.")
@@ -107,6 +121,8 @@ def get_publishers(access_token: str, location: str) -> list[str]:
         resp = get_request(url, params, headers)
         if resp.status_code == 200:
             return sorted([x["name"] for x in resp.json()])
+
+        logger.warning(f"Retry conneting to {url}")
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     raise Exception("Unable to retrieve publishers.")
@@ -137,6 +153,8 @@ def get_offers(access_token: str, location: str, publisher: str) -> list[str]:
         resp = get_request(url, params, headers)
         if resp.status_code == 200:
             return sorted([x["name"] for x in resp.json()])
+
+        logger.warning(f"Retry conneting to {url}")
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     raise Exception("Unable to retrieve offers.")
@@ -168,6 +186,8 @@ def get_skus(access_token: str, location: str, publisher: str, offer: str) -> li
         resp = get_request(url, params, headers)
         if resp.status_code == 200:
             return sorted([x["name"] for x in resp.json()])
+
+        logger.warning(f"Retry conneting to {url}")
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     raise Exception("Unable to retrieve skus.")
@@ -214,6 +234,8 @@ def get_image_versions(
                 return [images[-1]]
 
             return images
+
+        logger.warning(f"Retry conneting to {url}")
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     raise Exception("Unable to retrieve image versions.")
@@ -251,6 +273,8 @@ def get_image_details(
         if resp.status_code == 200:
             data: dict[str, dict[str, str]] = resp.json()
             return data
+
+        logger.warning(f"Retry conneting to {url}")
         time.sleep(config.AZURE_REQUEST_FAILURE_TIMEOUT)
 
     raise Exception("Unable to retrieve image details.")
