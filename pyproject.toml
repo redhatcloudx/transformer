@@ -33,6 +33,7 @@ flasgger = "^0.9.5"
 python-dotenv = "^0.21.1"
 waitress = "^2.1.2"
 flask-cors = "^3.0.10"
+structlog = "^22.3.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"
@@ -43,6 +44,7 @@ pytest-xdist = {version = "^3.2.0", extras = ["psutil"]}
 pre-commit = "^3.0.4"
 ipython = "^8.10.0"
 pytest-sugar = "^0.9.6"
+rich = "^13.3.1"
 
 [tool.poetry.scripts]
 cloudimagedirectory-updater = "cloudimagedirectory.cli:cli"

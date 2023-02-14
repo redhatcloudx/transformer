@@ -2,8 +2,11 @@
 from __future__ import annotations
 
 import json
+import logging
+import sys
 
 import click
+import structlog
 import waitress
 
 from cloudimagedirectory import __version__
@@ -14,10 +17,34 @@ from cloudimagedirectory.update_images import google
 from cloudimagedirectory.update_images import schema
 
 
+logger = structlog.get_logger()
+
+
 @click.group()
 @click.version_option(version=__version__)
 def cli() -> None:
-    """Quick test."""
+    """Cloud Image Directory CLI Entrypoint."""
+    logging.basicConfig(
+        format="%(message)s",
+        stream=sys.stdout,
+        level=logging.INFO,
+    )
+
+    structlog.configure(
+        processors=[
+            structlog.stdlib.filter_by_level,
+            structlog.stdlib.add_logger_name,
+            structlog.stdlib.add_log_level,
+            structlog.processors.StackInfoRenderer(),
+            structlog.processors.UnicodeDecoder(),
+            structlog.processors.TimeStamper(fmt="%Y-%m-%d %H:%M.%S"),
+            structlog.dev.ConsoleRenderer(),
+        ],
+        context_class=dict,
+        logger_factory=structlog.stdlib.LoggerFactory(),
+        wrapper_class=structlog.stdlib.BoundLogger,
+        cache_logger_on_first_use=True,
+    )
 
 
 @click.command()
@@ -31,40 +58,60 @@ def aws_hourly_images(region: str) -> None:
     """
     if region:
         # Is this a valid region?
-        valid_regions = aws.get_regions()
-        if region not in valid_regions:
-            message = f"{region} is not valid. Valid regions include: \n\n  "
-            message += "\n  ".join(valid_regions)
-            raise click.UsageError(message)
+        try:
+            valid_regions = aws.get_regions()
+            if region not in valid_regions:
+                message = f"{region} is not valid. Valid regions include: \n\n  "
+                message += "\n  ".join(valid_regions)
+                raise click.UsageError(message)
 
-        formatted_images: list[dict[str, str]] = []
-        images = aws.get_images(region)
-        for image in images:
-            formatted_images.append(aws.format_image(image, region))
-        dump_images({"images": {"aws": formatted_images}})
+            formatted_images: list[dict[str, str]] = []
+            images = aws.get_images(region)
+            for image in images:
+                formatted_images.append(aws.format_image(image, region))
+            dump_images({"images": {"aws": formatted_images}})
+        except Exception as err:
+            logger.exception(err)
+            raise err
     else:
-        dump_images(aws.format_all_images())
+        try:
+            dump_images(aws.format_all_images())
+        except Exception as err:
+            logger.exception(err)
+            raise err
 
 
 @click.command()
 def aws_regions() -> None:
     """Get all valid AWS regions."""
-    regions = aws.get_regions()
-    click.echo(json.dumps(regions, indent=2))
+    try:
+        regions = aws.get_regions()
+        click.echo(json.dumps(regions, indent=2))
+    except Exception as err:
+        logger.exception(err)
+        raise err
 
 
 @click.command()
 def google_images() -> None:
     """Dump GOOGLE images for all regions in JSON format."""
-    images = google.format_all_images()
-    dump_images(images)
+    try:
+        images = google.format_all_images()
+        dump_images(images)
+    except Exception as err:
+        logger.exception(err)
+        raise err
 
 
 @click.command()
 def azure_images() -> None:
     """Dump Azure images in JSON format."""
-    images = azure.format_all_images()
-    dump_images(images)
+    try:
+        images = azure.format_all_images()
+        dump_images(images)
+    except Exception as err:
+        logger.exception(err)
+        raise err
 
 
 def dump_images(images: object) -> None:
