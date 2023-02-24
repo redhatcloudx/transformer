@@ -530,14 +530,14 @@ requests = ["requests (>=2.20.0,<3.0.0dev)"]
 
 [[package]]
 name = "google-cloud-compute"
-version = "1.10.0"
+version = "1.10.1"
 description = "Google Cloud Compute API client library"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "google-cloud-compute-1.10.0.tar.gz", hash = "sha256:69d08f9814f585cac130230f2a0cc1b4431c083c98bc73428535b50ffcaaefca"},
-    {file = "google_cloud_compute-1.10.0-py2.py3-none-any.whl", hash = "sha256:f82bb6ce4b08dce751269ca3ae3e15c0f9873f3523840dedc5affb10414bae95"},
+    {file = "google-cloud-compute-1.10.1.tar.gz", hash = "sha256:fe25144ed07106688321ccc846ec1baff48b4ecda160a5d201bb9f9a316d3035"},
+    {file = "google_cloud_compute-1.10.1-py2.py3-none-any.whl", hash = "sha256:7346015b2f45894596e81a12fd833467957c59997852a0690a3475a4e5c3eb92"},
 ]
 
 [package.dependencies]
@@ -1738,4 +1738,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "243e760f1b1b75e9e82b6ecb1572af8f037440ec080074ac32725132a9af940f"
+content-hash = "9a581c85d1f2df7b05436eace50eaf72dc7167e70cdd38b7ec493920c0f17412"
