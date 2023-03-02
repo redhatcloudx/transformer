@@ -48,6 +48,7 @@ rich = "^13.3.2"
 
 [tool.poetry.scripts]
 cloudimagedirectory-updater = "cloudimagedirectory.cli:cli"
+cloudimagedirectory-transformer = "cloudimagedirectory.transformer:run"
 
 [build-system]
 requires = ["poetry-core"]
