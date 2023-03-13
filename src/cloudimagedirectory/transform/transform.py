@@ -1,4 +1,4 @@
-from cloudimagedirectory.s3 import s3
+from cloudimagedirectory.connection import connection
 
 class Pipeline:
     transformer = []
@@ -25,6 +25,9 @@ class Transformer:
         pass            
 
 class TransformerAWS(Transformer):
+    def __init__(self, src_conn):
+        super().__init__(src_conn)
+
     def run(self, data):
         entries = []
         for d in data:
@@ -33,12 +36,15 @@ class TransformerAWS(Transformer):
 
         results = []
         for e in entries:
-            #raw_content = super().src_conn.get_content(e)
+            raw_content = self.src_conn.get_content(e)
+            print("content")
+            print(raw_content.filename)
+            print(raw_content.content)
             pass
             # TODO: transform content in schema
             # TODO: create data entries for schema files and return them
 
-        return [s3.DataEntry("aws/eu-west1/rhel-test.json", "test-content")]
+        return [connection.DataEntry("aws/eu-west1/rhel-test.json", "test-content")]
 
 class TransformerGOOGLE(Transformer):
     def run(self, data):
