@@ -52,7 +52,6 @@ class ConnectionFS(Connection):
             for file in self.arg_files:
                 result.append(DataEntry(file, None))
             return result
-        print("suche")
         return self.__list_files(self.origin_path)
 
     def __list_files(self, dir:str) -> list[DataEntry]:
@@ -71,6 +70,10 @@ class ConnectionFS(Connection):
         content = json.loads(content)
         return DataEntry(data.filename, content)
 
-    def put_content(self, data): # todo consider dst path
+    def put_content(self, data): 
         json_data = json.dumps(data.content)
+        tmp = data.filename.split("/")
+        tmp = tmp[:len(tmp)-1]
+        tmp = '/'.join(tmp)
+        os.makedirs(tmp, exist_ok=True)
         Path(data.filename).write_text(json_data)

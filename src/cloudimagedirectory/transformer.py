@@ -15,9 +15,6 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
     if arg_files != "None":
         target = arg_files.split(",")
     origin_connection = connection.ConnectionFS(origin_path, target)
-    origin_connection.put_content(connection.DataEntry("test.txt", "hallo-welt"))
-    data = origin_connection.get_content(connection.DataEntry("test.txt", ""))
-    print(data.content)
     filenames = origin_connection.get_filenames()
     for file in filenames:
         print(file.filename)
@@ -33,4 +30,4 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
     for result in results:
         result.filename = destination_path + "/" + version_prefix + result.filename
         print("put content to filesystem. filename: " + result.filename)
-        #origin_connection.put_content(result)
+        origin_connection.put_content(result)
