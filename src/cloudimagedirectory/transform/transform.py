@@ -46,7 +46,7 @@ class TransformerAWS(Transformer):
                 if content["OwnerId"] != config.AWS_RHEL_OWNER_ID:
                     continue
                 r = aws.format_image(content, region)
-                de = connection.DataEntry("aws/" + region + "/" + r["name"].replace(" ", "_").lower(), content)
+                de = connection.DataEntry("aws/" + region + "/" + r["name"].replace(" ", "_").lower(), r)
                 results.append(de)
 
         return results
