@@ -5,8 +5,8 @@ from cloudimagedirectory.connection import connection
 from cloudimagedirectory.transform import transform
 
 @click.command()
-@click.option('-op', '--origin.path', 'origin_path', prompt='Origin bucket path', help='The path to the source s3 bucket')
-@click.option('-dp', '--destination.path', 'destination_path', prompt='Destination bucket path', help='The path to the destination s3 bucket')
+@click.option('-op', '--origin.path', 'origin_path', prompt='Origin filesystem path', help='The path to the filesystem source')
+@click.option('-dp', '--destination.path', 'destination_path', prompt='Destination filesystem path', help='The path to the filesystem destination')
 @click.option('-v', '--image.api.version', 'api', prompt='api-version', help='Image api version')
 @click.option('-f', '--input.files', 'arg_files', default="None", prompt='files to process', help='List of predefined files to process')
 def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> None:
