@@ -1,5 +1,6 @@
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.update_images import aws
+from cloudimagedirectory.update_images import azure
 from cloudimagedirectory import config
 
 class Pipeline:
@@ -46,15 +47,45 @@ class TransformerAWS(Transformer):
                 if content["OwnerId"] != config.AWS_RHEL_OWNER_ID:
                     continue
                 r = aws.format_image(content, region)
+                print(region)
                 de = connection.DataEntry("aws/" + region + "/" + r["name"].replace(" ", "_").lower(), r)
                 results.append(de)
 
         return results
 
 class TransformerGOOGLE(Transformer):
+    def __init__(self, src_conn):
+        super().__init__(src_conn)
+
     def run(self, data):
         return []
 
 class TransformerAZURE(Transformer):
+    def __init__(self, src_conn):
+        super().__init__(src_conn)
+
     def run(self, data):
-        return []
+        entries = []
+        for d in data:
+            if d.filename.__contains__("azure"):
+                entries.append(d)
+
+        results = []
+        for e in entries:
+            raw = self.src_conn.get_content(e)
+            region = raw.filename.split("/")
+            region = region[len(region)-1]
+            region = region.split(".")[0]
+            for content in raw.content:
+                # TODO: Solve bug: the data parsing for this one version didn't work
+                if content["publisher"] != "RedHat" or content["version"] == "8.2.2020270811":
+                    continue
+                content["hyperVGeneration"] = "unknown"
+                r = azure.format_image(content)
+                de = connection.DataEntry("azure/" + region + "/" + r["name"].replace(" ", "_").lower(), r)
+
+                results.append(de)
+
+        print(results)
+
+        return results
