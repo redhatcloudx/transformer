@@ -1,13 +1,16 @@
+from typing import Callable
+
+from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.update_images import aws
 from cloudimagedirectory.update_images import azure
-from cloudimagedirectory import config
+
 
 class Pipeline:
-    transformer = []
+    transformer: list[Callable] = []
     src_conn = None
 
-    def __init__(self, src_conn, transformer_funcs):
+    def __init__(self, src_conn, transformer_funcs: list[Callable]):
         self.src_conn = src_conn
         for f in transformer_funcs:
             self.transformer.append(f(self.src_conn))
@@ -18,6 +21,7 @@ class Pipeline:
             results.extend(t.run(data))
         return results
 
+
 class Transformer:
     src_conn = None
 
@@ -25,7 +29,8 @@ class Transformer:
         self.src_conn = src_conn
 
     def run(self, data):
-        pass            
+        pass
+
 
 class TransformerAWS(Transformer):
     def __init__(self, src_conn):
@@ -41,17 +46,19 @@ class TransformerAWS(Transformer):
         for e in entries:
             raw = self.src_conn.get_content(e)
             region = raw.filename.split("/")
-            region = region[len(region)-1]
+            region = region[len(region) - 1]
             region = region.split(".")[0]
             for content in raw.content:
                 if content["OwnerId"] != config.AWS_RHEL_OWNER_ID:
                     continue
                 r = aws.format_image(content, region)
-                print(region)
-                de = connection.DataEntry("aws/" + region + "/" + r["name"].replace(" ", "_").lower(), r)
+                de = connection.DataEntry(
+                    "aws/" + region + "/" + r["name"].replace(" ", "_").lower(), r
+                )
                 results.append(de)
 
         return results
+
 
 class TransformerGOOGLE(Transformer):
     def __init__(self, src_conn):
@@ -59,6 +66,7 @@ class TransformerGOOGLE(Transformer):
 
     def run(self, data):
         return []
+
 
 class TransformerAZURE(Transformer):
     def __init__(self, src_conn):
@@ -74,18 +82,21 @@ class TransformerAZURE(Transformer):
         for e in entries:
             raw = self.src_conn.get_content(e)
             region = raw.filename.split("/")
-            region = region[len(region)-1]
+            region = region[len(region) - 1]
             region = region.split(".")[0]
             for content in raw.content:
                 # TODO: Solve bug: the data parsing for this one version didn't work
-                if content["publisher"] != "RedHat" or content["version"] == "8.2.2020270811":
+                if (
+                    content["publisher"] != "RedHat"
+                    or content["version"] == "8.2.2020270811"
+                ):
                     continue
                 content["hyperVGeneration"] = "unknown"
                 r = azure.format_image(content)
-                de = connection.DataEntry("azure/" + region + "/" + r["name"].replace(" ", "_").lower(), r)
+                de = connection.DataEntry(
+                    "azure/" + region + "/" + r["name"].replace(" ", "_").lower(), r
+                )
 
                 results.append(de)
-
-        print(results)
 
         return results
