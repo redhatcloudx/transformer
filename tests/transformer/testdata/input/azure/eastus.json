@@ -1,10 +1,10 @@
 [
-    {
+  {
     "architecture": "x64",
     "offer": "osa",
     "publisher": "RedHat",
     "sku": "osa_311",
     "urn": "RedHat:osa:osa_311:311.161.20200115",
     "version": "311.161.20200115"
-    }
+  }
 ]
