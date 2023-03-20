@@ -70,6 +70,8 @@ class ConnectionFS(Connection):
     def get_content(self, data) -> DataEntry:
         content: str = ""
         content = Path(data.filename).read_text()
+        if content == "":
+            content = "{}"
         content = json.loads(content)
         return DataEntry(data.filename, content)
 
