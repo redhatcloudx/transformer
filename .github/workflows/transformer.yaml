@@ -1,0 +1,30 @@
+name: Transform image data
+
+on:
+  schedule:
+    - cron: '45 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  parser:
+    name: "Transform image data"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "actions/checkout@v3"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: arn:aws:iam::426579533370:role/github_actions_image_retriever
+          role-duration-seconds: 1800
+          aws-region: us-east-2
+
+      - name: Upload to S3
+        run: |
+          pipx install s3cmd
+          s3cmd sync --acl-public --delete-removed --guess-mime-type --no-mime-magic \
+            $(pwd)/images/ s3://cloudx-json-bucket/images/
