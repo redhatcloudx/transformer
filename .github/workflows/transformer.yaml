@@ -23,8 +23,44 @@ jobs:
           role-duration-seconds: 1800
           aws-region: us-east-2
 
+      - name: Bootstrap poetry
+        run: pipx install poetry
+
+      - name: Update PATH
+        if: ${{ matrix.os != 'Windows' }}
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Configure poetry
+        run: poetry config virtualenvs.in-project true
+
+      - name: Set up cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Ensure cache is healthy
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: |
+          # Using `timeout` is a safeguard against the Poetry command hanging for some reason.
+          timeout 10s poetry run pip --version || rm -rf .venv
+
+      - name: Install dependencies
+        run: |
+          poetry install
+          pipx install s3cmd
+
+      - name: Download from S3
+        run: |
+          s3cmd sync --acl-public --delete-removed --guess-mime-type --no-mime-magic \
+            s3://cloudx-json-bucket/raw/ $(pwd)/raw/
+
+      - name: run transformer
+        run: |
+          poetry run cloudimagedirectory-transformer --origin.path=$(pwd)/raw --destination.path=$(pwd)/images --image.api.version v1 --input.files=none
+
       - name: Upload to S3
         run: |
-          pipx install s3cmd
           s3cmd sync --acl-public --delete-removed --guess-mime-type --no-mime-magic \
             $(pwd)/images/ s3://cloudx-json-bucket/images/
