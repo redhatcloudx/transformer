@@ -44,8 +44,8 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
         origin_connection,
         [
             transform.TransformerAWS,
-            #transform.TransformerAZURE,
-            #transform.TransformerGOOGLE,
+            transform.TransformerAZURE,
+            transform.TransformerGOOGLE,
         ],
     )
     print("run pipeline")
