@@ -19,7 +19,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
-          role-to-assume: arn:aws:iam::426579533370:role/github_actions_image_retriever
+          role-to-assume: arn:aws:iam::426579533370:role/github_actions_image_transformer
           role-duration-seconds: 1800
           aws-region: us-east-2
 
