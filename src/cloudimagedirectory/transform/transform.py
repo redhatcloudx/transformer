@@ -35,7 +35,7 @@ class Transformer:
 
     def run(self, data):
         """Transform the raw data."""
-        pass
+        raise NotImplementedError
 
 
 class TransformerAWS(Transformer):
