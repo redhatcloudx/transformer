@@ -77,7 +77,7 @@ class TransformerGOOGLE(Transformer):
         for d in data:
             if d.filename.__contains__("google"):
                 entries.append(d)
-        
+
         results = []
         for e in entries:
             raw = self.src_conn.get_content(e)
@@ -91,6 +91,7 @@ class TransformerGOOGLE(Transformer):
                     results.append(de)
 
         return results
+
 
 class TransformerAZURE(Transformer):
     """Transform raw Azure data."""
