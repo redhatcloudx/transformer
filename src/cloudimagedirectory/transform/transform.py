@@ -11,7 +11,6 @@ class Pipeline:
     """Builds a pipeline of transformer tasks."""
 
     transformer: list[Callable] = []
-    src_conn = None
 
     def __init__(self, src_conn, transformer_funcs: list[Callable]):
         """Initialize the pipeline."""
@@ -29,8 +28,6 @@ class Pipeline:
 
 class Transformer:
     """Base class for transforming raw image data."""
-
-    src_conn = None
 
     def __init__(self, src_conn):
         """Initialize the transformer."""
