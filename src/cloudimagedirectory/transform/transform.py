@@ -1,4 +1,6 @@
 """Transforms the raw data into useful data."""
+import os
+
 from typing import Callable
 
 from cloudimagedirectory import config
@@ -47,19 +49,20 @@ class TransformerAWS(Transformer):
         entries = [x for x in data if "aws" in x.filename]
 
         results = []
-        for e in entries:
-            raw = self.src_conn.get_content(e)
-            region = raw.filename.split("/")
-            region = region[len(region) - 1]
-            region = region.split(".")[0]
+        for entry in entries:
+            raw = self.src_conn.get_content(entry)
+            region = os.path.basename(raw.filename).split(".")[0]
+
             for content in raw.content:
                 if content["OwnerId"] != config.AWS_RHEL_OWNER_ID:
                     continue
-                r = aws.format_image(content, region)
-                de = connection.DataEntry(
-                    "aws/" + region + "/" + r["name"].replace(" ", "_").lower(), r
+
+                image_data = aws.format_image(content, region)
+                image_name = image_data["name"].replace(" ", "_").lower()
+                data_entry = connection.DataEntry(
+                    f"aws/{region}/{image_name}", image_data
                 )
-                results.append(de)
+                results.append(data_entry)
 
         return results
 
@@ -81,11 +84,10 @@ class TransformerAZURE(Transformer):
         entries = [x for x in data if "azure" in x.filename]
 
         results = []
-        for e in entries:
-            raw = self.src_conn.get_content(e)
-            region = raw.filename.split("/")
-            region = region[len(region) - 1]
-            region = region.split(".")[0]
+        for entry in entries:
+            raw = self.src_conn.get_content(entry)
+            region = os.path.basename(raw.filename).split(".")[0]
+
             for content in raw.content:
                 # TODO: Solve bug: the data parsing for this one version didn't work
                 if (
@@ -93,12 +95,15 @@ class TransformerAZURE(Transformer):
                     or content["version"] == "8.2.2020270811"
                 ):
                     continue
+
                 content["hyperVGeneration"] = "unknown"
-                r = azure.format_image(content)
-                de = connection.DataEntry(
-                    "azure/" + region + "/" + r["name"].replace(" ", "_").lower(), r
+
+                image_data = azure.format_image(content)
+                image_name = image_data["name"].replace(" ", "_").lower()
+                data_entry = connection.DataEntry(
+                    f"azure/{region}/{image_name}", image_data
                 )
 
-                results.append(de)
+                results.append(data_entry)
 
         return results
