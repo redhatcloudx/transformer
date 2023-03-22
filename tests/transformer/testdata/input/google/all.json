@@ -1,0 +1,40 @@
+[
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "4944263232",
+    "creationTimestamp": "2023-03-06T12:57:17.210-08:00",
+    "description": "Red Hat, Red Hat Enterprise Linux, 7, x86_64 built on 20230306, supports Shielded VM features",
+    "diskSizeGb": "20",
+    "family": "rhel-7",
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "GVNIC"
+      }
+    ],
+    "id": "8907890564493208899",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "1000006"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/licenses/rhel-7-server"
+    ],
+    "name": "rhel-7-v20230306",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-7-v20230306",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "us",
+      "asia",
+      "eu"
+    ]
+  }
+]

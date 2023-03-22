@@ -7,6 +7,7 @@ from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.update_images import aws
 from cloudimagedirectory.update_images import azure
+from cloudimagedirectory.update_images import google
 
 
 class Pipeline:
@@ -72,8 +73,24 @@ class TransformerGOOGLE(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        return []
+        entries = []
+        for d in data:
+            if d.filename.__contains__("google"):
+                entries.append(d)
+        
+        results = []
+        for e in entries:
+            raw = self.src_conn.get_content(e)
+            for content in raw.content:
+                content["creation_timestamp"] = content["creationTimestamp"]
+                if content["name"].__contains__("rhel"):
+                    r = google.format_image(content)
+                    de = connection.DataEntry(
+                        "google/" + "global/" + r["name"].replace(" ", "_").lower(), r
+                    )
+                    results.append(de)
 
+        return results
 
 class TransformerAZURE(Transformer):
     """Transform raw Azure data."""
