@@ -46,10 +46,8 @@ class TransformerAWS(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        entries = []
-        for d in data:
-            if d.filename.__contains__("aws"):
-                entries.append(d)
+        # Verify that the data is from AWS.
+        entries = [x for x in data if "aws" in x.filename]
 
         results = []
         for e in entries:
@@ -82,10 +80,8 @@ class TransformerAZURE(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        entries = []
-        for d in data:
-            if d.filename.__contains__("azure"):
-                entries.append(d)
+        # Verify that the data is from Azure.
+        entries = [x for x in data if "azure" in x.filename]
 
         results = []
         for e in entries:
