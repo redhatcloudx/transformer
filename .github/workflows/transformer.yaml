@@ -2,7 +2,7 @@ name: Transform image data
 
 on:
   schedule:
-    - cron: '45 5 * * *'
+    - cron: "45 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -62,5 +62,5 @@ jobs:
 
       - name: Upload to S3
         run: |
-          s3cmd sync --acl-public --delete-removed --guess-mime-type --no-mime-magic \
+          s3cmd sync --acl-public --delete-removed --mime-type application/json \
             $(pwd)/images/ s3://cloudx-json-bucket/images/
