@@ -44,10 +44,6 @@ class Transformer:
 class TransformerAWS(Transformer):
     """Transform raw AWS data."""
 
-    def __init__(self, src_conn):
-        """Initialize the transformer."""
-        super().__init__(src_conn)
-
     def run(self, data):
         """Transform the raw data."""
         entries = []
@@ -76,10 +72,6 @@ class TransformerAWS(Transformer):
 class TransformerGOOGLE(Transformer):
     """Transform raw GCP data."""
 
-    def __init__(self, src_conn):
-        """Initialize the transformer."""
-        super().__init__(src_conn)
-
     def run(self, data):
         """Transform the raw data."""
         return []
@@ -87,10 +79,6 @@ class TransformerGOOGLE(Transformer):
 
 class TransformerAZURE(Transformer):
     """Transform raw Azure data."""
-
-    def __init__(self, src_conn):
-        """Initialize the transformer."""
-        super().__init__(src_conn)
 
     def run(self, data):
         """Transform the raw data."""
