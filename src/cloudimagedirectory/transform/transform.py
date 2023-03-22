@@ -10,19 +10,19 @@ from cloudimagedirectory.update_images import azure
 class Pipeline:
     """Builds a pipeline of transformer tasks."""
 
-    transformer: list[Callable] = []
+    transformers: list[Callable] = []
 
     def __init__(self, src_conn, transformer_funcs: list[Callable]):
         """Initialize the pipeline."""
         self.src_conn = src_conn
-        for f in transformer_funcs:
-            self.transformer.append(f(self.src_conn))
+        for transformer_func in transformer_funcs:
+            self.transformers.append(transformer_func(self.src_conn))
 
     def run(self, data):
         """Run the pipeline."""
         results = []
-        for t in self.transformer:
-            results.extend(t.run(data))
+        for transformer in self.transformers:
+            results.extend(transformer.run(data))
         return results
 
 
