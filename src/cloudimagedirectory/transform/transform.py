@@ -23,9 +23,9 @@ class Pipeline:
 
     def run(self, data):
         """Run the pipeline."""
-        results = []
+        results = data
         for transformer in self.transformers:
-            results.extend(transformer.run(data))
+            results.extend(transformer.run(results))
         return results
 
 
@@ -47,7 +47,7 @@ class TransformerAWS(Transformer):
     def run(self, data):
         """Transform the raw data."""
         # Verify that the data is from AWS.
-        entries = [x for x in data if "aws" in x.filename]
+        entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
 
         results = []
         for entry in entries:
@@ -73,10 +73,7 @@ class TransformerGOOGLE(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        entries = []
-        for d in data:
-            if d.filename.__contains__("google"):
-                entries.append(d)
+        entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
 
         results = []
         for e in entries:
@@ -99,7 +96,7 @@ class TransformerAZURE(Transformer):
     def run(self, data):
         """Transform the raw data."""
         # Verify that the data is from Azure.
-        entries = [x for x in data if "azure" in x.filename]
+        entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
 
         results = []
         for entry in entries:
