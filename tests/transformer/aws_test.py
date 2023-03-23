@@ -5,7 +5,7 @@ def test_transformer_aws():
     """Run transformer end to end with AWS input data."""
     assert 0 == os.system(
         "poetry run cloudimagedirectory-transformer -f"
-        " ${PWD}/tests/transformer/testdata/input/aws/af-south-1.json -op=${PWD} "
+        " ${PWD}/tests/transformer/testdata/input/raw/aws/af-south-1.json -op=${PWD} "
         " -dp=${PWD}/tests/transformer/testdata -v output"
     )
     assert 0 == os.system(

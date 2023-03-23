@@ -56,4 +56,5 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
         version_prefix = api + "/"
     for result in results:
         result.filename = destination_path + "/" + version_prefix + result.filename
-        origin_connection.put_content(result)
+        if not result.is_raw():
+            origin_connection.put_content(result)

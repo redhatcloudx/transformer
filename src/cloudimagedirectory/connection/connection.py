@@ -35,6 +35,12 @@ class DataEntry:
         self.filename = filename
         self.content = content
 
+    def is_raw(self) -> bool:
+        return self.filename.__contains__("/raw/")
+
+    def is_provided_by(self, input: str) -> bool:
+        return self.filename.__contains__("/" + input + "/")
+
 
 class ConnectionFS(Connection):
     origin_path: str = ""

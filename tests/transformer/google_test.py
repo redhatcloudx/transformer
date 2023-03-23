@@ -5,7 +5,7 @@ def test_transformer_google():
     """Run transformer end to end with google input data."""
     assert 0 == os.system(
         "poetry run cloudimagedirectory-transformer -f"
-        " ${PWD}/tests/transformer/testdata/input/google/all.json -op=${PWD} "
+        " ${PWD}/tests/transformer/testdata/input/raw/google/all.json -op=${PWD} "
         " -dp=${PWD}/tests/transformer/testdata -v output"
     )
     assert 0 == os.system(
