@@ -133,16 +133,17 @@ class TransformerGOOGLE(Transformer):
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
 
         results = []
-        for e in entries:
-            raw = self.src_conn.get_content(e)
+        for entry in entries:
+            raw = self.src_conn.get_content(entry)
             for content in raw.content:
                 content["creation_timestamp"] = content["creationTimestamp"]
-                if content["name"].__contains__("rhel"):
-                    r = google.format_image(content)
-                    de = connection.DataEntry(
-                        "google/" + "global/" + r["name"].replace(" ", "_").lower(), r
+                if "rhel" in content["name"]:
+                    image_data = google.format_image(content)
+                    image_name = image_data["name"].replace(" ", "_").lower()
+                    data_entry = connection.DataEntry(
+                        f"google/global/{image_name}", image_data
                     )
-                    results.append(de)
+                    results.append(data_entry)
 
         return results
 
