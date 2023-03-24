@@ -63,15 +63,16 @@ jobs:
       - name: Generate directory indexes
         run: |
           mkdir test
-          mv images test
+          mv $(pwd)/images test
           TIMESTAMP=$(date +%Y%m%d)
-          pushd raw
+          pushd test
             tree . -H "/test" -T "Cloud Image Directory (transformed data from ${TIMESTAMP})" -o index.html
           popd
+          tree
 
       - name: Archive generated images data
         uses: actions/upload-artifact@v3
         with:
           name: Upload test index file
-          path: ./test/index.html
+          path: ./test
           retention-days: 7
