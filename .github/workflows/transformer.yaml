@@ -60,7 +60,18 @@ jobs:
         run: |
           poetry run cloudimagedirectory-transformer --origin.path=$(pwd)/raw --destination.path=$(pwd)/images --image.api.version v1 --input.files=none
 
-      - name: Upload to S3
+      - name: Generate directory indexes
         run: |
-          s3cmd sync --acl-public --delete-removed --mime-type application/json \
-            $(pwd)/images/ s3://cloudx-json-bucket/images/
+          mkdir test
+          mv images test
+          TIMESTAMP=$(date +%Y%m%d)
+          pushd raw
+            tree . -H "/test" -T "Cloud Image Directory (transformed data from ${TIMESTAMP})" -o index.html
+          popd
+
+      - name: Archive generated images data
+        uses: actions/upload-artifact@v3
+        with:
+          name: Upload test index file
+          path: ./test/index.html
+          retention-days: 7
