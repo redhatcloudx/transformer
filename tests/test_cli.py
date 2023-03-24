@@ -3,15 +3,9 @@ from __future__ import annotations
 
 import json
 
-import click.testing
 import pytest
 
 from cloudimagedirectory import cli
-
-
-@pytest.fixture
-def runner():
-    return click.testing.CliRunner()
 
 
 @pytest.fixture
