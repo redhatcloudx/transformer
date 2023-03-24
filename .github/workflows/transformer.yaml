@@ -74,5 +74,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Upload test index file
-          path: ./test
+          path: ./test/index.html
           retention-days: 7
