@@ -5,6 +5,13 @@ from unittest.mock import MagicMock
 
 import pytest
 
+from click.testing import CliRunner
+
+
+@pytest.fixture
+def runner():
+    return CliRunner()
+
 
 MOCKED_AWS_IMAGE_LIST = [
     {
