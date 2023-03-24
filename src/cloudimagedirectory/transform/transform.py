@@ -1,6 +1,7 @@
 """Transforms the raw data into useful data."""
 import os
 
+from datetime import datetime
 from typing import Callable
 
 from cloudimagedirectory import config
@@ -39,6 +40,62 @@ class Transformer:
     def run(self, data):
         """Transform the raw data."""
         raise NotImplementedError
+
+
+class TransformerIdxListImageLatest(Transformer):
+    """Transform raw AWS data."""
+
+    def run(self, data):
+        """Transform the raw data."""
+        # Verify that the data is from AWS.
+        entries = [x for x in data if not x.is_raw()]
+
+        # Sort the list of data by date
+        entries.sort(
+            key=lambda x: datetime.strptime(
+                "".join(x.content["date"].split("T")[0]), "%Y-%m-%d"
+            ),
+            reverse=True,
+        )
+
+        list = []
+        for entry in entries:
+            provider = "unknown"
+            if entry.is_provided_by("aws"):
+                provider = "aws"
+            elif entry.is_provided_by("azure"):
+                provider = "azure"
+            elif entry.is_provided_by("google"):
+                provider = "google"
+
+            list.append(
+                {
+                    "name": entry.content["name"],
+                    "date": entry.content["date"].split("T")[0],
+                    "provider": provider,  # TODO: Evaluate if this can be removed
+                    "ref": entry.filename,
+                    "arch": entry.content["arch"],
+                }
+            )
+
+        # Split the list of images into equally sized chunkes
+        chunked_list = []
+        chunk_size = 50
+        chunk = []
+        for i, item in enumerate(list, 1):
+            chunk.append(item)
+            if len(list) == i or i % chunk_size == 0:
+                chunked_list.append(chunk)
+                chunk = []
+
+        results = []
+        for page in range(0, len(chunked_list)):
+            data_entry = connection.DataEntry(
+                f"idx/list/sort-by-date/{page}", chunked_list[page]
+            )
+            results.append(data_entry)
+
+        return results
 
 
 class TransformerAWS(Transformer):

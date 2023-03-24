@@ -39,7 +39,7 @@ class DataEntry:
         return self.filename.__contains__("/raw/")
 
     def is_provided_by(self, input: str) -> bool:
-        return self.filename.__contains__("/" + input + "/")
+        return self.filename.__contains__(input + "/")
 
 
 class ConnectionFS(Connection):
