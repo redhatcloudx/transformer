@@ -126,51 +126,51 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1348311360",
-    "creationTimestamp": "2023-03-13T16:11:01.174-07:00",
-    "description": "Google, Container-Optimized OS, 101-17162.127.33 LTS, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-101-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1378493760",
+    "creationTimestamp": "2023-03-20T14:13:46.049-07:00",
+    "description": "Google, Container-Optimized OS, 101-17162.127.42 LTS, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-101-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-101-lts",
     "guestOsFeatures": [
       {
-        "type": "SEV_SNP_CAPABLE"
-      },
-      {
-        "type": "SEV_CAPABLE"
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
         "type": "GVNIC"
       },
       {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_SNP_CAPABLE"
       }
     ],
-    "id": "5129268536079946603",
+    "id": "7865094392178373222",
     "kind": "compute#image",
-    "labelFingerprint": "0zHPSttGNYo=",
+    "labelFingerprint": "kvSWvE1SlG4=",
     "labels": {
-      "build_number": "17162-127-33",
+      "build_number": "17162-127-42",
       "milestone": "101"
     },
     "licenseCodes": [
-      "1001010",
+      "6880041984096540132",
       "166739712233658766",
-      "6880041984096540132"
+      "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-101-17162-127-33",
+    "name": "cos-101-17162-127-42",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-127-33",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-127-42",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -217,48 +217,48 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1306340544",
-    "creationTimestamp": "2023-03-07T13:54:29.587-08:00",
-    "description": "Google, Container-Optimized OS, 89-16108.798.17 LTS, Kernel: COS-5.4.228 Kubernetes: 1.20.15 Docker: 20.10.3 Family: cos-89-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1301901312",
+    "creationTimestamp": "2023-03-20T14:13:47.670-07:00",
+    "description": "Google, Container-Optimized OS, 89-16108.798.18 LTS, Kernel: COS-5.4.228 Kubernetes: 1.20.15 Docker: 20.10.3 Family: cos-89-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-89-lts",
     "guestOsFeatures": [
       {
-        "type": "GVNIC"
-      },
-      {
-        "type": "SEV_CAPABLE"
-      },
-      {
         "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
+        "type": "GVNIC"
+      },
+      {
         "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "SEV_CAPABLE"
       }
     ],
-    "id": "9175994354528554107",
+    "id": "6050383418703049317",
     "kind": "compute#image",
-    "labelFingerprint": "yZZncVLhJS8=",
+    "labelFingerprint": "vvbb3CFk9B0=",
     "labels": {
-      "build_number": "16108-798-17",
+      "build_number": "16108-798-18",
       "milestone": "89"
     },
     "licenseCodes": [
       "6880041984096540132",
-      "1001010",
-      "166739712233658766"
+      "166739712233658766",
+      "1001010"
     ],
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-89-16108-798-17",
+    "name": "cos-89-16108-798-18",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-89-16108-798-17",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-89-16108-798-18",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -298,8 +298,8 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "us",
+      "asia",
       "eu"
     ]
   },
@@ -393,48 +393,48 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1331039616",
-    "creationTimestamp": "2023-03-13T16:11:03.291-07:00",
-    "description": "Google, Container-Optimized OS, 97-16919.235.31 LTS, Kernel: COS-5.10.162 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-97-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1325935488",
+    "creationTimestamp": "2023-03-20T14:13:44.806-07:00",
+    "description": "Google, Container-Optimized OS, 97-16919.235.36 LTS, Kernel: COS-5.10.162 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-97-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-97-lts",
     "guestOsFeatures": [
       {
-        "type": "SEV_CAPABLE"
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
         "type": "GVNIC"
       },
       {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "SEV_CAPABLE"
       }
     ],
-    "id": "7060772495105856361",
+    "id": "3462505858669572712",
     "kind": "compute#image",
-    "labelFingerprint": "FpmWfeJ-YZI=",
+    "labelFingerprint": "_oGOMmdjzak=",
     "labels": {
-      "build_number": "16919-235-31",
+      "build_number": "16919-235-36",
       "milestone": "97"
     },
     "licenseCodes": [
-      "1001010",
+      "6880041984096540132",
       "166739712233658766",
-      "6880041984096540132"
+      "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-97-16919-235-31",
+    "name": "cos-97-16919-235-36",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-97-16919-235-31",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-97-16919-235-36",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -474,16 +474,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
+      "us",
       "asia",
-      "us"
+      "eu"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1206860736",
-    "creationTimestamp": "2023-03-13T16:10:57.309-07:00",
-    "description": "Google, Container-Optimized OS, 101-17162.127.33 LTS, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-arm64-101-lts, supports Shielded VM features",
+    "archiveSizeBytes": "1186027968",
+    "creationTimestamp": "2023-03-20T14:13:55.109-07:00",
+    "description": "Google, Container-Optimized OS, 101-17162.127.42 LTS, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-arm64-101-lts, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-arm64-101-lts",
     "guestOsFeatures": [
@@ -494,29 +494,29 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "5345699029116392303",
+    "id": "4287163871836598909",
     "kind": "compute#image",
-    "labelFingerprint": "0zHPSttGNYo=",
+    "labelFingerprint": "kvSWvE1SlG4=",
     "labels": {
-      "build_number": "17162-127-33",
+      "build_number": "17162-127-42",
       "milestone": "101"
     },
     "licenseCodes": [
-      "1001010",
+      "6880041984096540132",
       "166739712233658766",
-      "6880041984096540132"
+      "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-arm64-101-17162-127-33",
+    "name": "cos-arm64-101-17162-127-42",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-101-17162-127-33",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-101-17162-127-42",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -556,16 +556,16 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "asia",
       "us",
-      "eu",
-      "asia"
+      "eu"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1321564224",
-    "creationTimestamp": "2023-03-13T16:10:48.002-07:00",
-    "description": "Google, Container-Optimized OS, 105-17412.1.37 beta, Kernel: COS-5.15.90 Kubernetes: 1.25.5 Docker: 23.0.0rc3 Family: cos-arm64-beta, supports Shielded VM features",
+    "archiveSizeBytes": "1346428608",
+    "creationTimestamp": "2023-03-20T14:13:57.902-07:00",
+    "description": "Google, Container-Optimized OS, 105-17412.1.44 beta, Kernel: COS-5.15.90 Kubernetes: 1.25.5 Docker: 23.0.0 Family: cos-arm64-beta, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-arm64-beta",
     "guestOsFeatures": [
@@ -576,29 +576,29 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "4021002643968234392",
+    "id": "7835587807941063291",
     "kind": "compute#image",
-    "labelFingerprint": "uba_PYQSUy4=",
+    "labelFingerprint": "4RhwXo7azRY=",
     "labels": {
-      "build_number": "17412-1-37",
+      "build_number": "17412-1-44",
       "milestone": "105"
     },
     "licenseCodes": [
-      "1001010",
+      "6880041984096540132",
       "166739712233658766",
-      "6880041984096540132"
+      "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-arm64-beta-105-17412-1-37",
+    "name": "cos-arm64-beta-105-17412-1-44",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-beta-105-17412-1-37",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-beta-105-17412-1-44",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -638,9 +638,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
+      "asia",
       "us",
-      "asia"
+      "eu"
     ]
   },
   {
@@ -727,9 +727,9 @@
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "1206860736",
-    "creationTimestamp": "2023-03-13T16:10:58.881-07:00",
-    "description": "Google, Container-Optimized OS, 101-17162.127.33 stable, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-arm64-stable, supports Shielded VM features",
+    "archiveSizeBytes": "1186027968",
+    "creationTimestamp": "2023-03-20T14:13:55.611-07:00",
+    "description": "Google, Container-Optimized OS, 101-17162.127.42 stable, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-arm64-stable, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-arm64-stable",
     "guestOsFeatures": [
@@ -740,29 +740,29 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "276555288077800302",
+    "id": "4681340869158466173",
     "kind": "compute#image",
-    "labelFingerprint": "0zHPSttGNYo=",
+    "labelFingerprint": "kvSWvE1SlG4=",
     "labels": {
-      "build_number": "17162-127-33",
+      "build_number": "17162-127-42",
       "milestone": "101"
     },
     "licenseCodes": [
-      "1001010",
+      "6880041984096540132",
       "166739712233658766",
-      "6880041984096540132"
+      "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-arm64-stable-101-17162-127-33",
+    "name": "cos-arm64-stable-101-17162-127-42",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-stable-101-17162-127-33",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-arm64-stable-101-17162-127-42",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -809,51 +809,51 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1516286784",
-    "creationTimestamp": "2023-03-13T16:10:54.444-07:00",
-    "description": "Google, Container-Optimized OS, 105-17412.1.37 beta, Kernel: COS-5.15.90 Kubernetes: 1.25.5 Docker: 23.0.0rc3 Family: cos-beta, supports Shielded VM features",
+    "archiveSizeBytes": "1518829248",
+    "creationTimestamp": "2023-03-20T14:13:57.220-07:00",
+    "description": "Google, Container-Optimized OS, 105-17412.1.44 beta, Kernel: COS-5.15.90 Kubernetes: 1.25.5 Docker: 23.0.0 Family: cos-beta, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-beta",
     "guestOsFeatures": [
       {
-        "type": "SEV_SNP_CAPABLE"
-      },
-      {
-        "type": "SEV_CAPABLE"
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
         "type": "GVNIC"
       },
       {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_SNP_CAPABLE"
       }
     ],
-    "id": "2290091202606928786",
+    "id": "5080249941187981947",
     "kind": "compute#image",
-    "labelFingerprint": "uba_PYQSUy4=",
+    "labelFingerprint": "4RhwXo7azRY=",
     "labels": {
-      "build_number": "17412-1-37",
+      "build_number": "17412-1-44",
       "milestone": "105"
     },
     "licenseCodes": [
-      "1001010",
+      "6880041984096540132",
       "166739712233658766",
-      "6880041984096540132"
+      "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-beta-105-17412-1-37",
+    "name": "cos-beta-105-17412-1-44",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-beta-105-17412-1-37",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-beta-105-17412-1-44",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -2162,9 +2162,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1789647360",
-    "creationTimestamp": "2023-02-06T07:25:36.559-08:00",
-    "description": "SUSE, SUSE Linux Enterprise Server 15 SP4, x86_64, built on 20230205, supports Shielded VM features",
+    "archiveSizeBytes": "1787795520",
+    "creationTimestamp": "2023-03-23T06:06:28.138-07:00",
+    "description": "SUSE, SUSE Linux Enterprise Server 15 SP4, x86_64, built on 20230322, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "sles-15",
     "guestOsFeatures": [
@@ -2178,10 +2178,16 @@
         "type": "SEV_CAPABLE"
       },
       {
+        "type": "SEV_LIVE_MIGRATABLE"
+      },
+      {
+        "type": "SEV_SNP_CAPABLE"
+      },
+      {
         "type": "GVNIC"
       }
     ],
-    "id": "4366305185544054016",
+    "id": "3153761481761353789",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2190,18 +2196,18 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-15"
     ],
-    "name": "sles-15-sp4-v20230205-x86-64",
+    "name": "sles-15-sp4-v20230322-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-15-sp4-v20230205-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-15-sp4-v20230322-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "asia",
       "eu",
-      "us"
+      "us",
+      "asia"
     ]
   },
   {
@@ -2373,9 +2379,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2605677696",
-    "creationTimestamp": "2023-02-06T07:26:37.159-08:00",
-    "description": "SUSE, SUSE Linux Enterprise Server 15 SP4 for SAP, x86_64, built on 20230205, supports Shielded VM features",
+    "archiveSizeBytes": "2597274624",
+    "creationTimestamp": "2023-03-23T06:06:41.822-07:00",
+    "description": "SUSE, SUSE Linux Enterprise Server 15 SP4 for SAP, x86_64, built on 20230322, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "sles-15-sp4-sap",
     "guestOsFeatures": [
@@ -2389,10 +2395,16 @@
         "type": "SEV_CAPABLE"
       },
       {
+        "type": "SEV_LIVE_MIGRATABLE"
+      },
+      {
+        "type": "SEV_SNP_CAPABLE"
+      },
+      {
         "type": "GVNIC"
       }
     ],
-    "id": "2421081189714272963",
+    "id": "8805884567227592719",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2401,25 +2413,75 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/licenses/sles-sap-15"
     ],
-    "name": "sles-15-sp4-sap-v20230205-x86-64",
+    "name": "sles-15-sp4-sap-v20230322-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images/sles-15-sp4-sap-v20230205-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images/sles-15-sp4-sap-v20230322-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
+      "asia",
       "us",
-      "asia"
+      "eu"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "archiveSizeBytes": "2703150912",
+    "creationTimestamp": "2023-03-22T10:11:54.405-07:00",
+    "description": "SUSE, SUSE Linux Enterprise Server 15 SP4 for SAP hardened with security features, x86_64, built on 20230322, supports Shielded VM features",
+    "diskSizeGb": "10",
+    "family": "sles-sap-15-sp4-hardened",
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_SNP_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE"
+      }
+    ],
+    "id": "4402403281816946742",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "4764125400812555962"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/licenses/sles-sap-15"
+    ],
+    "name": "sles-sap-15-sp4-hardened-v20230322-x86-64",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images/sles-sap-15-sp4-hardened-v20230322-x86-64",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "us",
+      "asia",
+      "eu"
     ]
   },
   {
     "architecture": "ARM64",
-    "archiveSizeBytes": "2414859072",
-    "creationTimestamp": "2023-03-08T09:45:48.984-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS, arm64 bionic image built on 2023-03-08, supports Shielded VM features",
+    "archiveSizeBytes": "2420142912",
+    "creationTimestamp": "2023-03-24T10:09:27.672-07:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS, arm64 bionic image built on 2023-03-24, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-1804-lts-arm64",
     "guestOsFeatures": [
@@ -2433,7 +2495,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "6447087256953255715",
+    "id": "1132321203909846953",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2442,12 +2504,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1804-lts"
     ],
-    "name": "ubuntu-1804-bionic-arm64-v20230308",
+    "name": "ubuntu-1804-bionic-arm64-v20230324",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-arm64-v20230308",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-arm64-v20230324",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2515,9 +2577,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2806130880",
-    "creationTimestamp": "2023-03-08T09:03:03.413-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS Pro Server, amd64 bionic pro server image built on 2023-03-08, supports Shielded VM features",
+    "archiveSizeBytes": "2811980160",
+    "creationTimestamp": "2023-03-24T09:50:28.271-07:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS Pro Server, amd64 bionic pro server image built on 2023-03-24, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-1804-lts",
     "guestOsFeatures": [
@@ -2534,7 +2596,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "5161477071358460201",
+    "id": "3495127578391374396",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2543,12 +2605,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-1804-lts"
     ],
-    "name": "ubuntu-pro-1804-bionic-v20230308",
+    "name": "ubuntu-pro-1804-bionic-v20230324",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20230308",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20230324",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2561,8 +2623,8 @@
     "status": "READY",
     "storageLocations": [
       "asia",
-      "us",
-      "eu"
+      "eu",
+      "us"
     ]
   },
   {
@@ -2677,9 +2739,9 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2596316160",
-    "creationTimestamp": "2023-03-03T08:48:17.052-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2023-03-03, supports Shielded VM features",
+    "archiveSizeBytes": "2602629888",
+    "creationTimestamp": "2023-03-24T15:25:19.627-07:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS Pro FIPS Server, amd64 bionic pro fips server image built on 2023-03-24, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-pro-fips-1804-lts",
     "guestOsFeatures": [
@@ -2696,7 +2758,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "4302114180547189311",
+    "id": "7782860212434869665",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -2705,12 +2767,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/licenses/ubuntu-pro-fips-1804-lts"
     ],
-    "name": "ubuntu-pro-fips-1804-bionic-v20230303",
+    "name": "ubuntu-pro-fips-1804-bionic-v20230324",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20230303",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-fips-1804-bionic-v20230324",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -2722,9 +2784,9 @@
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
-      "eu",
       "asia",
-      "us"
+      "us",
+      "eu"
     ]
   },
   {
@@ -3118,51 +3180,51 @@
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "1348311360",
-    "creationTimestamp": "2023-03-13T16:11:00.975-07:00",
-    "description": "Google, Container-Optimized OS, 101-17162.127.33 stable, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-stable, supports Shielded VM features",
+    "archiveSizeBytes": "1378493760",
+    "creationTimestamp": "2023-03-20T14:13:46.150-07:00",
+    "description": "Google, Container-Optimized OS, 101-17162.127.42 stable, Kernel: COS-5.15.89 Kubernetes: 1.23.10 Docker: 20.10.12 Family: cos-stable, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "cos-stable",
     "guestOsFeatures": [
       {
-        "type": "SEV_SNP_CAPABLE"
-      },
-      {
-        "type": "SEV_CAPABLE"
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
       },
       {
         "type": "GVNIC"
       },
       {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
+        "type": "UEFI_COMPATIBLE"
       },
       {
-        "type": "UEFI_COMPATIBLE"
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_SNP_CAPABLE"
       }
     ],
-    "id": "5866368839144575851",
+    "id": "1559637872535237222",
     "kind": "compute#image",
-    "labelFingerprint": "0zHPSttGNYo=",
+    "labelFingerprint": "kvSWvE1SlG4=",
     "labels": {
-      "build_number": "17162-127-33",
+      "build_number": "17162-127-42",
       "milestone": "101"
     },
     "licenseCodes": [
-      "1001010",
+      "6880041984096540132",
       "166739712233658766",
-      "6880041984096540132"
+      "1001010"
     ],
     "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos",
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid",
       "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos",
-      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid"
+      "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos"
     ],
-    "name": "cos-stable-101-17162-127-33",
+    "name": "cos-stable-101-17162-127-42",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-stable-101-17162-127-33",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-stable-101-17162-127-42",
     "shieldedInstanceInitialState": {
       "dbs": [
         {
@@ -3203,15 +3265,15 @@
     "status": "READY",
     "storageLocations": [
       "us",
-      "asia",
-      "eu"
+      "eu",
+      "asia"
     ]
   },
   {
     "architecture": "X86_64",
-    "archiveSizeBytes": "2806133376",
-    "creationTimestamp": "2023-03-08T09:45:50.562-08:00",
-    "description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image built on 2023-03-08, supports Shielded VM features",
+    "archiveSizeBytes": "2812112064",
+    "creationTimestamp": "2023-03-24T10:09:25.881-07:00",
+    "description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image built on 2023-03-24, supports Shielded VM features",
     "diskSizeGb": "10",
     "family": "ubuntu-1804-lts",
     "guestOsFeatures": [
@@ -3228,7 +3290,7 @@
         "type": "GVNIC"
       }
     ],
-    "id": "8167767759797974818",
+    "id": "4371359614683342763",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -3237,12 +3299,12 @@
     "licenses": [
       "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1804-lts"
     ],
-    "name": "ubuntu-1804-bionic-v20230308",
+    "name": "ubuntu-1804-bionic-v20230324",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20230308",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20230324",
     "shieldedInstanceInitialState": {
       "dbxs": [
         {
@@ -5151,9 +5213,9 @@
     ]
   },
   {
-    "archiveSizeBytes": "2467216128",
-    "creationTimestamp": "2023-03-06T13:20:17.472-08:00",
-    "description": "Fedora, Fedora CoreOS stable, 37.20230218.3.0, x86_64 published on 2023-03-06",
+    "archiveSizeBytes": "2487747264",
+    "creationTimestamp": "2023-03-22T11:36:22.955-07:00",
+    "description": "Fedora, Fedora CoreOS stable, 37.20230303.3.0, x86_64 published on 2023-03-22",
     "diskSizeGb": "10",
     "family": "fedora-coreos-stable",
     "guestOsFeatures": [
@@ -5170,7 +5232,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "5739213201315981311",
+    "id": "6942058104397165642",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5181,57 +5243,12 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-stable",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20230218-3-0-gcp-x86-64",
+    "name": "fedora-coreos-37-20230303-3-0-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230218-3-0-gcp-x86-64",
-    "sourceType": "RAW",
-    "status": "READY",
-    "storageLocations": [
-      "eu",
-      "asia",
-      "us"
-    ]
-  },
-  {
-    "archiveSizeBytes": "2478777216",
-    "creationTimestamp": "2023-03-06T11:24:42.797-08:00",
-    "description": "Fedora, Fedora CoreOS next, 37.20230303.1.0, x86_64 published on 2023-03-06",
-    "diskSizeGb": "10",
-    "family": "fedora-coreos-next",
-    "guestOsFeatures": [
-      {
-        "type": "VIRTIO_SCSI_MULTIQUEUE"
-      },
-      {
-        "type": "SEV_CAPABLE"
-      },
-      {
-        "type": "GVNIC"
-      },
-      {
-        "type": "UEFI_COMPATIBLE"
-      }
-    ],
-    "id": "8533672701102621462",
-    "kind": "compute#image",
-    "labelFingerprint": "42WmSpB8rSM=",
-    "licenseCodes": [
-      "8565510459461902525",
-      "1002001"
-    ],
-    "licenses": [
-      "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-next",
-      "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
-    ],
-    "name": "fedora-coreos-37-20230303-1-0-gcp-x86-64",
-    "rawDisk": {
-      "containerType": "TAR",
-      "source": ""
-    },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230303-1-0-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230303-3-0-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
@@ -5241,9 +5258,9 @@
     ]
   },
   {
-    "archiveSizeBytes": "2478093696",
-    "creationTimestamp": "2023-03-06T13:25:04.407-08:00",
-    "description": "Fedora, Fedora CoreOS testing, 37.20230303.2.0, x86_64 published on 2023-03-06",
+    "archiveSizeBytes": "2517747840",
+    "creationTimestamp": "2023-03-22T11:40:21.129-07:00",
+    "description": "Fedora, Fedora CoreOS testing, 37.20230322.2.0, x86_64 published on 2023-03-22",
     "diskSizeGb": "10",
     "family": "fedora-coreos-testing",
     "guestOsFeatures": [
@@ -5260,7 +5277,7 @@
         "type": "UEFI_COMPATIBLE"
       }
     ],
-    "id": "7347378531806733504",
+    "id": "2935092821137749371",
     "kind": "compute#image",
     "labelFingerprint": "42WmSpB8rSM=",
     "licenseCodes": [
@@ -5271,18 +5288,63 @@
       "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-testing",
       "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
     ],
-    "name": "fedora-coreos-37-20230303-2-0-gcp-x86-64",
+    "name": "fedora-coreos-37-20230322-2-0-gcp-x86-64",
     "rawDisk": {
       "containerType": "TAR",
       "source": ""
     },
-    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230303-2-0-gcp-x86-64",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-37-20230322-2-0-gcp-x86-64",
     "sourceType": "RAW",
     "status": "READY",
     "storageLocations": [
+      "us",
       "asia",
-      "eu",
-      "us"
+      "eu"
+    ]
+  },
+  {
+    "archiveSizeBytes": "2557507584",
+    "creationTimestamp": "2023-03-22T15:32:45.030-07:00",
+    "description": "Fedora, Fedora CoreOS next, 38.20230322.1.0, x86_64 published on 2023-03-22",
+    "diskSizeGb": "10",
+    "family": "fedora-coreos-next",
+    "guestOsFeatures": [
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      }
+    ],
+    "id": "3979449685784280291",
+    "kind": "compute#image",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "8565510459461902525",
+      "1002001"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/licenses/fedora-coreos-next",
+      "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
+    ],
+    "name": "fedora-coreos-38-20230322-1-0-gcp-x86-64",
+    "rawDisk": {
+      "containerType": "TAR",
+      "source": ""
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/fedora-coreos-cloud/global/images/fedora-coreos-38-20230322-1-0-gcp-x86-64",
+    "sourceType": "RAW",
+    "status": "READY",
+    "storageLocations": [
+      "us",
+      "asia",
+      "eu"
     ]
   },
   {
