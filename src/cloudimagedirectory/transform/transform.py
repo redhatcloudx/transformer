@@ -166,12 +166,16 @@ class TransformerAZURE(Transformer):
 
                 content["hyperVGeneration"] = "unknown"
 
-                image_data = azure.format_image(content)
-                image_name = image_data["name"].replace(" ", "_").lower()
-                data_entry = connection.DataEntry(
-                    f"azure/{region}/{image_name}", image_data
-                )
+                try:
+                    image_data = azure.format_image(content)
+                    image_name = image_data["name"].replace(" ", "_").lower()
+                    data_entry = connection.DataEntry(
+                        f"azure/{region}/{image_name}", image_data
+                    )
 
-                results.append(data_entry)
+                    results.append(data_entry)
+                except:
+                    print("Could not format image, sku: " + content["sku"] + " offer: " + content["offer"])
+
 
         return results
