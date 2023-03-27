@@ -367,6 +367,19 @@ def parse_image_version(image_version: str) -> dict[str, str]:
     return {}
 
 
+def convert_date(date: str) -> str:
+    """Convert timestamp to date string This fallback is necessary as Azure
+    timestamps are inconsistent and can either follow yyyymmdd or yyyyddmm.
+
+    Returns:
+        Date as string following the structure "%Y-%m-%d"
+    """
+    try:
+        return datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
+    except:
+        return datetime.strptime(date, "%Y%d%m").strftime("%Y-%m-%d")
+
+
 def format_all_images() -> object:
     """Retrieve all Azure images and return a simplified data representation.
 
@@ -402,9 +415,7 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
     sku = image["sku"]
     offer = image["offer"]
 
-    date = datetime.strptime(additional_information["date"], "%Y%m%d").strftime(
-        "%Y-%m-%d"
-    )
+    date = convert_date(additional_information["date"])
     version = additional_information["version"]
 
     name = f"{offer} {sku} {arch}"
