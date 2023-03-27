@@ -162,20 +162,21 @@ class TransformerAZURE(Transformer):
 
             for content in raw.content:
                 # TODO: Solve bug: the data parsing for this one version didn't work
-                if (
-                    content["publisher"] != "RedHat"
-                    or content["version"] == "8.2.2020270811"
-                ):
+                if (content["publisher"] != "RedHat"):
                     continue
 
                 content["hyperVGeneration"] = "unknown"
 
-                image_data = azure.format_image(content)
-                image_name = image_data["name"].replace(" ", "_").lower()
-                data_entry = connection.DataEntry(
-                    f"azure/{region}/{image_name}", image_data
-                )
+                try:
+                    image_data = azure.format_image(content)
+                    image_name = image_data["name"].replace(" ", "_").lower()
+                    data_entry = connection.DataEntry(
+                        f"azure/{region}/{image_name}", image_data
+                    )
 
-                results.append(data_entry)
+                    results.append(data_entry)
+                except:
+                    print("Could not format image, sku: " + content["sku"] + " offer: " + content["offer"])
+
 
         return results
