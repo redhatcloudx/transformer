@@ -426,3 +426,23 @@ def test_failing_to_parse_image_version():
     parsed = azure.parse_image_version(invalid_version)
 
     assert parsed == {}
+
+
+def test_convert_date():
+    """Test successfully convert timestamp to date string."""
+    yyyymmdd_date = azure.convert_date("20230124")
+
+    assert yyyymmdd_date == "2023-01-24"
+
+    yyyyddmm_date = azure.convert_date("20232401")
+
+    assert yyyyddmm_date == "2023-01-24"
+
+
+def test_fail_to_convert_date():
+    """Test fail to convert broken timestamp."""
+    with pytest.raises(Exception, match=r"unconverted data remains: 01"):
+        azure.convert_date("20239901")
+
+    with pytest.raises(Exception, match=r"unconverted data remains: 9"):
+        azure.convert_date("20230199")

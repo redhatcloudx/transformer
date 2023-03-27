@@ -161,11 +161,7 @@ class TransformerAZURE(Transformer):
             region = os.path.basename(raw.filename).split(".")[0]
 
             for content in raw.content:
-                # TODO: Solve bug: the data parsing for this one version didn't work
-                if (
-                    content["publisher"] != "RedHat"
-                    or content["version"] == "8.2.2020270811"
-                ):
+                if content["publisher"] != "RedHat":
                     continue
 
                 content["hyperVGeneration"] = "unknown"
