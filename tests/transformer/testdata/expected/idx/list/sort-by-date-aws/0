@@ -1,0 +1,1 @@
+[{"name": "RHEL 6.10 hvm x86_64 Hourly2", "date": "2021-03-18", "provider": "aws", "ref": "aws/af-south-1/rhel_6.10_hvm_x86_64_hourly2", "arch": "x86_64"}]
