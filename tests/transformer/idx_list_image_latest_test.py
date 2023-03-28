@@ -14,3 +14,18 @@ def test_transformer_idx_list_image_latest():
         "diff ${PWD}/tests/transformer/testdata/expected/idx/list/sort-by-date/0"
         " ${PWD}/tests/transformer/testdata/output/idx/list/sort-by-date/0"
     )
+
+    assert 0 == os.system(
+        "diff ${PWD}/tests/transformer/testdata/expected/idx/list/sort-by-date-aws/0"
+        " ${PWD}/tests/transformer/testdata/output/idx/list/sort-by-date-aws/0"
+    )
+
+    assert 0 == os.system(
+        "diff ${PWD}/tests/transformer/testdata/expected/idx/list/sort-by-date-google/0"
+        " ${PWD}/tests/transformer/testdata/output/idx/list/sort-by-date-google/0"
+    )
+
+    assert 0 == os.system(
+        "diff ${PWD}/tests/transformer/testdata/expected/idx/list/sort-by-date-azure/0"
+        " ${PWD}/tests/transformer/testdata/output/idx/list/sort-by-date-azure/0"
+    )
