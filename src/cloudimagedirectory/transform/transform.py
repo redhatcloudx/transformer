@@ -109,7 +109,7 @@ class TransformerIdxListImageLatest(Transformer):
 
 
 class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
-    """Sort the transformed data to have the latest google images"""
+    """Sort the transformed data to have the latest google images."""
 
     def run(self, data):
         self.provider = "google"
@@ -117,7 +117,7 @@ class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
 
 
 class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
-    """Sort the transformed data to have the latest AWS images"""
+    """Sort the transformed data to have the latest AWS images."""
 
     def run(self, data):
         self.provider = "aws"
@@ -125,7 +125,7 @@ class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
 
 
 class TransformerIdxListImageLatestAZURE(TransformerIdxListImageLatest):
-    """Sort the transformed data to have the latest AZURE images"""
+    """Sort the transformed data to have the latest AZURE images."""
 
     def run(self, data):
         self.provider = "azure"
