@@ -45,8 +45,11 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
         [
             transform.TransformerAWS,
             transform.TransformerAZURE,
-            transform.TransformerGOOGLE,
+            transform.TransformerGoogle,
             transform.TransformerIdxListImageLatest,
+            transform.TransformerIdxListImageLatestGoogle,
+            transform.TransformerIdxListImageLatestAWS,
+            transform.TransformerIdxListImageLatestAZURE,
         ],
     )
     print("run pipeline")

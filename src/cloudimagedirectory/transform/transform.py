@@ -46,13 +46,14 @@ class TransformerIdxListImageLatest(Transformer):
     """Sort the transformed data, to have the latest images."""
 
     chunk_size = 50
+    provider = ""
 
     def run(self, data):
         """Sort the raw data."""
-        # Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw()]
+        # NOTE: Verify that the data is not raw.
+        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
 
-        # Sort the list of data by date
+        # NOTE: Sort the list of data by date
         entries.sort(
             key=lambda x: datetime.strptime(
                 "".join(x.content["date"].split("T")[0]), "%Y-%m-%d"
@@ -70,6 +71,11 @@ class TransformerIdxListImageLatest(Transformer):
             elif entry.is_provided_by("google"):
                 provider = "google"
 
+            # NOTE: Filter images for pre-defined provider.
+            # If Provider is not set, all providers are valid.
+            if self.provider != "" and self.provider != provider:
+                continue
+
             list.append(
                 {
                     "name": entry.content["name"],
@@ -80,7 +86,7 @@ class TransformerIdxListImageLatest(Transformer):
                 }
             )
 
-        # Split the list of images into equally sized chunkes
+        # NOTE: Split the list of images into equally sized chunkes
         chunked_list = []
         chunk = []
         for i, item in enumerate(list, 1):
@@ -91,12 +97,39 @@ class TransformerIdxListImageLatest(Transformer):
 
         results = []
         for page in range(0, len(chunked_list)):
+            provider = ""
+            if self.provider != "":
+                provider = "-" + self.provider
             data_entry = connection.DataEntry(
-                f"idx/list/sort-by-date/{page}", chunked_list[page]
+                f"idx/list/sort-by-date{provider}/{page}", chunked_list[page]
             )
             results.append(data_entry)
 
         return results
+
+
+class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
+    """Sort the transformed data to have the latest google images"""
+
+    def run(self, data):
+        self.provider = "google"
+        return super().run(data)
+
+
+class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
+    """Sort the transformed data to have the latest AWS images"""
+
+    def run(self, data):
+        self.provider = "aws"
+        return super().run(data)
+
+
+class TransformerIdxListImageLatestAZURE(TransformerIdxListImageLatest):
+    """Sort the transformed data to have the latest AZURE images"""
+
+    def run(self, data):
+        self.provider = "azure"
+        return super().run(data)
 
 
 class TransformerAWS(Transformer):
@@ -104,7 +137,7 @@ class TransformerAWS(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        # Verify that the data is from AWS.
+        # NOTE: Verify that the data is from AWS.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
 
         results = []
@@ -126,8 +159,8 @@ class TransformerAWS(Transformer):
         return results
 
 
-class TransformerGOOGLE(Transformer):
-    """Transform raw GCP data."""
+class TransformerGoogle(Transformer):
+    """Transform raw google data."""
 
     def run(self, data):
         """Transform the raw data."""
@@ -154,7 +187,7 @@ class TransformerAZURE(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        # Verify that the data is from Azure.
+        # NOTE: Verify that the data is from Azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
 
         results = []
