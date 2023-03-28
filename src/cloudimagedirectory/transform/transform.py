@@ -177,7 +177,11 @@ class TransformerAZURE(Transformer):
 
                     results.append(data_entry)
                 except:
-                    print("Could not format image, sku: " + content["sku"] + " offer: " + content["offer"])
-
+                    print(
+                        "Could not format image, sku: "
+                        + content["sku"]
+                        + " offer: "
+                        + content["offer"]
+                    )
 
         return results

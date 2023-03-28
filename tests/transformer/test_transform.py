@@ -16,14 +16,16 @@ def test_transformeridxlistimagelatest():
             },
         ),
         connection.DataEntry(
-            "raw/azure/region-1", {
+            "raw/azure/region-1",
+            {
                 "date": "2020-01-01",
                 "name": "invalid",
                 "arch": "invalid",
             },
         ),
         connection.DataEntry(
-            "images/azure/region-1", {
+            "images/azure/region-1",
+            {
                 "date": "2020-01-01",
                 "name": "test2",
                 "arch": "arch2",
