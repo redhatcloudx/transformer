@@ -43,11 +43,13 @@ class Transformer:
 
 
 class TransformerIdxListImageLatest(Transformer):
-    """Transform raw AWS data."""
+    """Sort the transformed data, to have the latest images."""
+
+    chunk_size = 50
 
     def run(self, data):
-        """Transform the raw data."""
-        # Verify that the data is from AWS.
+        """Sort the raw data."""
+        # Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw()]
 
         # Sort the list of data by date
@@ -80,11 +82,10 @@ class TransformerIdxListImageLatest(Transformer):
 
         # Split the list of images into equally sized chunkes
         chunked_list = []
-        chunk_size = 50
         chunk = []
         for i, item in enumerate(list, 1):
             chunk.append(item)
-            if len(list) == i or i % chunk_size == 0:
+            if len(list) == i or i % self.chunk_size == 0:
                 chunked_list.append(chunk)
                 chunk = []
 
