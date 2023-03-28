@@ -36,7 +36,7 @@ class DataEntry:
         self.content = content
 
     def is_raw(self) -> bool:
-        return self.filename.__contains__("/raw/")
+        return self.filename.__contains__("raw/")
 
     def is_provided_by(self, input: str) -> bool:
         return self.filename.__contains__(input + "/")
