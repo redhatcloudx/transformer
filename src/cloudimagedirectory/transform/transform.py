@@ -76,6 +76,13 @@ class TransformerIdxListImageLatest(Transformer):
             if self.provider != "" and self.provider != provider:
                 continue
 
+            region = "unkown"
+            filename = entry.filename.split("/")
+            if len(filename) == 3:
+                region = filename[1]
+            else:
+                print("warn: could not determine region of image: " + entry.filename)
+
             list.append(
                 {
                     "name": entry.content["name"],
@@ -83,6 +90,7 @@ class TransformerIdxListImageLatest(Transformer):
                     "provider": provider,  # TODO: Evaluate if this can be removed
                     "ref": entry.filename,
                     "arch": entry.content["arch"],
+                    "region": region,
                 }
             )
 
