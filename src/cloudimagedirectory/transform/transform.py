@@ -90,7 +90,7 @@ class TransformerIdxListImageLatest(Transformer):
                     "provider": provider,  # TODO: Evaluate if this can be removed
                     "ref": entry.filename,
                     "arch": entry.content["arch"],
-                    "region": region, # TODO: Evaluate if this can be removed
+                    "region": region,  # TODO: Evaluate if this can be removed
                 }
             )
 
