@@ -116,16 +116,16 @@ class TransformerIdxListImageLatest(Transformer):
             results.append(data_entry)
 
         page_entry = connection.DataEntry(
-            f"idx/list/sort-by-date{provider}/pages", {
+            f"idx/list/sort-by-date{provider}/pages",
+            {
                 "first": first,
-                "last": len(chunked_list)-1,
+                "last": len(chunked_list) - 1,
                 "entries": self.chunk_size,
-            }
+            },
         )
         results.append(page_entry)
 
         return results
-
 
 
 class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
