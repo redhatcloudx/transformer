@@ -8,11 +8,12 @@ def test_transformeridxlistimagelatest():
     runner.chunk_size = chunk_size
     data = [
         connection.DataEntry(
-            "images/aws/region-1",
+            "aws/region-1/rhel-1",
             {
                 "date": "2019-01-01",
                 "name": "test1",
                 "arch": "arch1",
+                "region": "region-1",
             },
         ),
         connection.DataEntry(
@@ -24,27 +25,30 @@ def test_transformeridxlistimagelatest():
             },
         ),
         connection.DataEntry(
-            "images/azure/region-1",
+            "azure/region-1/rhel-1",
             {
                 "date": "2020-01-01",
                 "name": "test2",
                 "arch": "arch2",
+                "region": "region-1",
             },
         ),
         connection.DataEntry(
-            "images/google/region-1",
+            "google/region-1/rhel-1",
             {
                 "date": "2022-01-01",
                 "name": "test3",
                 "arch": "arch3",
+                "region": "region-1",
             },
         ),
         connection.DataEntry(
-            "images/azure/region-1",
+            "azure/region-1/rhel-1",
             {
                 "date": "2015-01-01",
                 "name": "test4",
                 "arch": "arch4",
+                "region": "region-1",
             },
         ),
     ]
@@ -56,15 +60,18 @@ def test_transformeridxlistimagelatest():
                 "date": "2022-01-01",
                 "name": "test3",
                 "arch": "arch3",
-                "ref": "images/google/region-1",
+                "ref": "google/region-1/rhel-1",
                 "provider": "google",
+                "region": "region-1",
+
             },
             {
                 "date": "2020-01-01",
                 "name": "test2",
                 "arch": "arch2",
-                "ref": "images/azure/region-1",
+                "ref": "azure/region-1/rhel-1",
                 "provider": "azure",
+                "region": "region-1",
             },
         ],
     )
@@ -79,15 +86,17 @@ def test_transformeridxlistimagelatest():
                 "date": "2019-01-01",
                 "name": "test1",
                 "arch": "arch1",
-                "ref": "images/aws/region-1",
+                "ref": "aws/region-1/rhel-1",
                 "provider": "aws",
+                "region": "region-1",
             },
             {
                 "date": "2015-01-01",
                 "name": "test4",
                 "arch": "arch4",
-                "ref": "images/azure/region-1",
+                "ref": "azure/region-1/rhel-1",
                 "provider": "azure",
+                "region": "region-1",
             },
         ],
     )
