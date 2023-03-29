@@ -103,17 +103,29 @@ class TransformerIdxListImageLatest(Transformer):
                 chunked_list.append(chunk)
                 chunk = []
 
+        provider = ""
+        if self.provider != "":
+            provider = "-" + self.provider
+
+        first = 0
         results = []
-        for page in range(0, len(chunked_list)):
-            provider = ""
-            if self.provider != "":
-                provider = "-" + self.provider
+        for page in range(first, len(chunked_list)):
             data_entry = connection.DataEntry(
                 f"idx/list/sort-by-date{provider}/{page}", chunked_list[page]
             )
             results.append(data_entry)
 
+        page_entry = connection.DataEntry(
+            f"idx/list/sort-by-date{provider}/pages", {
+                "first": first,
+                "last": len(chunked_list)-1,
+                "entries": self.chunk_size,
+            }
+        )
+        results.append(page_entry)
+
         return results
+
 
 
 class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
