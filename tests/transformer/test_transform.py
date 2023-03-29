@@ -63,7 +63,6 @@ def test_transformeridxlistimagelatest():
                 "ref": "google/region-1/rhel-1",
                 "provider": "google",
                 "region": "region-1",
-
             },
             {
                 "date": "2020-01-01",
