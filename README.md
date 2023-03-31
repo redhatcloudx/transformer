@@ -18,7 +18,7 @@ It belongs to three other sub projects.
 
 ![Architecture diagram](assets/arch-diagram.png)
 
-The Collector(`cloud-image-retriever`) fetches the image from different cloud providers on a predefined interval. This data gets then stored in a s3 bucket.
+The Collector(`cloud-image-retriever`) fetches the images from different cloud providers on a predefined interval. This data is then stored in a s3 bucket.
 After a successful collection, the transformer(`cloudimagedirectory-transformer`) reads the unstructured image data from the S3 bucket and generates static image content in a consumable format. The transformer generates also lookup tables to allow an efficient search from e.g. a js single page application. Once the transformation is complete, it's written back into the s3 bucket.
 In parallel frontend code is deployed by putting it into the s3 bucket too. This can be done by a [release pipeline](https://github.com/redhatcloudx/cloud-image-directory-frontend/blob/main/.github/workflows/release.yaml).
 Finally the S3 bucket gets synchronized with the CDN provider in a reasonable interval.
