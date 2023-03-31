@@ -51,6 +51,7 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
             transform.TransformerIdxListImageLatestAWS,
             transform.TransformerIdxListImageLatestAZURE,
         ],
+        [],
     )
     print("run pipeline")
     results = pipeline.run(filenames)
