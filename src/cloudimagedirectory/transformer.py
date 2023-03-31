@@ -1,8 +1,8 @@
 import click
 
 from cloudimagedirectory.connection import connection
-from cloudimagedirectory.transform import transform
 from cloudimagedirectory.filter import filter
+from cloudimagedirectory.transform import transform
 
 
 @click.command()
