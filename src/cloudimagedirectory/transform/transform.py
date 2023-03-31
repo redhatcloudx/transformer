@@ -15,10 +15,12 @@ class Pipeline:
     """Builds a pipeline of transformer tasks."""
 
     transformers: list[Callable] = []
+    filter_funcs: list[Callable] = []
 
-    def __init__(self, src_conn, transformer_funcs: list[Callable]):
+    def __init__(self, src_conn, transformer_funcs: list[Callable], filter_funcs: list[Callable]):
         """Initialize the pipeline."""
         self.src_conn = src_conn
+        self.filter_funcs = filter_funcs
         for transformer_func in transformer_funcs:
             self.transformers.append(transformer_func(self.src_conn))
 
@@ -27,6 +29,9 @@ class Pipeline:
         results = data
         for transformer in self.transformers:
             results.extend(transformer.run(results))
+
+        for filter_func in self.filter_funcs:
+            results = filter_func(results)
         return results
 
 
