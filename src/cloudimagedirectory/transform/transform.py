@@ -18,7 +18,13 @@ class Pipeline:
     filter_funcs: list[Callable] = []
     idx_generators: list[Callable] = []
 
-    def __init__(self, src_conn, transformer_funcs: list[Callable], filter_funcs: list[Callable], idx_generator_funcs: list[Callable]):
+    def __init__(
+        self,
+        src_conn,
+        transformer_funcs: list[Callable],
+        filter_funcs: list[Callable],
+        idx_generator_funcs: list[Callable],
+    ):
         """Initialize the pipeline."""
         self.src_conn = src_conn
         self.filter_funcs = filter_funcs
