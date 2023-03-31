@@ -2,6 +2,7 @@ import click
 
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.transform import transform
+from cloudimagedirectory.filter import filter
 
 
 @click.command()
@@ -46,12 +47,17 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
             transform.TransformerAWS,
             transform.TransformerAZURE,
             transform.TransformerGoogle,
+        ],
+        [
+            filter.FilterImageByFilename("test"),
+            filter.FilterImageByFilename("beta"),
+        ],
+        [
             transform.TransformerIdxListImageLatest,
             transform.TransformerIdxListImageLatestGoogle,
             transform.TransformerIdxListImageLatestAWS,
             transform.TransformerIdxListImageLatestAZURE,
         ],
-        [],
     )
     print("run pipeline")
     results = pipeline.run(filenames)

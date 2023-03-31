@@ -16,13 +16,16 @@ class Pipeline:
 
     transformers: list[Callable] = []
     filter_funcs: list[Callable] = []
+    idx_generators: list[Callable] = []
 
-    def __init__(self, src_conn, transformer_funcs: list[Callable], filter_funcs: list[Callable]):
+    def __init__(self, src_conn, transformer_funcs: list[Callable], filter_funcs: list[Callable], idx_generator_funcs: list[Callable]):
         """Initialize the pipeline."""
         self.src_conn = src_conn
         self.filter_funcs = filter_funcs
         for transformer_func in transformer_funcs:
             self.transformers.append(transformer_func(self.src_conn))
+        for idx_generator_func in idx_generator_funcs:
+            self.idx_generators.append(idx_generator_func(self.src_conn))
 
     def run(self, data):
         """Run the pipeline."""
@@ -30,8 +33,23 @@ class Pipeline:
         for transformer in self.transformers:
             results.extend(transformer.run(results))
 
+        generated_pages = len(results)
+        print("total images: ", generated_pages)
+
         for filter_func in self.filter_funcs:
+            before = generated_pages
             results = filter_func(results)
+            after = len(results)
+            if before != after:
+                print(f"filtered {before - after} items")
+
+        generated_pages = len(results)
+
+        for idx_generator in self.idx_generators:
+            results.extend(idx_generator.run(results))
+
+        print(f"generated indexes: {len(results) - generated_pages}")
+
         return results
 
 
