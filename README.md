@@ -1,7 +1,7 @@
 # Cloud Image Directory
 
-This is an experiment project is a work in progress with a goal of making it easier 
-to find Red Hat Enterprise Linux™, Fedora and in the future a bunch of other linux images 
+This is an experiment project is a work in progress with a goal of making it easier
+to find Red Hat Enterprise Linux™, Fedora and in the future a bunch of other linux images
 at various public cloud providers.
 
 ## Components
@@ -12,13 +12,13 @@ It belongs to three other sub projects.
 
 - [cloud-image-retriever](https://github.com/redhatcloudx/cloud-image-retriever): Used to retrieve unstructured image data from public cloud providers.
 - [infrastructure](https://github.com/redhatcloudx/infrastructure): Defines the public cloud infrastructure [imagedirectory.cloud](https://imagedirectory.cloud/) needs.
-- [directory-frontend](https://github.com/redhatcloudx/cloud-image-directory-frontend) Used to visualize the dataset. 
+- [directory-frontend](https://github.com/redhatcloudx/cloud-image-directory-frontend) Used to visualize the dataset.
 
 ### Architecture diagram
 
 ![Architecture diagram](assets/arch-diagram.png)
 
-The Collector(`cloud-image-retriever`) fetches the image from different cloud providers on a predefined interval. This data gets then stored in a s3 bucket. 
+The Collector(`cloud-image-retriever`) fetches the image from different cloud providers on a predefined interval. This data gets then stored in a s3 bucket.
 After a successful collection, the transformer(`cloudimagedirectory-transformer`) reads the unstructured image data from the S3 bucket and generates static image content in a consumable format. The transformer generates also lookup tables to allow an efficient search from e.g. a js single page application. Once the transformation is complete, it's written back into the s3 bucket.
 In parallel frontend code is deployed by putting it into the s3 bucket too. This can be done by a [release pipeline](https://github.com/redhatcloudx/cloud-image-directory-frontend/blob/main/.github/workflows/release.yaml).
 Finally the S3 bucket gets synchronized with the CDN provider in a reasonable interval.
