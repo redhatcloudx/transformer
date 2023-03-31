@@ -1,7 +1,7 @@
 # Cloud Image Directory
 
 This is an experimental project and a work in progress with the goal of making it easier
-to find Red Hat Enterprise Linux™, Fedora and in the future a bunch of other linux images
+to find Red Hat Enterprise Linux™, Fedora and, in the future, a bunch of other linux images
 at various public cloud providers.
 
 ## Components
