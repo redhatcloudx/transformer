@@ -2685,6 +2685,142 @@
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
       "DeprecationTime": "2025-03-13T20:25:50.000Z"
+    },
+    {
+      "Architecture": "arm64",
+      "CreationDate": "2023-03-22T14:41:12.000Z",
+      "ImageId": "ami-0969878613b5beb4c",
+      "ImageLocation": "amazon/RHEL-8.8.0_HVM_BETA-20230228-arm64-22-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-005c5e19c13c3a97e",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-8.8.0_HVM_BETA-20230228-arm64-22-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-03-22T14:41:11.000Z"
+    },
+    {
+      "Architecture": "x86_64",
+      "CreationDate": "2023-03-22T14:43:18.000Z",
+      "ImageId": "ami-02b37ed26cf5ed8a1",
+      "ImageLocation": "amazon/RHEL-8.8.0_HVM_BETA-20230228-x86_64-22-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-0540dd8cada4bbede",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-8.8.0_HVM_BETA-20230228-x86_64-22-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-03-22T14:43:18.000Z"
+    },
+    {
+      "Architecture": "arm64",
+      "CreationDate": "2023-03-24T12:51:39.000Z",
+      "ImageId": "ami-0237daedd4a3b6c05",
+      "ImageLocation": "amazon/RHEL-9.2.0_HVM_BETA-20230306-arm64-4-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-05c67f93428eb2e82",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-9.2.0_HVM_BETA-20230306-arm64-4-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-03-24T12:51:39.000Z"
+    },
+    {
+      "Architecture": "x86_64",
+      "CreationDate": "2023-03-24T13:00:15.000Z",
+      "ImageId": "ami-0ec52e75da4c220a5",
+      "ImageLocation": "amazon/RHEL-9.2.0_HVM_BETA-20230306-x86_64-4-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-06a9987e247c9cdf6",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-9.2.0_HVM_BETA-20230306-x86_64-4-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-03-24T13:00:15.000Z"
     }
   ]
 }
