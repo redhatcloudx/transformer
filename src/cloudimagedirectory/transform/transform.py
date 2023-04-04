@@ -267,3 +267,21 @@ class TransformerAZURE(Transformer):
                     )
 
         return results
+
+
+class TransformerIdxListImageNames(Transformer):
+    """Genearate list of all image names."""
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is not raw.
+        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+
+        results = []
+
+        for entry in entries:
+            results.append(entry.filename)
+
+        results.sort()
+
+        return [connection.DataEntry("idx/list/image-names", results)]
