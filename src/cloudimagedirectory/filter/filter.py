@@ -6,7 +6,6 @@ import pytz  # type: ignore
 
 def FilterImageByFilename(word: str) -> Callable:
     """Filter images by filename."""
-
     print("filter images by filename: " + word)
     return lambda data: [
         d for d in data if not d.filename.lower().__contains__(word.lower())
@@ -15,7 +14,6 @@ def FilterImageByFilename(word: str) -> Callable:
 
 def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:
     """Filter images by latest date."""
-
     print(f"filter images by latest date: {latestDate}")
     latestDate = latestDate.replace(tzinfo=pytz.UTC)
 

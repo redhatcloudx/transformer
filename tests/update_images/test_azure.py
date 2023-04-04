@@ -47,7 +47,6 @@ def test_fail_to_get_access_token(mock_post: MagicMock) -> None:
 )
 def test_post_request_ambigious_request_error(mock_post: MagicMock) -> None:
     """Test executing safeguarded post request."""
-
     with pytest.raises(SystemExit):
         azure.get_access_token()
 
@@ -58,7 +57,6 @@ def test_post_request_ambigious_request_error(mock_post: MagicMock) -> None:
 )
 def test_get_request_ambigious_request_error(mock_get: MagicMock) -> None:
     """Test executing safeguarded get request."""
-
     with pytest.raises(SystemExit):
         azure.get_request("https://foo.bar", {"foo": "bar"}, {"foo": "bar"})
 
@@ -213,7 +211,6 @@ def test_fail_get_skus(mock_requests: MagicMock) -> None:
 @patch("cloudimagedirectory.update_images.azure.requests.get")
 def test_get_image_versions(mock_get: MagicMock):
     """Test retrieving and filtering Azure image versions."""
-
     mock_response = MagicMock()
     mock_response.status_code = 200
     mock_response.json.return_value = [
