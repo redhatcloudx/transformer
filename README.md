@@ -8,7 +8,7 @@ at various public cloud providers.
 
 This repository contains the tool `cloudimagedirectory-transformer`, which is used to transform the unstructured data provided by `cloud-image-retriever` into a predefined schema for the `directory-frontend`.
 
-It belongs to three other sub projects.
+It belongs to three other sub projects:
 
 - [cloud-image-retriever](https://github.com/redhatcloudx/cloud-image-retriever): Used to retrieve unstructured image data from public cloud providers.
 - [infrastructure](https://github.com/redhatcloudx/infrastructure): Defines the public cloud infrastructure [imagedirectory.cloud](https://imagedirectory.cloud/).
