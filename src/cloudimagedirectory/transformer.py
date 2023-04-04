@@ -1,4 +1,7 @@
+import datetime
+
 import click
+import pandas as pd
 
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.filter import filter
@@ -21,6 +24,14 @@ from cloudimagedirectory.transform import transform
     help="The path to the filesystem destination",
 )
 @click.option(
+    "-fu",
+    "--filter.until",
+    "filter_until",
+    prompt="Ignore all images after timestamp e.g. (YYYY-MM-DD)",
+    default="none",
+    help="Ignores all images after given timestamp",
+)
+@click.option(
     "-v", "--image.api.version", "api", prompt="api-version", help="Image api version"
 )
 @click.option(
@@ -31,7 +42,9 @@ from cloudimagedirectory.transform import transform
     prompt="files to process",
     help="List of predefined files to process",
 )
-def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> None:
+def run(
+    origin_path: str, destination_path: str, api: str, arg_files: str, filter_until: str
+) -> None:
     """Get content from filesystem format image data."""
     target: list[str] = []
     if arg_files != "none":
@@ -41,6 +54,19 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
     for file in filenames:
         print("input: " + file.filename)
 
+    filters = [
+        filter.FilterImageByFilename("test"),
+        filter.FilterImageByFilename("beta"),
+    ]
+
+    if filter_until == "default":
+        # NOTE: Subtract 2 years from current time
+        filter_after = datetime.datetime.now() - datetime.timedelta(days=2 * 365)
+        filters.append(filter.FilterImageByLatestUpdate(filter_after))
+    elif filter_until != "" and filter_until != "none":
+        filter_after = pd.to_datetime(filter_until)
+        filters.append(filter.FilterImageByLatestUpdate(filter_after))
+
     pipeline = transform.Pipeline(
         origin_connection,
         [
@@ -48,10 +74,7 @@ def run(origin_path: str, destination_path: str, api: str, arg_files: str) -> No
             transform.TransformerAZURE,
             transform.TransformerGoogle,
         ],
-        [
-            filter.FilterImageByFilename("test"),
-            filter.FilterImageByFilename("beta"),
-        ],
+        filters,
         [
             transform.TransformerIdxListImageLatest,
             transform.TransformerIdxListImageLatestGoogle,

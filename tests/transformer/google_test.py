@@ -15,6 +15,7 @@ def test_google_transformer_command(runner, tmp_path):
             f"-dp={tmp_path}",
             "-v",
             "output",
+            "--filter.until=none",
         ],
     )
 
