@@ -1,7 +1,7 @@
 from typing import Callable
 
 import pandas as pd
-import pytz # type: ignore
+import pytz  # type: ignore
 
 
 def FilterImageByFilename(word: str) -> Callable:
