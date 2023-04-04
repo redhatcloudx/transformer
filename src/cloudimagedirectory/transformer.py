@@ -76,6 +76,7 @@ def run(
         ],
         filters,
         [
+            transform.TransformerIdxListImageNames,
             transform.TransformerIdxListImageLatest,
             transform.TransformerIdxListImageLatestGoogle,
             transform.TransformerIdxListImageLatestAWS,
