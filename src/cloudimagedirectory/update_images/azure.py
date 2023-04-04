@@ -406,7 +406,6 @@ def format_image(image: dict[str, str]) -> dict[str, str]:
         JSON like structure containing streamlined image
         information.
     """
-
     additional_information = parse_image_version(image["version"])
 
     arch = image["architecture"]
