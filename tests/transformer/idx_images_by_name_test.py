@@ -2,7 +2,8 @@ import os
 
 
 def test_list_names_of_images():
-    """Run transformer end to end and generate a small list that contains image names."""
+    """Run transformer end to end and generate a small list that contains image
+    names."""
 
     assert 0 == os.system(
         "poetry run cloudimagedirectory-transformer -f "
