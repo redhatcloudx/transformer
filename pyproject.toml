@@ -46,7 +46,7 @@ pytest-randomly = "^3.12.0"
 pytest-xdist = {version = "^3.2.1", extras = ["psutil"]}
 pre-commit = "^3.2.2"
 ipython = "^8.12.0"
-pytest-sugar = "^0.9.6"
+pytest-sugar = "^0.9.7"
 rich = "^13.3.3"
 
 [tool.poetry.scripts]
