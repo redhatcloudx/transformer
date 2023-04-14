@@ -6,9 +6,10 @@ from typing import Callable
 
 from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
-from cloudimagedirectory.format import format_google
 from cloudimagedirectory.format import format_aws
 from cloudimagedirectory.format import format_azure
+from cloudimagedirectory.format import format_google
+
 
 class Pipeline:
     """Builds a pipeline of transformer tasks."""

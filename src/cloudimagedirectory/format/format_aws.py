@@ -1,5 +1,6 @@
 import re
 
+
 def parse_image_name_rhel(image_name: str) -> dict[str, str]:
     """Parse an AWS image name and return extra data about the image.
 
