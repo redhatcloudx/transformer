@@ -6,10 +6,9 @@ from typing import Callable
 
 from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
-from cloudimagedirectory.update_images import aws
-from cloudimagedirectory.update_images import azure
-from cloudimagedirectory.update_images import google
-
+from cloudimagedirectory.format import format_google
+from cloudimagedirectory.format import format_aws
+from cloudimagedirectory.format import format_azure
 
 class Pipeline:
     """Builds a pipeline of transformer tasks."""
@@ -198,7 +197,7 @@ class TransformerAWS(Transformer):
                 if content["OwnerId"] != config.AWS_RHEL_OWNER_ID:
                     continue
 
-                image_data = aws.format_image(content, region)
+                image_data = format_aws.image_rhel(content, region)
                 image_name = image_data["name"].replace(" ", "_").lower()
                 data_entry = connection.DataEntry(
                     f"aws/{region}/{image_name}", image_data
@@ -221,7 +220,7 @@ class TransformerGoogle(Transformer):
             for content in raw.content:
                 content["creation_timestamp"] = content["creationTimestamp"]
                 if "rhel" in content["name"]:
-                    image_data = google.format_image(content)
+                    image_data = format_google.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
                     data_entry = connection.DataEntry(
                         f"google/global/{image_name}", image_data
@@ -251,7 +250,7 @@ class TransformerAZURE(Transformer):
                 content["hyperVGeneration"] = "unknown"
 
                 try:
-                    image_data = azure.format_image(content)
+                    image_data = format_azure.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
                     data_entry = connection.DataEntry(
                         f"azure/{region}/{image_name}", image_data
