@@ -1,5 +1,6 @@
 import re
 
+
 def parse_image_name_rhel(image_name: str) -> dict[str, str]:
     """Parse an google image name and return version string.
 
@@ -22,6 +23,7 @@ def parse_image_name_rhel(image_name: str) -> dict[str, str]:
         return matches.groupdict()
 
     return {}
+
 
 def image_rhel(image: dict[str, str]) -> dict[str, str]:
     """Compile a dictionary of important image information.

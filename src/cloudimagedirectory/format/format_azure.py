@@ -1,5 +1,7 @@
 import re
+
 from datetime import datetime
+
 
 def parse_image_version_rhel(image_version: str) -> dict[str, str]:
     """Parse an AWS image name and return extra data about the image.
@@ -40,6 +42,7 @@ def convert_date_rhel(date: str) -> str:
         return datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
     except:
         return datetime.strptime(date, "%Y%d%m").strftime("%Y-%m-%d")
+
 
 def image_rhel(image: dict[str, str]) -> dict[str, str]:
     """Compile a dictionary of important image information.
