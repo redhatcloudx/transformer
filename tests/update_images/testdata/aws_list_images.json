@@ -1324,11 +1324,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2024-10-27T19:17:25.000Z"
+      "DeprecationTime": "2024-10-27T19:17:26.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2022-10-27T20:59:23.000Z",
+      "CreationDate": "2022-10-27T20:59:24.000Z",
       "ImageId": "ami-045393c081cabeb1f",
       "ImageLocation": "amazon/RHEL-7.9_HVM-20221027-x86_64-0-Hourly2-GP2",
       "ImageType": "machine",
@@ -1358,7 +1358,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2024-10-27T20:59:23.000Z"
+      "DeprecationTime": "2024-10-27T20:59:24.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -1396,7 +1396,7 @@
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2022-11-01T20:35:25.000Z",
+      "CreationDate": "2022-11-01T20:35:26.000Z",
       "ImageId": "ami-050c88925ffb2bb50",
       "ImageLocation": "amazon/RHEL-9.0.0_HVM-20221027-arm64-1-Hourly2-GP2",
       "ImageType": "machine",
@@ -1426,7 +1426,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2024-11-01T20:35:25.000Z"
+      "DeprecationTime": "2024-11-01T20:35:26.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -1460,7 +1460,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2024-11-02T00:07:56.000Z"
+      "DeprecationTime": "2024-11-02T00:07:57.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -1498,7 +1498,7 @@
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2022-11-03T18:01:07.000Z",
+      "CreationDate": "2022-11-03T18:01:08.000Z",
       "ImageId": "ami-0bd7418456aaf76fb",
       "ImageLocation": "amazon/RHEL_HA-8.7.0_HVM-20221101-x86_64-0-Hourly2-GP2",
       "ImageType": "machine",
@@ -1528,7 +1528,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2024-11-03T18:01:07.000Z"
+      "DeprecationTime": "2024-11-03T18:01:08.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -1566,7 +1566,7 @@
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2022-11-03T19:23:02.000Z",
+      "CreationDate": "2022-11-03T19:23:03.000Z",
       "ImageId": "ami-05c5c474dfb6af922",
       "ImageLocation": "amazon/RHEL-9.1.0_HVM-20221101-arm64-2-Hourly2-GP2",
       "ImageType": "machine",
@@ -1596,7 +1596,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2024-11-03T19:23:02.000Z"
+      "DeprecationTime": "2024-11-03T19:23:03.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -1770,7 +1770,7 @@
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-01-19T20:15:22.000Z",
+      "CreationDate": "2023-01-19T20:15:23.000Z",
       "ImageId": "ami-035782eed0f5ba992",
       "ImageLocation": "amazon/RHEL-8.6.0_HVM-20230118-x86_64-30-Hourly2-GP2",
       "ImageType": "machine",
@@ -1800,11 +1800,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-01-19T20:15:22.000Z"
+      "DeprecationTime": "2025-01-19T20:15:23.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-01-27T13:33:37.000Z",
+      "CreationDate": "2023-01-27T13:33:38.000Z",
       "ImageId": "ami-09b659801c07f881c",
       "ImageLocation": "amazon/RHEL_HA-8.6.0_HVM-20230118-x86_64-30-Hourly2-GP2",
       "ImageType": "machine",
@@ -1834,11 +1834,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-01-27T13:33:37.000Z"
+      "DeprecationTime": "2025-01-27T13:33:38.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-01-30T20:00:21.000Z",
+      "CreationDate": "2023-01-30T20:00:22.000Z",
       "ImageId": "ami-0c9978668f8d55984",
       "ImageLocation": "amazon/RHEL-9.0.0_HVM-20230127-x86_64-24-Hourly2-GP2",
       "ImageType": "machine",
@@ -1868,7 +1868,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-01-30T20:00:21.000Z"
+      "DeprecationTime": "2025-01-30T20:00:22.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -1906,7 +1906,7 @@
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-01-30T21:29:07.000Z",
+      "CreationDate": "2023-01-30T21:29:08.000Z",
       "ImageId": "ami-06006927c2a9f1bf4",
       "ImageLocation": "amazon/RHEL-8.4.0_HVM-20230125-arm64-35-Hourly2-GP2",
       "ImageType": "machine",
@@ -1936,7 +1936,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-01-30T21:29:07.000Z"
+      "DeprecationTime": "2025-01-30T21:29:08.000Z"
     },
     {
       "Architecture": "arm64",
@@ -2212,7 +2212,7 @@
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-02-23T11:52:46.000Z",
+      "CreationDate": "2023-02-23T11:52:47.000Z",
       "ImageId": "ami-0bd37d505c341e541",
       "ImageLocation": "amazon/RHEL-9.1.0_HVM-20230222-x86_64-39-Hourly2-GP2",
       "ImageType": "machine",
@@ -2242,11 +2242,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-02-23T11:52:46.000Z"
+      "DeprecationTime": "2025-02-23T11:52:47.000Z"
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-02-23T11:53:56.000Z",
+      "CreationDate": "2023-02-23T11:53:57.000Z",
       "ImageId": "ami-07769078f72b36c5e",
       "ImageLocation": "amazon/RHEL-9.1.0_HVM-20230222-arm64-39-Hourly2-GP2",
       "ImageType": "machine",
@@ -2276,7 +2276,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-02-23T11:53:56.000Z"
+      "DeprecationTime": "2025-02-23T11:53:57.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -2378,11 +2378,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-02T14:12:11.000Z"
+      "DeprecationTime": "2025-03-02T14:12:12.000Z"
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-03-02T20:46:56.000Z",
+      "CreationDate": "2023-03-02T20:46:57.000Z",
       "ImageId": "ami-067a79781fdcd5231",
       "ImageLocation": "amazon/RHEL-8.2.0_HVM-20230228-arm64-27-Hourly2-GP2",
       "ImageType": "machine",
@@ -2412,7 +2412,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-02T20:46:56.000Z"
+      "DeprecationTime": "2025-03-02T20:46:57.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -2446,7 +2446,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-02T20:47:16.000Z"
+      "DeprecationTime": "2025-03-02T20:47:17.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -2620,7 +2620,7 @@
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-03-13T20:25:16.000Z",
+      "CreationDate": "2023-03-13T20:25:17.000Z",
       "ImageId": "ami-016eb5d644c333ccb",
       "ImageLocation": "amazon/RHEL-9.0.0_HVM-20230313-x86_64-43-Hourly2-GP2",
       "ImageType": "machine",
@@ -2650,11 +2650,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-13T20:25:16.000Z"
+      "DeprecationTime": "2025-03-13T20:25:17.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-03-13T20:25:50.000Z",
+      "CreationDate": "2023-03-13T20:25:51.000Z",
       "ImageId": "ami-02978b79564e08f2f",
       "ImageLocation": "amazon/RHEL_HA-9.0.0_HVM-20230313-x86_64-43-Hourly2-GP2",
       "ImageType": "machine",
@@ -2684,7 +2684,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-13T20:25:50.000Z"
+      "DeprecationTime": "2025-03-13T20:25:51.000Z"
     },
     {
       "Architecture": "arm64",
@@ -2718,11 +2718,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-22T14:41:11.000Z"
+      "DeprecationTime": "2025-03-22T14:41:12.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-03-22T14:43:18.000Z",
+      "CreationDate": "2023-03-22T14:43:19.000Z",
       "ImageId": "ami-02b37ed26cf5ed8a1",
       "ImageLocation": "amazon/RHEL-8.8.0_HVM_BETA-20230228-x86_64-22-Hourly2-GP2",
       "ImageType": "machine",
@@ -2752,11 +2752,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-22T14:43:18.000Z"
+      "DeprecationTime": "2025-03-22T14:43:19.000Z"
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-03-24T12:51:39.000Z",
+      "CreationDate": "2023-03-24T12:51:40.000Z",
       "ImageId": "ami-0237daedd4a3b6c05",
       "ImageLocation": "amazon/RHEL-9.2.0_HVM_BETA-20230306-arm64-4-Hourly2-GP2",
       "ImageType": "machine",
@@ -2786,11 +2786,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-24T12:51:39.000Z"
+      "DeprecationTime": "2025-03-24T12:51:40.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-03-24T13:00:15.000Z",
+      "CreationDate": "2023-03-24T13:00:16.000Z",
       "ImageId": "ami-0ec52e75da4c220a5",
       "ImageLocation": "amazon/RHEL-9.2.0_HVM_BETA-20230306-x86_64-4-Hourly2-GP2",
       "ImageType": "machine",
@@ -2820,11 +2820,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-24T13:00:15.000Z"
+      "DeprecationTime": "2025-03-24T13:00:16.000Z"
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-03-31T17:21:57.000Z",
+      "CreationDate": "2023-03-31T17:21:58.000Z",
       "ImageId": "ami-05bcb9a3c5cfe07c9",
       "ImageLocation": "amazon/RHEL-8.7.0_HVM-20230330-arm64-56-Hourly2-GP2",
       "ImageType": "machine",
@@ -2854,11 +2854,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-31T17:21:57.000Z"
+      "DeprecationTime": "2025-03-31T17:21:58.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-03-31T17:22:05.000Z",
+      "CreationDate": "2023-03-31T17:22:06.000Z",
       "ImageId": "ami-0b324207d4bcaec61",
       "ImageLocation": "amazon/RHEL-8.7.0_HVM-20230330-x86_64-56-Hourly2-GP2",
       "ImageType": "machine",
@@ -2888,11 +2888,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-31T17:22:05.000Z"
+      "DeprecationTime": "2025-03-31T17:22:06.000Z"
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-03-31T17:46:24.000Z",
+      "CreationDate": "2023-03-31T17:46:25.000Z",
       "ImageId": "ami-036333d7d902c93ec",
       "ImageLocation": "amazon/RHEL_HA-8.7.0_HVM-20230330-x86_64-56-Hourly2-GP2",
       "ImageType": "machine",
@@ -2922,7 +2922,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-03-31T17:46:24.000Z"
+      "DeprecationTime": "2025-03-31T17:46:25.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -2960,7 +2960,7 @@
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-04-03T10:26:08.000Z",
+      "CreationDate": "2023-04-03T10:26:09.000Z",
       "ImageId": "ami-0299d82d412b669b3",
       "ImageLocation": "amazon/RHEL-8.1.0_HVM-20230331-arm64-30-Hourly2-GP2",
       "ImageType": "machine",
@@ -2990,11 +2990,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-04-03T10:26:08.000Z"
+      "DeprecationTime": "2025-04-03T10:26:09.000Z"
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-04-05T21:23:17.000Z",
+      "CreationDate": "2023-04-05T21:23:18.000Z",
       "ImageId": "ami-0120f8c37597e5851",
       "ImageLocation": "amazon/RHEL-9.1.0_HVM-20230404-arm64-54-Hourly2-GP2",
       "ImageType": "machine",
@@ -3024,7 +3024,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-04-05T21:23:17.000Z"
+      "DeprecationTime": "2025-04-05T21:23:18.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -3062,7 +3062,7 @@
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-04-05T21:31:40.000Z",
+      "CreationDate": "2023-04-05T21:31:41.000Z",
       "ImageId": "ami-074186d8abe62d212",
       "ImageLocation": "amazon/RHEL_HA-9.1.0_HVM-20230404-x86_64-54-Hourly2-GP2",
       "ImageType": "machine",
@@ -3092,11 +3092,11 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-04-05T21:31:40.000Z"
+      "DeprecationTime": "2025-04-05T21:31:41.000Z"
     },
     {
       "Architecture": "arm64",
-      "CreationDate": "2023-04-13T15:31:31.000Z",
+      "CreationDate": "2023-04-13T15:31:32.000Z",
       "ImageId": "ami-02b2ef5cf88a95237",
       "ImageLocation": "amazon/RHEL-8.6.0_HVM-20230411-arm64-60-Hourly2-GP2",
       "ImageType": "machine",
@@ -3126,7 +3126,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-04-13T15:31:31.000Z"
+      "DeprecationTime": "2025-04-13T15:31:32.000Z"
     },
     {
       "Architecture": "x86_64",
@@ -3164,7 +3164,7 @@
     },
     {
       "Architecture": "x86_64",
-      "CreationDate": "2023-04-13T15:34:42.000Z",
+      "CreationDate": "2023-04-13T15:34:43.000Z",
       "ImageId": "ami-010a00dbba8c2aa80",
       "ImageLocation": "amazon/RHEL_HA-8.6.0_HVM-20230411-x86_64-60-Hourly2-GP2",
       "ImageType": "machine",
@@ -3194,7 +3194,7 @@
       "RootDeviceType": "ebs",
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
-      "DeprecationTime": "2025-04-13T15:34:42.000Z"
+      "DeprecationTime": "2025-04-13T15:34:43.000Z"
     },
     {
       "Architecture": "arm64",
@@ -3297,6 +3297,210 @@
       "SriovNetSupport": "simple",
       "VirtualizationType": "hvm",
       "DeprecationTime": "2025-04-13T16:31:45.000Z"
+    },
+    {
+      "Architecture": "x86_64",
+      "CreationDate": "2023-04-21T09:56:05.000Z",
+      "ImageId": "ami-0b7a1555e5cee5ac4",
+      "ImageLocation": "amazon/RHEL_HA-9.0.0_HVM-20230418-x86_64-6-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux with High Availability",
+      "UsageOperation": "RunInstances:1010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-03aeb8459a6c427df",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL_HA-9.0.0_HVM-20230418-x86_64-6-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-04-21T09:56:05.000Z"
+    },
+    {
+      "Architecture": "x86_64",
+      "CreationDate": "2023-04-21T12:29:36.000Z",
+      "ImageId": "ami-0c7598841d2dba4f4",
+      "ImageLocation": "amazon/RHEL_HA-8.4.0_HVM-20230419-x86_64-41-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux with High Availability",
+      "UsageOperation": "RunInstances:1010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-08e735bed90a81080",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL_HA-8.4.0_HVM-20230419-x86_64-41-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-04-21T12:29:36.000Z"
+    },
+    {
+      "Architecture": "arm64",
+      "CreationDate": "2023-04-21T12:34:55.000Z",
+      "ImageId": "ami-0492aaaa8772e137a",
+      "ImageLocation": "amazon/RHEL-9.0.0_HVM-20230418-arm64-6-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-0628256e9abd56c9c",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-9.0.0_HVM-20230418-arm64-6-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-04-21T12:34:55.000Z"
+    },
+    {
+      "Architecture": "x86_64",
+      "CreationDate": "2023-04-21T12:35:11.000Z",
+      "ImageId": "ami-0d3706d92a5a0593c",
+      "ImageLocation": "amazon/RHEL-9.0.0_HVM-20230418-x86_64-6-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-04bca8b088c64f970",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-9.0.0_HVM-20230418-x86_64-6-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-04-21T12:35:11.000Z"
+    },
+    {
+      "Architecture": "x86_64",
+      "CreationDate": "2023-04-21T15:00:09.000Z",
+      "ImageId": "ami-08fded1e0d60784d2",
+      "ImageLocation": "amazon/RHEL-8.4.0_HVM-20230419-x86_64-41-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-0e1a468c1049b922b",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-8.4.0_HVM-20230419-x86_64-41-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-04-21T15:00:09.000Z"
+    },
+    {
+      "Architecture": "arm64",
+      "CreationDate": "2023-04-21T15:15:18.000Z",
+      "ImageId": "ami-05e7f2d065c8410af",
+      "ImageLocation": "amazon/RHEL-8.4.0_HVM-20230419-arm64-41-Hourly2-GP2",
+      "ImageType": "machine",
+      "Public": true,
+      "OwnerId": "309956199498",
+      "PlatformDetails": "Red Hat Enterprise Linux",
+      "UsageOperation": "RunInstances:0010",
+      "State": "available",
+      "BlockDeviceMappings": [
+        {
+          "DeviceName": "/dev/sda1",
+          "Ebs": {
+            "DeleteOnTermination": true,
+            "SnapshotId": "snap-0d61c1e19dedcea4c",
+            "VolumeSize": 10,
+            "VolumeType": "gp2",
+            "Encrypted": false
+          }
+        }
+      ],
+      "Description": "Provided by Red Hat, Inc.",
+      "EnaSupport": true,
+      "Hypervisor": "xen",
+      "ImageOwnerAlias": "amazon",
+      "Name": "RHEL-8.4.0_HVM-20230419-arm64-41-Hourly2-GP2",
+      "RootDeviceName": "/dev/sda1",
+      "RootDeviceType": "ebs",
+      "SriovNetSupport": "simple",
+      "VirtualizationType": "hvm",
+      "DeprecationTime": "2025-04-21T15:15:18.000Z"
     }
   ]
 }
