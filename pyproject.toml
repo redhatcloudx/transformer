@@ -50,7 +50,6 @@ pytest-sugar = "^0.9.7"
 rich = "^13.3.5"
 
 [tool.poetry.scripts]
-cloudimagedirectory-updater = "cloudimagedirectory.cli:cli"
 cloudimagedirectory-transformer = "cloudimagedirectory.transformer:run"
 
 [build-system]
