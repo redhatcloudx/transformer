@@ -1,6 +1,7 @@
 """Configuration for the locator."""
 from __future__ import annotations
 
+
 #     ___ _       _______
 #    /   | |     / / ___/
 #   / /| | | /| / /\__ \
