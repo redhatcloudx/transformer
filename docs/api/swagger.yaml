@@ -1,5 +1,5 @@
 openapi: 3.0.3
-info: 
+info:
   title: "Cloud Image Directory"
   description: |-
     This is an experimental project and a work in progress with the goal of making it easier to find Red Hat Enterprise Linux™, Fedora and, in the future, a bunch of other linux images at various public cloud providers. You can find more information about it at [https://github.com/redhatcloudx/cloud-image-directory](https://github.com/redhatcloudx/cloud-image-directory)
@@ -16,7 +16,7 @@ components:
           type: string
       example:
         provider: "aws"
-        
+
     Page_Details_Response:
       properties:
         first:
@@ -29,7 +29,7 @@ components:
         first: 0
         last: 224
         entries: 50
-  
+
     List_Latest_Images_Provider_Request:
       properties:
         provider:
@@ -83,7 +83,7 @@ components:
         ref: "aws/ap-south-2/rhel_8.1.0_hvm_arm64_hourly2"
         arch: "arm64"
         region: "ap-south-2"
-    
+
     Image_Names_Response:
       properties:
         name:
@@ -92,7 +92,7 @@ components:
         ["aws/af-south-1/rhel_7.9_hvm_x86_64_hourly2",
           "azure/australiaeast/osa_osa_311_x64",
           "google/global/rhel_7_x86_64"]
-        
+
     Image_Details_Request:
       properties:
         provider:
@@ -105,7 +105,7 @@ components:
         provider: "aws"
         region: "af-south-1"
         image-name: "rhel_7.9_ha_hvm_x86_64_hourly2"
-  
+
     Image_Details_Response:
       properties:
         name:
@@ -178,7 +178,7 @@ paths:
           description: "The given page does not exist."
         "5XX":
           description: "Unexpected error."
-  
+
   /images/v1/idx/list/sort-by-date-{provider}/pages:
     get:
       summary: List page details sorted by provider
@@ -233,7 +233,7 @@ paths:
           description: "The given page does not exist or the provider name is not valid."
         "5XX":
           description: "Unexpected error."
-  
+
   /images/v1/idx/list/image-names:
     get:
       summary: List all image names
@@ -249,7 +249,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Image_Names_Response"
-        "5XX":  
+        "5XX":
           description: "Unexpected error."
 
   /images/v1/{provider}/{region}/{image-name}:
@@ -287,4 +287,3 @@ paths:
           description: "The given provider,region or image-name does not exist."
         "5XX":
           description: "Unexpected error."
-
