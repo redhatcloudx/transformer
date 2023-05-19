@@ -1,3 +1,4 @@
+"""Manage content in the S3 bucket."""
 import json
 import os
 import pathlib
@@ -15,34 +16,45 @@ exception_not_implemented = Exception("Not implemented")
 
 class Connection:
     def connect(self):
+        """Base method for inheritance in a child class."""
         pass
 
     def get_filenames(self):
+        """Base method for inheritance in a child class."""
         pass
 
     def get_content(self, filename):
+        """Base method for inheritance in a child class."""
         pass
 
     def put_content(self, content, filename):
+        """Base method for inheritance in a child class."""
         pass
 
 
 class DataEntry:
+    """Handles a file from the bucket."""
+
     filename = ""
     content = None
 
     def __init__(self, filename, content):
+        """Constructor for DataEntry class."""
         self.filename = filename
         self.content = content
 
     def is_raw(self) -> bool:
+        """Check if the file is in raw format."""
         return self.filename.__contains__("raw/")
 
     def is_provided_by(self, input: str) -> bool:
+        """Check the origin of the file."""
         return self.filename.__contains__(input + "/")
 
 
 class ConnectionFS(Connection):
+    """Handles the connection to the filesystem."""
+
     origin_path: str = ""
     arg_files: list[str] = []
 
@@ -53,9 +65,11 @@ class ConnectionFS(Connection):
             self.origin_path = os.getcwd()
 
     def connect(self):
+        """Connect to the S3 bucket."""
         pass
 
     def get_filenames(self) -> list[DataEntry]:
+        """Get the list of files in the bucket."""
         if len(self.arg_files) != 0:
             result = []
             for file in self.arg_files:
@@ -74,6 +88,7 @@ class ConnectionFS(Connection):
         return data_files
 
     def get_content(self, data) -> DataEntry:
+        """Get the content of a file in the bucket."""
         content: str = ""
         content = Path(data.filename).read_text()
         if content == "":
@@ -82,6 +97,7 @@ class ConnectionFS(Connection):
         return DataEntry(data.filename, content)
 
     def put_content(self, data):
+        """Put the content of a file in the bucket."""
         json_data = json.dumps(data.content)
         tmp = data.filename.split("/")
         tmp = tmp[: len(tmp) - 1]

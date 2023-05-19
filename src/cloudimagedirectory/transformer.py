@@ -1,3 +1,4 @@
+"""Add command for transforming image data."""
 import datetime
 
 import click

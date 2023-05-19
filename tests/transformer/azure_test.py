@@ -1,3 +1,4 @@
+"""Tests for the Azure transformer."""
 import os
 
 
