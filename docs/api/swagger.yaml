@@ -1,0 +1,290 @@
+openapi: 3.0.3
+info: 
+  title: "Cloud Image Directory"
+  description: |-
+    This is an experimental project and a work in progress with the goal of making it easier to find Red Hat Enterprise Linux™, Fedora and, in the future, a bunch of other linux images at various public cloud providers. You can find more information about it at [https://github.com/redhatcloudx/cloud-image-directory](https://github.com/redhatcloudx/cloud-image-directory)
+  version: 0.0.1
+
+servers:
+  - url: https://imagedirectory.cloud/
+
+components:
+  schemas:
+    Page_Details_Provider_Request:
+      properties:
+        provider:
+          type: string
+      example:
+        provider: "aws"
+        
+    Page_Details_Response:
+      properties:
+        first:
+          type: integer
+        last:
+          type: integer
+        entries:
+          type: integer
+      example:
+        first: 0
+        last: 224
+        entries: 50
+  
+    List_Latest_Images_Provider_Request:
+      properties:
+        provider:
+          type: string
+        page:
+          type: integer
+      example:
+        provider: "aws"
+        page: 1
+
+    List_Latest_Images_Provider_Response:
+      properties:
+        name:
+          type: string
+        date:
+          type: string
+        provider:
+          type: string
+        ref:
+          type: string
+        arch:
+          type: string
+        region:
+          type: string
+      example:
+        name: "RHEL 8.1.0 hvm arm64 Hourly2"
+        date: "2023-05-15"
+        provider: "aws"
+        ref: "aws/ap-south-2/rhel_8.1.0_hvm_arm64_hourly2"
+        arch: "arm64"
+        region: "ap-south-2"
+
+    Latest_Images_Response:
+      properties:
+        name:
+          type: string
+        date:
+          type: string
+        provider:
+          type: string
+        ref:
+          type: string
+        arch:
+          type: string
+        region:
+          type: string
+      example:
+        name: "RHEL 8.1.0 hvm arm64 Hourly2"
+        date: "2023-05-15"
+        provider: "aws"
+        ref: "aws/ap-south-2/rhel_8.1.0_hvm_arm64_hourly2"
+        arch: "arm64"
+        region: "ap-south-2"
+    
+    Image_Names_Response:
+      properties:
+        name:
+          type: string
+      example:
+        ["aws/af-south-1/rhel_7.9_hvm_x86_64_hourly2",
+          "azure/australiaeast/osa_osa_311_x64",
+          "google/global/rhel_7_x86_64"]
+        
+    Image_Details_Request:
+      properties:
+        provider:
+          type: string
+        region:
+          type: string
+        image-name:
+          type: string
+      example:
+        provider: "aws"
+        region: "af-south-1"
+        image-name: "rhel_7.9_ha_hvm_x86_64_hourly2"
+  
+    Image_Details_Response:
+      properties:
+        name:
+          type: string
+        arch:
+          type: string
+        version:
+          type: string
+        imageId:
+          type: string
+        date:
+          type: string
+        virt:
+          type: string
+        selflink:
+          type: string
+        region:
+          type: string
+      example:
+        name: "RHEL 7.9 HA hvm x86_64 Hourly2"
+        arch: "x86_64"
+        version: "7.9"
+        imageId: "ami-0fb78bc7f205f25fb"
+        date: "2022-10-27T21:19:34.000Z"
+        virt: "hvm"
+        selflink: "https://console.aws.amazon.com/ec2/home?region=af-south-1#launchAmi=ami-0fb78bc7f205f25fb"
+        region: "af-south-1"
+
+paths:
+  /images/v1/idx/list/sort-by-date/pages:
+    get:
+      summary: List page details
+      description: ""
+      tags:
+        - "List Images"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Page_Details_Response"
+        "5XX":
+          description: "Unexpected error."
+
+  /images/v1/idx/list/sort-by-date/{page}:
+    get:
+      summary: List latest images
+      description: ""
+      parameters:
+        - in: path
+          required: true
+          name: page
+          schema:
+            type: string
+      tags:
+        - "List Images"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Latest_Images_Response"
+        "404":
+          description: "The given page does not exist."
+        "5XX":
+          description: "Unexpected error."
+  
+  /images/v1/idx/list/sort-by-date-{provider}/pages:
+    get:
+      summary: List page details sorted by provider
+      description: ""
+      parameters:
+      - in: path
+        required: true
+        name: provider
+        schema:
+          type: string
+      tags:
+        - "List Images"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Page_Details_Response"
+        "5XX":
+          description: "Unexpected error."
+
+  /images/v1/idx/list/sort-by-date-{provider}/{page}:
+    get:
+      summary: List latest images sorted by provider
+      description: ""
+      parameters:
+      - in: path
+        required: true
+        name: provider
+        schema:
+          type: string
+      - in: path
+        required: true
+        name: page
+        schema:
+          type: string
+      tags:
+        - "List Images"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/List_Latest_Images_Provider_Response"
+        "404":
+          description: "The given page does not exist or the provider name is not valid."
+        "5XX":
+          description: "Unexpected error."
+  
+  /images/v1/idx/list/image-names:
+    get:
+      summary: List all image names
+      description: ""
+      tags:
+        - "List Images"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Image_Names_Response"
+        "5XX":  
+          description: "Unexpected error."
+
+  /images/v1/{provider}/{region}/{image-name}:
+    get:
+      summary: Get image details
+      description: ""
+      parameters:
+      - in: path
+        required: true
+        name: provider
+        schema:
+          type: string
+      - in: path
+        required: true
+        name: region
+        schema:
+          type: string
+      - in: path
+        required: true
+        name: image-name
+        schema:
+          type: string
+      tags:
+        - "Detailed Image Information"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Image_Details_Response"
+        "404":
+          description: "The given provider,region or image-name does not exist."
+        "5XX":
+          description: "Unexpected error."
+
