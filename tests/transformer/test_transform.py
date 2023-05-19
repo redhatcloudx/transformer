@@ -1,8 +1,10 @@
+"""Test basic transformations for the latest images."""
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.transform import transform
 
 
 def test_transformeridxlistimagelatest():
+    """Test basic transformations for the latest images."""
     runner = transform.TransformerIdxListImageLatest(connection.Connection())
     chunk_size = 2
     runner.chunk_size = chunk_size

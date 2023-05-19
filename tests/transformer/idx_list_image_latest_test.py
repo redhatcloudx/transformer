@@ -1,3 +1,4 @@
+"""Test for transforming images and determining the latest image."""
 import os
 
 

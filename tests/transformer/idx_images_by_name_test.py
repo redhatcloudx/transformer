@@ -1,3 +1,4 @@
+"""Test for transforming images by name."""
 import os
 
 
