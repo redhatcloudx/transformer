@@ -1,5 +1,6 @@
 """Tests for the Google transformer."""
 import os
+import filecmp
 
 from cloudimagedirectory import transformer
 
@@ -19,14 +20,12 @@ def test_google_transformer_command(runner, tmp_path):
         ],
     )
 
-    # Ensure directories are made.
-    assert os.path.isdir(f"{tmp_path}/output/idx/list/sort-by-date")
+    # Ensure the directory was made.
     assert os.path.isdir(f"{tmp_path}/output/google/global")
 
-    # Check list by date.
-    with open(f"{tmp_path}/output/idx/list/sort-by-date/0") as fileh:
-        assert "RHEL 7 X86_64" in fileh.read()
+    # Get current directory
+    pwd = os.getcwd()
 
-    # Check image data.
-    with open(f"{tmp_path}/output/google/global/rhel_7_x86_64") as fileh:
-        assert "RHEL 7 X86_64" in fileh.read()
+    # Check image data by comparing the expected file and the output file byte by byte.
+    assert filecmp.cmp(f"{pwd}/tests/transformer/testdata/expected/google/global/rhel_7_x86_64",
+                f"{tmp_path}/output/google/global/rhel_7_x86_64")
