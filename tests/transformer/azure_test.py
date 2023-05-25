@@ -1,8 +1,9 @@
 """Tests for the Azure transformer."""
-import os
 import filecmp
+import os
 
 from cloudimagedirectory import transformer
+
 
 def test_transformer_azure(runner, tmp_path):
     """Verify that we can transform Azure data."""
@@ -26,5 +27,7 @@ def test_transformer_azure(runner, tmp_path):
     pwd = os.getcwd()
 
     # Check image data by comparing the expected file and the output file byte by byte.
-    assert filecmp.cmp(f"{pwd}/tests/transformer/testdata/expected/azure/eastus/osa_osa_311_x64",
-                f"{tmp_path}/output/azure/eastus/osa_osa_311_x64")
+    assert filecmp.cmp(
+        f"{pwd}/tests/transformer/testdata/expected/azure/eastus/osa_osa_311_x64",
+        f"{tmp_path}/output/azure/eastus/osa_osa_311_x64",
+    )
