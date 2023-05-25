@@ -1,6 +1,6 @@
 """Tests for the Google transformer."""
-import os
 import filecmp
+import os
 
 from cloudimagedirectory import transformer
 
@@ -27,5 +27,7 @@ def test_google_transformer_command(runner, tmp_path):
     pwd = os.getcwd()
 
     # Check image data by comparing the expected file and the output file byte by byte.
-    assert filecmp.cmp(f"{pwd}/tests/transformer/testdata/expected/google/global/rhel_7_x86_64",
-                f"{tmp_path}/output/google/global/rhel_7_x86_64")
+    assert filecmp.cmp(
+        f"{pwd}/tests/transformer/testdata/expected/google/global/rhel_7_x86_64",
+        f"{tmp_path}/output/google/global/rhel_7_x86_64",
+    )

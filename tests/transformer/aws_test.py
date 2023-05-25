@@ -1,6 +1,6 @@
 """Tests for the AWS transformer."""
-import os
 import filecmp
+import os
 
 from cloudimagedirectory import transformer
 
@@ -27,5 +27,7 @@ def test_aws_transformer_command(runner, tmp_path):
     pwd = os.getcwd()
 
     # Check image data by comparing the expected file and the output file byte by byte.
-    assert filecmp.cmp(f"{pwd}/tests/transformer/testdata/expected/aws/af-south-1/rhel_6.10_hvm_x86_64_hourly2",
-                f"{tmp_path}/output/aws/af-south-1/rhel_6.10_hvm_x86_64_hourly2")
+    assert filecmp.cmp(
+        f"{pwd}/tests/transformer/testdata/expected/aws/af-south-1/rhel_6.10_hvm_x86_64_hourly2",
+        f"{tmp_path}/output/aws/af-south-1/rhel_6.10_hvm_x86_64_hourly2",
+    )
