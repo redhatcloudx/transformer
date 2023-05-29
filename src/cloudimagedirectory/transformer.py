@@ -58,6 +58,7 @@ def run(
     filters = [
         filter.FilterImageByFilename("test"),
         filter.FilterImageByFilename("beta"),
+        filter.FilterImageByUniqueName(),
     ]
 
     if filter_until == "default":
