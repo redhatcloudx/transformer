@@ -74,3 +74,6 @@ repos:
     hooks:
       - id: interrogate
         args: [--fail-under=60, --verbose]
+        # Unable to interrogate scripts without the .py extension:
+        # https://github.com/econchick/interrogate/issues/104
+        files: \.(py)$
