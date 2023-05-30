@@ -1,1 +1,1 @@
-["aws/af-south-1/rhel_6.10_hvm_x86_64_hourly2", "azure/eastus/osa_osa_311_x64", "google/global/rhel_7_x86_64"]
+["aws/af-south-1/rhel_6.10_hvm_x86_64_hourly2", "azure/global/osa_osa_311_x64", "google/global/rhel_7_x86_64"]

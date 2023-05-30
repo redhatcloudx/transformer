@@ -213,6 +213,7 @@ class TransformerGoogle(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
+        # NOTE: Verify that the data is from Google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
 
         results = []
@@ -239,10 +240,10 @@ class TransformerAZURE(Transformer):
         # NOTE: Verify that the data is from Azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
 
+        seen = {}
         results = []
         for entry in entries:
             raw = self.src_conn.get_content(entry)
-            region = os.path.basename(raw.filename).split(".")[0]
 
             for content in raw.content:
                 if content["publisher"] != "RedHat":
@@ -254,8 +255,13 @@ class TransformerAZURE(Transformer):
                     image_data = format_azure.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
                     data_entry = connection.DataEntry(
-                        f"azure/{region}/{image_name}", image_data
+                        f"azure/global/{image_name}", image_data
                     )
+
+                    if image_name in seen:
+                        continue
+                    else:
+                        seen[image_name] = True
 
                     results.append(data_entry)
                 except:
