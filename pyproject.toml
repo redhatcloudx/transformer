@@ -37,6 +37,7 @@ structlog = "^23.1.0"
 pytz = "^2023.3"
 pandas = "^2.0.2"
 types-pytz = "^2023.3.0.0"
+zstandard = "^0.21.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"

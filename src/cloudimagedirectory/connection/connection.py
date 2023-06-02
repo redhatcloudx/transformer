@@ -2,6 +2,7 @@
 import json
 import os
 import pathlib
+import zstandard
 
 from pathlib import Path
 
@@ -81,6 +82,8 @@ class ConnectionFS(Connection):
         data_files = []
         p = pathlib.Path(dir)
         if p.exists():
+            for child in p.glob("**/*.json.zst"):
+                data_files.append(DataEntry(str(child.resolve()), None))
             for child in p.glob("**/*.json"):
                 data_files.append(DataEntry(str(child.resolve()), None))
         else:
@@ -90,7 +93,14 @@ class ConnectionFS(Connection):
     def get_content(self, data) -> DataEntry:
         """Get the content of a file in the bucket."""
         content: str = ""
-        content = Path(data.filename).read_text()
+        file_path: Path
+
+        if data.filename.endswith('zst'):
+            file_path = self.__decompress_zstandard_to_folder(data.filename)
+        else:
+            file_path = data.filename
+
+        content = Path(file_path).read_text()
         if content == "":
             content = "{}"
         content = json.loads(content)
@@ -104,3 +114,14 @@ class ConnectionFS(Connection):
         tmp = "/".join(tmp)
         os.makedirs(tmp, exist_ok=True)
         Path(data.filename).write_text(json_data + "\n")
+
+    def __decompress_zstandard_to_folder(self, input_file) -> Path:
+        input_file = Path(input_file)
+        folder = os.path.dirname(os.path.abspath(input_file))
+        with open(input_file, 'rb') as compressed:
+            decomp = zstandard.ZstdDecompressor()
+            output_path = Path(folder) / input_file.stem
+            with open(output_path, 'wb') as destination:
+                decomp.copy_stream(compressed, destination)    
+        return output_path
+

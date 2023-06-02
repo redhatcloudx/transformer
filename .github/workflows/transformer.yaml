@@ -62,5 +62,5 @@ jobs:
 
       - name: Upload to S3
         run: |
-          s3cmd sync --acl-public --delete-removed --mime-type application/json \
+          s3cmd sync --acl-public --mime-type application/json \
             $(pwd)/images/ s3://cloudx-json-bucket/images/
