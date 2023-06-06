@@ -10,7 +10,7 @@ def test_transformeridxlistimagelatest():
     runner.chunk_size = chunk_size
     data = [
         connection.DataEntry(
-            "aws/region-1/rhel-1",
+            "v1/aws/region-1/rhel-1",
             {
                 "date": "2019-01-01",
                 "name": "test1",
@@ -19,7 +19,7 @@ def test_transformeridxlistimagelatest():
             },
         ),
         connection.DataEntry(
-            "raw/azure/region-1",
+            "v1/raw/azure/region-1",
             {
                 "date": "2020-01-01",
                 "name": "invalid",
@@ -27,7 +27,7 @@ def test_transformeridxlistimagelatest():
             },
         ),
         connection.DataEntry(
-            "azure/region-1/rhel-1",
+            "v1/azure/region-1/rhel-1",
             {
                 "date": "2020-01-01",
                 "name": "test2",
@@ -36,7 +36,7 @@ def test_transformeridxlistimagelatest():
             },
         ),
         connection.DataEntry(
-            "google/region-1/rhel-1",
+            "v1/google/region-1/rhel-1",
             {
                 "date": "2022-01-01",
                 "name": "test3",
@@ -45,7 +45,7 @@ def test_transformeridxlistimagelatest():
             },
         ),
         connection.DataEntry(
-            "azure/region-1/rhel-1",
+            "v1/azure/region-1/rhel-1",
             {
                 "date": "2015-01-01",
                 "name": "test4",
@@ -56,13 +56,13 @@ def test_transformeridxlistimagelatest():
     ]
     results = runner.run(data)
     expected_page1 = connection.DataEntry(
-        "idx/list/sort-by-date/0",
+        "v1/idx/list/sort-by-date/0",
         [
             {
                 "date": "2022-01-01",
                 "name": "test3",
                 "arch": "arch3",
-                "ref": "google/region-1/rhel-1",
+                "ref": "v1/google/region-1/rhel-1",
                 "provider": "google",
                 "region": "region-1",
             },
@@ -70,7 +70,7 @@ def test_transformeridxlistimagelatest():
                 "date": "2020-01-01",
                 "name": "test2",
                 "arch": "arch2",
-                "ref": "azure/region-1/rhel-1",
+                "ref": "v1/azure/region-1/rhel-1",
                 "provider": "azure",
                 "region": "region-1",
             },
@@ -81,13 +81,13 @@ def test_transformeridxlistimagelatest():
     assert expected_page1.content == results[0].content
 
     expected_page2 = connection.DataEntry(
-        "idx/list/sort-by-date/1",
+        "v1/idx/list/sort-by-date/1",
         [
             {
                 "date": "2019-01-01",
                 "name": "test1",
                 "arch": "arch1",
-                "ref": "aws/region-1/rhel-1",
+                "ref": "v1/aws/region-1/rhel-1",
                 "provider": "aws",
                 "region": "region-1",
             },
@@ -95,7 +95,7 @@ def test_transformeridxlistimagelatest():
                 "date": "2015-01-01",
                 "name": "test4",
                 "arch": "arch4",
-                "ref": "azure/region-1/rhel-1",
+                "ref": "v1/azure/region-1/rhel-1",
                 "provider": "azure",
                 "region": "region-1",
             },

@@ -58,7 +58,7 @@ jobs:
 
       - name: run transformer
         run: |
-          poetry run cloudimagedirectory-transformer --origin.path=$(pwd)/raw --destination.path=$(pwd)/images --image.api.version v1 --input.files=none --filter.until=default
+          poetry run cloudimagedirectory-transformer --origin.path=$(pwd)/raw --destination.path=$(pwd)/images --input.files=none --filter.until=default
 
       - name: Upload to S3
         run: |

@@ -14,20 +14,18 @@ def test_transformer_azure(runner, tmp_path):
             "tests/transformer/testdata/input/raw/azure/eastus.json",
             "-op=.",
             f"-dp={tmp_path}",
-            "-v",
-            "output",
             "--filter.until=none",
         ],
     )
 
     # Ensure the directory was made.
-    assert os.path.isdir(f"{tmp_path}/output/azure/global")
+    assert os.path.isdir(f"{tmp_path}/v1/azure/global")
 
     # Get current directory
     pwd = os.getcwd()
 
     # Check image data by comparing the expected file and the output file byte by byte.
     assert filecmp.cmp(
-        f"{pwd}/tests/transformer/testdata/expected/azure/global/osa_osa_311_x64",
-        f"{tmp_path}/output/azure/global/osa_osa_311_x64",
+        f"{pwd}/tests/transformer/testdata/expected/v1/azure/global/osa_osa_311_x64",
+        f"{tmp_path}/v1/azure/global/osa_osa_311_x64",
     )
