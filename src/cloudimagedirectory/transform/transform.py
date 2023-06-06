@@ -107,8 +107,8 @@ class TransformerIdxListImageLatest(Transformer):
 
             region = "unkown"
             filename = entry.filename.split("/")
-            if len(filename) == 3:
-                region = filename[1]
+            if len(filename) == 4:
+                region = filename[2]
             else:
                 print("warn: could not determine region of image: " + entry.filename)
 
@@ -140,12 +140,12 @@ class TransformerIdxListImageLatest(Transformer):
         results = []
         for page in range(first, len(chunked_list)):
             data_entry = connection.DataEntry(
-                f"idx/list/sort-by-date{provider}/{page}", chunked_list[page]
+                f"v1/idx/list/sort-by-date{provider}/{page}", chunked_list[page]
             )
             results.append(data_entry)
 
         page_entry = connection.DataEntry(
-            f"idx/list/sort-by-date{provider}/pages",
+            f"v1/idx/list/sort-by-date{provider}/pages",
             {
                 "first": first,
                 "last": len(chunked_list) - 1,
@@ -201,7 +201,7 @@ class TransformerAWS(Transformer):
                 image_data = format_aws.image_rhel(content, region)
                 image_name = image_data["name"].replace(" ", "_").lower()
                 data_entry = connection.DataEntry(
-                    f"aws/{region}/{image_name}", image_data
+                    f"v1/aws/{region}/{image_name}", image_data
                 )
                 results.append(data_entry)
 
@@ -225,7 +225,7 @@ class TransformerGoogle(Transformer):
                     image_data = format_google.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
                     data_entry = connection.DataEntry(
-                        f"google/global/{image_name}", image_data
+                        f"v1/google/global/{image_name}", image_data
                     )
                     results.append(data_entry)
 
@@ -255,7 +255,7 @@ class TransformerAZURE(Transformer):
                     image_data = format_azure.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
                     data_entry = connection.DataEntry(
-                        f"azure/global/{image_name}", image_data
+                        f"v1/azure/global/{image_name}", image_data
                     )
 
                     if image_name in seen:
@@ -290,4 +290,4 @@ class TransformerIdxListImageNames(Transformer):
 
         results.sort()
 
-        return [connection.DataEntry("idx/list/image-names", results)]
+        return [connection.DataEntry("v1/idx/list/image-names", results)]

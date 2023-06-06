@@ -11,10 +11,10 @@ def test_list_names_of_images():
         "${PWD}/tests/transformer/testdata/input/raw/azure/eastus.json,"
         "${PWD}/tests/transformer/testdata/input/raw/google/all.json,"
         "${PWD}/tests/transformer/testdata/input/raw/aws/af-south-1.json"
-        " -op=${PWD} -dp=${PWD}/tests/transformer/testdata -v output"
+        " -op=${PWD} -dp=${PWD}/tests/transformer/testdata"
         " --filter.until=none"
     )
     assert 0 == os.system(
-        "diff ${PWD}/tests/transformer/testdata/expected/idx/list/image-names"
-        " ${PWD}/tests/transformer/testdata/output/idx/list/image-names"
+        "diff ${PWD}/tests/transformer/testdata/expected/v1/idx/list/image-names"
+        " ${PWD}/tests/transformer/testdata/v1/idx/list/image-names"
     )

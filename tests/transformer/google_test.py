@@ -14,20 +14,18 @@ def test_google_transformer_command(runner, tmp_path):
             "tests/transformer/testdata/input/raw/google/all.json",
             "-op=.",
             f"-dp={tmp_path}",
-            "-v",
-            "output",
             "--filter.until=none",
         ],
     )
 
     # Ensure the directory was made.
-    assert os.path.isdir(f"{tmp_path}/output/google/global")
+    assert os.path.isdir(f"{tmp_path}/v1/google/global")
 
     # Get current directory
     pwd = os.getcwd()
 
     # Check image data by comparing the expected file and the output file byte by byte.
     assert filecmp.cmp(
-        f"{pwd}/tests/transformer/testdata/expected/google/global/rhel_7_x86_64",
-        f"{tmp_path}/output/google/global/rhel_7_x86_64",
+        f"{pwd}/tests/transformer/testdata/expected/v1/google/global/rhel_7_x86_64",
+        f"{tmp_path}/v1/google/global/rhel_7_x86_64",
     )

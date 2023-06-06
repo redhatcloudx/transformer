@@ -33,9 +33,6 @@ from cloudimagedirectory.transform import transform
     help="Ignores all images after given timestamp",
 )
 @click.option(
-    "-v", "--image.api.version", "api", prompt="api-version", help="Image api version"
-)
-@click.option(
     "-f",
     "--input.files",
     "arg_files",
@@ -44,7 +41,7 @@ from cloudimagedirectory.transform import transform
     help="List of predefined files to process",
 )
 def run(
-    origin_path: str, destination_path: str, api: str, arg_files: str, filter_until: str
+    origin_path: str, destination_path: str, arg_files: str, filter_until: str
 ) -> None:
     """Get content from filesystem format image data."""
     target: list[str] = []
@@ -88,10 +85,7 @@ def run(
     print("run pipeline")
     results = pipeline.run(filenames)
 
-    version_prefix = ""
-    if api != "":
-        version_prefix = api + "/"
     for result in results:
-        result.filename = destination_path + "/" + version_prefix + result.filename
+        result.filename = destination_path + "/" + result.filename
         if not result.is_raw():
             origin_connection.put_content(result)
