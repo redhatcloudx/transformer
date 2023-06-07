@@ -1,5 +1,6 @@
 """Transforms the raw data into useful data."""
 import os
+import copy
 
 from datetime import datetime
 from typing import Callable
@@ -290,3 +291,32 @@ class TransformerIdxListImageNames(Transformer):
         results.sort()
 
         return [connection.DataEntry("v1/idx/list/image-names", results)]
+
+
+class TransformerV2All(Transformer):
+    """Genearate list of all image details."""
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is not raw.
+        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+
+        results = []
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")
+            if len(filename) < 3:
+                print(
+                    "warn: could not determine region or provider of image: "
+                    + entry.filename
+                )
+                continue
+
+            entry.content["provider"] = filename[1]
+            entry.content["region"] = filename[2]
+            results.append(entry.content)
+
+        results.sort(key=lambda x: x["name"], reverse=False)
+
+        return [connection.DataEntry("v2/all", results)]
