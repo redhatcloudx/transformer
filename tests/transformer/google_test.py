@@ -7,7 +7,7 @@ from cloudimagedirectory import transformer
 
 def test_google_transformer_command(runner, tmp_path):
     """Verify that we can transform Google data."""
-    runner.invoke(
+    result = runner.invoke(
         transformer.run,
         [
             "-f",
@@ -17,6 +17,13 @@ def test_google_transformer_command(runner, tmp_path):
             "--filter.until=none",
         ],
     )
+
+    if "0" != f"{result.exit_code}":
+        assert (
+            ""
+            == f"expected no error, but got code: {result.exit_code} and output:"
+            f" {result.output}"
+        )
 
     # Ensure the directory was made.
     assert os.path.isdir(f"{tmp_path}/v1/google/global")
