@@ -80,6 +80,7 @@ def run(
             transform.TransformerIdxListImageLatestGoogle,
             transform.TransformerIdxListImageLatestAWS,
             transform.TransformerIdxListImageLatestAZURE,
+            transform.TransformerV2All,
         ],
     )
     print("run pipeline")
