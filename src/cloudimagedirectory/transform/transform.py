@@ -14,10 +14,6 @@ from cloudimagedirectory.format import format_google
 class Pipeline:
     """Builds a pipeline of transformer tasks."""
 
-    transformers: list[Callable] = []
-    filter_funcs: list[Callable] = []
-    idx_generators: list[Callable] = []
-
     def __init__(
         self,
         src_conn,
@@ -26,6 +22,9 @@ class Pipeline:
         idx_generator_funcs: list[Callable],
     ):
         """Initialize the pipeline."""
+        self.transformers: list[Callable] = []
+        self.filter_funcs: list[Callable] = []
+        self.idx_generators: list[Callable] = []
         self.src_conn = src_conn
         self.filter_funcs = filter_funcs
         for transformer_func in transformer_funcs:
