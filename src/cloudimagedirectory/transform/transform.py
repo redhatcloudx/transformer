@@ -1,6 +1,6 @@
 """Transforms the raw data into useful data."""
-import os
 import copy
+import os
 
 from datetime import datetime
 from typing import Callable
