@@ -34,6 +34,7 @@ class Connection:
 
 class DataEntry:
     """Handles a file from the bucket."""
+
     def __init__(self, filename, content):
         """Constructor for DataEntry class."""
         self.filename = filename
@@ -50,6 +51,7 @@ class DataEntry:
 
 class ConnectionFS(Connection):
     """Handles the connection to the filesystem."""
+
     def __init__(self, origin_path: str, arg_files: list[str]):
         self.arg_files = arg_files
         self.origin_path = origin_path

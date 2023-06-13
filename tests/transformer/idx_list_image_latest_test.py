@@ -12,9 +12,11 @@ def test_list_names_of_images(runner, tmp_path):
         transformer.run,
         [
             "-f",
-            "tests/transformer/testdata/input/raw/google/all.json,"
-            "tests/transformer/testdata/input/raw/aws/af-south-1.json,"
-            "tests/transformer/testdata/input/raw/azure/eastus.json",
+            (
+                "tests/transformer/testdata/input/raw/google/all.json,"
+                "tests/transformer/testdata/input/raw/aws/af-south-1.json,"
+                "tests/transformer/testdata/input/raw/azure/eastus.json"
+            ),
             "-op=.",
             f"-dp={tmp_path}",
             "--filter.until=none",
