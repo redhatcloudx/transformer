@@ -38,11 +38,12 @@ def image_rhel(image: dict[str, str]) -> dict[str, str]:
     additional_information = parse_image_name_rhel(image["name"])
 
     arch = image["architecture"]
-    image_id = image["name"]
+    image_name = image["name"]
     date = image["creation_timestamp"]
     selflink = image["selfLink"]
     extprod = additional_information["extprod"]
     version = additional_information["version"].replace("-", ".")
+    image_id = image["selfLink"]
 
     name_parts = ["RHEL", version, extprod]
 
@@ -55,6 +56,19 @@ def image_rhel(image: dict[str, str]) -> dict[str, str]:
         name_parts.append(arch)
 
     name = " ".join([x for x in name_parts if x != ""])
+
+    selflink_list = selflink.split("/")
+    if len(selflink_list) < 7 or selflink_list[5] != "projects":
+        # NOTE: We extract the current project name from the original selflink.
+        # Example selflinks:
+        # https://.../compute/imagesDetail/projects/rhel-cloud/.../...
+        # https://.../compute/imagesDetail/projects/rhel-sap-cloud/.../...
+        raise Exception("invalid selflink")
+
+    project_name = selflink.split("/")[6]
+
+    selflink = "https://console.cloud.google.com/compute/imagesDetail/"
+    selflink += f"projects/{project_name}/global/images/{image_name}"
 
     return {
         "name": name,
