@@ -18,12 +18,7 @@ def test_google_transformer_command(runner, tmp_path):
         ],
     )
 
-    if "0" != f"{result.exit_code}":
-        assert (
-            ""
-            == f"expected no error, but got code: {result.exit_code} and output:"
-            f" {result.output}"
-        )
+    assert result.exit_code == 0, f"expected no error, but got code {result.exit_code} and output:\n{result.output}"
 
     # Ensure the directory was made.
     assert os.path.isdir(f"{tmp_path}/v1/google/global")

@@ -23,12 +23,7 @@ def test_list_names_of_images(runner, tmp_path):
         ],
     )
 
-    if "0" != f"{result.exit_code}":
-        assert (
-            ""
-            == f"expected no error, but got code: {result.exit_code} and output:"
-            f" {result.output}"
-        )
+    assert result.exit_code == 0, f"expected no error, but got code {result.exit_code} and output:\n{result.output}"
 
     # Get current directory
     pwd = os.getcwd()
