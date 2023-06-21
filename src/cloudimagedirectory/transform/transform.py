@@ -320,3 +320,85 @@ class TransformerV2All(Transformer):
         results.sort(key=lambda x: x["name"], reverse=False)
 
         return [connection.DataEntry("v2/all", results)]
+
+
+class TransformerV2ListOS(Transformer):
+    """Generate list of all available operating systems."""
+    description = {"rhel": "Red Hat Enterprise Linux"}
+    display_name = {"rhel": "Red Hat Enterprise Linux"}
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is not raw.
+        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+
+        results = []
+        os_list = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+
+            try:
+                filename = entry.filename.split("/")[3]
+                print(entry.filename)
+                os = filename.split("_")[0]
+
+                if os not in os_list:
+                    os_list[os] = 1
+                else:
+                    os_list[os] += 1
+            except:
+                print(f"Could not format image, filename: {filename}")
+
+        for os, val in list(os_list.items()):
+            if os == "rhel":
+                continue
+            elif os == "rh-ocp-worker":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rh-oke-worker":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rh-opp-worker":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rh-rhel":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rhel-arm64":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rhel-byos":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rhel-raw":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rhel-sap-apps":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rhel-sap-ha":
+                os_list["rhel"] += val
+                os_list.pop(os)
+            elif os == "rh":
+                os_list["rhel"] += val
+                os_list.pop(os)
+
+        for os, val in os_list.items():
+            desc = "no description"
+            if os in self.description:
+                desc = self.description[os]
+            disp_name = "no display name"
+            if os in self.display_name:
+                disp_name = self.display_name[os]
+
+            entry_object = {
+                "name": os,
+                "display_name": disp_name,
+                "description": desc,
+                "count": val,
+            }
+
+            results.append(entry_object)
+
+        return [connection.DataEntry("v2/os/list", results)]
