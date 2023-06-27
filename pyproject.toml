@@ -49,6 +49,8 @@ pre-commit = "^3.3.3"
 ipython = "^8.14.0"
 pytest-sugar = "^0.9.7"
 rich = "^13.4.2"
+docopt = "^0.6.2"
+requests-file = "^1.5.1"
 
 [tool.poetry.scripts]
 cloudimagedirectory-transformer = "cloudimagedirectory.transformer:run"
