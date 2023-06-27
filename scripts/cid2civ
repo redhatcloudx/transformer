@@ -1,0 +1,438 @@
+#!/usr/bin/env python3
+"""Download and transform CID data into CIV data.
+
+Download metadata about cloud images from Cloud Image Directory (CID)
+and prepare them for testing via Cloud Image Validation (CIV).
+
+Usage:
+    cid2civ [options] (download PROVIDER | analyze FILE | convert FILE)
+    cid2civ (-h | --help)
+
+Examples:
+    cid2civ download azure > cid.json
+    cid2civ convert cid.json > civ.json
+    cid2civ analyze cid.json
+
+Commands:
+    download  Fetch image data from CID and print them to stdout.
+    analyze   Print a summary about the downloaded image data.
+    convert   Transform CID data to CIV data and print them to stdout.
+
+Arguments:
+    PROVIDER  a cloud provider (aws, azure or google)
+    FILE      a local file with downloaded image data from CID
+
+Options:
+    -h, --help     Show this help message and exit.
+    --verbose      Show debug messages and unlimited data sets.
+    --website=URL  Specify the URL of Cloud Image Directory (CID)
+                   [default: https://imagedirectory.cloud].
+"""
+import collections
+import json
+import logging
+import sys
+import textwrap
+
+import docopt
+import requests
+import requests_file
+
+
+# Cloud providers.
+CLOUD_PROVIDER_AWS = "aws"
+CLOUD_PROVIDER_AZURE = "azure"
+CLOUD_PROVIDER_GOOGLE = "google"
+
+# API endpoints.
+ENDPOINT_IMAGES = "{website}/images/v1/idx/list/sort-by-date-{provider}/{page}"
+ENDPOINT_IMAGE = "{website}/images/v1/{image_ref}"
+
+
+def fetch_data(session: requests.Session, url: str) -> dict:
+    """Fetch JSON data from the specified endpoint.
+
+    Args:
+        session: A session for sending HTTP requests.
+        url: A REST API URL providing the JSON data.
+
+    Returns:
+        A JSON like structure with the fetched data.
+    """
+    logging.debug(f"Fetching {url}")
+    response = session.get(url)
+    logging.debug(response.json())
+    return response.json()
+
+
+def print_data(data):
+    """Print JSON data in a pretty formatting.
+
+    Args:
+        A JSON like structure to print.
+    """
+    print(json.dumps(data, indent=2))
+
+
+def fetch_image_refs(
+    session: requests.Session, website: str, provider: str
+) -> list[str]:
+    """Fetch references to images for a specific cloud provider.
+
+    Args:
+        session: A session for sending HTTP requests.
+        website: A string with a URL of Cloud Image Directory.
+        provider: A specification of the cloud provider (for example, 'aws').
+
+    Returns:
+        A list of references to images in Cloud Image Directory.
+    """
+    # Download info about pages.
+    url = ENDPOINT_IMAGES.format(website=website, provider=provider, page="pages")
+    pages = fetch_data(session, url)
+    first_page = pages["first"]
+    last_page = pages["last"]
+
+    # Download the image references.
+    image_refs = []
+
+    for i in range(first_page, last_page + 1):
+        # Fetch one page of images.
+        url = ENDPOINT_IMAGES.format(website=website, provider=provider, page=str(i))
+        page = fetch_data(session, url)
+
+        # Process entries on the page.
+        for entry in page:
+            image_ref = entry["ref"]
+            image_refs.append(image_ref)
+
+    # Filter out duplicate image references.
+    unique_refs = sorted(set(image_refs))
+    logging.info(f"Downloaded {len(image_refs)} references from {last_page} pages.")
+    logging.warning(
+        f"Skipping {len(image_refs) - len(unique_refs)} non-unique references."
+    )
+
+    return unique_refs
+
+
+def fetch_image_data(
+    session: requests.Session, website: str, image_refs: list[str]
+) -> list[dict]:
+    """Fetch data about referenced images.
+
+    Args:
+        session: A session for sending HTTP requests.
+        website: A string with a URL of Cloud Image Directory.
+        image_refs: A list of references to images in Cloud Image Directory.
+
+    Returns:
+        A list of JSON like structures with fetched image data.
+    """
+    image_data = []
+    total = len(image_refs)
+
+    for num, ref in enumerate(image_refs, start=1):
+        url = ENDPOINT_IMAGE.format(
+            website=website,
+            image_ref=ref,
+        )
+        data = fetch_data(session, url)
+        image_data.append(data)
+        logging.info(f"Downloaded {num}/{total} image data.")
+
+    return image_data
+
+
+def download_cid_data(website: str, provider: str) -> dict:
+    """Fetch data about images in Cloud Image Directory.
+
+    Args:
+        website: A string with a URL of Cloud Image Directory.
+        provider: A specification of the cloud provider (for example, 'aws').
+
+    Returns:
+        A JSON like structure with all image data of the specified cloud provider
+        downloaded from the specified Cloud Image Directory website.
+    """
+    providers = {
+        CLOUD_PROVIDER_AWS,
+        CLOUD_PROVIDER_AZURE,
+        CLOUD_PROVIDER_GOOGLE,
+    }
+
+    if provider not in providers:
+        raise ValueError(f"Unsupported provider: {provider}")
+
+    logging.info(f"Using the {provider.upper()} cloud provider.")
+    logging.info(f"Downloading image data from {website}")
+
+    with requests.Session() as session:
+        # Support local files for testing purposes.
+        session.mount("file://", requests_file.FileAdapter())
+
+        # Get references to images.
+        image_refs = fetch_image_refs(
+            session=session,
+            website=website,
+            provider=provider,
+        )
+
+        # Get data about images.
+        image_data = fetch_image_data(
+            session=session, website=website, image_refs=image_refs
+        )
+
+    return {
+        "provider": provider,
+        "images": image_data,
+        "total": len(image_data),
+    }
+
+
+def generate_civ_data(cid_data: dict) -> dict:
+    """Generate data for Cloud Image Validation.
+
+    Args:
+        cid_data: A JSON like structure with data fetched from Cloud Image Directory.
+
+    Returns:
+        A JSON like structure of resources for testing with Cloud Image Validation.
+    """
+    # Define supported generators of CIV resources.
+    generators = {
+        CLOUD_PROVIDER_AWS: _generate_civ_data_for_aws,
+        CLOUD_PROVIDER_AZURE: _generate_civ_data_for_azure,
+        CLOUD_PROVIDER_GOOGLE: _generate_civ_data_for_google,
+    }
+
+    # Process data from CID.
+    provider = cid_data["provider"]
+    images = cid_data["images"]
+
+    if provider not in generators.keys():
+        raise ValueError(f"Unsupported provider: {provider}")
+
+    logging.info(f"Using the {provider.upper()} cloud provider.")
+    logging.info(f"Generating CIV resources for {len(images)} images.")
+
+    generate = generators[provider]
+    civ_data = generate(images)
+    civ_instances = civ_data["instances"]
+
+    logging.info(f"Generated {len(civ_instances)} CIV resources.")
+    return civ_data
+
+
+def _generate_civ_data_for_aws(images: list[dict]) -> dict:
+    """Generate AWS data for Cloud Image Validation.
+
+    Args:
+        images: A list of JSON like structures with data about AWS images.
+
+    Returns:
+        A JSON like structure of resources for testing with Cloud Image Validation.
+    """
+    instances = []
+
+    instance_types = {"x86_64": "t3.micro", "arm64": "t4g.micro"}
+
+    for image in images:
+        # Process the image data.
+        arch = image["arch"]
+        ami = image["imageId"]
+        region = image["region"]
+        name = image["name"].replace(" ", "-")
+        instance_type = instance_types[arch]
+
+        # Generate the instance specification.
+        instances.append(
+            {
+                "name": name,
+                "ami": ami,
+                "region": region,
+                "username": "ec2-user",
+                "instance_type": instance_type,
+                "arch": arch,
+            }
+        )
+
+    return {"provider": "aws", "instances": instances}
+
+
+def _generate_civ_data_for_azure(images: list[dict]) -> dict:
+    """Generate Azure data for Cloud Image Validation.
+
+    Args:
+        images: A list of JSON like structures with data about Azure images.
+
+    Returns:
+        A JSON like structure of resources for testing with Cloud Image Validation.
+    """
+    instances = []
+
+    for image in images:
+        # Process the image data.
+        arch = image["arch"]
+        publisher, offer, sku, version = image["imageId"].split(":")
+        name = image["name"].replace(" ", "-")
+
+        # Generate the instance specification.
+        instances.append(
+            {
+                "name": name,
+                "image_definition": {
+                    "publisher": publisher,
+                    "offer": offer,
+                    "sku": sku,
+                    "version": version,
+                },
+                "arch": arch,
+            }
+        )
+
+    return {"provider": "azure", "instances": instances}
+
+
+def _generate_civ_data_for_google(images: list[dict]) -> dict:
+    """Generate Google data for Cloud Image Validation.
+
+    Args:
+        images: A list of JSON like structures with data about Google images.
+
+    Returns:
+        A JSON like structure of resources for testing with Cloud Image Validation.
+    """
+    instances = []
+
+    instance_types = {"X86_64": "e2-micro", "ARM64": "t2a-standard-1"}
+
+    for image in images:
+        # Process the image data.
+        arch = image["arch"]
+        self_link = image["selflink"]
+        name = image["name"].replace(" ", "-").lower()
+        instance_type = instance_types[arch]
+
+        # This is a temporary workaround of an issue in the CID metadata:
+        # https://github.com/redhatcloudx/cloud-image-directory/issues/547
+
+        if "sap" in name:
+            self_link = self_link.replace("rhel-cloud", "rhel-sap-cloud")
+
+        # Generate the instance specification.
+        instances.append(
+            {
+                "name": name,
+                "image": self_link,
+                "region": "us-central1",
+                "zone": "us-central1-a",
+                "username": "google",
+                "instance_type": instance_type,
+                "arch": arch,
+            }
+        )
+
+    return {"provider": "gcloud", "instances": instances}
+
+
+def analyze_cid_data(cid_data: dict, verbose: bool = False):
+    """Show a summary of data from Cloud Image Directory.
+
+    Args:
+        cid_data: A JSON like structure with data fetched from Cloud Image Directory.
+        verbose: If True, show a summary with complete data sets.
+    """
+    # Process data from CID.
+    provider = cid_data["provider"]
+    images = cid_data["images"]
+
+    # Limit the data sets if requested.
+    limit = None if verbose else 10
+
+    # Collect data about specific attributes.
+    attributes = collections.defaultdict(set)
+
+    for image in images:
+        for name, value in sorted(image.items()):
+            attributes[name].add(value)
+
+    # Print collected data.
+    _print_value(f"Number of {provider.upper()} images", len(images))
+
+    configurations = set(map(str, images))
+    _print_value("Number of unique images (case-sensitive)", len(configurations))
+
+    configurations = set(map(str.lower, configurations))
+    _print_value("Number of unique images (case-insensitive", len(configurations))
+    _print_separator()
+
+    _print_list(f"Names of attributes", attributes.keys())
+
+    for name, values in attributes.items():
+        _print_list(f"Values of the '{name}' attribute", values, limit=limit)
+
+
+def _print_separator():
+    """Print a separator."""
+    print()
+
+
+def _print_value(description, value):
+    """Print one line with a value."""
+    print(f"{description}: {value}")
+
+
+def _print_list(description, values, limit=None, indent=2):
+    """Print multiples lines with a list of values."""
+    limit = len(values) if limit is None else limit
+    reduced = sorted(values)[: min(limit, len(values))]
+    indented = textwrap.indent("\n".join(reduced), prefix=" " * indent)
+    print(f"{description} ({len(reduced)} out of {len(values)}):\n{indented}\n")
+
+
+def main():
+    """Run the cid2civ script."""
+    # Process the cmdline options.
+    options = docopt.docopt(__doc__)
+    website = options["--website"]
+    verbose = options["--verbose"]
+
+    # Set up logging to stderr.
+    level = logging.DEBUG if verbose else logging.INFO
+    logging.basicConfig(stream=sys.stderr, level=level)
+
+    # Process the requested command.
+    if options["download"]:
+        # Only fetch the CID data.
+        provider = options["PROVIDER"]
+        out_data = download_cid_data(
+            website=website,
+            provider=provider,
+        )
+        print_data(out_data)
+
+    elif options["convert"]:
+        # Read the CID data from a file.
+        with open(options["FILE"]) as f:
+            in_data = json.load(f)
+
+        # Generate the CIV data.
+        out_data = generate_civ_data(cid_data=in_data)
+        print_data(out_data)
+
+    elif options["analyze"]:
+        # Read the CID data from a file.
+        with open(options["FILE"]) as f:
+            in_data = json.load(f)
+
+        # Analyze the CID data and quit.
+        analyze_cid_data(
+            cid_data=in_data,
+            verbose=verbose,
+        )
+
+
+if __name__ == "__main__":
+    # Run the cid2civ script.
+    main()

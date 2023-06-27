@@ -11,7 +11,7 @@ This repository contains the tool `cloudimagedirectory-transformer`, which is us
 It belongs to three other sub projects:
 
 - [cloud-image-retriever](https://github.com/redhatcloudx/cloud-image-retriever): Used to retrieve unstructured image data from public cloud providers.
-- [infrastructure](https://github.com/redhatcloudx/infrastructure): Defines the public cloud infrastructure [imagedirectory.cloud](https://imagedirectory.cloud/).
+- [infrastructure](https://github.com/redhatcloudx/infrastructure): Defines the public cloud infrastructure [imagedirectory.cloud].
 - [directory-frontend](https://github.com/redhatcloudx/cloud-image-directory-frontend) Used to visualize the dataset.
 
 ### Architecture diagram
@@ -59,10 +59,31 @@ poetry add --group dev bar
 
 Use poetry to run pytest:
 
-```commandline
+```console
 # Run all tests, including end-to-end tests that call out to cloud APIs:
 poetry run pytest
 ```
 
+## Validating images
+
+Use the `cid2civ` script to download image metadata from [imagedirectory.cloud], analyze them
+and generate files for testing via the [cloud image validation tool].
+
+```console
+# Print the supported arguments of the script:
+poetry run scripts/cid2civ --help
+
+# Download data about Azure images:
+poetry run scripts/cid2civ download azure > cid.json
+
+# Print a summary about the downloaded data:
+poetry run scripts/cid2civ analyze cid.json
+
+# Generate resources for the image validation:
+poetry run scripts/cid2civ convert cid.json > civ.json
+```
+
 [Poetry]: https://python-poetry.org/
 [installing poetry]: https://python-poetry.org/docs/#installation
+[cloud image validation tool]: https://github.com/osbuild/cloud-image-val/
+[imagedirectory.cloud]: https://imagedirectory.cloud/
