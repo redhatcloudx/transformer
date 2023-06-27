@@ -1,0 +1,29 @@
+Number of GOOGLE images: 1
+Number of unique images (case-sensitive): 1
+Number of unique images (case-insensitive: 1
+
+Names of attributes (6 out of 6):
+  arch
+  date
+  imageId
+  name
+  selflink
+  version
+
+Values of the 'arch' attribute (1 out of 1):
+  X86_64
+
+Values of the 'date' attribute (1 out of 1):
+  2023-03-06T12:57:17.210-08:00
+
+Values of the 'imageId' attribute (1 out of 1):
+  rhel-7-v20230306
+
+Values of the 'name' attribute (1 out of 1):
+  RHEL 7 X86_64
+
+Values of the 'selflink' attribute (1 out of 1):
+  https://console.cloud.google.com/compute/imagesDetail/projects/rhel-cloud/global/images/rhel-7-v20230306
+
+Values of the 'version' attribute (1 out of 1):
+  7

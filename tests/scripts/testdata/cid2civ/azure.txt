@@ -1,0 +1,29 @@
+Number of AZURE images: 1
+Number of unique images (case-sensitive): 1
+Number of unique images (case-insensitive: 1
+
+Names of attributes (6 out of 6):
+  arch
+  date
+  imageId
+  name
+  version
+  virt
+
+Values of the 'arch' attribute (1 out of 1):
+  x64
+
+Values of the 'date' attribute (1 out of 1):
+  2020-01-15
+
+Values of the 'imageId' attribute (1 out of 1):
+  RedHat:osa:osa_311:311.161.20200115
+
+Values of the 'name' attribute (1 out of 1):
+  osa osa_311 x64
+
+Values of the 'version' attribute (1 out of 1):
+  311.161
+
+Values of the 'virt' attribute (1 out of 1):
+  unknown

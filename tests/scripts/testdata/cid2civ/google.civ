@@ -1,0 +1,14 @@
+{
+  "provider": "gcloud",
+  "instances": [
+    {
+      "name": "rhel-7-x86_64",
+      "image": "https://console.cloud.google.com/compute/imagesDetail/projects/rhel-cloud/global/images/rhel-7-v20230306",
+      "region": "us-central1",
+      "zone": "us-central1-a",
+      "username": "google",
+      "instance_type": "e2-micro",
+      "arch": "X86_64"
+    }
+  ]
+}

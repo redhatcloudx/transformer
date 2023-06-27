@@ -1,0 +1,15 @@
+{
+  "provider": "azure",
+  "instances": [
+    {
+      "name": "osa-osa_311-x64",
+      "image_definition": {
+        "publisher": "RedHat",
+        "offer": "osa",
+        "sku": "osa_311",
+        "version": "311.161.20200115"
+      },
+      "arch": "x64"
+    }
+  ]
+}

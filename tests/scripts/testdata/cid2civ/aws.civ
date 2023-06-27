@@ -1,0 +1,13 @@
+{
+  "provider": "aws",
+  "instances": [
+    {
+      "name": "RHEL-6.10-hvm-x86_64-Hourly2",
+      "ami": "ami-0c22ca1423e1721e7",
+      "region": "af-south-1",
+      "username": "ec2-user",
+      "instance_type": "t3.micro",
+      "arch": "x86_64"
+    }
+  ]
+}
