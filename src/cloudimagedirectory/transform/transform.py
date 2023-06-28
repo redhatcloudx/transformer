@@ -324,6 +324,7 @@ class TransformerV2All(Transformer):
 
 class TransformerV2ListOS(Transformer):
     """Generate list of all available operating systems."""
+
     description = {"rhel": "Red Hat Enterprise Linux"}
     display_name = {"rhel": "Red Hat Enterprise Linux"}
 
@@ -350,47 +351,29 @@ class TransformerV2ListOS(Transformer):
             except:
                 print(f"Could not format image, filename: {filename}")
 
-        for os, val in list(os_list.items()):
-            if os == "rhel":
-                continue
-            elif os == "rh-ocp-worker":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rh-oke-worker":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rh-opp-worker":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rh-rhel":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rhel-arm64":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rhel-byos":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rhel-raw":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rhel-sap-apps":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rhel-sap-ha":
-                os_list["rhel"] += val
-                os_list.pop(os)
-            elif os == "rh":
-                os_list["rhel"] += val
-                os_list.pop(os)
+        rhel_products = {
+            "rh-ocp-worker",
+            "rh-oke-worker",
+            "rh-opp-worker",
+            "rh-rhel",
+            "rhel-arm64",
+            "rhel-byos",
+            "rhel-raw",
+            "rhel-sap-apps",
+            "rhel-sap-ha",
+            "rh",
+        }
 
-        for os, val in os_list.items():
-            desc = "no description"
-            if os in self.description:
-                desc = self.description[os]
-            disp_name = "no display name"
-            if os in self.display_name:
-                disp_name = self.display_name[os]
+        os_list_final = {}
+        for os, val in list(os_list.items()):
+            key = os
+            if os in rhel_products:
+                key = "rhel"
+            os_list_final[key] = os_list_final.get(key, 0) + val
+
+        for os, val in os_list_final.items():
+            desc = self.description.get(os, "no description")
+            disp_name = self.display_name.get(os, "no display name")
 
             entry_object = {
                 "name": os,
