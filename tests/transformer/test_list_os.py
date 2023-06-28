@@ -6,7 +6,7 @@ from cloudimagedirectory import transformer
 
 
 def test_V2ListOS(runner, tmp_path):
-    """Run transformer end to end and generate a list with all available 
+    """Run transformer end to end and generate a list with all available
     operating systems."""
     result = runner.invoke(
         transformer.run,
@@ -36,7 +36,9 @@ def test_V2ListOS(runner, tmp_path):
 
 def test_transformerV2ListOS():
     """Test list OS run method."""
-    runner = transformer.transform.TransformerV2ListOS(transformer.connection.Connection())
+    runner = transformer.transform.TransformerV2ListOS(
+        transformer.connection.Connection()
+    )
     chunk_size = 2
     runner.chunk_size = chunk_size
     data = [
@@ -74,8 +76,8 @@ def test_transformerV2ListOS():
                 "name": "test2",
                 "arch": "arch2",
                 "region": "region-1",
-            }
-        )
+            },
+        ),
     ]
     results = runner.run(data)
     expected = transformer.connection.DataEntry(
@@ -92,7 +94,7 @@ def test_transformerV2ListOS():
                 "display_name": "no display name",
                 "description": "no description",
                 "count": 1,
-            }
+            },
         ],
     )
 
