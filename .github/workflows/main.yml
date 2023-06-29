@@ -85,7 +85,7 @@ jobs:
 
       - name: Run pytest with live e2e tests
         if: env.AWS_ACCESS_KEY_ID != null
-        run: poetry run python -m pytest -n auto -p no:sugar -q tests/
+        run: poetry run python -m pytest -p no:sugar -q tests/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -97,7 +97,7 @@ jobs:
 
       - name: Run pytest with offline tests only
         if: env.SECRET_CHECK == null
-        run: poetry run python -m pytest -m "not e2e" -n auto -p no:sugar -q tests/
+        run: poetry run python -m pytest -m "not e2e" -p no:sugar -q tests/
         env:
           SECRET_CHECK: ${{ secrets.AWS_ACCESS_KEY_ID }}
 
