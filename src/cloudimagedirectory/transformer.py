@@ -55,7 +55,7 @@ def run(
     filters = [
         filter.FilterImageByFilename("test"),
         filter.FilterImageByFilename("beta"),
-        filter.FilterImageByUniqueName(),
+        filter.FilterImageByUniqueReference(),
     ]
 
     if filter_until == "default":
