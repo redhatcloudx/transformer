@@ -323,6 +323,7 @@ class TransformerV2All(Transformer):
         return [connection.DataEntry("v2/all", results)]
 
 
+
 class TransformerV2ListOS(Transformer):
     """Generate list of all available operating systems."""
 
@@ -395,3 +396,46 @@ class TransformerV2ListOS(Transformer):
             results.append(entry_object)
 
         return [connection.DataEntry("v2/os/list", results)]
+
+class TransformerV2ListProducts(Transformer):
+    """Generate a list for all available products in a specific os."""
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is not raw.
+        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+
+        results = []
+        product_list = {}
+        os_list = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")[3]
+            os = filename.split("_")[0]
+
+            if os not in os_list:
+                os_list[os] = 1
+
+            try:
+                filename = entry.filename.split("/")[3]
+                if entry.is_provided_by("aws"):
+                    product = filename.split("_")[2]
+                    print("product aws: " + product)
+                elif entry.is_provided_by("azure"):
+                    product = filename.split("_")[0]
+                    print("product azure: " + product)
+                elif entry.is_provided_by("google"):
+                    product = filename.split("_")[2]
+                    print("product google: " + product)
+
+                if product not in product_list:
+                    product_list[product] = 1
+
+                print(product_list)
+                results.append(entry)
+
+            except:
+                print(f"Could not format image, filename: {filename}")
+
+        return []
