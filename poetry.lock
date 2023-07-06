@@ -117,7 +117,7 @@ python-versions = ">=3.7.0"
 
 [[package]]
 name = "click"
-version = "8.1.3"
+version = "8.1.4"
 description = "Composable command line interface toolkit"
 category = "main"
 optional = false
@@ -1196,7 +1196,7 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "5c2c766616fb57a1826f8287890ff4ccb9231ee7d729ae79a99b6e2c47f53870"
+content-hash = "7348c0b014bba70437104f23f2a9693fc789eee12ae993bab66d4aa5374fc2b0"
 
 [metadata.files]
 appnope = [
@@ -1317,8 +1317,8 @@ charset-normalizer = [
     {file = "charset_normalizer-3.1.0-py3-none-any.whl", hash = "sha256:3d9098b479e78c85080c98e1e35ff40b4a31d8953102bb0fd7d1b6f8a2111a3d"},
 ]
 click = [
-    {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
-    {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
+    {file = "click-8.1.4-py3-none-any.whl", hash = "sha256:2739815aaa5d2c986a88f1e9230c55e17f0caad3d958a5e13ad0797c166db9e3"},
+    {file = "click-8.1.4.tar.gz", hash = "sha256:b97d0c74955da062a7d4ef92fadb583806a585b2ea81958a81bd72726cbb8e37"},
 ]
 colorama = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
