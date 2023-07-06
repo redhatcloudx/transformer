@@ -308,7 +308,7 @@ requests = ["requests (>=2.20.0,<3.0.0.dev0)"]
 
 [[package]]
 name = "google-cloud-compute"
-version = "1.12.0"
+version = "1.12.1"
 description = "Google Cloud Compute API client library"
 category = "main"
 optional = false
@@ -1196,7 +1196,7 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "8bf867de0fff9c2b51a29db12b818244b7370c2e0a9e865cae496cefa35bc0b1"
+content-hash = "5c2c766616fb57a1826f8287890ff4ccb9231ee7d729ae79a99b6e2c47f53870"
 
 [metadata.files]
 appnope = [
@@ -1430,8 +1430,8 @@ google-auth = [
     {file = "google_auth-2.21.0-py2.py3-none-any.whl", hash = "sha256:da3f18d074fa0f5a7061d99b9af8cee3aa6189c987af7c1b07d94566b6b11268"},
 ]
 google-cloud-compute = [
-    {file = "google-cloud-compute-1.12.0.tar.gz", hash = "sha256:7792f4fc688a5427ea1f1f14192c7b04b0a58607f47c68f0fead29f0de61e97e"},
-    {file = "google_cloud_compute-1.12.0-py2.py3-none-any.whl", hash = "sha256:9838449b350dce561ebd9eab3accaf2000167d53cde4da00dc42f0f8e350b381"},
+    {file = "google-cloud-compute-1.12.1.tar.gz", hash = "sha256:e8ff230c0498a05b8dec9e81543e745b0da3676d6ca3259437a429c8d2acaa25"},
+    {file = "google_cloud_compute-1.12.1-py2.py3-none-any.whl", hash = "sha256:8c3a977cb4e40d3e3f8378abe6fffa275910bfe0167531f4cdb5cc68056a7b17"},
 ]
 googleapis-common-protos = [
     {file = "googleapis-common-protos-1.59.1.tar.gz", hash = "sha256:b35d530fe825fb4227857bc47ad84c33c809ac96f312e13182bdeaa2abe1178a"},
