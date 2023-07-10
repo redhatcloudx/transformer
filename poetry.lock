@@ -851,11 +851,11 @@ dev = ["pre-commit", "pytest-asyncio", "tox"]
 
 [[package]]
 name = "pytest-randomly"
-version = "3.12.0"
+version = "3.13.0"
 description = "Pytest plugin to randomly order tests and control random.seed."
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 
 [package.dependencies]
 importlib-metadata = {version = ">=3.6.0", markers = "python_version < \"3.10\""}
@@ -1196,7 +1196,7 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "f51d4128dc8b2f2d752c8ae30307e8f74488f337589d464e88a3b015113247c8"
+content-hash = "35868f949a61057cbba3cf08fd8af3b0fce1a166fce6f7cc6f7bf3c25be17411"
 
 [metadata.files]
 appnope = [
@@ -1758,8 +1758,8 @@ pytest-mock = [
     {file = "pytest_mock-3.11.1-py3-none-any.whl", hash = "sha256:21c279fff83d70763b05f8874cc9cfb3fcacd6d354247a976f9529d19f9acf39"},
 ]
 pytest-randomly = [
-    {file = "pytest-randomly-3.12.0.tar.gz", hash = "sha256:d60c2db71ac319aee0fc6c4110a7597d611a8b94a5590918bfa8583f00caccb2"},
-    {file = "pytest_randomly-3.12.0-py3-none-any.whl", hash = "sha256:f4f2e803daf5d1ba036cc22bf4fe9dbbf99389ec56b00e5cba732fb5c1d07fdd"},
+    {file = "pytest_randomly-3.13.0-py3-none-any.whl", hash = "sha256:e78d898ef4066f89744e5075083aa7fb6f0de07ffd70ca9c4435cda590cf1eac"},
+    {file = "pytest_randomly-3.13.0.tar.gz", hash = "sha256:079c78b94693189879fbd7304de4e147304f0811fa96249ea5619f2f1cd33df0"},
 ]
 pytest-sugar = [
     {file = "pytest-sugar-0.9.7.tar.gz", hash = "sha256:f1e74c1abfa55f7241cf7088032b6e378566f16b938f3f08905e2cf4494edd46"},
