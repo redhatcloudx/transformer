@@ -67,21 +67,22 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
     pipeline = transform.Pipeline(
         origin_connection,
         [
-            transform.TransformerAWS,
-            transform.TransformerAZURE,
-            transform.TransformerGoogle,
+            #transform.TransformerAWS,
+            #transform.TransformerAZURE,
+            #transform.TransformerGoogle,
+            transform.TransformerAWSV2RHEL,
+            transform.TransformerAzureV2RHEL,
+            transform.TransformerGoogleV2RHEL,
         ],
         filters,
         [
-            transform.TransformerIdxListImageNames,
-            transform.TransformerIdxListImageLatest,
-            transform.TransformerIdxListImageLatestGoogle,
-            transform.TransformerIdxListImageLatestAWS,
-            transform.TransformerIdxListImageLatestAZURE,
+            #transform.TransformerIdxListImageLatest,
+            #transform.TransformerIdxListImageLatestGoogle,
+            #transform.TransformerIdxListImageLatestAWS,
+            #transform.TransformerIdxListImageLatestAZURE,
             transform.TransformerV2All,
+            transform.TransformerV2ListProviderByOS,
             transform.TransformerV2ListOS,
-            transform.TransformerV2ListProducts,
-
         ],
     )
     print("run pipeline")

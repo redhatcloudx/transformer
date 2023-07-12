@@ -1,6 +1,8 @@
 """Transforms the raw data into useful data."""
 import copy
 import os
+import hashlib
+
 from datetime import datetime
 from typing import Any, Callable, no_type_check
 
@@ -323,7 +325,6 @@ class TransformerV2All(Transformer):
         return [connection.DataEntry("v2/all", results)]
 
 
-
 class TransformerV2ListOS(Transformer):
     """Generate list of all available operating systems."""
 
@@ -342,7 +343,8 @@ class TransformerV2ListOS(Transformer):
     def run(self, data: type[Transformer]) -> list:
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        # TODO: check that its the actual v2 entry and not a sub url.
+        entries = [x for x in data if x.is_API("v2")]
 
         results = []
         os_list = {}
@@ -351,8 +353,7 @@ class TransformerV2ListOS(Transformer):
             entry = copy.deepcopy(e)
 
             try:
-                filename = entry.filename.split("/")[3]
-                print(entry.filename)
+                filename = entry.filename.split("/")[2]
                 os = filename.split("_")[0]
 
                 if os not in os_list:
@@ -361,19 +362,6 @@ class TransformerV2ListOS(Transformer):
                     os_list[os] += 1
             except IndexError:
                 print(f"Could not format image, filename: {filename}")
-
-        rhel_products = {
-            "rh-ocp-worker",
-            "rh-oke-worker",
-            "rh-opp-worker",
-            "rh-rhel",
-            "rhel-arm64",
-            "rhel-byos",
-            "rhel-raw",
-            "rhel-sap-apps",
-            "rhel-sap-ha",
-            "rh",
-        }
 
         os_list_final: dict[Any, Any] = {}
         for os, val in list(os_list.items()):
@@ -395,47 +383,152 @@ class TransformerV2ListOS(Transformer):
 
             results.append(entry_object)
 
+        # NOTE: Add /list suffix to prevent collision with "os" folder.
         return [connection.DataEntry("v2/os/list", results)]
 
-class TransformerV2ListProducts(Transformer):
-    """Generate a list for all available products in a specific os."""
+
+class TransformerV2ListProviderByOS(Transformer):
+    """Generate a list for all available providers of a specific os."""
 
     def run(self, data):
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        # TODO: check that its the actual v2 entry and not a sub url.
+        entries = [x for x in data if x.is_API("v2")]
 
         results = []
-        product_list = {}
-        os_list = {}
+        providers = {}
 
         for e in entries:
             entry = copy.deepcopy(e)
-            filename = entry.filename.split("/")[3]
-            os = filename.split("_")[0]
+            filename = entry.filename.split("/")
+            os = filename[2]
+            provider = filename[3]
+            
+            if provider not in providers or os not in providers[provider]:
+                providers[provider] = {os: 1}
+                continue
 
-            if os not in os_list:
-                os_list[os] = 1
+            # NOTE: Counter of how many images of this explicit OS are available.
+            providers[provider][os] += 1
 
-            try:
-                filename = entry.filename.split("/")[3]
-                if entry.is_provided_by("aws"):
-                    product = filename.split("_")[2]
-                    print("product aws: " + product)
-                elif entry.is_provided_by("azure"):
-                    product = filename.split("_")[0]
-                    print("product azure: " + product)
-                elif entry.is_provided_by("google"):
-                    product = filename.split("_")[2]
-                    print("product google: " + product)
+        for provider, os_map in providers.items():
+            for os in os_map:
+                results.append(connection.DataEntry(f"v2/os/{os}/provider/list", providers))
 
-                if product not in product_list:
-                    product_list[product] = 1
+        return results    
 
-                print(product_list)
-                results.append(entry)
 
-            except:
-                print(f"Could not format image, filename: {filename}")
+class TransformerAWSV2RHEL(Transformer):
+    """Transform raw rhel AWS data into the schema."""
 
-        return []
+    def run(self, data):
+        """Transform the raw data."""
+        # NOTE: Verify that the data is raw.
+        entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
+
+        results = []
+        for entry in entries:
+            raw = self.src_conn.get_content(entry)
+            region = os.path.basename(raw.filename).split(".")[0]
+
+            for content in raw.content:
+                if content["OwnerId"] != config.AWS_RHEL_OWNER_ID:
+                    continue
+
+                image_data = format_aws.image_rhel(content, region)
+                image_name = image_data["name"].replace(" ", "_").lower()
+                os_name = "rhel"
+                provider = "aws"
+                version = image_data["version"]
+                # NOTE: Due to consistency issues between the cloud providers and the fact 
+                # that they do not all have unique numbers to identify their images, we decided
+                # to use this solution instead.
+                image_id = hashlib.sha1(image_name.encode()).hexdigest()
+
+                # NOTE: example of expected paths
+                # /v2/rhel/aws/8.6.0/eu-west-3/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
+                # /v2/rhel/aws/8.2.0/eu-north-1/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
+                path = f"/v2/{os_name}/{provider}/{version}/{region}/{image_id}"
+                print(path)
+                data_entry = connection.DataEntry(path, image_data)
+
+                results.append(data_entry)
+        return results
+
+
+class TransformerAzureV2RHEL(Transformer):
+    """Transform raw rhel Azure data into the schema."""
+
+    def run(self, data):
+        """Transform the raw data."""
+        # NOTE: Verify that the data is raw.
+        entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
+
+        results = []
+        for entry in entries:
+            raw = self.src_conn.get_content(entry)
+            region = os.path.basename(raw.filename).split(".")[0]
+
+            for content in raw.content:
+                if content["publisher"] != "RedHat":
+                    continue
+
+                content["hyperVGeneration"] = "unknown"
+
+                image_data = format_azure.image_rhel(content)
+                image_name = image_data["name"].replace(" ", "_").lower()
+                os_name = "rhel"
+                provider = "azure"
+                version = image_data["version"]
+                # NOTE: Due to consistency issues between the cloud providers and the fact 
+                # that they do not all have unique numbers to identify their images, we decided
+                # to use this solution instead.
+                image_id = hashlib.sha1(image_name.encode()).hexdigest()
+
+                # NOTE: example of expected paths
+                # /v2/rhel/azure/8.6.0/af-south-1/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
+                # /v2/rhel/azure/8.2.0/af-south-1/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
+                path = f"/v2/{os_name}/{provider}/{version}/{region}/{image_id}"
+                print(path)
+                data_entry = connection.DataEntry(path, image_data)
+
+                results.append(data_entry)
+        return results
+
+
+class TransformerGoogleV2RHEL(Transformer):
+    """Transform raw rhel Google data into the schema."""
+
+    def run(self, data):
+        """Transform the raw data."""
+        # NOTE: Verify that the data is raw.
+        entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
+
+        results = []
+        for entry in entries:
+            raw = self.src_conn.get_content(entry)
+            region = os.path.basename(raw.filename).split(".")[0]
+
+            for content in raw.content:
+                content["creation_timestamp"] = content["creationTimestamp"]
+                if "rhel" in content["name"]:
+                    image_data = format_google.image_rhel(content)
+                    image_name = image_data["name"].replace(" ", "_").lower()
+                    os_name = "rhel"
+                    provider = "google"
+                    version = image_data["version"]
+                    # NOTE: Due to consistency issues between the cloud providers and the fact 
+                    # that they do not all have unique numbers to identify their images, we decided
+                    # to use this solution instead.
+                    image_id = hashlib.sha1(image_name.encode()).hexdigest()
+
+                    # NOTE: example of expected paths
+                    # /v2/rhel/google/8.6.0/global/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
+                    # /v2/rhel/google/8.2.0/global/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
+                    path = f"/v2/{os_name}/{provider}/{version}/{region}/{image_id}"
+                    print(path)
+                    data_entry = connection.DataEntry(path, image_data)
+
+                    results.append(data_entry)
+        return results
