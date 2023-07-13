@@ -23,7 +23,7 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-boto3 = "^1.28.2"
+boto3 = "^1.28.3"
 requests = "^2.31.0"
 google-cloud-compute = "^1.13.0"
 click = "^8.1.4"
