@@ -487,7 +487,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "jsonschema"
-version = "4.18.2"
+version = "4.18.3"
 description = "An implementation of JSON Schema validation for Python"
 category = "main"
 optional = false
@@ -1196,7 +1196,7 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "0cc13f286c090ae0c214813c5f19ae39cd5bce8f07290bd7501608d519128e56"
+content-hash = "2cd600bd1916983a72633b771d5810a1c7667c999e6501ff95d771ba55a32616"
 
 [metadata.files]
 appnope = [
@@ -1525,8 +1525,8 @@ jmespath = [
     {file = "jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"},
 ]
 jsonschema = [
-    {file = "jsonschema-4.18.2-py3-none-any.whl", hash = "sha256:159fdff1443b4c5ed900d4eeac6b928a3485f4aff5fba6edd1e25cd66bb46b39"},
-    {file = "jsonschema-4.18.2.tar.gz", hash = "sha256:af3855bfa30e83b2200a5fe12ab5eb92460e4d3b8e4efd34094aa637f7272a87"},
+    {file = "jsonschema-4.18.3-py3-none-any.whl", hash = "sha256:aab78b34c2de001c6b692232f08c21a97b436fe18e0b817bf0511046924fceef"},
+    {file = "jsonschema-4.18.3.tar.gz", hash = "sha256:64b7104d72efe856bea49ca4af37a14a9eba31b40bb7238179f3803130fd34d9"},
 ]
 jsonschema-specifications = [
     {file = "jsonschema_specifications-2023.6.1-py3-none-any.whl", hash = "sha256:3d2b82663aff01815f744bb5c7887e2121a63399b49b104a3c96145474d091d7"},
