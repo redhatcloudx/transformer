@@ -135,7 +135,4 @@ skip_empty = true
 
 [tool.coverage.run]
 branch = true
-source = ["carfinder"]
-
-[tool.bandit.assert_used]
-skips = ['*_test.py', '*/test_*.py']
+source = ["src/transformer"]
