@@ -1,6 +1,14 @@
 import re
 
 
+class InvalidSelfLink(Exception):
+    """Raised exception when a self link is invalid."""
+
+    def __init__(self):
+        """Constructor for InvalidSelfLink class."""
+        super().__init__("Invalid selflink")
+
+
 def parse_image_name_rhel(image_name: str) -> dict[str, str]:
     """Parse an google image name and return version string.
 
@@ -62,7 +70,7 @@ def image_rhel(image: dict[str, str]) -> dict[str, str]:
         # Example selflinks:
         # https://.../compute/imagesDetail/projects/rhel-cloud/.../...
         # https://.../compute/imagesDetail/projects/rhel-sap-cloud/.../...
-        raise Exception("invalid selflink")
+        raise InvalidSelfLink()
 
     project_name = selflink.split("/")[6]
 
