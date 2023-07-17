@@ -131,10 +131,11 @@ testpaths = [
 "tests/*" = ["S101"]
 
 [tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "if TYPE_CHECKING:"
-]
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+source = ["carfinder"]
 
 [tool.bandit.assert_used]
 skips = ['*_test.py', '*/test_*.py']
