@@ -74,7 +74,9 @@ class TransformerIdxListImageLatest(Transformer):
     chunk_size = 50
     provider = ""
 
-    def run(self, data):
+    # TODO: The ruff linter complains that this method is too complex. We might be able
+    # to break it up into more manageable chunks.
+    def run(self, data):  # noqa: C901
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
