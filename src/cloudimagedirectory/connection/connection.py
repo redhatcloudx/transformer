@@ -38,11 +38,11 @@ class DataEntry:
 
     def is_raw(self) -> bool:
         """Check if the file is in raw format."""
-        return self.filename.__contains__("raw/")
+        return "raw/" in self.filename
 
-    def is_provided_by(self, input: str) -> bool:
+    def is_provided_by(self, name: str) -> bool:
         """Check the origin of the file."""
-        return self.filename.__contains__(input + "/")
+        return f"{name}/" in self.filename
 
 
 class ConnectionFS(Connection):
