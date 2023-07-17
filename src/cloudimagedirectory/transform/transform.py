@@ -85,7 +85,7 @@ class TransformerIdxListImageLatest(Transformer):
             reverse=True,
         )
 
-        list = []
+        images_list = []
         for entry in entries:
             provider = "unknown"
             if entry.is_provided_by("aws"):
@@ -107,7 +107,7 @@ class TransformerIdxListImageLatest(Transformer):
             else:
                 print("warn: could not determine region of image: " + entry.filename)
 
-            list.append(
+            images_list.append(
                 {
                     "name": entry.content["name"],
                     "date": entry.content["date"].split("T")[0],
@@ -121,9 +121,9 @@ class TransformerIdxListImageLatest(Transformer):
         # NOTE: Split the list of images into equally sized chunkes
         chunked_list = []
         chunk = []
-        for i, item in enumerate(list, 1):
+        for i, item in enumerate(images_list, 1):
             chunk.append(item)
-            if len(list) == i or i % self.chunk_size == 0:
+            if len(images_list) == i or i % self.chunk_size == 0:
                 chunked_list.append(chunk)
                 chunk = []
 
