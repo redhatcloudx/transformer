@@ -15,9 +15,7 @@ def get_utc_datetime(date_string):
 def FilterImageByFilename(word: str) -> Callable:
     """Filter images by filename."""
     print("filter images by filename: " + word)
-    return lambda data: [
-        d for d in data if not d.filename.lower().__contains__(word.lower())
-    ]
+    return lambda data: [d for d in data if not d.filename.lower().__contains__(word.lower())]
 
 
 def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:
@@ -25,11 +23,7 @@ def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:
     print(f"filter images by latest date: {latestDate}")
     latestDate = latestDate.replace(tzinfo=pytz.UTC)
 
-    return lambda data: [
-        d
-        for d in data
-        if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate
-    ]
+    return lambda data: [d for d in data if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate]
 
 
 def FilterImageByUniqueName() -> Callable:

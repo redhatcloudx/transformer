@@ -19,10 +19,7 @@ def test_V2ListOS(runner, tmp_path):
         ],
     )
 
-    assert result.exit_code == 0, (
-        f"expected no error, but got code {result.exit_code} and"
-        f" output:\n{result.output}"
-    )
+    assert result.exit_code == 0, f"expected no error, but got code {result.exit_code} and output:\n{result.output}"
 
     # Get current directory
     pwd = os.getcwd()
@@ -36,9 +33,7 @@ def test_V2ListOS(runner, tmp_path):
 
 def test_transformerV2ListOS():
     """Test list OS run method."""
-    runner = transformer.transform.TransformerV2ListOS(
-        transformer.connection.Connection()
-    )
+    runner = transformer.transform.TransformerV2ListOS(transformer.connection.Connection())
     chunk_size = 2
     runner.chunk_size = chunk_size
     data = [

@@ -2,15 +2,11 @@
 import json
 import os
 import pathlib
-
 from pathlib import Path
-
 
 exception_not_connected = Exception("Client is not connected to s3 bucket")
 exception_already_connected = Exception("Client is already connected to s3 bucket")
-exception_path_not_existing = Exception(
-    "The given path to the filesystem doesn't exist"
-)
+exception_path_not_existing = Exception("The given path to the filesystem doesn't exist")
 exception_not_implemented = Exception("Not implemented")
 
 
