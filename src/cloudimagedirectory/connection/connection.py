@@ -67,9 +67,9 @@ class ConnectionFS(Connection):
             return result
         return self.__list_files(self.origin_path)
 
-    def __list_files(self, dir: str) -> list[DataEntry]:
+    def __list_files(self, directory: str) -> list[DataEntry]:
         data_files = []
-        p = pathlib.Path(dir)
+        p = pathlib.Path(directory)
         if p.exists():
             for child in p.glob("**/*.json"):
                 data_files.append(DataEntry(str(child.resolve()), None))
