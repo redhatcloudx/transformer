@@ -63,11 +63,9 @@ src_paths = ["src", "tests"]
 extend_skip = ["setup.py"]
 
 [tool.black]
-target-version = ['py39']
+line-length = 120
+target-version = ['py37']
 preview = true
-force-exclude = '''
-.*/setup\.py$
-'''
 
 [tool.ruff]
 target-version = "py37"
