@@ -37,7 +37,7 @@ def convert_date_rhel(date: str) -> str:
     """
     try:
         return datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-    except:
+    except ValueError:
         return datetime.strptime(date, "%Y%d%m").strftime("%Y-%m-%d")
 
 
