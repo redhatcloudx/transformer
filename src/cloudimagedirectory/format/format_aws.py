@@ -64,9 +64,7 @@ def image_rhel(image: dict[str, str], region: str) -> dict[str, str]:
     name_parts = ["RHEL", version, intprod, extprod, virt_type, arch, billing, beta]
 
     name = " ".join([x for x in name_parts if x != ""])
-    selflink = (
-        f"https://console.aws.amazon.com/ec2/home?region={region}#launchAmi={image_id}"
-    )
+    selflink = f"https://console.aws.amazon.com/ec2/home?region={region}#launchAmi={image_id}"
 
     return {
         "name": name,

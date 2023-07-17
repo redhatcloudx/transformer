@@ -14,8 +14,7 @@ def parse_image_name_rhel(image_name: str) -> dict[str, str]:
         Dictionary with additional information about the image.
     """
     google_image_name_regex = (
-        r"(?P<product>\w*)-(?P<version>[\d]+(?:\-[\d]){0,3})-?"
-        r"(?P<extprod>\w*)?-v(?P<date>\d{4}\d{2}\d{2})"
+        r"(?P<product>\w*)-(?P<version>[\d]+(?:\-[\d]){0,3})-?" r"(?P<extprod>\w*)?-v(?P<date>\d{4}\d{2}\d{2})"
     )
 
     matches = re.match(google_image_name_regex, image_name, re.IGNORECASE)

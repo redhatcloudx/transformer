@@ -40,9 +40,7 @@ from cloudimagedirectory.transform import transform
     prompt="files to process",
     help="List of predefined files to process",
 )
-def run(
-    origin_path: str, destination_path: str, arg_files: str, filter_until: str
-) -> None:
+def run(origin_path: str, destination_path: str, arg_files: str, filter_until: str) -> None:
     """Get content from filesystem format image data."""
     target: list[str] = []
     if arg_files != "none":

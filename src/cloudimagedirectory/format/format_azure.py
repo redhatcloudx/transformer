@@ -1,5 +1,4 @@
 import re
-
 from datetime import datetime
 
 
@@ -21,9 +20,7 @@ def parse_image_version_rhel(image_version: str) -> dict[str, str]:
     #     version = RHEL version (such as 9.0)
     #     date = date image was produced
     #
-    aws_image_name_regex = (
-        r"(?P<version>[\d]+\.[\d]+(?:\.[\d]+)?)\.(?P<date>\d{4}\d{2}\d{2})"
-    )
+    aws_image_name_regex = r"(?P<version>[\d]+\.[\d]+(?:\.[\d]+)?)\.(?P<date>\d{4}\d{2}\d{2})"
     matches = re.match(aws_image_name_regex, image_version, re.IGNORECASE)
     if matches:
         return matches.groupdict()

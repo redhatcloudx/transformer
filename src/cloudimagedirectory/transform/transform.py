@@ -1,15 +1,12 @@
 """Transforms the raw data into useful data."""
 import copy
 import os
-
 from datetime import datetime
 from typing import Callable
 
 from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
-from cloudimagedirectory.format import format_aws
-from cloudimagedirectory.format import format_azure
-from cloudimagedirectory.format import format_google
+from cloudimagedirectory.format import format_aws, format_azure, format_google
 
 
 class Pipeline:
@@ -84,9 +81,7 @@ class TransformerIdxListImageLatest(Transformer):
 
         # NOTE: Sort the list of data by date
         entries.sort(
-            key=lambda x: datetime.strptime(
-                "".join(x.content["date"].split("T")[0]), "%Y-%m-%d"
-            ),
+            key=lambda x: datetime.strptime("".join(x.content["date"].split("T")[0]), "%Y-%m-%d"),
             reverse=True,
         )
 
@@ -139,9 +134,7 @@ class TransformerIdxListImageLatest(Transformer):
         first = 0
         results = []
         for page in range(first, len(chunked_list)):
-            data_entry = connection.DataEntry(
-                f"v1/idx/list/sort-by-date{provider}/{page}", chunked_list[page]
-            )
+            data_entry = connection.DataEntry(f"v1/idx/list/sort-by-date{provider}/{page}", chunked_list[page])
             results.append(data_entry)
 
         page_entry = connection.DataEntry(
@@ -200,9 +193,7 @@ class TransformerAWS(Transformer):
 
                 image_data = format_aws.image_rhel(content, region)
                 image_name = image_data["name"].replace(" ", "_").lower()
-                data_entry = connection.DataEntry(
-                    f"v1/aws/{region}/{image_name}", image_data
-                )
+                data_entry = connection.DataEntry(f"v1/aws/{region}/{image_name}", image_data)
                 results.append(data_entry)
 
         return results
@@ -224,9 +215,7 @@ class TransformerGoogle(Transformer):
                 if "rhel" in content["name"]:
                     image_data = format_google.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
-                    data_entry = connection.DataEntry(
-                        f"v1/google/global/{image_name}", image_data
-                    )
+                    data_entry = connection.DataEntry(f"v1/google/global/{image_name}", image_data)
                     results.append(data_entry)
 
         return results
@@ -254,9 +243,7 @@ class TransformerAZURE(Transformer):
                 try:
                     image_data = format_azure.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
-                    data_entry = connection.DataEntry(
-                        f"v1/azure/global/{image_name}", image_data
-                    )
+                    data_entry = connection.DataEntry(f"v1/azure/global/{image_name}", image_data)
 
                     if image_name in seen:
                         continue
@@ -265,12 +252,7 @@ class TransformerAZURE(Transformer):
 
                     results.append(data_entry)
                 except:
-                    print(
-                        "Could not format image, sku: "
-                        + content["sku"]
-                        + " offer: "
-                        + content["offer"]
-                    )
+                    print("Could not format image, sku: " + content["sku"] + " offer: " + content["offer"])
 
         return results
 
@@ -307,10 +289,7 @@ class TransformerV2All(Transformer):
             entry = copy.deepcopy(e)
             filename = entry.filename.split("/")
             if len(filename) < 3:
-                print(
-                    "warn: could not determine region or provider of image: "
-                    + entry.filename
-                )
+                print("warn: could not determine region or provider of image: " + entry.filename)
                 continue
 
             entry.content["provider"] = filename[1]

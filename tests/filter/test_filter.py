@@ -1,6 +1,5 @@
 """Tests for filters."""
 import pandas as pd
-
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.filter import filter
 

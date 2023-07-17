@@ -18,10 +18,7 @@ def test_transformer_azure(runner, tmp_path):
         ],
     )
 
-    assert result.exit_code == 0, (
-        f"expected no error, but got code {result.exit_code} and"
-        f" output:\n{result.output}"
-    )
+    assert result.exit_code == 0, f"expected no error, but got code {result.exit_code} and output:\n{result.output}"
 
     # Ensure the directory was made.
     assert os.path.isdir(f"{tmp_path}/v1/azure/global")

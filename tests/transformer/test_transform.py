@@ -106,4 +106,4 @@ def test_transformeridxlistimagelatest():
     assert expected_page2.content == results[1].content
 
     # verify that only two pages exist
-    assert 3 == len(results)
+    assert len(results) == 3
