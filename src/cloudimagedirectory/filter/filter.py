@@ -1,7 +1,7 @@
 from typing import Callable
 
 import pandas as pd
-import pytz  # type: ignore
+import pytz
 
 
 def get_utc_datetime(date_string):
