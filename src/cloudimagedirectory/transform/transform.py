@@ -1,15 +1,12 @@
 """Transforms the raw data into useful data."""
 import copy
 import os
-
 from datetime import datetime
 from typing import Callable
 
 from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
-from cloudimagedirectory.format import format_aws
-from cloudimagedirectory.format import format_azure
-from cloudimagedirectory.format import format_google
+from cloudimagedirectory.format import format_aws, format_azure, format_google
 
 
 class Pipeline:
@@ -307,8 +304,15 @@ class TransformerV2All(Transformer):
 class TransformerV2ListOS(Transformer):
     """Generate list of all available operating systems."""
 
-    description = {"rhel": "Red Hat Enterprise Linux"}
-    display_name = {"rhel": "Red Hat Enterprise Linux"}
+    @property
+    def description(self) -> dict:
+        """Return description."""
+        return {"rhel": "Red Hat Enterprise Linux"}
+
+    @property
+    def display_name(self) -> dict:
+        """Return display name."""
+        return {"rhel": "Red Hat Enterprise Linux"}
 
     def run(self, data):
         """Sort the raw data."""
