@@ -47,7 +47,7 @@ tox = "^4.6.4"
 cloudimagedirectory-transformer = "cloudimagedirectory.transformer:run"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.5.0"]
 build-backend = "poetry.core.masonry.api"
 
 # Much of what is below this line is borrowed from poetry's pyproject.yaml.
