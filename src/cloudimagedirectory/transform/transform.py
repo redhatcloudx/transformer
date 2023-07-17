@@ -1,12 +1,15 @@
 """Transforms the raw data into useful data."""
 import copy
 import os
+
 from datetime import datetime
 from typing import Callable
 
 from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
-from cloudimagedirectory.format import format_aws, format_azure, format_google
+from cloudimagedirectory.format import format_aws
+from cloudimagedirectory.format import format_azure
+from cloudimagedirectory.format import format_google
 
 
 class Pipeline:
@@ -251,7 +254,7 @@ class TransformerAZURE(Transformer):
                         seen[image_name] = True
 
                     results.append(data_entry)
-                except:
+                except KeyError:
                     print("Could not format image, sku: " + content["sku"] + " offer: " + content["offer"])
 
         return results
@@ -327,7 +330,7 @@ class TransformerV2ListOS(Transformer):
                     os_list[os] = 1
                 else:
                     os_list[os] += 1
-            except:
+            except IndexError:
                 print(f"Could not format image, filename: {filename}")
 
         rhel_products = {
