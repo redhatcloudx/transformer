@@ -1,10 +1,10 @@
-from typing import Callable
+from typing import Any, Callable
 
 import pandas as pd
 import pytz
 
 
-def get_utc_datetime(date_string):
+def get_utc_datetime(date_string: str) -> pd.Timestamp:  # type: ignore[no-any-unimported]
     """Get a timezone-aware comparable UTC datetime object.
 
     Returns: A datetime object representing the date string.
@@ -18,7 +18,7 @@ def FilterImageByFilename(word: str) -> Callable:
     return lambda data: [d for d in data if not d.filename.lower().__contains__(word.lower())]
 
 
-def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:
+def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ignore[no-any-unimported]
     """Filter images by latest date."""
     print(f"filter images by latest date: {latestDate}")
     latestDate = latestDate.replace(tzinfo=pytz.UTC)
@@ -32,12 +32,12 @@ def FilterImageByUniqueName() -> Callable:
     return _filter_by_unique_names
 
 
-def _filter_by_unique_names(data):
+def _filter_by_unique_names(data: list) -> list:
     """Return a list of latest images with unique names."""
     # Create a dictionary of image names and latest data entries.
     # The dictionary ensures uniqueness of the names and preserves
     # insertion order of the data entries.
-    unique_data = {}
+    unique_data: dict[Any, Any] = {}
 
     for entry in data:
         # Skip data entries without content.

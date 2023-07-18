@@ -4,7 +4,7 @@ import re
 class InvalidSelfLink(Exception):
     """Raised exception when a self link is invalid."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Constructor for InvalidSelfLink class."""
         super().__init__("Invalid selflink")
 
