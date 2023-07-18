@@ -37,7 +37,7 @@ class DataEntry:
         if path[1] != api:
             return False
         slash_count = self.filename.count("/")
-        if slash_count != 6:
+        if slash_count != 11:
             return False
         # NOTE: check length of hash value.
         if len(path[len(path)-1]) != 40:

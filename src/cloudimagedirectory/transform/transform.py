@@ -353,7 +353,7 @@ class TransformerV2ListOS(Transformer):
             entry = copy.deepcopy(e)
 
             try:
-                filename = entry.filename.split("/")[2]
+                filename = entry.filename.split("/")[3]
                 os = filename.split("_")[0]
 
                 if os not in os_list:
@@ -402,8 +402,8 @@ class TransformerV2ListProviderByOS(Transformer):
         for e in entries:
             entry = copy.deepcopy(e)
             filename = entry.filename.split("/")
-            os = filename[2]
-            provider = filename[3]
+            os = filename[3]
+            provider = filename[5]
             
             if provider not in providers or os not in providers[provider]:
                 providers[provider] = {os: 1}
@@ -415,7 +415,6 @@ class TransformerV2ListProviderByOS(Transformer):
         for provider, os_map in providers.items():
             for os in os_map:
                 results.append(connection.DataEntry(f"v2/os/{os}/provider/list", providers))
-
         return results    
 
 
@@ -449,8 +448,7 @@ class TransformerAWSV2RHEL(Transformer):
                 # NOTE: example of expected paths
                 # /v2/rhel/aws/8.6.0/eu-west-3/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
                 # /v2/rhel/aws/8.2.0/eu-north-1/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
-                path = f"/v2/{os_name}/{provider}/{version}/{region}/{image_id}"
-                print(path)
+                path = f"/v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
                 data_entry = connection.DataEntry(path, image_data)
 
                 results.append(data_entry)
@@ -489,8 +487,7 @@ class TransformerAzureV2RHEL(Transformer):
                 # NOTE: example of expected paths
                 # /v2/rhel/azure/8.6.0/af-south-1/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
                 # /v2/rhel/azure/8.2.0/af-south-1/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
-                path = f"/v2/{os_name}/{provider}/{version}/{region}/{image_id}"
-                print(path)
+                path = f"/v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
                 data_entry = connection.DataEntry(path, image_data)
 
                 results.append(data_entry)
@@ -526,8 +523,7 @@ class TransformerGoogleV2RHEL(Transformer):
                     # NOTE: example of expected paths
                     # /v2/rhel/google/8.6.0/global/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
                     # /v2/rhel/google/8.2.0/global/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
-                    path = f"/v2/{os_name}/{provider}/{version}/{region}/{image_id}"
-                    print(path)
+                    path = f"/v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
                     data_entry = connection.DataEntry(path, image_data)
 
                     results.append(data_entry)
