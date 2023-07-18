@@ -3,6 +3,7 @@ import json
 import os
 import pathlib
 from pathlib import Path
+from typing import Any, no_type_check
 
 exception_not_connected = Exception("Client is not connected to s3 bucket")
 exception_already_connected = Exception("Client is already connected to s3 bucket")
@@ -10,19 +11,26 @@ exception_path_not_existing = Exception("The given path to the filesystem doesn'
 exception_not_implemented = Exception("Not implemented")
 
 
+# TODO: This class is used in a couple of the tests, but it should probably be some kind
+# of abstract base class. Disabling the mypy checks for now but this is not ideal.
+@no_type_check
 class Connection:
+    @no_type_check
     def connect(self):
         """Base method for inheritance in a child class."""
         pass
 
+    @no_type_check
     def get_filenames(self):
         """Base method for inheritance in a child class."""
         pass
 
+    @no_type_check
     def get_content(self, filename):
         """Base method for inheritance in a child class."""
         pass
 
+    @no_type_check
     def put_content(self, content, filename):
         """Base method for inheritance in a child class."""
         pass
@@ -31,7 +39,8 @@ class Connection:
 class DataEntry:
     """Handles a file from the bucket."""
 
-    def __init__(self, filename, content):
+    # TODO: Set Any to a specific type.
+    def __init__(self, filename: str, content: Any) -> None:
         """Constructor for DataEntry class."""
         self.filename = filename
         self.content = content
@@ -54,7 +63,7 @@ class ConnectionFS(Connection):
         if self.origin_path == "":
             self.origin_path = os.getcwd()
 
-    def connect(self):
+    def connect(self) -> None:
         """Connect to the S3 bucket."""
         pass
 
@@ -77,7 +86,7 @@ class ConnectionFS(Connection):
             raise exception_path_not_existing
         return data_files
 
-    def get_content(self, data) -> DataEntry:
+    def get_content(self, data: DataEntry) -> DataEntry:
         """Get the content of a file in the bucket."""
         content: str = ""
         content = Path(data.filename).read_text()
@@ -86,11 +95,11 @@ class ConnectionFS(Connection):
         content = json.loads(content)
         return DataEntry(data.filename, content)
 
-    def put_content(self, data):
+    def put_content(self, data: DataEntry) -> None:
         """Put the content of a file in the bucket."""
         json_data = json.dumps(data.content)
         tmp = data.filename.split("/")
         tmp = tmp[: len(tmp) - 1]
-        tmp = "/".join(tmp)
-        os.makedirs(tmp, exist_ok=True)
+        directory_path = "/".join(tmp)
+        os.makedirs(directory_path, exist_ok=True)
         Path(data.filename).write_text(json_data + "\n")
