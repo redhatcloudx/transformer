@@ -5,10 +5,13 @@ import pathlib
 from pathlib import Path
 from typing import Any
 
-exception_not_connected = Exception("Client is not connected to s3 bucket")
-exception_already_connected = Exception("Client is already connected to s3 bucket")
-exception_path_not_existing = Exception("The given path to the filesystem doesn't exist")
-exception_not_implemented = Exception("Not implemented")
+
+class OriginPathDoesNotExist(Exception):
+    """Raise an exception if the origin path doesn't exist."""
+
+    def __init__(self, origin_path: str):
+        """Constructor for OriginPathDoesNotExist class."""
+        super().__init__(f"The origin path '{origin_path}' doesn't exist.")
 
 
 class DataEntry:
@@ -38,10 +41,6 @@ class ConnectionFS:
         if self.origin_path == "":
             self.origin_path = os.getcwd()
 
-    def connect(self) -> None:
-        """Connect to the S3 bucket."""
-        pass
-
     def get_filenames(self) -> list[DataEntry]:
         """Get the list of files in the bucket."""
         if len(self.arg_files) != 0:
@@ -58,7 +57,7 @@ class ConnectionFS:
             for child in p.glob("**/*.json"):
                 data_files.append(DataEntry(str(child.resolve()), None))
         else:
-            raise exception_path_not_existing
+            raise OriginPathDoesNotExist(directory)
         return data_files
 
     def get_content(self, data: DataEntry) -> DataEntry:
