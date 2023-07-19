@@ -24,7 +24,7 @@ def parse_image_name_rhel(image_name: str) -> dict[str, str]:
     #     date = date image was produced
     #     arch = architecture (such as x86_64 or arm64)
     #     release = release number of the image
-    #     billing = Hourly2 or Access2  #noqa: E800
+    #     billing = Hourly2 or Access2
     #     storage = storage type (almost always GP2)
     #
     aws_image_name_regex = (
