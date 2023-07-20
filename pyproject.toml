@@ -119,6 +119,10 @@ ignore = [
     "E731",
 ]
 
+[tool.ruff.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 5.
+max-complexity = 7
+
 [tool.pytest.ini_options]
 addopts = "-n auto --cov=src/cloudimagedirectory --cov-report=term-missing --cov-report=xml --cov-branch"
 testpaths = [
