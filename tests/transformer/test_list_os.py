@@ -31,9 +31,11 @@ def test_V2ListOS(runner, tmp_path):
     )
 
 
-def test_transformerV2ListOS():
+def test_transformerV2ListOS(tmpdir):
     """Test list OS run method."""
-    runner = transformer.transform.TransformerV2ListOS(transformer.connection.Connection())
+    temporary_directory = tmpdir.mkdir("test")
+    connection = transformer.connection.ConnectionFS(temporary_directory, [])
+    runner = transformer.transform.TransformerV2ListOS(connection)
     chunk_size = 2
     runner.chunk_size = chunk_size
     data = [

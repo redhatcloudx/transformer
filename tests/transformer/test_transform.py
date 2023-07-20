@@ -1,11 +1,14 @@
 """Test basic transformations for the latest images."""
+from cloudimagedirectory import transformer
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.transform import transform
 
 
-def test_transformeridxlistimagelatest():
+def test_transformeridxlistimagelatest(tmpdir):
     """Test basic transformations for the latest images."""
-    runner = transform.TransformerIdxListImageLatest(connection.Connection())
+    temporary_directory = tmpdir.mkdir("test")
+    temporary_connection = transformer.connection.ConnectionFS(temporary_directory, [])
+    runner = transform.TransformerIdxListImageLatest(temporary_connection)
     chunk_size = 2
     runner.chunk_size = chunk_size
     data = [
