@@ -2,7 +2,7 @@
 import copy
 import os
 from datetime import datetime
-from typing import Any, Callable, Type, no_type_check
+from typing import Any, Callable, no_type_check
 
 from cloudimagedirectory import config
 from cloudimagedirectory.connection import connection
@@ -163,7 +163,7 @@ class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest google images."""
 
     # TODO: Set a specific return type.
-    def run(self, data: Type[Transformer]) -> Any:
+    def run(self, data: type[Transformer]) -> Any:
         self.provider = "google"
         return super().run(data)
 
@@ -172,7 +172,7 @@ class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest AWS images."""
 
     # TODO: Set a specific return type.
-    def run(self, data: Type[Transformer]) -> Any:
+    def run(self, data: type[Transformer]) -> Any:
         self.provider = "aws"
         return super().run(data)
 
@@ -181,7 +181,7 @@ class TransformerIdxListImageLatestAZURE(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest AZURE images."""
 
     # TODO: Set a specific return type.
-    def run(self, data: Type[Transformer]) -> Any:
+    def run(self, data: type[Transformer]) -> Any:
         self.provider = "azure"
         return super().run(data)
 
@@ -191,7 +191,7 @@ class TransformerAWS(Transformer):
 
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
-    def run(self, data: Type[Transformer]) -> list:
+    def run(self, data: type[Transformer]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from AWS.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
@@ -218,7 +218,7 @@ class TransformerGoogle(Transformer):
 
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
-    def run(self, data: Type[Transformer]) -> list:
+    def run(self, data: type[Transformer]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
@@ -242,7 +242,7 @@ class TransformerAZURE(Transformer):
 
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
-    def run(self, data: Type[Transformer]) -> list:
+    def run(self, data: type[Transformer]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
@@ -280,7 +280,7 @@ class TransformerIdxListImageNames(Transformer):
 
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
-    def run(self, data: Type[Transformer]) -> list:
+    def run(self, data: type[Transformer]) -> list:
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
@@ -300,7 +300,7 @@ class TransformerV2All(Transformer):
 
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
-    def run(self, data: Type[Transformer]) -> list:
+    def run(self, data: type[Transformer]) -> list:
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
@@ -338,7 +338,7 @@ class TransformerV2ListOS(Transformer):
 
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
-    def run(self, data: Type[Transformer]) -> list:
+    def run(self, data: type[Transformer]) -> list:
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
