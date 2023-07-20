@@ -39,7 +39,7 @@ def parse_image_name_rhel(image_name: str) -> dict[str, str]:
     return {}
 
 
-def image_rhel(image: dict[str, str], region: str) -> dict[str, str]:
+def image_rhel(image: dict, region: str) -> dict[str, str]:
     """Compile a dictionary of important image information.
 
     Args:
