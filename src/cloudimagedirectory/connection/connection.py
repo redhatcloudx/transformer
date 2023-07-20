@@ -3,37 +3,12 @@ import json
 import os
 import pathlib
 from pathlib import Path
-from typing import Any, no_type_check
+from typing import Any
 
 exception_not_connected = Exception("Client is not connected to s3 bucket")
 exception_already_connected = Exception("Client is already connected to s3 bucket")
 exception_path_not_existing = Exception("The given path to the filesystem doesn't exist")
 exception_not_implemented = Exception("Not implemented")
-
-
-# TODO: This class is used in a couple of the tests, but it should probably be some kind
-# of abstract base class. Disabling the mypy checks for now but this is not ideal.
-@no_type_check
-class Connection:
-    @no_type_check
-    def connect(self):
-        """Base method for inheritance in a child class."""
-        pass
-
-    @no_type_check
-    def get_filenames(self):
-        """Base method for inheritance in a child class."""
-        pass
-
-    @no_type_check
-    def get_content(self, filename):
-        """Base method for inheritance in a child class."""
-        pass
-
-    @no_type_check
-    def put_content(self, content, filename):
-        """Base method for inheritance in a child class."""
-        pass
 
 
 class DataEntry:
@@ -54,7 +29,7 @@ class DataEntry:
         return f"{name}/" in self.filename
 
 
-class ConnectionFS(Connection):
+class ConnectionFS:
     """Handles the connection to the filesystem."""
 
     def __init__(self, origin_path: str, arg_files: list[str]):
