@@ -1,4 +1,4 @@
-import re
+from dataclasses import dataclass
 
 
 class InvalidSelfLink(Exception):
@@ -9,27 +9,72 @@ class InvalidSelfLink(Exception):
         super().__init__("Invalid selflink")
 
 
-def parse_image_name_rhel(image_name: str) -> dict[str, str]:
-    """Parse an google image name and return version string.
+@dataclass
+class GoogleRHELParser:
+    """Parse a Google RHEL image name."""
 
-    Regex101: https://regex101.com/r/9QCWIJ/1
+    image_name: str
 
-    Args:
-        image_name: String containing the image name, such as:
-                    rhel-7-9-sap-v20220719
+    # TODO: We should probably uppercase this in the future since SAP is always uppercase.
+    @property
+    def extprod(self) -> str:
+        """
+        Return the external product name.
 
-    Returns:
-        Dictionary with additional information about the image.
-    """
-    google_image_name_regex = (
-        r"(?P<product>\w*)-(?P<version>[\d]+(?:\-[\d]){0,3})-?" r"(?P<extprod>\w*)?-v(?P<date>\d{4}\d{2}\d{2})"
-    )
+        The second to last piece could contain a few different things:
+        1) The whole version number
+        2) The second half of the version number
+        3) The architecture
+        4) The external product name.
+        """
+        piece = self.image_name.split("-")[-2]
 
-    matches = re.match(google_image_name_regex, image_name, re.IGNORECASE)
-    if matches:
-        return matches.groupdict()
+        # Get rid of version numbers or architecture strings.
+        if piece.isdigit() or piece in ["arm64", "x86_64"]:
+            return ""
 
-    return {}
+        return piece
+
+    @property
+    def product(self) -> str:
+        """Return the product name."""
+        return str(self.image_name.split("-")[0])
+
+    @property
+    def version(self) -> str:
+        """
+        Return the product version.
+
+        The version can be a single number, such as "8", but it can also be two numbers separate by dashes, like "9-2".
+        """
+        version_pieces = self.image_name.split("-")[1:3]
+
+        # Do we have two numbers separated by a dash?
+        if version_pieces[1].isdigit():
+            return f"{version_pieces[0]}.{version_pieces[1]}"
+
+        # We have a single version number.
+        return str(version_pieces[0])
+
+
+def google_extract_project_name(selflink: str) -> str:
+    """Extract the project name from a selflink."""
+    selflink_list = selflink.split("/")
+    if len(selflink_list) < 7 or selflink_list[5] != "projects":
+        # NOTE: We extract the current project name from the original selflink.
+        # Example selflinks:
+        # https://.../compute/imagesDetail/projects/rhel-cloud/.../...
+        # https://.../compute/imagesDetail/projects/rhel-sap-cloud/.../...
+        raise InvalidSelfLink()
+
+    return selflink.split("/")[6]
+
+
+def google_selflink(selflink: str) -> str:
+    """Verify that we can create a valid direct link from Google's API link."""
+    project_name = google_extract_project_name(selflink)
+    image_name = selflink.split("/")[-1]
+    return f"https://console.cloud.google.com/compute/imagesDetail/projects/{project_name}/global/images/{image_name}"
 
 
 def image_rhel(image: dict[str, str]) -> dict[str, str]:
@@ -42,46 +87,17 @@ def image_rhel(image: dict[str, str]) -> dict[str, str]:
         JSON like structure containing streamlined image
         information.
     """
-    additional_information = parse_image_name_rhel(image["name"])
+    parsed = GoogleRHELParser(image["name"])
 
-    arch = image["architecture"]
-    image_name = image["name"]
-    date = image["creation_timestamp"]
-    selflink = image["selfLink"]
-    extprod = additional_information["extprod"]
-    version = additional_information["version"].replace("-", ".")
-    image_id = image["selfLink"]
-
-    name_parts = ["RHEL", version, extprod]
-
-    # This is necessary to avoid creating names like "RHEL 9 arm64 arm64"
-    # as the naming conventions for Google images are inconsistent.
-    # e.g.
-    # rhel-9-arm64-v20221206
-    # rhel-7-6-sap-v20221102
-    if extprod.lower() != arch.lower():
-        name_parts.append(arch)
-
+    # Build a friendly name for the image and skip the extprod if it isn't present.
+    name_parts = ["RHEL", parsed.version, parsed.extprod, image["architecture"]]
     name = " ".join([x for x in name_parts if x != ""])
-
-    selflink_list = selflink.split("/")
-    if len(selflink_list) < 7 or selflink_list[5] != "projects":
-        # NOTE: We extract the current project name from the original selflink.
-        # Example selflinks:
-        # https://.../compute/imagesDetail/projects/rhel-cloud/.../...
-        # https://.../compute/imagesDetail/projects/rhel-sap-cloud/.../...
-        raise InvalidSelfLink()
-
-    project_name = selflink.split("/")[6]
-
-    selflink = "https://console.cloud.google.com/compute/imagesDetail/"
-    selflink += f"projects/{project_name}/global/images/{image_name}"
 
     return {
         "name": name,
-        "arch": arch,
-        "version": version,
-        "imageId": image_id,
-        "date": date,
-        "selflink": selflink,
+        "arch": image["architecture"],
+        "version": parsed.version,
+        "imageId": image["selfLink"],
+        "date": image["creation_timestamp"],
+        "selflink": google_selflink(image["selfLink"]),
     }
