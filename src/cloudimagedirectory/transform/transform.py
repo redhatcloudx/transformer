@@ -87,8 +87,8 @@ class TransformerIdxListImageLatest(Transformer):
     @no_type_check
     def run(self, data: Transformer) -> list:  # noqa: C901
         """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        # NOTE: Verify that the data is from api v1.
+        entries = [x for x in data if x.is_API("v1")]
 
         # NOTE: Sort the list of data by date
         entries.sort(
@@ -283,9 +283,7 @@ class TransformerIdxListImageNames(Transformer):
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
     def run(self, data: type[Transformer]) -> list:
-        """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        entries = [x for x in data if x.is_API("v1")]
 
         results = []
 
@@ -303,9 +301,7 @@ class TransformerV2All(Transformer):
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
     def run(self, data: type[Transformer]) -> list:
-        """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        entries = [x for x in data if x.is_API("v2")]
 
         results = []
 
@@ -341,9 +337,7 @@ class TransformerV2ListOS(Transformer):
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
     def run(self, data: type[Transformer]) -> list:
-        """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        # TODO: check that its the actual v2 entry and not a sub url.
+        # TODO: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
         results = []
@@ -363,14 +357,7 @@ class TransformerV2ListOS(Transformer):
             except IndexError:
                 print(f"Could not format image, filename: {filename}")
 
-        os_list_final: dict[Any, Any] = {}
-        for os, val in list(os_list.items()):
-            key = os
-            if os in rhel_products:
-                key = "rhel"
-            os_list_final[key] = os_list_final.get(key, 0) + val
-
-        for os, val in os_list_final.items():
+        for os, val in os_list.items():
             desc = self.description.get(os, "no description")
             disp_name = self.display_name.get(os, "no display name")
 
@@ -391,9 +378,7 @@ class TransformerV2ListProviderByOS(Transformer):
     """Generate a list for all available providers of a specific os."""
 
     def run(self, data):
-        """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        # TODO: check that its the actual v2 entry and not a sub url.
+        # TODO: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
         results = []
@@ -423,7 +408,7 @@ class TransformerAWSV2RHEL(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        # NOTE: Verify that the data is raw.
+        # NOTE: Verify that the data is raw and provided by aws.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
 
         results = []
@@ -460,7 +445,7 @@ class TransformerAzureV2RHEL(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        # NOTE: Verify that the data is raw.
+        # NOTE: Verify that the data is raw and provided by azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
 
         results = []
@@ -499,7 +484,7 @@ class TransformerGoogleV2RHEL(Transformer):
 
     def run(self, data):
         """Transform the raw data."""
-        # NOTE: Verify that the data is raw.
+        # NOTE: Verify that the data is raw and provided by google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
 
         results = []
@@ -537,9 +522,7 @@ class TransformerV2ListOS(Transformer):
     display_name = {"rhel": "Red Hat Enterprise Linux"}
 
     def run(self, data):
-        """Sort the raw data."""
-        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
-        # NOTE: This line is a workaround and should be revisited again.
+        # TODO: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
         results = []
@@ -581,9 +564,7 @@ class TransformerV2ListProviderByOS(Transformer):
     """Generate a list for all available providers of a specific os."""
 
     def run(self, data):
-        """Sort the raw data."""
-        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
-        # NOTE: This line is a workaround and should be revisited again.
+        # TODO: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
         results = []
@@ -618,9 +599,7 @@ class TransformerV2ListVersionByProvider(Transformer):
     """Generate a list for all available versions for a specific provider."""
 
     def run(self, data):
-        """Sort the raw data."""
-        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
-        # NOTE: This line is a workaround and should be revisited again.
+        # TODO: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
         results = []
@@ -658,9 +637,7 @@ class TransformerV2ListRegionByVersion(Transformer):
     """Generate a list for all available regions for one version."""
 
     def run(self, data):
-        """Sort the raw data."""
-        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
-        # NOTE: This line is a workaround and should be revisited again.
+        # TODO: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
         results = []
@@ -696,4 +673,53 @@ class TransformerV2ListRegionByVersion(Transformer):
                 for version in version_map:
                     # NOTE: Add /list suffix to prevent collision with "region" folder.
                     results.append(connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/{version}/region/list", version_map[version]))
+        return results
+
+
+class TransformerV2ListImage(Transformer):
+    """Generate a list for all available images in this version."""
+
+    def run(self, data):
+        # TODO: check that its the v2 data entries.
+        entries = [x for x in data if x.is_API("v2")]
+
+        results = []
+        images = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")
+            if len(filename) != 11:
+                continue
+            os = filename[3]
+            provider = filename[5]
+            version = filename[7]
+            region = filename[9]
+            image = filename[11]
+
+            if os not in images:
+                images[os] = {provider : {}}
+
+            if provider not in images[os]:
+                images[os][provider] = {version : {}}
+            
+            if version not in images[os][provider]:
+                images[os][provider][version] = {region : {}}
+            
+            if region not in images[os][provider][version]:
+                images[os][provider][version][image] = {image : 1}
+
+            if region not in images[os][provider][version][image]:
+                images[os][provider][version][region] = 1
+                continue
+
+            # NOTE: Counter of how many images are available in this explicit version.
+            images[os][provider][version][region][image] += 1
+
+        for os, image_map in images.items():
+            for provider, version_map in image_map.items():
+                for version, region_map in version_map:
+                    for region in region_map:
+                        # NOTE: Add /list suffix to prevent collision with "image" folder.
+                        results.append(connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/{version}/region/{region}/image/list", version_map[image]))
         return results
