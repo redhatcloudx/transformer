@@ -31,6 +31,20 @@ class DataEntry:
         """Check the origin of the file."""
         return f"{name}/" in self.filename
 
+    def is_API(self, api) -> bool:
+        """Check if the file is the actual API entry and not a sub url."""
+        path = self.filename.split("/")
+        if path[1] != api:
+            return False
+        slash_count = self.filename.count("/")
+        if slash_count != 11:
+            return False
+        # NOTE: check length of hash value.
+        if len(path[len(path)-1]) != 40:
+            return False
+
+        return True
+
 
 class ConnectionFS:
     """Handles the connection to the filesystem."""
