@@ -528,3 +528,172 @@ class TransformerGoogleV2RHEL(Transformer):
 
                     results.append(data_entry)
         return results
+
+
+class TransformerV2ListOS(Transformer):
+    """Generate list of all available operating systems."""
+
+    description = {"rhel": "Red Hat Enterprise Linux"}
+    display_name = {"rhel": "Red Hat Enterprise Linux"}
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
+        # NOTE: This line is a workaround and should be revisited again.
+        entries = [x for x in data if x.is_API("v2")]
+
+        results = []
+        os_list = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+
+            try:
+                filename = entry.filename.split("/")[3]
+                os = filename.split("_")[0]
+
+                if os not in os_list:
+                    os_list[os] = 1
+                else:
+                    os_list[os] += 1
+            except:
+                print(f"Could not format image, filename: {filename}")
+
+
+        for os, val in os_list.items():
+            desc = self.description.get(os, "no description")
+            disp_name = self.display_name.get(os, "no display name")
+
+            entry_object = {
+                "name": os,
+                "display_name": disp_name,
+                "description": desc,
+                "count": val,
+            }
+
+            results.append(entry_object)
+
+        # NOTE: Add /list suffix to prevent collision with "os" folder.
+        return [connection.DataEntry("v2/os/list", results)]
+
+
+class TransformerV2ListProviderByOS(Transformer):
+    """Generate a list for all available providers of a specific os."""
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
+        # NOTE: This line is a workaround and should be revisited again.
+        entries = [x for x in data if x.is_API("v2")]
+
+        results = []
+        providers = {}
+        provider_dict = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")
+            os = filename[3]
+            provider = filename[5]
+            
+            if os not in providers:
+                providers[os] = {provider: 1}
+                continue
+
+            if provider not in providers[os]:
+                providers[os][provider] = 1
+                continue
+
+            # NOTE: Counter of how many images are available in this explicit OS.
+            providers[os][provider] += 1
+
+
+        for os, provider_map in providers.items():
+            # NOTE: Add /list suffix to prevent collision with "provider" folder.
+            results.append(connection.DataEntry(f"v2/os/{os}/provider/list", provider_map))
+        return results
+
+
+class TransformerV2ListVersionByProvider(Transformer):
+    """Generate a list for all available versions for a specific provider."""
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
+        # NOTE: This line is a workaround and should be revisited again.
+        entries = [x for x in data if x.is_API("v2")]
+
+        results = []
+        versions = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")
+            os = filename[3]
+            provider = filename[5]
+            version = filename[7]
+
+            if os not in versions:
+                versions[os] = {provider : {}}
+            
+            if provider not in versions[os]:
+                versions[os][provider] = {version : 1}
+                continue
+            
+            if version not in versions[os][provider]:
+                versions[os][provider][version] = 1
+                continue
+
+            # NOTE: Counter of how many images are available in this explicit provider.
+            versions[os][provider][version] += 1
+
+        for os, version_map in versions.items():
+            for provider in version_map:
+                # NOTE: Add /list suffix to prevent collision with "version" folder.
+                results.append(connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/list", version_map[provider]))
+        return results
+
+
+class TransformerV2ListRegionByVersion(Transformer):
+    """Generate a list for all available regions for one version."""
+
+    def run(self, data):
+        """Sort the raw data."""
+        # NOTE: Verify that the data is the actual v2 entry and not a sub url.
+        # NOTE: This line is a workaround and should be revisited again.
+        entries = [x for x in data if x.is_API("v2")]
+
+        results = []
+        regions = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")
+            os = filename[3]
+            provider = filename[5]
+            version = filename[7]
+            region = filename[9]
+
+            if os not in regions:
+                regions[os] = {provider : {}}
+
+            if provider not in regions[os]:
+                regions[os][provider] = {version : {}}
+            
+            if version not in regions[os][provider]:
+                regions[os][provider][version] = {region : 1}
+                continue
+
+            if region not in regions[os][provider][version]:
+                regions[os][provider][version][region] = 1
+                continue
+
+            # NOTE: Counter of how many images are available in this explicit version.
+            regions[os][provider][version][region] += 1
+
+        for os, region_map in regions.items():
+            for provider, version_map in region_map.items():
+                for version in version_map:
+                    # NOTE: Add /list suffix to prevent collision with "region" folder.
+                    results.append(connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/{version}/region/list", version_map[version]))
+        return results

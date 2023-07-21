@@ -70,7 +70,7 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
             #transform.TransformerAWS,
             #transform.TransformerAZURE,
             #transform.TransformerGoogle,
-            transform.TransformerAWSV2RHEL,
+            #transform.TransformerAWSV2RHEL,
             transform.TransformerAzureV2RHEL,
             transform.TransformerGoogleV2RHEL,
         ],
@@ -83,6 +83,8 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
             transform.TransformerV2All,
             transform.TransformerV2ListProviderByOS,
             transform.TransformerV2ListOS,
+            transform.TransformerV2ListVersionByProvider,
+            transform.TransformerV2ListRegionByVersion,
         ],
     )
     print("run pipeline")
