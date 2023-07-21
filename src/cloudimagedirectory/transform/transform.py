@@ -84,9 +84,8 @@ class TransformerIdxListImageLatest(Transformer):
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
     def run(self, data: Transformer) -> list:  # noqa: C901
-        """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        # NOTE: Verify that the data is from api v1.
+        entries = [x for x in data if x.is_API("v1")]
 
         # NOTE: Sort the list of data by date
         entries.sort(
@@ -281,9 +280,8 @@ class TransformerIdxListImageNames(Transformer):
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
     def run(self, data: type[Transformer]) -> list:
-        """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        # NOTE: Verify that the data is from api v1.
+        entries = [x for x in data if x.is_API("v1")]
 
         results = []
 
@@ -301,9 +299,8 @@ class TransformerV2All(Transformer):
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
     def run(self, data: type[Transformer]) -> list:
-        """Sort the raw data."""
-        # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        # NOTE: Verify that the data is from api v1.
+        entries = [x for x in data if x.is_API("v1")]
 
         results = []
 
@@ -351,7 +348,6 @@ class TransformerV2ListOS(Transformer):
 
             try:
                 filename = entry.filename.split("/")[3]
-                print(entry.filename)
                 os = filename.split("_")[0]
 
                 if os not in os_list:
@@ -361,27 +357,7 @@ class TransformerV2ListOS(Transformer):
             except IndexError:
                 print(f"Could not format image, filename: {filename}")
 
-        rhel_products = {
-            "rh-ocp-worker",
-            "rh-oke-worker",
-            "rh-opp-worker",
-            "rh-rhel",
-            "rhel-arm64",
-            "rhel-byos",
-            "rhel-raw",
-            "rhel-sap-apps",
-            "rhel-sap-ha",
-            "rh",
-        }
-
-        os_list_final: dict[Any, Any] = {}
-        for os, val in list(os_list.items()):
-            key = os
-            if os in rhel_products:
-                key = "rhel"
-            os_list_final[key] = os_list_final.get(key, 0) + val
-
-        for os, val in os_list_final.items():
+        for os, val in os_list.items():
             desc = self.description.get(os, "no description")
             disp_name = self.display_name.get(os, "no display name")
 
@@ -394,4 +370,5 @@ class TransformerV2ListOS(Transformer):
 
             results.append(entry_object)
 
+        # NOTE: Add /list suffix to prevent collision with "os" folder.
         return [connection.DataEntry("v2/os/list", results)]
