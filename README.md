@@ -25,44 +25,33 @@ Finally the S3 bucket gets synchronized with the CDN provider in a reasonable in
 
 ## Development guide
 
-[Poetry] is used for dependency management and centralized configuration for testing and
-linting tools. Start by [installing poetry] and then clone the repository.
+We use a helpful `Makefile` based on the one from [cookiecutter-poetry](https://fpgmaas.github.io/cookiecutter-poetry/) for setting up the environment, running linters, and running tests.
 
-After cloning, run the following:
+After cloning, set up your local development environment by running:
 
-```console
-poetry install
+```shell
+make install
 ```
 
-Pre-commit hooks are used to ensure that code passes the linter checks before you push.
-Prepare the pre-commit hooks on your computer by running some commands:
+Pre-commit hooks are run during the commit process, but you can test your code and run linters at any time with these commands:
 
-```console
-poetry run pre-commit install
-poetry run pre-commit run --all-files
+```shell
+# Run tests only
+make test
+
+# Run linters only
+make check
+
+# Run tests and then run linters
+make test check
 ```
-
-You can quickly run tests with `poetry run pytest` or run the full pre-commit suite with
-`poetry run pre-commit run --all-files`. Or, simply start a commit (such as `git commit -m "Fixed the bug"`) and the pre-commit checks run automatically.
 
 If you need to add more Python packages to poetry, run the following:
 
-```console
+```shell
 # For packages that this project requires in production
 poetry add foo
 
 # For packages that are only needed for linting, testing, or development work
-poetry add --group dev bar
+poetry add --group=dev bar
 ```
-
-## Running tests
-
-Use poetry to run pytest:
-
-```commandline
-# Run all tests, including end-to-end tests that call out to cloud APIs:
-poetry run pytest
-```
-
-[Poetry]: https://python-poetry.org/
-[installing poetry]: https://python-poetry.org/docs/#installation
