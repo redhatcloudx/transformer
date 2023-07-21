@@ -1,9 +1,11 @@
 """Manage content in the S3 bucket."""
+from __future__ import annotations
+
 import json
 import os
 import pathlib
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 
 
 class OriginPathDoesNotExist(Exception):
@@ -14,15 +16,14 @@ class OriginPathDoesNotExist(Exception):
         super().__init__(f"The origin path '{origin_path}' doesn't exist.")
 
 
+@dataclass
 class DataEntry:
     """Handles a file from the bucket."""
 
-    # TODO: Set Any to a specific type.
-    def __init__(self, filename: str, content: Any) -> None:
-        """Constructor for DataEntry class."""
-        self.filename = filename
-        self.content = content
+    filename: str
+    content: dict | None
 
+    @property
     def is_raw(self) -> bool:
         """Check if the file is in raw format."""
         return "raw/" in self.filename
@@ -66,8 +67,8 @@ class ConnectionFS:
         content = Path(data.filename).read_text()
         if content == "":
             content = "{}"
-        content = json.loads(content)
-        return DataEntry(data.filename, content)
+        json_data = json.loads(content)
+        return DataEntry(data.filename, json_data)
 
     def put_content(self, data: DataEntry) -> None:
         """Put the content of a file in the bucket."""

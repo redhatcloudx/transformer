@@ -87,5 +87,5 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
 
     for result in results:
         result.filename = destination_path + "/" + result.filename
-        if not result.is_raw():
+        if not result.is_raw:
             origin_connection.put_content(result)

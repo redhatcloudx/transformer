@@ -86,7 +86,7 @@ class TransformerIdxListImageLatest(Transformer):
     def run(self, data: Transformer) -> list:  # noqa: C901
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        entries = [x for x in data if not x.is_raw and not x.is_provided_by("idx")]
 
         # NOTE: Sort the list of data by date
         entries.sort(
@@ -194,7 +194,7 @@ class TransformerAWS(Transformer):
     def run(self, data: type[Transformer]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from AWS.
-        entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
+        entries = [x for x in data if x.is_provided_by("aws") and x.is_raw]
 
         results = []
         for entry in entries:
@@ -221,7 +221,7 @@ class TransformerGoogle(Transformer):
     def run(self, data: type[Transformer]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Google.
-        entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
+        entries = [x for x in data if x.is_provided_by("google") and x.is_raw]
 
         results = []
         for entry in entries:
@@ -245,7 +245,7 @@ class TransformerAZURE(Transformer):
     def run(self, data: type[Transformer]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Azure.
-        entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
+        entries = [x for x in data if x.is_provided_by("azure") and x.is_raw]
 
         seen = {}
         results = []
@@ -283,7 +283,7 @@ class TransformerIdxListImageNames(Transformer):
     def run(self, data: type[Transformer]) -> list:
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        entries = [x for x in data if not x.is_raw and not x.is_provided_by("idx")]
 
         results = []
 
@@ -303,7 +303,7 @@ class TransformerV2All(Transformer):
     def run(self, data: type[Transformer]) -> list:
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        entries = [x for x in data if not x.is_raw and not x.is_provided_by("idx")]
 
         results = []
 
@@ -341,7 +341,7 @@ class TransformerV2ListOS(Transformer):
     def run(self, data: type[Transformer]) -> list:
         """Sort the raw data."""
         # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        entries = [x for x in data if not x.is_raw and not x.is_provided_by("idx")]
 
         results = []
         os_list = {}
