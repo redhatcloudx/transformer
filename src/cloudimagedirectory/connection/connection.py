@@ -34,11 +34,16 @@ class DataEntry:
     def is_API(self, api) -> bool:
         """Check if the file is the actual API entry and not a sub url."""
         path = self.filename.split("/")
-        if path[1] != api:
+        if path[0] != api:
             return False
+
+        if path[0] == "v1":
+            return True
+
         slash_count = self.filename.count("/")
-        if slash_count != 11:
+        if slash_count != 10:
             return False
+
         # NOTE: check length of hash value.
         if len(path[len(path)-1]) != 40:
             return False

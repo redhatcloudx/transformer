@@ -53,6 +53,7 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
     filters = [
         filter.FilterImageByFilename("test"),
         filter.FilterImageByFilename("beta"),
+        filter.FilterImageByFilename("raw"),
         filter.FilterImageByUniqueName(),
     ]
 
@@ -64,7 +65,7 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
         filter_after = pd.to_datetime(filter_until)
         filters.append(filter.FilterImageByLatestUpdate(filter_after))
 
-    pipeline = transform.Pipeline(
+    pipeline_v1 = transform.Pipeline(
         origin_connection,
         [
             transform.TransformerAWS,
@@ -78,12 +79,29 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
             transform.TransformerIdxListImageLatestGoogle,
             transform.TransformerIdxListImageLatestAWS,
             transform.TransformerIdxListImageLatestAZURE,
-            transform.TransformerV2All,
-            transform.TransformerV2ListOS,
         ],
     )
-    print("run pipeline")
-    results = pipeline.run(filenames)
+    print("run pipeline v1")
+    results = pipeline_v1.run(filenames)
+
+    # NOTE: Introducing a second pipeline, to avoid filtering of v1/v2 data
+    # based on the image filename.
+    # We do not adapt the filter, since v1 will be removed soon.
+    pipeline_v2 = transform.Pipeline(
+        origin_connection,
+        [
+            transform.TransformerAWSV2RHEL,
+            transform.TransformerAzureV2RHEL,
+            transform.TransformerGoogleV2RHEL,
+        ],
+        filters,
+        [
+            transform.TransformerV2All,
+            #transform.TransformerV2ListOS,
+        ],
+    )
+    print("run pipeline v2")
+    results.extend(pipeline_v2.run(filenames))
 
     for result in results:
         result.filename = destination_path + "/" + result.filename
