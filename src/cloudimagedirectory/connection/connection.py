@@ -31,7 +31,7 @@ class DataEntry:
         """Check the origin of the file."""
         return f"{name}/" in self.filename
 
-    def is_API(self, api) -> bool:
+    def is_API(self, api: str) -> bool:
         """Check if the file is the actual API entry and not a sub url."""
         path = self.filename.split("/")
         if path[0] != api:
@@ -45,7 +45,7 @@ class DataEntry:
             return False
 
         # NOTE: check length of hash value.
-        if len(path[len(path)-1]) != 40:
+        if len(path[len(path) - 1]) != 40:
             return False
 
         return True

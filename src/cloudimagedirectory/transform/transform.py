@@ -1,8 +1,7 @@
 """Transforms the raw data into useful data."""
 import copy
-import os
 import hashlib
-
+import os
 from datetime import datetime
 from typing import Any, Callable, no_type_check
 
@@ -86,7 +85,7 @@ class TransformerIdxListImageLatest(Transformer):
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
     def run(self, data: Transformer) -> list:  # noqa: C901
-         # NOTE: Verify that the data is not raw.
+        # NOTE: Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
 
         # NOTE: Sort the list of data by date
@@ -298,7 +297,7 @@ class TransformerIdxListImageNames(Transformer):
 class TransformerAWSV2RHEL(Transformer):
     """Transform raw rhel AWS data into the schema."""
 
-    def run(self, data):
+    def run(self, data: list) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
@@ -322,7 +321,7 @@ class TransformerAWSV2RHEL(Transformer):
                 # NOTE: Due to consistency issues between the cloud providers and the fact
                 # that they do not all have unique numbers to identify their images, we decided
                 # to use this solution instead.
-                image_id = hashlib.sha1(image_name.encode()).hexdigest()
+                image_id = hashlib.sha1(image_name.encode()).hexdigest()  # noqa: S324
 
                 # NOTE: example of expected paths
                 # v2/os/rhel/provider/aws/version/8.6.0/region/eu-west-3/image/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
@@ -337,7 +336,7 @@ class TransformerAWSV2RHEL(Transformer):
 class TransformerAzureV2RHEL(Transformer):
     """Transform raw rhel Azure data into the schema."""
 
-    def run(self, data):
+    def run(self, data: list) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw and provided by azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
@@ -363,7 +362,7 @@ class TransformerAzureV2RHEL(Transformer):
                 # NOTE: Due to consistency issues between the cloud providers and the fact
                 # that they do not all have unique numbers to identify their images, we decided
                 # to use this solution instead.
-                image_id = hashlib.sha1(image_name.encode()).hexdigest()
+                image_id = hashlib.sha1(image_name.encode()).hexdigest()  # noqa: S324
 
                 # NOTE: example of expected paths
                 # /v2/rhel/azure/8.6.0/af-south-1/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
@@ -378,7 +377,7 @@ class TransformerAzureV2RHEL(Transformer):
 class TransformerGoogleV2RHEL(Transformer):
     """Transform raw rhel Google data into the schema."""
 
-    def run(self, data):
+    def run(self, data: list) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw and provided by google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
@@ -401,7 +400,7 @@ class TransformerGoogleV2RHEL(Transformer):
                     # NOTE: Due to consistency issues between the cloud providers and the fact
                     # that they do not all have unique numbers to identify their images, we decided
                     # to use this solution instead.
-                    image_id = hashlib.sha1(image_name.encode()).hexdigest()
+                    image_id = hashlib.sha1(image_name.encode()).hexdigest()  # noqa: S324
 
                     # NOTE: example of expected paths
                     # /v2/rhel/google/8.6.0/global/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
