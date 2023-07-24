@@ -345,9 +345,7 @@ class TransformerAzureV2RHEL(Transformer):
         results = []
         for e in entries:
             entry = copy.deepcopy(e)
-
             raw = self.src_conn.get_content(entry)
-            region = os.path.basename(raw.filename).split(".")[0]
 
             for content in raw.content:
                 if content["publisher"] != "RedHat":
@@ -359,6 +357,7 @@ class TransformerAzureV2RHEL(Transformer):
                 image_name = image_data["name"].replace(" ", "_").lower()
                 os_name = "rhel"
                 provider = "azure"
+                region = "global"
                 version = image_data["version"]
                 # NOTE: Due to consistency issues between the cloud providers and the fact
                 # that they do not all have unique numbers to identify their images, we decided
@@ -366,9 +365,9 @@ class TransformerAzureV2RHEL(Transformer):
                 image_id = hashlib.sha1(image_name.encode()).hexdigest()
 
                 # NOTE: example of expected paths
-                # /v2/rhel/azure/8.6.0/af-south-1/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
-                # /v2/rhel/azure/8.2.0/af-south-1/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
-                path = f"/v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
+                # v2/os/rhel/provider/azure/version/8.6.0/region/southcentralus/image/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
+                # v2/os/rhel/provider/azure/version/8.2.0/region/southcentralus/image/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
+                path = f"v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
                 data_entry = connection.DataEntry(path, image_data)
 
                 results.append(data_entry)
@@ -386,15 +385,15 @@ class TransformerGoogleV2RHEL(Transformer):
         results = []
         for e in entries:
             entry = copy.deepcopy(e)
-
             raw = self.src_conn.get_content(entry)
-            region = os.path.basename(raw.filename).split(".")[0]
 
             for content in raw.content:
                 content["creation_timestamp"] = content["creationTimestamp"]
                 if "rhel" in content["name"]:
+
                     image_data = format_google.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
+                    region = "global"
                     os_name = "rhel"
                     provider = "google"
                     version = image_data["version"]
@@ -404,9 +403,9 @@ class TransformerGoogleV2RHEL(Transformer):
                     image_id = hashlib.sha1(image_name.encode()).hexdigest()
 
                     # NOTE: example of expected paths
-                    # /v2/rhel/google/8.6.0/global/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
-                    # /v2/rhel/google/8.2.0/global/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
-                    path = f"/v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
+                    # v2/os/rhel/provider/google/version/8.6.0/region/global/image/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
+                    # v2/os/rhel/provider/google/version/8.2.0/region/global/image/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
+                    path = f"v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
                     data_entry = connection.DataEntry(path, image_data)
 
                     results.append(data_entry)
@@ -426,6 +425,7 @@ class TransformerV2All(Transformer):
 
         for e in entries:
             entry = copy.deepcopy(e)
+
             filename = entry.filename.split("/")
             if len(filename) < 3:
                 print("warn: could not determine region or provider of image: " + entry.filename)
@@ -464,10 +464,10 @@ class TransformerV2ListOS(Transformer):
 
         for e in entries:
             entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")[10]
 
             try:
-                filename = entry.filename.split("/")[3]
-                os = filename.split("_")[0]
+                os = entry.filename.split("/")[2]
 
                 if os not in os_list:
                     os_list[os] = 1
