@@ -3,23 +3,85 @@ name: Transform image data
 on:
   schedule:
     - cron: "45 5 * * *"
+  push:
+    branches:
+      - main
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose your deployment target environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - 'production'
+          - 'staging'
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
+  setup:
+    name: Setup workflow envs
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-environment.outputs.environment }}
+      bucket: ${{ steps.set-bucket.outputs.bucket }}
+    steps:
+      # Only set target environment to production if the workflow is triggered by
+      # a scheduled execution or workflow_dispatch with production input selected
+      - name: Setup target environment
+        id: set-environment
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.environment }}" = "production" ]; then
+            echo "environment=production" >> $GITHUB_OUTPUT
+          else
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup target bucket
+        # Set target bucket according to target environment
+        id: set-bucket
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.environment }}" = "production" ]; then
+            echo "bucket=cloudx-json-bucket" >> $GITHUB_OUTPUT
+          else
+            echo "bucket=cid-bucket-staging" >> $GITHUB_OUTPUT
+          fi
+
   parser:
     name: "Transform image data"
     runs-on: ubuntu-latest
+    needs: setup
+    env:
+      ENVIRONMENT: ${{ needs.setup.outputs.environment }}
+      BUCKET: ${{ needs.setup.outputs.bucket }}
     steps:
-      - uses: "actions/checkout@v3"
+      - name: Clone repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
+      - name: Checkout latest tagged release
+        if: env.ENVIRONMENT == 'production'
+        run: |
+          LATEST_RELEASE=$(git describe --tags `git rev-list --tags --max-count=1`)
+          git checkout $LATEST_RELEASE
+
+      - name: Configure AWS credentials for production
+        uses: aws-actions/configure-aws-credentials@v2
+        if: env.ENVIRONMENT == 'production'
         with:
           role-to-assume: arn:aws:iam::426579533370:role/github_actions_image_transformer
+          role-duration-seconds: 1800
+          aws-region: us-east-2
+
+      - name: Configure AWS credentials for staging
+        uses: aws-actions/configure-aws-credentials@v2
+        if: env.ENVIRONMENT == 'staging'
+        with:
+          role-to-assume: arn:aws:iam::426579533370:role/github_actions_cloud_image_directory_staging
           role-duration-seconds: 1800
           aws-region: us-east-2
 
@@ -54,7 +116,7 @@ jobs:
       - name: Download from S3
         run: |
           s3cmd sync --acl-public --delete-removed --guess-mime-type --no-mime-magic \
-            s3://cloudx-json-bucket/raw/ $(pwd)/raw/
+            s3://${BUCKET}/raw/ $(pwd)/raw/
 
       - name: run transformer
         run: |
@@ -63,4 +125,4 @@ jobs:
       - name: Upload to S3
         run: |
           s3cmd sync --acl-public --delete-removed --mime-type application/json \
-            $(pwd)/images/ s3://cloudx-json-bucket/images/
+            $(pwd)/images/ s3://${BUCKET}/images/  
