@@ -530,7 +530,7 @@ class TransformerV2ListVersionByProvider(Transformer):
 
     @no_type_check
     def run(self, data: type[Transformer]) -> list:
-        # TODO: check that its the v2 data entries.
+        # NOTE: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
         results = []
@@ -544,10 +544,10 @@ class TransformerV2ListVersionByProvider(Transformer):
             version = filename[6]
 
             if os not in versions:
-                versions[os] = {provider : {}}
+                versions[os] = {provider: {}}
 
             if provider not in versions[os]:
-                versions[os][provider] = {version : 1}
+                versions[os][provider] = {version: 1}
                 continue
 
             if version not in versions[os][provider]:
@@ -560,5 +560,7 @@ class TransformerV2ListVersionByProvider(Transformer):
         for os, version_map in versions.items():
             for provider in version_map:
                 # NOTE: Add /list suffix to prevent collision with "version" folder.
-                results.append(connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/list", version_map[provider]))
+                results.append(
+                    connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/list", version_map[provider])
+                )
         return results
