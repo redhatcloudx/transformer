@@ -523,3 +523,42 @@ class TransformerV2ListProviderByOS(Transformer):
             # NOTE: Add /list suffix to prevent collision with "provider" folder.
             results.append(connection.DataEntry(f"v2/os/{os}/provider/list", provider_map))
         return results
+
+
+class TransformerV2ListVersionByProvider(Transformer):
+    """Generate a list for all available versions for a specific provider."""
+
+    @no_type_check
+    def run(self, data: type[Transformer]) -> list:
+        # TODO: check that its the v2 data entries.
+        entries = [x for x in data if x.is_API("v2")]
+
+        results = []
+        versions = {}
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")
+            os = filename[2]
+            provider = filename[4]
+            version = filename[6]
+
+            if os not in versions:
+                versions[os] = {provider : {}}
+
+            if provider not in versions[os]:
+                versions[os][provider] = {version : 1}
+                continue
+
+            if version not in versions[os][provider]:
+                versions[os][provider][version] = 1
+                continue
+
+            # NOTE: Counter of how many images are available in this explicit provider.
+            versions[os][provider][version] += 1
+
+        for os, version_map in versions.items():
+            for provider in version_map:
+                # NOTE: Add /list suffix to prevent collision with "version" folder.
+                results.append(connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/list", version_map[provider]))
+        return results
