@@ -569,7 +569,8 @@ class TransformerV2ListVersionByProvider(Transformer):
 class TransformerV2ListRegionByVersion(Transformer):
     """Generate a list for all available regions for one version."""
 
-    def run(self, data):
+    @no_type_check
+    def run(self, data: type[Transformer]) -> list:  # noqa: C901
         # NOTE: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
@@ -585,13 +586,13 @@ class TransformerV2ListRegionByVersion(Transformer):
             region = filename[8]
 
             if os not in regions:
-                regions[os] = {provider : {}}
+                regions[os] = {provider: {}}
 
             if provider not in regions[os]:
-                regions[os][provider] = {version : {}}
+                regions[os][provider] = {version: {}}
 
             if version not in regions[os][provider]:
-                regions[os][provider][version] = {region : 1}
+                regions[os][provider][version] = {region: 1}
                 continue
 
             if region not in regions[os][provider][version]:
@@ -605,5 +606,9 @@ class TransformerV2ListRegionByVersion(Transformer):
             for provider, version_map in region_map.items():
                 for version in version_map:
                     # NOTE: Add /list suffix to prevent collision with "region" folder.
-                    results.append(connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/{version}/region/list", version_map[version]))
+                    results.append(
+                        connection.DataEntry(
+                            f"v2/os/{os}/provider/{provider}/version/{version}/region/list", version_map[version]
+                        )
+                    )
         return results
