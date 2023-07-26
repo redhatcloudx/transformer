@@ -82,11 +82,9 @@ class TransformerIdxListImageLatest(Transformer):
 
     # TODO: The ruff linter complains that this method is too complex. We might be able
     # to break it up into more manageable chunks.
-    # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
-    @no_type_check
-    def run(self, data: Transformer) -> list:  # noqa: C901
+    def run(self, data: list[connection.DataEntry]) -> list:  # noqa: C901
         # NOTE: Verify that the data is not raw.
-        entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
+        entries: list = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
 
         # NOTE: Sort the list of data by date
         entries.sort(
@@ -162,8 +160,7 @@ class TransformerIdxListImageLatest(Transformer):
 class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest google images."""
 
-    # TODO: Set a specific return type.
-    def run(self, data: type[Transformer]) -> Any:
+    def run(self, data: list[connection.DataEntry]) -> Any:
         self.provider = "google"
         return super().run(data)
 
@@ -171,8 +168,7 @@ class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
 class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest AWS images."""
 
-    # TODO: Set a specific return type.
-    def run(self, data: type[Transformer]) -> Any:
+    def run(self, data: list[connection.DataEntry]) -> Any:
         self.provider = "aws"
         return super().run(data)
 
@@ -180,8 +176,7 @@ class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
 class TransformerIdxListImageLatestAZURE(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest AZURE images."""
 
-    # TODO: Set a specific return type.
-    def run(self, data: type[Transformer]) -> Any:
+    def run(self, data: list[connection.DataEntry]) -> Any:
         self.provider = "azure"
         return super().run(data)
 
@@ -189,9 +184,7 @@ class TransformerIdxListImageLatestAZURE(TransformerIdxListImageLatest):
 class TransformerAWS(Transformer):
     """Transform raw AWS data."""
 
-    # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from AWS.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
@@ -216,9 +209,7 @@ class TransformerAWS(Transformer):
 class TransformerGoogle(Transformer):
     """Transform raw google data."""
 
-    # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
@@ -240,9 +231,7 @@ class TransformerGoogle(Transformer):
 class TransformerAZURE(Transformer):
     """Transform raw Azure data."""
 
-    # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
@@ -278,9 +267,7 @@ class TransformerAZURE(Transformer):
 class TransformerIdxListImageNames(Transformer):
     """Genearate list of all image names."""
 
-    # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         # NOTE: Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
 
@@ -297,7 +284,7 @@ class TransformerIdxListImageNames(Transformer):
 class TransformerAWSV2RHEL(Transformer):
     """Transform raw rhel AWS data into the schema."""
 
-    def run(self, data: list) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
@@ -336,7 +323,7 @@ class TransformerAWSV2RHEL(Transformer):
 class TransformerAzureV2RHEL(Transformer):
     """Transform raw rhel Azure data into the schema."""
 
-    def run(self, data: list) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw and provided by azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
@@ -376,7 +363,7 @@ class TransformerAzureV2RHEL(Transformer):
 class TransformerGoogleV2RHEL(Transformer):
     """Transform raw rhel Google data into the schema."""
 
-    def run(self, data: list) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw and provided by google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
@@ -413,13 +400,11 @@ class TransformerGoogleV2RHEL(Transformer):
 class TransformerV2All(Transformer):
     """Generate list of all image details."""
 
-    # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         # NOTE: Verify that the data is from api v2.
         entries = [x for x in data if x.is_API("v2")]
 
-        results = []
+        results: list = []
 
         for e in entries:
             entry = copy.deepcopy(e)
@@ -429,8 +414,18 @@ class TransformerV2All(Transformer):
                 print("warn: could not determine region or provider of image: " + entry.filename)
                 continue
 
-            entry.content["provider"] = filename[4]
-            entry.content["region"] = filename[8]
+            # Update the DataEntry with the provider and region.
+            # NOTE(mhayden): mypy knows that the second argument for DataEntry could be
+            # a dict, list, or None, so we must check that here to prevent a type error.
+            updated_content = {
+                "provider": filename[4],
+                "region": filename[8],
+            }
+            if not entry.content or isinstance(entry.content, list):
+                entry.content = updated_content
+            else:
+                entry.content.update(updated_content)
+
             results.append(entry.content)
 
         results.sort(key=lambda x: x["name"], reverse=False)
@@ -451,14 +446,12 @@ class TransformerV2ListOS(Transformer):
         """Return display name."""
         return {"rhel": "Red Hat Enterprise Linux"}
 
-    # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         # NOTE: Verify that the data is from api v2.
         entries = [x for x in data if x.is_API("v2")]
 
-        results = []
-        os_list = {}
+        results: list = []
+        os_list: dict = {}
 
         for e in entries:
             entry = copy.deepcopy(e)
@@ -494,13 +487,12 @@ class TransformerV2ListOS(Transformer):
 class TransformerV2ListProviderByOS(Transformer):
     """Generate a list for all available providers of a specific os."""
 
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         # NOTE: Verify that the data is from api v2.
         entries = [x for x in data if x.is_API("v2")]
 
-        results = []
-        providers = {}
+        results: list = []
+        providers: dict = {}
 
         for e in entries:
             entry = copy.deepcopy(e)
@@ -528,13 +520,12 @@ class TransformerV2ListProviderByOS(Transformer):
 class TransformerV2ListVersionByProvider(Transformer):
     """Generate a list for all available versions for a specific provider."""
 
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:
+    def run(self, data: list[connection.DataEntry]) -> list:
         # NOTE: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
-        results = []
-        versions = {}
+        results: list = []
+        versions: dict = {}
 
         for e in entries:
             entry = copy.deepcopy(e)
@@ -569,13 +560,12 @@ class TransformerV2ListVersionByProvider(Transformer):
 class TransformerV2ListRegionByVersion(Transformer):
     """Generate a list for all available regions for one version."""
 
-    @no_type_check
-    def run(self, data: type[Transformer]) -> list:  # noqa: C901
+    def run(self, data: list[connection.DataEntry]) -> list:  # noqa: C901
         # NOTE: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
-        results = []
-        regions = {}
+        results: list = []
+        regions: dict = {}
 
         for e in entries:
             entry = copy.deepcopy(e)

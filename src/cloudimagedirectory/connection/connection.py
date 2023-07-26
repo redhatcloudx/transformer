@@ -21,7 +21,7 @@ class DataEntry:
     """Handles a file from the bucket."""
 
     filename: str  # File name of the JSON file.
-    content: dict | None  # Content of the JSON file.
+    content: list | dict | None  # Content of the JSON file.
 
     def is_raw(self) -> bool:
         """Check if the file is in raw format."""
