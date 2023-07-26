@@ -411,7 +411,7 @@ class TransformerGoogleV2RHEL(Transformer):
 
 
 class TransformerV2All(Transformer):
-    """Genearate list of all image details."""
+    """Generate list of all image details."""
 
     # TODO: Mypy says that 'data' below is not iterable. This needs to be fixed later.
     @no_type_check
