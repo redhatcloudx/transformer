@@ -49,6 +49,15 @@ def test_transformerV2ListVersion(tmpdir):
             },
         ),
         transformer.connection.DataEntry(
+            "v2/os/rhel/provider/google/version/9/region/global/image/8054fbe0b622c638224d50d20824d2ff6782e308",
+            {
+                "date": "2023-03-06T12:57:17.827-08:00",
+                "name": "test3",
+                "arch": "ARM64",
+                "region": "global",
+            },
+        ),
+        transformer.connection.DataEntry(
             "v2/os/rhel/provider/google/version/8/region/global/image/dba7673010f19a94af4345453005933fd511bea9",
             {
                 "date": "2019-01-01",
@@ -77,10 +86,17 @@ def test_transformerV2ListVersion(tmpdir):
         ),
     ]
     results = runner.run(data)
-    expected = transformer.connection.DataEntry(
-        "v2/os/rhel/provider/google/version/9/region/list",
-        {"global": 1},
-    )
+    expected = [
+        transformer.connection.DataEntry(
+            "v2/os/rhel/provider/google/version/9/region/list",
+            {"global": 2},
+        ),
+        transformer.connection.DataEntry(
+            "v2/os/rhel/provider/google/version/8/region/list",
+            {"global": 1},
+        ),
+        transformer.connection.DataEntry("v2/os/rhel/provider/aws/version/8/region/list", {"ap-south-2": 1}),
+        transformer.connection.DataEntry("v2/os/unkown/provider/aws/version/7/region/list", {"some-region-1": 1}),
+    ]
 
-    assert expected.filename == results[0].filename
-    assert expected.content == results[0].content
+    assert results == expected

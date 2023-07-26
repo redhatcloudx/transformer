@@ -2,6 +2,7 @@
 import copy
 import hashlib
 import os
+from collections import defaultdict
 from datetime import datetime
 from typing import Any, Callable, no_type_check
 
@@ -560,45 +561,26 @@ class TransformerV2ListVersionByProvider(Transformer):
 class TransformerV2ListRegionByVersion(Transformer):
     """Generate a list for all available regions for one version."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:  # noqa: C901
+    def run(self, data: list[connection.DataEntry]) -> list:
         # NOTE: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
-        results: list = []
-        regions: dict = {}
+        # Start each region at a count of 0 so we can increment the counter as
+        # we build the results.
+        regions: defaultdict = defaultdict(lambda: defaultdict(int))
 
-        for e in entries:
-            entry = copy.deepcopy(e)
+        for entry in entries:
             filename = entry.filename.split("/")
             os = filename[2]
             provider = filename[4]
             version = filename[6]
             region = filename[8]
 
-            if os not in regions:
-                regions[os] = {provider: {}}
+            # Build the API path that corresponds to this entry.
+            api_path = f"v2/os/{os}/provider/{provider}/version/{version}/region/list"
 
-            if provider not in regions[os]:
-                regions[os][provider] = {version: {}}
+            # Increment the count for this region at this API path.
+            regions[api_path][region] += 1
 
-            if version not in regions[os][provider]:
-                regions[os][provider][version] = {region: 1}
-                continue
-
-            if region not in regions[os][provider][version]:
-                regions[os][provider][version][region] = 1
-                continue
-
-            # NOTE: Counter of how many images are available in this explicit version.
-            regions[os][provider][version][region] += 1
-
-        for os, region_map in regions.items():
-            for provider, version_map in region_map.items():
-                for version in version_map:
-                    # NOTE: Add /list suffix to prevent collision with "region" folder.
-                    results.append(
-                        connection.DataEntry(
-                            f"v2/os/{os}/provider/{provider}/version/{version}/region/list", version_map[version]
-                        )
-                    )
-        return results
+        # Convert the API path and region counts into DataEntry objects.
+        return [connection.DataEntry(x, dict(y)) for x, y in regions.items()]
