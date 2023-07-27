@@ -525,8 +525,9 @@ class TransformerV2ListVersionByProvider(Transformer):
         # NOTE: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
-        results: list = []
-        versions: dict = {}
+        # Start each version at a count of 0 so we can increment the counter as
+        # we build the results.
+        versions: defaultdict = defaultdict(lambda: defaultdict(int))
 
         for e in entries:
             entry = copy.deepcopy(e)
@@ -535,27 +536,14 @@ class TransformerV2ListVersionByProvider(Transformer):
             provider = filename[4]
             version = filename[6]
 
-            if os not in versions:
-                versions[os] = {provider: {}}
+            # Build the API path that corresponds to this entry.
+            api_path = f"v2/os/{os}/provider/{provider}/version/list"
 
-            if provider not in versions[os]:
-                versions[os][provider] = {version: 1}
-                continue
+            # Increment the count for this version at this API path.
+            versions[api_path][version] += 1
 
-            if version not in versions[os][provider]:
-                versions[os][provider][version] = 1
-                continue
-
-            # NOTE: Counter of how many images are available in this explicit provider.
-            versions[os][provider][version] += 1
-
-        for os, version_map in versions.items():
-            for provider in version_map:
-                # NOTE: Add /list suffix to prevent collision with "version" folder.
-                results.append(
-                    connection.DataEntry(f"v2/os/{os}/provider/{provider}/version/list", version_map[provider])
-                )
-        return results
+        # Convert the API path and version counts into DataEntry objects.
+        return [connection.DataEntry(x, dict(y)) for x, y in versions.items()]
 
 
 class TransformerV2ListRegionByVersion(Transformer):
