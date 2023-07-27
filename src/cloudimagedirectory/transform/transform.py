@@ -434,7 +434,15 @@ class TransformerV2All(Transformer):
         return [connection.DataEntry("v2/all", results)]
 
 
-class TransformerV2ListOS(Transformer):
+class TransformerV2(Transformer):
+    """Base class for all v2 transformers."""
+
+    def filtered_entries(self, data: list[connection.DataEntry]) -> list:
+        """Return only data entries for api v2."""
+        return [x for x in data if x.is_API("v2")]
+
+
+class TransformerV2ListOS(TransformerV2):
     """Generate list of all available operating systems."""
 
     @property
@@ -448,13 +456,10 @@ class TransformerV2ListOS(Transformer):
         return {"rhel": "Red Hat Enterprise Linux"}
 
     def run(self, data: list[connection.DataEntry]) -> list:
-        # NOTE: Verify that the data is from api v2.
-        entries = [x for x in data if x.is_API("v2")]
-
         results: list = []
         os_list: dict = {}
 
-        for e in entries:
+        for e in self.filtered_entries(data):
             entry = copy.deepcopy(e)
             filename = entry.filename.split("/")[10]
 
@@ -485,18 +490,15 @@ class TransformerV2ListOS(Transformer):
         return [connection.DataEntry("v2/os/list", results)]
 
 
-class TransformerV2ListProviderByOS(Transformer):
+class TransformerV2ListProviderByOS(TransformerV2):
     """Generate a list for all available providers of a specific os."""
 
     def run(self, data: list[connection.DataEntry]) -> list:
-        # NOTE: Verify that the data is from api v2.
-        entries = [x for x in data if x.is_API("v2")]
-
         # Start each provider at a count of 0 so we can increment the counter as
         # we build the results.
         providers: defaultdict = defaultdict(lambda: defaultdict(int))
 
-        for e in entries:
+        for e in self.filtered_entries(data):
             entry = copy.deepcopy(e)
             filename = entry.filename.split("/")
             os = filename[2]
@@ -512,18 +514,15 @@ class TransformerV2ListProviderByOS(Transformer):
         return [connection.DataEntry(x, dict(y)) for x, y in providers.items()]
 
 
-class TransformerV2ListVersionByProvider(Transformer):
+class TransformerV2ListVersionByProvider(TransformerV2):
     """Generate a list for all available versions for a specific provider."""
 
     def run(self, data: list[connection.DataEntry]) -> list:
-        # NOTE: check that its the v2 data entries.
-        entries = [x for x in data if x.is_API("v2")]
-
         # Start each version at a count of 0 so we can increment the counter as
         # we build the results.
         versions: defaultdict = defaultdict(lambda: defaultdict(int))
 
-        for e in entries:
+        for e in self.filtered_entries(data):
             entry = copy.deepcopy(e)
             filename = entry.filename.split("/")
             os = filename[2]
@@ -540,18 +539,18 @@ class TransformerV2ListVersionByProvider(Transformer):
         return [connection.DataEntry(x, dict(y)) for x, y in versions.items()]
 
 
-class TransformerV2ListRegionByVersion(Transformer):
+class TransformerV2ListRegionByVersion(TransformerV2):
     """Generate a list for all available regions for one version."""
 
     def run(self, data: list[connection.DataEntry]) -> list:
         # NOTE: check that its the v2 data entries.
-        entries = [x for x in data if x.is_API("v2")]
+        [x for x in data if x.is_API("v2")]
 
         # Start each region at a count of 0 so we can increment the counter as
         # we build the results.
         regions: defaultdict = defaultdict(lambda: defaultdict(int))
 
-        for entry in entries:
+        for entry in self.filtered_entries(data):
             filename = entry.filename.split("/")
             os = filename[2]
             provider = filename[4]
