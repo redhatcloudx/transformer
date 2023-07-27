@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Any, Callable, no_type_check
 
 from cloudimagedirectory import config
-from cloudimagedirectory.connection import connection
+from cloudimagedirectory.connection.connection import DataEntry
 from cloudimagedirectory.format import format_aws, format_azure, format_google
 
 
@@ -83,7 +83,7 @@ class TransformerIdxListImageLatest(Transformer):
 
     # TODO: The ruff linter complains that this method is too complex. We might be able
     # to break it up into more manageable chunks.
-    def run(self, data: list[connection.DataEntry]) -> list:  # noqa: C901
+    def run(self, data: list[DataEntry]) -> list:  # noqa: C901
         # NOTE: Verify that the data is not raw.
         entries: list = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
 
@@ -142,10 +142,10 @@ class TransformerIdxListImageLatest(Transformer):
         first = 0
         results = []
         for page in range(first, len(chunked_list)):
-            data_entry = connection.DataEntry(f"v1/idx/list/sort-by-date{provider}/{page}", chunked_list[page])
+            data_entry = DataEntry(f"v1/idx/list/sort-by-date{provider}/{page}", chunked_list[page])
             results.append(data_entry)
 
-        page_entry = connection.DataEntry(
+        page_entry = DataEntry(
             f"v1/idx/list/sort-by-date{provider}/pages",
             {
                 "first": first,
@@ -161,7 +161,7 @@ class TransformerIdxListImageLatest(Transformer):
 class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest google images."""
 
-    def run(self, data: list[connection.DataEntry]) -> Any:
+    def run(self, data: list[DataEntry]) -> Any:
         self.provider = "google"
         return super().run(data)
 
@@ -169,7 +169,7 @@ class TransformerIdxListImageLatestGoogle(TransformerIdxListImageLatest):
 class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest AWS images."""
 
-    def run(self, data: list[connection.DataEntry]) -> Any:
+    def run(self, data: list[DataEntry]) -> Any:
         self.provider = "aws"
         return super().run(data)
 
@@ -177,7 +177,7 @@ class TransformerIdxListImageLatestAWS(TransformerIdxListImageLatest):
 class TransformerIdxListImageLatestAZURE(TransformerIdxListImageLatest):
     """Sort the transformed data to have the latest AZURE images."""
 
-    def run(self, data: list[connection.DataEntry]) -> Any:
+    def run(self, data: list[DataEntry]) -> Any:
         self.provider = "azure"
         return super().run(data)
 
@@ -185,7 +185,7 @@ class TransformerIdxListImageLatestAZURE(TransformerIdxListImageLatest):
 class TransformerAWS(Transformer):
     """Transform raw AWS data."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from AWS.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
@@ -201,7 +201,7 @@ class TransformerAWS(Transformer):
 
                 image_data = format_aws.image_rhel(content, region)
                 image_name = image_data["name"].replace(" ", "_").lower()
-                data_entry = connection.DataEntry(f"v1/aws/{region}/{image_name}", image_data)
+                data_entry = DataEntry(f"v1/aws/{region}/{image_name}", image_data)
                 results.append(data_entry)
 
         return results
@@ -210,7 +210,7 @@ class TransformerAWS(Transformer):
 class TransformerGoogle(Transformer):
     """Transform raw google data."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
@@ -223,7 +223,7 @@ class TransformerGoogle(Transformer):
                 if "rhel" in content["name"]:
                     image_data = format_google.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
-                    data_entry = connection.DataEntry(f"v1/google/global/{image_name}", image_data)
+                    data_entry = DataEntry(f"v1/google/global/{image_name}", image_data)
                     results.append(data_entry)
 
         return results
@@ -232,7 +232,7 @@ class TransformerGoogle(Transformer):
 class TransformerAZURE(Transformer):
     """Transform raw Azure data."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is from Azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
@@ -251,7 +251,7 @@ class TransformerAZURE(Transformer):
                 try:
                     image_data = format_azure.image_rhel(content)
                     image_name = image_data["name"].replace(" ", "_").lower()
-                    data_entry = connection.DataEntry(f"v1/azure/global/{image_name}", image_data)
+                    data_entry = DataEntry(f"v1/azure/global/{image_name}", image_data)
 
                     if image_name in seen:
                         continue
@@ -268,7 +268,7 @@ class TransformerAZURE(Transformer):
 class TransformerIdxListImageNames(Transformer):
     """Genearate list of all image names."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         # NOTE: Verify that the data is not raw.
         entries = [x for x in data if not x.is_raw() and not x.is_provided_by("idx")]
 
@@ -279,13 +279,13 @@ class TransformerIdxListImageNames(Transformer):
 
         results.sort()
 
-        return [connection.DataEntry("v1/idx/list/image-names", results)]
+        return [DataEntry("v1/idx/list/image-names", results)]
 
 
 class TransformerAWSV2RHEL(Transformer):
     """Transform raw rhel AWS data into the schema."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw.
         entries = [x for x in data if x.is_provided_by("aws") and x.is_raw()]
@@ -315,7 +315,7 @@ class TransformerAWSV2RHEL(Transformer):
                 # v2/os/rhel/provider/aws/version/8.6.0/region/eu-west-3/image/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
                 # v2/os/rhel/provider/aws/version/8.2.0/region/eu-north-1/image/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
                 path = f"v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
-                data_entry = connection.DataEntry(path, image_data)
+                data_entry = DataEntry(path, image_data)
 
                 results.append(data_entry)
         return results
@@ -324,7 +324,7 @@ class TransformerAWSV2RHEL(Transformer):
 class TransformerAzureV2RHEL(Transformer):
     """Transform raw rhel Azure data into the schema."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw and provided by azure.
         entries = [x for x in data if x.is_provided_by("azure") and x.is_raw()]
@@ -355,7 +355,7 @@ class TransformerAzureV2RHEL(Transformer):
                 # v2/os/rhel/provider/azure/version/8.6.0/region/southcentralus/image/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
                 # v2/os/rhel/provider/azure/version/8.2.0/region/southcentralus/image/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
                 path = f"v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
-                data_entry = connection.DataEntry(path, image_data)
+                data_entry = DataEntry(path, image_data)
 
                 results.append(data_entry)
         return results
@@ -364,7 +364,7 @@ class TransformerAzureV2RHEL(Transformer):
 class TransformerGoogleV2RHEL(Transformer):
     """Transform raw rhel Google data into the schema."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         """Transform the raw data."""
         # NOTE: Verify that the data is raw and provided by google.
         entries = [x for x in data if x.is_provided_by("google") and x.is_raw()]
@@ -392,7 +392,7 @@ class TransformerGoogleV2RHEL(Transformer):
                     # v2/os/rhel/provider/google/version/8.6.0/region/global/image/71d0a7aaa1f0dc06840e46f6ce316a7acfb022d4
                     # v2/os/rhel/provider/google/version/8.2.0/region/global/image/14e4eab326cc5a2ef13cb5c0f36bc9bfa41025d9
                     path = f"v2/os/{os_name}/provider/{provider}/version/{version}/region/{region}/image/{image_id}"
-                    data_entry = connection.DataEntry(path, image_data)
+                    data_entry = DataEntry(path, image_data)
 
                     results.append(data_entry)
         return results
@@ -401,7 +401,7 @@ class TransformerGoogleV2RHEL(Transformer):
 class TransformerV2All(Transformer):
     """Generate list of all image details."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         # NOTE: Verify that the data is from api v2.
         entries = [x for x in data if x.is_API("v2")]
 
@@ -431,13 +431,13 @@ class TransformerV2All(Transformer):
 
         results.sort(key=lambda x: x["name"], reverse=False)
 
-        return [connection.DataEntry("v2/all", results)]
+        return [DataEntry("v2/all", results)]
 
 
 class TransformerV2(Transformer):
     """Base class for all v2 transformers."""
 
-    def filtered_entries(self, data: list[connection.DataEntry]) -> list:
+    def filtered_entries(self, data: list[DataEntry]) -> list:
         """Return only data entries for api v2."""
         return [x for x in data if x.is_API("v2")]
 
@@ -455,7 +455,7 @@ class TransformerV2ListOS(TransformerV2):
         """Return display name."""
         return {"rhel": "Red Hat Enterprise Linux"}
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         results: list = []
         os_list: dict = {}
 
@@ -487,13 +487,13 @@ class TransformerV2ListOS(TransformerV2):
             results.append(entry_object)
 
         # NOTE: Add /list suffix to prevent collision with "os" folder.
-        return [connection.DataEntry("v2/os/list", results)]
+        return [DataEntry("v2/os/list", results)]
 
 
 class TransformerV2ListProviderByOS(TransformerV2):
     """Generate a list for all available providers of a specific os."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         # Start each provider at a count of 0 so we can increment the counter as
         # we build the results.
         providers: defaultdict = defaultdict(lambda: defaultdict(int))
@@ -511,13 +511,13 @@ class TransformerV2ListProviderByOS(TransformerV2):
             providers[api_path][provider] += 1
 
         # Convert the API path and provider counts into DataEntry objects.
-        return [connection.DataEntry(x, dict(y)) for x, y in providers.items()]
+        return [DataEntry(x, dict(y)) for x, y in providers.items()]
 
 
 class TransformerV2ListVersionByProvider(TransformerV2):
     """Generate a list for all available versions for a specific provider."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         # Start each version at a count of 0 so we can increment the counter as
         # we build the results.
         versions: defaultdict = defaultdict(lambda: defaultdict(int))
@@ -536,13 +536,13 @@ class TransformerV2ListVersionByProvider(TransformerV2):
             versions[api_path][version] += 1
 
         # Convert the API path and version counts into DataEntry objects.
-        return [connection.DataEntry(x, dict(y)) for x, y in versions.items()]
+        return [DataEntry(x, dict(y)) for x, y in versions.items()]
 
 
 class TransformerV2ListRegionByVersion(TransformerV2):
     """Generate a list for all available regions for one version."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         # NOTE: check that its the v2 data entries.
         [x for x in data if x.is_API("v2")]
 
@@ -565,13 +565,13 @@ class TransformerV2ListRegionByVersion(TransformerV2):
             regions[api_path][region] += 1
 
         # Convert the API path and region counts into DataEntry objects.
-        return [connection.DataEntry(x, dict(y)) for x, y in regions.items()]
+        return [DataEntry(x, dict(y)) for x, y in regions.items()]
 
 
-class TransformerV2ListImageByRegion(Transformer):
+class TransformerV2ListImageByRegion(TransformerV2):
     """Generate a list of all images for one region."""
 
-    def run(self, data: list[connection.DataEntry]) -> list:
+    def run(self, data: list[DataEntry]) -> list:
         # NOTE: check that its the v2 data entries.
         entries = [x for x in data if x.is_API("v2")]
 
@@ -593,4 +593,4 @@ class TransformerV2ListImageByRegion(Transformer):
             images[api_path].append(image)
 
         # Convert the API path and appendend image into DataEntry objects.
-        return [connection.DataEntry(x, y) for x, y in images.items()]
+        return [DataEntry(x, y) for x, y in images.items()]
