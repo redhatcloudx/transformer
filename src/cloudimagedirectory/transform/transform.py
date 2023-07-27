@@ -492,8 +492,9 @@ class TransformerV2ListProviderByOS(Transformer):
         # NOTE: Verify that the data is from api v2.
         entries = [x for x in data if x.is_API("v2")]
 
-        results: list = []
-        providers: dict = {}
+        # Start each provider at a count of 0 so we can increment the counter as
+        # we build the results.
+        providers: defaultdict = defaultdict(lambda: defaultdict(int))
 
         for e in entries:
             entry = copy.deepcopy(e)
@@ -501,21 +502,14 @@ class TransformerV2ListProviderByOS(Transformer):
             os = filename[2]
             provider = filename[4]
 
-            if os not in providers:
-                providers[os] = {provider: 1}
-                continue
+            # Build the API path that corresponds to this entry.
+            api_path = f"v2/os/{os}/provider/list"
 
-            if provider not in providers[os]:
-                providers[os][provider] = 1
-                continue
+            # Increment the count for this provider at this API path.
+            providers[api_path][provider] += 1
 
-            # NOTE: Counter of how many images are available in this explicit OS.
-            providers[os][provider] += 1
-
-        for os, provider_map in providers.items():
-            # NOTE: Add /list suffix to prevent collision with "provider" folder.
-            results.append(connection.DataEntry(f"v2/os/{os}/provider/list", provider_map))
-        return results
+        # Convert the API path and provider counts into DataEntry objects.
+        return [connection.DataEntry(x, dict(y)) for x, y in providers.items()]
 
 
 class TransformerV2ListVersionByProvider(Transformer):
