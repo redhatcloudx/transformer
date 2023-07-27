@@ -2,7 +2,49 @@
 import os
 
 import pytest
-from cloudimagedirectory.connection.connection import ConnectionFS, OriginPathDoesNotExist
+from cloudimagedirectory.connection.connection import ConnectionFS, DataEntry, OriginPathDoesNotExist
+
+
+class TestDataEntry:
+    """Tests for the DataEntry class."""
+
+    def test_is_raw(self) -> None:
+        """Verify that the raw format is detected."""
+        temp = DataEntry("raw/foobar.json", None)
+        assert temp.is_raw()
+
+        temp = DataEntry("sooooonotrawhere", None)
+        assert not temp.is_raw()
+
+    def test_is_provided_by(self):
+        """Verify that the origin is detected."""
+        temp = DataEntry("foo/foobar.json", None)
+        assert temp.is_provided_by("foo")
+
+        temp = DataEntry("foobar.json", None)
+        assert not temp.is_provided_by("foo")
+
+    def test_is_API(self):
+        """Verify that we can determine if this is an API entry."""
+        # Plain v1 API.
+        temp = DataEntry("v1/foobar.json", None)
+        assert temp.is_API("v1")
+
+        # Is a v1 api, but doesn't match our version spec.
+        temp = DataEntry("v1/foobar.json", None)
+        assert not temp.is_API("v2")
+
+        # v2, but not enough slashes
+        temp = DataEntry("v2/foobar.json", None)
+        assert not temp.is_API("v2")
+
+        # v2, enough slashes, but wrong hash length
+        temp = DataEntry("v2/////////abcde/", None)
+        assert not temp.is_API("v2")
+
+        # v2, enough slashes, right hash length
+        temp = DataEntry(f"v2/////////{'a'*40}/", None)
+        assert not temp.is_API("v2")
 
 
 class TestConnectionFS:
