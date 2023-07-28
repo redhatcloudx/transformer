@@ -577,6 +577,7 @@ class TransformerV2ListRegionByVersion(Transformer):
             region = filename[8]
 
             # Build the API path that corresponds to this entry.
+            # NOTE: Add /list suffix to prevent collision with "region" folder.
             api_path = f"v2/os/{os}/provider/{provider}/version/{version}/region/list"
 
             # Increment the count for this region at this API path.
@@ -584,3 +585,31 @@ class TransformerV2ListRegionByVersion(Transformer):
 
         # Convert the API path and region counts into DataEntry objects.
         return [connection.DataEntry(x, dict(y)) for x, y in regions.items()]
+
+
+class TransformerV2ListImageByRegion(Transformer):
+    """Generate a list of all images for one region."""
+
+    def run(self, data: list[connection.DataEntry]) -> list:
+        # NOTE: check that its the v2 data entries.
+        entries = [x for x in data if x.is_API("v2")]
+
+        images: defaultdict = defaultdict(list)
+
+        for e in entries:
+            entry = copy.deepcopy(e)
+            filename = entry.filename.split("/")
+            os = filename[2]
+            provider = filename[4]
+            version = filename[6]
+            region = filename[8]
+            image = filename[10]
+
+            # Build the API path that corresponds to this entry.
+            # NOTE: Add /list suffix to prevent collision with "image" folder.
+            api_path = f"v2/os/{os}/provider/{provider}/version/{version}/region/{region}/image/list"
+
+            images[api_path].append(image)
+
+        # Convert the API path and appendend image into DataEntry objects.
+        return [connection.DataEntry(x, y) for x, y in images.items()]

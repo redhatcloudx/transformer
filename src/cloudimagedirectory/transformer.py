@@ -101,6 +101,7 @@ def run(origin_path: str, destination_path: str, arg_files: str, filter_until: s
             transform.TransformerV2ListProviderByOS,
             transform.TransformerV2ListVersionByProvider,
             transform.TransformerV2ListRegionByVersion,
+            transform.TransformerV2ListImageByRegion,
         ],
     )
     print("run pipeline v2")
