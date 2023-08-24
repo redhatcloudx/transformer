@@ -70,7 +70,7 @@ jobs:
           git checkout $LATEST_RELEASE
 
       - name: Configure AWS credentials for production
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v3
         if: env.ENVIRONMENT == 'production'
         with:
           role-to-assume: arn:aws:iam::426579533370:role/github_actions_image_transformer
@@ -78,7 +78,7 @@ jobs:
           aws-region: us-east-2
 
       - name: Configure AWS credentials for staging
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v3
         if: env.ENVIRONMENT == 'staging'
         with:
           role-to-assume: arn:aws:iam::426579533370:role/github_actions_cloud_image_directory_staging
