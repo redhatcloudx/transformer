@@ -8,6 +8,8 @@ from cloudimagedirectory.connection import connection
 from cloudimagedirectory.filter import filter
 from cloudimagedirectory.transform import transform
 
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
 
 @click.command()
 @click.option(
@@ -41,6 +43,8 @@ from cloudimagedirectory.transform import transform
     help="List of predefined files to process",
 )
 def run(origin_path: str, destination_path: str, arg_files: str, filter_until: str) -> None:
+    # metrics.get_meter_provider().start_pipeline(ConsoleMetricExporter(), interval=5)
+
     """Get content from filesystem format image data."""
     target: list[str] = []
     if arg_files != "none":
