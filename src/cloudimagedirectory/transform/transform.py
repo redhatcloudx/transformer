@@ -10,6 +10,11 @@ from cloudimagedirectory import config
 from cloudimagedirectory.connection.connection import DataEntry
 from cloudimagedirectory.format import format_aws, format_azure, format_google
 
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+
+# Initialize OpenTelemetry
+meter = MeterProvider().get_meter(__name__)
 
 class Pipeline:
     """Builds a pipeline of transformer tasks."""
@@ -281,6 +286,11 @@ class TransformerIdxListImageNames(Transformer):
 
         return [DataEntry("v1/idx/list/image-names", results)]
 
+generated_image_provider_metadata_counter = meter.create_counter(
+    name="generated_image_provider_metadata_count",
+    description="Counts the number of loop iterations",
+    unit="1",
+)
 
 class TransformerAWSV2RHEL(Transformer):
     """Transform raw rhel AWS data into the schema."""
@@ -318,6 +328,7 @@ class TransformerAWSV2RHEL(Transformer):
                 data_entry = DataEntry(path, image_data)
 
                 results.append(data_entry)
+                generated_image_provider_metadata_counter.add(1, {"provider": provider})
         return results
 
 
@@ -358,6 +369,7 @@ class TransformerAzureV2RHEL(Transformer):
                 data_entry = DataEntry(path, image_data)
 
                 results.append(data_entry)
+                generated_image_provider_metadata_counter.add(1, {"provider": provider})
         return results
 
 
@@ -395,7 +407,14 @@ class TransformerGoogleV2RHEL(Transformer):
                     data_entry = DataEntry(path, image_data)
 
                     results.append(data_entry)
+                    generated_image_provider_metadata_counter.add(1, {"provider": provider})
         return results
+
+generated_image_endpoint_metadata_counter = meter.create_counter(
+    name="generated_image_metadata_count",
+    description="Counts the number of loop iterations",
+    unit="1",
+)
 
 
 class TransformerV2All(Transformer):
@@ -428,6 +447,7 @@ class TransformerV2All(Transformer):
                 entry.content.update(updated_content)
 
             results.append(entry.content)
+            generated_image_endpoint_metadata_counter.add(1, {"endpoint": "/all"})
 
         results.sort(key=lambda x: x["name"], reverse=False)
 
