@@ -9,12 +9,11 @@ from typing import Any, Callable, no_type_check
 from cloudimagedirectory import config
 from cloudimagedirectory.connection.connection import DataEntry
 from cloudimagedirectory.format import format_aws, format_azure, format_google
-
-from opentelemetry import metrics
 from opentelemetry.sdk.metrics import MeterProvider
 
 # Initialize OpenTelemetry
 meter = MeterProvider().get_meter(__name__)
+
 
 class Pipeline:
     """Builds a pipeline of transformer tasks."""
@@ -286,11 +285,13 @@ class TransformerIdxListImageNames(Transformer):
 
         return [DataEntry("v1/idx/list/image-names", results)]
 
+
 generated_image_provider_metadata_counter = meter.create_counter(
     name="generated_image_provider_metadata_count",
     description="Counts the number cloud provider specific image entries",
     unit="1",
 )
+
 
 class TransformerAWSV2RHEL(Transformer):
     """Transform raw rhel AWS data into the schema."""
@@ -409,6 +410,7 @@ class TransformerGoogleV2RHEL(Transformer):
                     results.append(data_entry)
                     generated_image_provider_metadata_counter.add(1, {"provider": provider})
         return results
+
 
 generated_image_endpoint_metadata_counter = meter.create_counter(
     name="generated_image_metadata_count",
