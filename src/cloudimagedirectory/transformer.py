@@ -8,8 +8,6 @@ from cloudimagedirectory.connection import connection
 from cloudimagedirectory.filter import filter
 from cloudimagedirectory.transform import transform
 
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
 
 @click.command()
 @click.option(
