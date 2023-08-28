@@ -3,6 +3,11 @@ from typing import Any, Callable
 import pandas as pd
 import pytz
 
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+
+# Initialize OpenTelemetry
+meter = MeterProvider().get_meter(__name__)
 
 def get_utc_datetime(date_string: str) -> pd.Timestamp:  # type: ignore[no-any-unimported]
     """Get a timezone-aware comparable UTC datetime object.
@@ -15,6 +20,14 @@ def get_utc_datetime(date_string: str) -> pd.Timestamp:  # type: ignore[no-any-u
 def FilterImageByFilename(word: str) -> Callable:
     """Filter images by filename."""
     print("filter images by filename: " + word)
+
+    filtered_image_by_filename_counter = meter.create_counter(
+        name="filtered_image_by_filename_counter",
+        description="Counts the number of filtered images by filename",
+        unit="1",
+    )
+    # TODO: Call method every time the lambda skips an element.
+    # filtered_image_by_filename_counter.add(1, {"word", word})
     return lambda data: [d for d in data if not d.filename.lower().__contains__(word.lower())]
 
 
@@ -23,6 +36,13 @@ def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ig
     print(f"filter images by latest date: {latestDate}")
     latestDate = latestDate.replace(tzinfo=pytz.UTC)
 
+    filtered_image_by_latest_update_counter = meter.create_counter(
+        name="filtered_image_by_latest_update_counter",
+        description="Counts the number of filtered images by latest update",
+        unit="1",
+    )
+    # TODO: Call method every time the lambda skips an element.
+    # filtered_image_by_latest_update_counter.add(1, {"latest_date", latestDate})
     return lambda data: [d for d in data if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate]
 
 
@@ -38,6 +58,12 @@ def _filter_by_unique_names(data: list) -> list:
     # The dictionary ensures uniqueness of the names and preserves
     # insertion order of the data entries.
     unique_data: dict[Any, Any] = {}
+
+    filtered_image_by_unique_names_counter = meter.create_counter(
+        name="filtered_image_by_unique_names_counter",
+        description="Counts the number of filtered images by unique names",
+        unit="1",
+    )
 
     for entry in data:
         # Skip data entries without content.
@@ -62,4 +88,7 @@ def _filter_by_unique_names(data: list) -> list:
         unique_data[name] = entry
 
     # Return a list of latest entries with unique image names.
-    return list(unique_data.values())
+    result = list(unique_data.values())
+    filtered_image_by_unique_names_counter.add(len(data) - len(result))
+    return result
+

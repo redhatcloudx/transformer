@@ -288,7 +288,7 @@ class TransformerIdxListImageNames(Transformer):
 
 generated_image_provider_metadata_counter = meter.create_counter(
     name="generated_image_provider_metadata_count",
-    description="Counts the number of loop iterations",
+    description="Counts the number cloud provider specific image entries",
     unit="1",
 )
 
@@ -412,7 +412,7 @@ class TransformerGoogleV2RHEL(Transformer):
 
 generated_image_endpoint_metadata_counter = meter.create_counter(
     name="generated_image_metadata_count",
-    description="Counts the number of loop iterations",
+    description="Counts the number of generated images transformed into the schema",
     unit="1",
 )
 
@@ -538,7 +538,7 @@ class TransformerV2ListVersionByProvider(TransformerV2):
     """Generate a list for all available versions for a specific provider."""
 
     def run(self, data: list[DataEntry]) -> list:
-        # Start each version at a count of 0 so we can increment the counter as
+        # Start each version at a count of 0 so we can increment the as
         # we build the results.
         versions: defaultdict = defaultdict(lambda: defaultdict(int))
 
