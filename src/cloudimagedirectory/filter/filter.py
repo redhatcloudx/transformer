@@ -20,14 +20,21 @@ def FilterImageByFilename(word: str) -> Callable:
     """Filter images by filename."""
     print("filter images by filename: " + word)
 
-    meter.create_counter(
+    filtered_image_by_filename_counter = meter.create_counter(
         name="filtered_image_by_filename_counter",
         description="Counts the number of filtered images by filename",
         unit="1",
     )
-    # TODO: Call method every time the lambda skips an element.
-    # filtered_image_by_filename_counter.add(1, {"word", word})
-    return lambda data: [d for d in data if not d.filename.lower().__contains__(word.lower())]
+
+    def _filter_image_by_filename(data: str) -> list:
+        result = []
+        for d in data:
+            if not d.filename.lower().__contains__(word.lower()):
+                result.append(d)
+            else:
+                filtered_image_by_filename_counter.add(1, {"word", word})
+        return result
+    return _filter_image_by_filename
 
 
 def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ignore[no-any-unimported]
@@ -35,14 +42,21 @@ def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ig
     print(f"filter images by latest date: {latestDate}")
     latestDate = latestDate.replace(tzinfo=pytz.UTC)
 
-    meter.create_counter(
+    filtered_image_by_latest_update_counter = meter.create_counter(
         name="filtered_image_by_latest_update_counter",
         description="Counts the number of filtered images by latest update",
         unit="1",
     )
-    # TODO: Call method every time the lambda skips an element.
-    # filtered_image_by_latest_update_counter.add(1, {"latest_date", latestDate})
-    return lambda data: [d for d in data if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate]
+
+    def _filter_image_by_latest_update(data: str) -> list:
+        result = []
+        for d in data:
+            if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate:
+                result.append(d)
+            else:
+                filtered_image_by_latest_update_counter.add(1, {"latest_date", latestDate})
+        return result
+    return _filter_image_by_latest_update
 
 
 def FilterImageByUniqueName() -> Callable:
