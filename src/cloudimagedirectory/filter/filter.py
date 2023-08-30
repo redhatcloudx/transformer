@@ -2,6 +2,8 @@ from typing import Any, Callable
 
 import pandas as pd
 import pytz
+
+from cloudimagedirectory.connection.connection import DataEntry
 from opentelemetry.sdk.metrics import MeterProvider
 
 # Initialize OpenTelemetry
@@ -26,7 +28,7 @@ def FilterImageByFilename(word: str) -> Callable:
         unit="1",
     )
 
-    def _filter_image_by_filename(data: str) -> list:
+    def _filter_image_by_filename(data: list[DataEntry]) -> list:
         result = []
         for d in data:
             if not d.filename.lower().__contains__(word.lower()):
@@ -48,7 +50,7 @@ def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ig
         unit="1",
     )
 
-    def _filter_image_by_latest_update(data: str) -> list:
+    def _filter_image_by_latest_update(data: list[DataEntry]) -> list:
         result = []
         for d in data:
             if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate:
