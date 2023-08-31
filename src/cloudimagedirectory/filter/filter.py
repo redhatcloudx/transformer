@@ -2,7 +2,6 @@ from typing import Any, Callable
 
 import pandas as pd
 import pytz
-
 from cloudimagedirectory.connection.connection import DataEntry
 from opentelemetry.sdk.metrics import MeterProvider
 
@@ -36,6 +35,7 @@ def FilterImageByFilename(word: str) -> Callable:
             else:
                 filtered_image_by_filename_counter.add(1, {"word", word})
         return result
+
     return _filter_image_by_filename
 
 
@@ -58,6 +58,7 @@ def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ig
             else:
                 filtered_image_by_latest_update_counter.add(1, {"latest_date", latestDate})
         return result
+
     return _filter_image_by_latest_update
 
 
