@@ -287,7 +287,7 @@ class TransformerIdxListImageNames(Transformer):
 
 
 generated_image_provider_metadata_counter = meter.create_counter(
-    name="generated_image_provider_metadata_count",
+    name="generator.image.metadata.provider.count",
     description="Counts the number cloud provider specific image entries",
     unit="1",
 )
@@ -413,7 +413,7 @@ class TransformerGoogleV2RHEL(Transformer):
 
 
 generated_image_endpoint_metadata_counter = meter.create_counter(
-    name="generated_image_metadata_count",
+    name="generator.image.metadata.count",
     description="Counts the number of generated images transformed into the schema",
     unit="1",
 )
