@@ -22,7 +22,7 @@ def FilterImageByFilename(word: str) -> Callable:
     print("filter images by filename: " + word)
 
     filtered_image_by_filename_counter = meter.create_counter(
-        name="filtered_image_by_filename_counter",
+        name="filter.image.by_filename.count",
         description="Counts the number of filtered images by filename",
         unit="1",
     )
@@ -33,7 +33,7 @@ def FilterImageByFilename(word: str) -> Callable:
             if not d.filename.lower().__contains__(word.lower()):
                 result.append(d)
             else:
-                filtered_image_by_filename_counter.add(1, {"word", word})
+                filtered_image_by_filename_counter.add(1, {"word": word})
         return result
 
     return _filter_image_by_filename
@@ -45,18 +45,18 @@ def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ig
     latestDate = latestDate.replace(tzinfo=pytz.UTC)
 
     filtered_image_by_latest_update_counter = meter.create_counter(
-        name="filtered_image_by_latest_update_counter",
+        name="filter.image.by_latest_update.count",
         description="Counts the number of filtered images by latest update",
         unit="1",
     )
 
-    def _filter_image_by_latest_update(data: list[DataEntry]) -> list:
+    def _filter_image_by_latest_update(data: list) -> list:
         result = []
         for d in data:
             if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate:
                 result.append(d)
             else:
-                filtered_image_by_latest_update_counter.add(1, {"latest_date", latestDate})
+                filtered_image_by_latest_update_counter.add(1, {"latest_date": latestDate})
         return result
 
     return _filter_image_by_latest_update
@@ -76,7 +76,7 @@ def _filter_by_unique_names(data: list) -> list:
     unique_data: dict[Any, Any] = {}
 
     filtered_image_by_unique_names_counter = meter.create_counter(
-        name="filtered_image_by_unique_names_counter",
+        name="filter.image.by_unique_name.counter",
         description="Counts the number of filtered images by unique names",
         unit="1",
     )
