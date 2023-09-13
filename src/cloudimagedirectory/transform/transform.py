@@ -540,7 +540,8 @@ class TransformerV2ListVersionByProvider(TransformerV2):
     """Generate a list for all available versions for a specific provider."""
 
     def run(self, data: list[DataEntry]) -> list:
-        # Start each version at a count of 0 so we can increment the as
+        # Start each version at a count of 0 so we can increment the counter as
+```
         # we build the results.
         versions: defaultdict = defaultdict(lambda: defaultdict(int))
 
