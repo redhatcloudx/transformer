@@ -541,7 +541,6 @@ class TransformerV2ListVersionByProvider(TransformerV2):
 
     def run(self, data: list[DataEntry]) -> list:
         # Start each version at a count of 0 so we can increment the counter as
-```
         # we build the results.
         versions: defaultdict = defaultdict(lambda: defaultdict(int))
 
