@@ -90,7 +90,12 @@ def _filter_by_unique_names(data: list) -> list:
 
         # Compare the data entry with the last inserted entry of
         # the same name. If the new entry is older, do nothing.
-        name = entry.content["name"]
+        name_raw = entry.content["name"]
+        if "region" in entry.content:
+            region = entry.content["region"].replace("-", "_")
+            name = f"{name_raw}_{region}"
+        else:
+            name = name_raw
         date = entry.content["date"]
 
         if name in unique_data:
