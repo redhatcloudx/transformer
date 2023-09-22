@@ -3,10 +3,9 @@ from typing import Any, Callable
 import pandas as pd
 import pytz
 from cloudimagedirectory.connection.connection import DataEntry
-from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry import metrics
 
-# Initialize OpenTelemetry
-meter = MeterProvider().get_meter(__name__)
+meter = metrics.get_meter("transformer.pipeline.filter.meter")
 
 
 def get_utc_datetime(date_string: str) -> pd.Timestamp:  # type: ignore[no-any-unimported]
