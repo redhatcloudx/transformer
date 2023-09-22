@@ -9,11 +9,9 @@ from typing import Any, Callable, no_type_check
 from cloudimagedirectory import config
 from cloudimagedirectory.connection.connection import DataEntry
 from cloudimagedirectory.format import format_aws, format_azure, format_google
-from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry import metrics
 
-# Initialize OpenTelemetry
-meter = MeterProvider().get_meter(__name__)
-
+meter = metrics.get_meter("transformer.pipeline.meter")
 
 class Pipeline:
     """Builds a pipeline of transformer tasks."""
