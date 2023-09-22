@@ -16,15 +16,16 @@ def get_utc_datetime(date_string: str) -> pd.Timestamp:  # type: ignore[no-any-u
     return pd.Timestamp(date_string).replace(tzinfo=pytz.UTC)
 
 
+filtered_image_by_filename_counter = meter.create_counter(
+    name="filter.image.by_filename.count",
+    description="Counts the number of filtered images by filename",
+    unit="1",
+)
+
+
 def FilterImageByFilename(word: str) -> Callable:
     """Filter images by filename."""
     print("filter images by filename: " + word)
-
-    filtered_image_by_filename_counter = meter.create_counter(
-        name="filter.image.by_filename.count",
-        description="Counts the number of filtered images by filename",
-        unit="1",
-    )
 
     def _filter_image_by_filename(data: list[DataEntry]) -> list:
         result = []
@@ -38,16 +39,17 @@ def FilterImageByFilename(word: str) -> Callable:
     return _filter_image_by_filename
 
 
+filtered_image_by_latest_update_counter = meter.create_counter(
+    name="filter.image.by_latest_update.count",
+    description="Counts the number of filtered images by latest update",
+    unit="1",
+)
+
+
 def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ignore[no-any-unimported]
     """Filter images by latest date."""
     print(f"filter images by latest date: {latestDate}")
     latestDate = latestDate.replace(tzinfo=pytz.UTC)
-
-    filtered_image_by_latest_update_counter = meter.create_counter(
-        name="filter.image.by_latest_update.count",
-        description="Counts the number of filtered images by latest update",
-        unit="1",
-    )
 
     def _filter_image_by_latest_update(data: list) -> list:
         result = []
@@ -55,7 +57,7 @@ def FilterImageByLatestUpdate(latestDate: pd.Timestamp) -> Callable:  # type: ig
             if d.content is not None and get_utc_datetime(d.content["date"]) > latestDate:
                 result.append(d)
             else:
-                filtered_image_by_latest_update_counter.add(1, {"latest_date": latestDate})
+                filtered_image_by_latest_update_counter.add(1, {"latest_date": latestDate.strftime("%m/%d/%Y")})
         return result
 
     return _filter_image_by_latest_update
@@ -67,18 +69,19 @@ def FilterImageByUniqueName() -> Callable:
     return _filter_by_unique_names
 
 
+filtered_image_by_unique_names_counter = meter.create_counter(
+    name="filter.image.by_unique_name.counter",
+    description="Counts the number of filtered images by unique names",
+    unit="1",
+)
+
+
 def _filter_by_unique_names(data: list) -> list:
     """Return a list of latest images with unique names."""
     # Create a dictionary of image names and latest data entries.
     # The dictionary ensures uniqueness of the names and preserves
     # insertion order of the data entries.
     unique_data: dict[Any, Any] = {}
-
-    filtered_image_by_unique_names_counter = meter.create_counter(
-        name="filter.image.by_unique_name.counter",
-        description="Counts the number of filtered images by unique names",
-        unit="1",
-    )
 
     for entry in data:
         # Skip data entries without content.

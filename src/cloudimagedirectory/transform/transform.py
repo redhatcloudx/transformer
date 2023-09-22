@@ -13,6 +13,7 @@ from opentelemetry import metrics
 
 meter = metrics.get_meter("transformer.pipeline.meter")
 
+
 class Pipeline:
     """Builds a pipeline of transformer tasks."""
 

@@ -3,20 +3,20 @@ import datetime
 
 import click
 import pandas as pd
+from opentelemetry import metrics
+from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 from cloudimagedirectory.connection import connection
 from cloudimagedirectory.filter import filter
 from cloudimagedirectory.transform import transform
 
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
-
 exporter = OTLPMetricExporter()
 reader = PeriodicExportingMetricReader(exporter)
 provider = MeterProvider(metric_readers=[reader])
 metrics.set_meter_provider(provider)
+
 
 @click.command()
 @click.option(
