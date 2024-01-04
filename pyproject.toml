@@ -48,7 +48,7 @@ types-pytz = "^2023.3.0.0"
 cloudimagedirectory-transformer = "cloudimagedirectory.transformer:run"
 
 [build-system]
-requires = ["poetry-core>=1.5.0"]
+requires = ["poetry-core>=1.8.1"]
 build-backend = "poetry.core.masonry.api"
 
 # Much of what is below this line is borrowed from poetry's pyproject.yaml.
