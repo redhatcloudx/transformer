@@ -27,7 +27,7 @@ click = "^8.1.7"
 pytz = "^2023.3"
 pandas = "^2.2.1"
 opentelemetry-api = "^1.23.0"
-opentelemetry-sdk = "^1.22.0"
+opentelemetry-sdk = "^1.23.0"
 opentelemetry-exporter-otlp = "^1.23.0"
 
 [tool.poetry.group.dev.dependencies]
