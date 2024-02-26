@@ -1,4 +1,4 @@
-FROM python:3.11-alpine
+FROM python:3.12-alpine
 
 COPY ./dist/*.whl /opt/cloudimagedirectory/
 COPY ./data/image-data.json /opt/cloudimagedirectory/
